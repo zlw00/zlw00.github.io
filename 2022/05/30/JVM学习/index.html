@@ -67,8 +67,9 @@
 <meta property="og:image" content="http://example.com/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191704808.png">
 <meta property="og:image" content="http://example.com/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191722403.png">
 <meta property="og:image" content="http://example.com/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191728110.png">
+<meta property="og:image" content="http://example.com/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220604100611851.png">
 <meta property="article:published_time" content="2022-05-30T02:03:22.000Z">
-<meta property="article:modified_time" content="2022-06-03T11:17:32.463Z">
+<meta property="article:modified_time" content="2022-06-04T03:25:05.227Z">
 <meta property="article:author" content="zlw">
 <meta property="article:tag" content="JVM">
 <meta property="article:tag" content="Java">
@@ -263,7 +264,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18k 字
+          20k 字
         
       </span>
     
@@ -274,7 +275,7 @@
         
         
         
-          151 分钟
+          171 分钟
         
       </span>
     
@@ -769,17 +770,74 @@
 
 <h2 id="3-类的加载过程"><a href="#3-类的加载过程" class="headerlink" title="3 类的加载过程**"></a>3 类的加载过程**</h2><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191722403.png" srcset="/img/loading.gif" lazyload alt="image-20220603191722403"></p>
 <p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191728110.png" srcset="/img/loading.gif" lazyload alt="image-20220603191728110"></p>
-<h3 id="3-1-加载"><a href="#3-1-加载" class="headerlink" title="3.1 加载"></a>3.1 加载</h3><p><strong>指 JVM 读取 Class 文件，并且根据 Class 文件描述创建 java.lang.Class 对象的过程。</strong>  </p>
-<p><strong>类的加载过程主要是将类的字节码文件读取到运行时区域的方法区，在堆中创建java.lang.Class 对象， 并封装类在方法区的数据结构的过程  。</strong></p>
-<h3 id="3-2-验证"><a href="#3-2-验证" class="headerlink" title="3.2 验证"></a>3.2 验证</h3><p><strong>主要用于确保 Class 文件符合当前虚拟机的要求， 保障虚拟机自身的安全，只有通过验证的 Class 文件才能被 JVM 加载。</strong>  </p>
-<h3 id="3-3-准备"><a href="#3-3-准备" class="headerlink" title="3.3 准备"></a>3.3 准备</h3><p><strong>为 static 变量分配空间，设置默认值</strong>  </p>
+<h3 id="3-1-加载"><a href="#3-1-加载" class="headerlink" title="3.1 加载"></a>3.1 加载</h3><p>指 JVM 读取 Class 文件，并且根据 Class 文件描述创建 java.lang.Class 对象的过程。  </p>
+<p>类的加载过程主要是将类的字节码文件读取到运行时区域的方法区，在堆中创建java.lang.Class 对象， 并封装类在方法区的数据结构的过程  。</p>
+<h3 id="3-2-验证"><a href="#3-2-验证" class="headerlink" title="3.2 验证"></a>3.2 验证</h3><p>主要用于确保 Class 文件符合当前虚拟机的要求， 保障虚拟机自身的安全，只有通过验证的 Class 文件才能被 JVM 加载。  </p>
+<h3 id="3-3-准备"><a href="#3-3-准备" class="headerlink" title="3.3 准备"></a>3.3 准备</h3><p><strong>为 static 变量分配空间，设置默认值</strong></p>
 <ul>
 <li>static 变量在 JDK 7 之前存储于 instanceKlass 末尾，从 JDK 7 开始，存储于 _java_mirror 末尾</li>
-<li><strong>static 变量分配空间和赋值是两个步骤，分配空间在准备阶段完成，赋值在初始化阶段完成</strong></li>
-<li><strong>如果 static 变量是 final 的基本类型，以及字符串常量，那么编译阶段值就确定了，赋值在准备阶</strong><br><strong>段完成</strong></li>
-<li><strong>如果 static 变量是 final 的，但属于引用类型（new），那么赋值也会在初始化阶段完成</strong></li>
+<li>static 变量分配空间和赋值是两个步骤，分配空间在准备阶段完成，赋值在初始化阶段完成</li>
+<li><strong>如果 static 变量是 final 的基本类型</strong>，以及字符串常量，那么编译阶段值就确定了，<strong>赋值在准备阶</strong><br><strong>段完成</strong></li>
+<li><strong>如果 static 变量是 final 的</strong>，但属于引用类型（new），<strong>那么赋值也会在初始化阶段完成</strong></li>
 </ul>
-<h3 id="3-4-解析"><a href="#3-4-解析" class="headerlink" title="3.4 解析"></a>3.4 解析</h3><p><strong>将常量池中的符号引用解析为直接引用</strong>  </p>
+<h3 id="3-4-解析"><a href="#3-4-解析" class="headerlink" title="3.4 解析"></a>3.4 解析</h3><p>将常量池中的符号引用（仅仅是符号，不知道类、方法或属性到底在哪个位置）解析为直接引用 （能够确切的知道类、方法或者属性在内存中的具体位置了）</p>
+<h3 id="3-5-初始化"><a href="#3-5-初始化" class="headerlink" title="3.5 初始化"></a>3.5 初始化</h3><p>主要通过执行类构造器的<client>方法为类进行初始化。 <client>方法是在编译阶段由编译器自动收集类中静态语句块和变量的赋值操作组成的。   </client></client></p>
+<p><strong>发生的时机</strong><br>概括得说，类初始化是【懒惰的】</p>
+<ul>
+<li>main 方法所在的类，总会被首先初始化</li>
+<li>首次访问这个类的静态变量或静态方法时</li>
+<li>子类初始化，如果父类还没初始化，会引发</li>
+<li>子类访问父类的静态变量，只会触发父类的初始化</li>
+<li>Class.forName</li>
+<li>new 会导致初始化</li>
+</ul>
+<p><strong>不会导致类初始化的情况</strong>  </p>
+<ul>
+<li>访问类的 static final 静态常量（基本类型和字符串）不会触发初始化</li>
+<li>类对象.class 不会触发初始化（在加载阶段已经生成了，）</li>
+<li>创建该类的数组不会触发初始化</li>
+<li>类加载器的 loadClass 方法</li>
+<li>Class.forName 的参数 2 为 false 时</li>
+</ul>
+<h2 id="4-类加载器"><a href="#4-类加载器" class="headerlink" title="4 类加载器"></a>4 类加载器</h2><p><strong>什么是类加载器？常见的类加载器有哪些？</strong></p>
+<p><strong>类加载器：</strong>通过一个类的全限定性类名（类名全程，带包路径的用点隔开	eg：com.zlw.test）获取该类的二进制字节流，叫做类加载器。</p>
+<p><strong>常见的类加载器有四种：</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>加载哪的类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bootstrap ClassLoader</td>
+<td>JAVA_HOME&#x2F;jre&#x2F;lib （加载java核心类库）</td>
+<td>无法直接访问</td>
+</tr>
+<tr>
+<td>Extension ClassLoader</td>
+<td>JAVA_HOME&#x2F;jre&#x2F;lib&#x2F;ext （加载java的扩展库）</td>
+<td>上级为 Bootstrap，显示为 null</td>
+</tr>
+<tr>
+<td>Application ClassLoader</td>
+<td>classpath（通过java类路径来加载类，一般来说，java应用的类都是用它来加载）</td>
+<td>上级为 Extension</td>
+</tr>
+<tr>
+<td>自定义类加载器</td>
+<td>自定义 （由java语言实现，继承自ClassLoader）</td>
+<td>上级为 Application</td>
+</tr>
+</tbody></table>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220604100611851.png" srcset="/img/loading.gif" lazyload alt="image-20220604100611851"></p>
+<h2 id="5-双亲委派模式"><a href="#5-双亲委派模式" class="headerlink" title="5 双亲委派模式"></a>5 双亲委派模式</h2><p><strong>什么是双亲委派模式？</strong></p>
+<p>当一个类加载器收到一个类加载请求时，首先不会尝试自己去加载，而是将这个类委派给上级加载器进行加载，只有上级加载器在自己的搜索范围查找不到该类时，子加载器才会去尝试自己去加载该类。</p>
+<p>如果没有双亲委派模式，用户会自己自定义一个java.lang.String，无法保证类的唯一性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">protected</span> Class&lt;?&gt; loadClass(String name, <span class="hljs-type">boolean</span> resolve)<span class="hljs-keyword">throws</span> ClassNotFoundException &#123;<br>	<span class="hljs-keyword">synchronized</span> (getClassLoadingLock(name)) &#123;<br>		<span class="hljs-comment">// 1. 检查该类是否已经加载</span><br>		Class&lt;?&gt; c = findLoadedClass(name);<br>		<span class="hljs-keyword">if</span> (c == <span class="hljs-literal">null</span>) &#123;<br>			<span class="hljs-type">long</span> <span class="hljs-variable">t0</span> <span class="hljs-operator">=</span> System.nanoTime();<br>		<span class="hljs-keyword">try</span> &#123;<br>			<span class="hljs-keyword">if</span> (parent != <span class="hljs-literal">null</span>) &#123;<br>				<span class="hljs-comment">// 2. 有上级的话，委派上级 loadClass</span><br>				c = parent.loadClass(name, <span class="hljs-literal">false</span>);<br>			&#125; <span class="hljs-keyword">else</span> &#123;<br>				<span class="hljs-comment">// 3. 如果没有上级了（ExtClassLoader），则委派</span><br>				<span class="hljs-type">BootstrapClassLoader</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> findBootstrapClassOrNull(name);<br>			&#125;<br>		&#125; <span class="hljs-keyword">catch</span> (ClassNotFoundException e) &#123;<br>	&#125; <br>	<span class="hljs-keyword">if</span> (c == <span class="hljs-literal">null</span>) &#123;<br>		<span class="hljs-type">long</span> <span class="hljs-variable">t1</span> <span class="hljs-operator">=</span> System.nanoTime();<br>		<span class="hljs-comment">// 4. 每一层找不到，调用 findClass 方法（每个类加载器自己扩展）来加载</span><br>		c = findClass(name);<br>		<span class="hljs-comment">// 5. 记录耗时</span><br>		sun.misc.PerfCounter.getParentDelegationTime().addTime(t1 - t0);<br>		sun.misc.PerfCounter.getFindClassTime().addElapsedTimeFrom(t1);<br>		sun.misc.PerfCounter.getFindClasses().increment();<br>		&#125;<br>	&#125; <br>		<span class="hljs-keyword">if</span> (resolve) &#123;<br>			resolveClass(c);<br>		&#125; <br>		<span class="hljs-keyword">return</span> c;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>执行流程为：</strong><br>（1）<code>sun.misc.Launcher$AppClassLoader</code> &#x2F;&#x2F;1 处， 开始查看已加载的类，结果没有<br>（2） <code>sun.misc.Launcher$AppClassLoader</code> &#x2F;&#x2F; 2 处，委派上级<code>sun.misc.Launcher$ExtClassLoader.loadClass()</code><br>（3） <code>sun.misc.Launcher$ExtClassLoader</code> &#x2F;&#x2F; 1 处，查看已加载的类，结果没有<br>（4） <code>sun.misc.Launcher$ExtClassLoader</code> &#x2F;&#x2F; 3 处，没有上级了，则委派 <code>BootstrapClassLoader</code>查找<br>（5） <code>BootstrapClassLoader</code> 是在 JAVA_HOME&#x2F;jre&#x2F;lib 下找 H 这个类，显然没有<br>（6）<code>sun.misc.Launcher$ExtClassLoader</code> &#x2F;&#x2F; 4 处，调用自己的 findClass 方法，是在JAVA_HOME&#x2F;jre&#x2F;lib&#x2F;ext 下找 H 这个类，显然没有，回到 <code>sun.misc.Launcher$AppClassLoader</code>的 &#x2F;&#x2F; 2 处<br>（7）继续执行到 <code>sun.misc.Launcher$AppClassLoader</code> &#x2F;&#x2F; 4 处，调用它自己的 findClass 方法，在<br>classpath 下查找，找到了  </p>
 
               
             </div>
