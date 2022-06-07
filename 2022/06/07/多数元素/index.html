@@ -16,25 +16,22 @@
   <meta name="author" content="zlw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="leetCode–155(最小栈)解法一：辅助栈使用一个辅助栈来存储所扫描元素的最小值。  代码为： 123456789101112131415161718192021222324252627282930313233343536373839class MinStack &amp;#123;    &#x2F;&#x2F;使用辅助栈    Stack&lt;Integer&gt; stack;    Stack&lt;Inte">
+    <meta name="description" content="leetCode–169（多数元素）给定一个大小为 n 的数组 nums ，返回其中的多数元素。多数元素是指在数组中出现次数 大于 ⌊ n&#x2F;2 ⌋ 的元素。 你可以假设数组是非空的，并且给定的数组总是存在多数元素。 示例 1： 12输入：nums &#x3D; [3,2,3]输出：3  示例 2： 12输入：nums &#x3D; [2,2,1,1,1,2,2]输出：2  解法一：哈希表使用hash表来存放">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最小栈">
-<meta property="og:url" content="http://example.com/2022/06/06/%E6%9C%80%E5%B0%8F%E6%A0%88/index.html">
+<meta property="og:title" content="多数元素">
+<meta property="og:url" content="http://example.com/2022/06/07/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/index.html">
 <meta property="og:site_name" content="zlw">
-<meta property="og:description" content="leetCode–155(最小栈)解法一：辅助栈使用一个辅助栈来存储所扫描元素的最小值。  代码为： 123456789101112131415161718192021222324252627282930313233343536373839class MinStack &amp;#123;    &#x2F;&#x2F;使用辅助栈    Stack&lt;Integer&gt; stack;    Stack&lt;Inte">
+<meta property="og:description" content="leetCode–169（多数元素）给定一个大小为 n 的数组 nums ，返回其中的多数元素。多数元素是指在数组中出现次数 大于 ⌊ n&#x2F;2 ⌋ 的元素。 你可以假设数组是非空的，并且给定的数组总是存在多数元素。 示例 1： 12输入：nums &#x3D; [3,2,3]输出：3  示例 2： 12输入：nums &#x3D; [2,2,1,1,1,2,2]输出：2  解法一：哈希表使用hash表来存放">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/06/06/%E6%9C%80%E5%B0%8F%E6%A0%88/155_fig1.gif">
-<meta property="article:published_time" content="2022-06-06T11:44:16.000Z">
-<meta property="article:modified_time" content="2022-06-06T12:06:26.118Z">
+<meta property="article:published_time" content="2022-06-07T12:50:35.000Z">
+<meta property="article:modified_time" content="2022-06-07T13:02:58.458Z">
 <meta property="article:author" content="zlw">
-<meta property="article:tag" content="算法">
 <meta property="article:tag" content="leetCode">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/06/06/%E6%9C%80%E5%B0%8F%E6%A0%88/155_fig1.gif">
   
   
   
-  <title>最小栈 - zlw</title>
+  <title>多数元素 - zlw</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +194,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="最小栈"></span>
+            <span id="subtitle" data-typed-text="多数元素"></span>
           
         </div>
 
@@ -208,8 +205,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-06 19:44" pubdate>
-          2022年6月6日 晚上
+        <time datetime="2022-06-07 20:50" pubdate>
+          2022年6月7日 晚上
         </time>
       </span>
     
@@ -277,19 +274,36 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">最小栈</h1>
+            <h1 style="display: none">多数元素</h1>
             
             <div class="markdown-body">
               
-              <h1 id="leetCode–155-最小栈"><a href="#leetCode–155-最小栈" class="headerlink" title="leetCode–155(最小栈)"></a>leetCode–155(最小栈)</h1><h1 id="解法一：辅助栈"><a href="#解法一：辅助栈" class="headerlink" title="解法一：辅助栈"></a>解法一：辅助栈</h1><p><strong>使用一个辅助栈来存储所扫描元素的最小值。</strong></p>
-<p><img src="/2022/06/06/%E6%9C%80%E5%B0%8F%E6%A0%88/155_fig1.gif" srcset="/img/loading.gif" lazyload alt="fig1"></p>
-<p><strong>代码为：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MinStack</span> &#123;<br>    <span class="hljs-comment">//使用辅助栈</span><br>    Stack&lt;Integer&gt; stack;<br>    Stack&lt;Integer&gt; minStack;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MinStack</span><span class="hljs-params">()</span> &#123;<br>        stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        minStack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">push</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> &#123;<br>        stack.push(val);<br>        <span class="hljs-keyword">if</span> (minStack.isEmpty()) minStack.push(val);<br>        <span class="hljs-comment">//最小栈，每次添加所遍历到的最小值</span><br>        <span class="hljs-keyword">else</span> minStack.push(Math.min(val,minStack.peek()));<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">pop</span><span class="hljs-params">()</span> &#123;<br>        stack.pop();<br>        <span class="hljs-comment">//这一步千万不要忘记，存储最小值的栈也要出栈</span><br>        minStack.pop();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">top</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> stack.peek();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getMin</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> minStack.peek();<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your MinStack object will be instantiated and called as such:</span><br><span class="hljs-comment"> * MinStack obj = new MinStack();</span><br><span class="hljs-comment"> * obj.push(val);</span><br><span class="hljs-comment"> * obj.pop();</span><br><span class="hljs-comment"> * int param_3 = obj.top();</span><br><span class="hljs-comment"> * int param_4 = obj.getMin();</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+              <h1 id="leetCode–169（多数元素）"><a href="#leetCode–169（多数元素）" class="headerlink" title="leetCode–169（多数元素）"></a>leetCode–169（多数元素）</h1><p>给定一个大小为 n 的数组 nums ，返回其中的多数元素。多数元素是指在数组中出现次数 大于 ⌊ n&#x2F;2 ⌋ 的元素。</p>
+<p>你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight fix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs fix"><span class="hljs-attr">输入：nums </span>=<span class="hljs-string"> [3,2,3]</span><br><span class="hljs-string">输出：3</span><br></code></pre></td></tr></table></figure>
 
-<h1 id="解法二：不使用额外空间"><a href="#解法二：不使用额外空间" class="headerlink" title="解法二：不使用额外空间"></a>解法二：不使用额外空间</h1><p><strong>数组栈，栈中每个元素都是一个数组，数组长度为2，第一个元素是遍历到数的值，第二个元素是所遍历的最小值。</strong></p>
-<p><strong>代码为：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MinStack</span> &#123;<br>    Stack&lt;<span class="hljs-type">int</span>[]&gt; stack;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MinStack</span><span class="hljs-params">()</span> &#123;<br>        stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;<span class="hljs-type">int</span>[]&gt;();<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">push</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> &#123;<br>        <span class="hljs-keyword">if</span>(stack.isEmpty()) stack.push(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;val,val&#125;);<br>        <span class="hljs-keyword">else</span>&#123;<br>            stack.push(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;val,Math.min(val,stack.peek()[<span class="hljs-number">1</span>])&#125;);<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">pop</span><span class="hljs-params">()</span> &#123;<br>        stack.pop();<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">top</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> stack.peek()[<span class="hljs-number">0</span>];<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getMin</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> stack.peek()[<span class="hljs-number">1</span>];<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your MinStack object will be instantiated and called as such:</span><br><span class="hljs-comment"> * MinStack obj = new MinStack();</span><br><span class="hljs-comment"> * obj.push(val);</span><br><span class="hljs-comment"> * obj.pop();</span><br><span class="hljs-comment"> * int param_3 = obj.top();</span><br><span class="hljs-comment"> * int param_4 = obj.getMin();</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">输入：nums = <span class="hljs-string">[2,2,1,1,1,2,2]</span><br>输出：<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
 
+<h2 id="解法一：哈希表"><a href="#解法一：哈希表" class="headerlink" title="解法一：哈希表"></a>解法一：哈希表</h2><p>使用hash表来存放每个元素出现的次数，最后遍历hash 返回次数 &gt; len&#x2F;2 的元素。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">majorityElement</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-keyword">if</span> (n&lt;=<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> n/<span class="hljs-number">2</span>;<br>        Map&lt;Integer,Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>            <span class="hljs-keyword">if</span> (map.containsKey(nums[i])) map.put(nums[i],map.get(nums[i])+<span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">else</span> map.put(nums[i],<span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> key:map.keySet())&#123;<br>            <span class="hljs-keyword">if</span> (map.get(key)&gt;len) <span class="hljs-keyword">return</span> key;<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="解法二：排序"><a href="#解法二：排序" class="headerlink" title="解法二：排序"></a>解法二：排序</h2><p>我的：先对数组进行排序，后进行遍历。。</p>
+<p><strong>我：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">majorityElement</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-keyword">if</span> (n&lt;=<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> n/<span class="hljs-number">2</span>;<br>        Arrays.sort(nums);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i&lt;n-<span class="hljs-number">1</span>;i++)&#123;<br>            <span class="hljs-keyword">if</span> (nums[i]==nums[i+<span class="hljs-number">1</span>]) count = count + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span> count = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">if</span> (count+<span class="hljs-number">1</span>&gt;len) <span class="hljs-keyword">return</span> nums[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>傻呀傻，，看看人家官方的。。充分利用了众数的性质。</p>
+<p><strong>代码为：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">majorityElement</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        Arrays.sort(nums);<br>        <span class="hljs-keyword">return</span> nums[nums.length/<span class="hljs-number">2</span>];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>绝了！</p>
+<h2 id="解法三：投票方法"><a href="#解法三：投票方法" class="headerlink" title="解法三：投票方法"></a>解法三：投票方法</h2><p>如果遇见相等的数加1，遇见不相等的数减 1.</p>
+<p>众数个数至少比非众数多一，把COUNT加减当作一个众数抵消掉一个非众数，剩下的一定是众数。</p>
+<p><strong>代码为：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">majorityElement</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-keyword">if</span> (n&lt;=<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>            <span class="hljs-comment">//如果为0 说明众数和非众数打个平手 </span><br>            <span class="hljs-keyword">if</span> (count==<span class="hljs-number">0</span>) a = nums[i];<br>            <span class="hljs-comment">//相等加1 不相等减 1 </span><br>            count += (nums[i]==a)?<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> a;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="解法四：分治算法"><a href="#解法四：分治算法" class="headerlink" title="解法四：分治算法"></a>解法四：分治算法</h2><p>没看懂~~</p>
 
               
             </div>
@@ -312,8 +326,15 @@
   
     <span>></span>
     
-  <a href="/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/" class="category-chain-item">栈</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/leetCode/" class="category-chain-item">leetCode</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/leetCode/%E7%AE%80%E5%8D%95%E9%A2%98/" class="category-chain-item">简单题</a>
+  
+  
+
   
 
   
@@ -329,8 +350,6 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
-      
         <a href="/tags/leetCode/">#leetCode</a>
       
     </div>
@@ -343,8 +362,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>最小栈</div>
-      <div>http://example.com/2022/06/06/最小栈/</div>
+      <div>多数元素</div>
+      <div>http://example.com/2022/06/07/多数元素/</div>
     </div>
     <div class="license-meta">
       
@@ -356,7 +375,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年6月6日</div>
+          <div>2022年6月7日</div>
         </div>
       
       
@@ -386,9 +405,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/06/07/redis/" title="redis">
+                      <a href="/2022/06/07/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="反转链表">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">redis</span>
+                        <span class="hidden-mobile">反转链表</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -396,8 +415,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/06/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" title="环形链表">
-                        <span class="hidden-mobile">环形链表</span>
+                      <a href="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" title="相交链表">
+                        <span class="hidden-mobile">相交链表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

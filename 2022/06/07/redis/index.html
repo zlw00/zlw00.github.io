@@ -1,0 +1,886 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zlw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="NoSQL数据库简介主要解决性能问题 Web1.0 的时代，数据访问量很有限，用一夫当关的高性能的单点服务器可以解决大部分问题。   随着 Web2.0 的时代的到来，用户访问量大幅度提升，同时产生了大量的用户数据。加上后来的智能移动设备的普及，所有的互联网平台都面临了巨大的性能挑战。    NoSQL的出现解决了解决 CPU 及内存压力  和 IO 压力   解决 CPU 及内存压力将服务器进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis">
+<meta property="og:url" content="http://example.com/2022/06/07/redis/index.html">
+<meta property="og:site_name" content="zlw">
+<meta property="og:description" content="NoSQL数据库简介主要解决性能问题 Web1.0 的时代，数据访问量很有限，用一夫当关的高性能的单点服务器可以解决大部分问题。   随着 Web2.0 的时代的到来，用户访问量大幅度提升，同时产生了大量的用户数据。加上后来的智能移动设备的普及，所有的互联网平台都面临了巨大的性能挑战。    NoSQL的出现解决了解决 CPU 及内存压力  和 IO 压力   解决 CPU 及内存压力将服务器进行">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/06/07/redis/image-20220607112049192.png">
+<meta property="og:image" content="http://example.com/2022/06/07/redis/image-20220607112137349.png">
+<meta property="og:image" content="http://example.com/2022/06/07/redis/image-20220607124939134.png">
+<meta property="og:image" content="http://example.com/2022/06/07/redis/image-20220607125734946.png">
+<meta property="og:image" content="http://example.com/2022/06/07/redis/image-20220607131718774.png">
+<meta property="og:image" content="http://example.com/2022/06/07/redis/image-20220607131847688.png">
+<meta property="og:image" content="http://example.com/2022/06/07/redis/image-20220607133051004.png">
+<meta property="og:image" content="http://example.com/2022/06/07/redis/image-20220607134236942.png">
+<meta property="og:image" content="http://example.com/2022/06/07/redis/image-20220607151814346.png">
+<meta property="og:image" content="http://example.com/2022/06/07/redis/image-20220607155709655.png">
+<meta property="og:image" content="http://example.com/2022/06/07/redis/image-20220607161721235.png">
+<meta property="article:published_time" content="2022-06-07T03:18:02.000Z">
+<meta property="article:modified_time" content="2022-06-07T10:51:12.518Z">
+<meta property="article:author" content="zlw">
+<meta property="article:tag" content="redis">
+<meta property="article:tag" content="NoSQL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/06/07/redis/image-20220607112049192.png">
+  
+  
+  
+  <title>redis - zlw</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Hi Zlw</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="redis"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-07 11:18" pubdate>
+          2022年6月7日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          56 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">redis</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="NoSQL数据库简介"><a href="#NoSQL数据库简介" class="headerlink" title="NoSQL数据库简介"></a>NoSQL数据库简介</h1><p><strong>主要解决性能问题</strong></p>
+<p>Web1.0 的时代，数据访问量很有限，用一夫当关的高性能的单点服务器可以解决大部分问题。  </p>
+<p>随着 Web2.0 的时代的到来，用户访问量大幅度提升，同时产生了大量的用户数据。加上后来的智能移动设备的普及，所有的互联网平台都面临了巨大的性能挑战。  </p>
+<p><img src="/2022/06/07/redis/image-20220607112049192.png" srcset="/img/loading.gif" lazyload alt="image-20220607112049192"></p>
+<p><strong>NoSQL的出现解决了解决 CPU 及内存压力  和 IO 压力</strong>  </p>
+<h2 id="解决-CPU-及内存压力"><a href="#解决-CPU-及内存压力" class="headerlink" title="解决 CPU 及内存压力"></a>解决 CPU 及内存压力</h2><p>将服务器进行 集群 或 分布式 部署，也就是多台服务器。通过nginx（负载均衡）进行分配服务器。</p>
+<p>但存在一个问题，就是当用户访问服务器时，例如，分配了第一个服务器，将session存储到服务器1中，但当第二次访问时，分配的是第二台服务器，此时第二台服务器没有session对象，怎么办？</p>
+<p><img src="/2022/06/07/redis/image-20220607112137349.png" srcset="/img/loading.gif" lazyload alt="image-20220607112137349"></p>
+<p><strong>NoSql可以减少cpu和io的压力，直接通过内存进行读取，nosql可以缓存数据库，提高访问速度，减少io操作</strong>  </p>
+<h2 id="解决-IO-压力"><a href="#解决-IO-压力" class="headerlink" title="解决 IO 压力"></a>解决 IO 压力</h2><p><img src="/2022/06/07/redis/image-20220607124939134.png" srcset="/img/loading.gif" lazyload alt="image-20220607124939134"></p>
+<h2 id="NoSQL-数据库概述"><a href="#NoSQL-数据库概述" class="headerlink" title="NoSQL 数据库概述"></a>NoSQL 数据库概述</h2><p><strong>非关系型的数据库</strong>  。NoSQL 不依赖业务逻辑方式存储，而以简单的 key-value 模式存储。因此大大的增加了数据库的扩展能力。  </p>
+<ul>
+<li>不遵循 SQL 标准。</li>
+<li>不支持 ACID。（原子性，一致性，隔离性，持久性  ）</li>
+<li>远超于 SQL 的性能。</li>
+</ul>
+<p><strong>NoSQL 适用场景</strong>  </p>
+<ul>
+<li>数据高并发的读写</li>
+<li>海量数据的读写</li>
+<li>对数据高可扩展性的</li>
+</ul>
+<p><strong>NoSQL 不适用场景</strong>  </p>
+<ul>
+<li>需要事务支持</li>
+<li>基于 sql 的结构化查询存储，处理复杂的关系,需要即席查询。</li>
+<li><strong>（用不着 sql 的和用了 sql 也不行的情况，请考虑用 NoSql）</strong></li>
+</ul>
+<p><strong>NoSQL具体的数据库：</strong></p>
+<p>（1）Memcache</p>
+<ul>
+<li>很早出现的 NoSql 数据库</li>
+<li>数据都在内存中， 一般不持久化</li>
+<li>支持简单的 key-value 模式， 支持类型单一 </li>
+<li>一般是作为缓存数据库辅助持久化的数据库</li>
+</ul>
+<p><strong>（2） Redis</strong></p>
+<ul>
+<li>几乎覆盖了 Memcached 的绝大部分功能  数据都在内存中， 支持持久化， 主要用作备份恢复</li>
+<li>除了支持简单的 key-value 模式， 还支持多种数据结构 的存储， 比如 list、 set、 hash、 zset 等。</li>
+<li>一般是作为缓存数据库辅助持久化的数据库</li>
+</ul>
+<p>（3） MongoDB</p>
+<ul>
+<li>数据都在内存中， 如果内存不足， 把不常用的数据保 存到硬盘 </li>
+<li>虽 然 是 key-value 模 式 ， 但 是 对 value （ 尤 其 是 json） 提供了丰富的查询功能  支持二进制数据及大型对象 </li>
+<li>可以根据数据的特点替代 RDBMS ， 成为独立的数据 库。 或者配合 RDBMS， 存储特定的数据。</li>
+</ul>
+<h1 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h1><p>（1）在官网下载稳定版本</p>
+<p>（2）<strong>在linux环境下进行安装</strong>，eg：redis-6.2.1.tar.gz  </p>
+<p>（3）在linux环境 <strong>安装 C 语言的编译环境</strong>  </p>
+<ul>
+<li><code>yum install centos-release-scl scl-utils-build</code>  </li>
+<li><code>yum install -y devtoolset-8-toolchain</code>  </li>
+<li><code>scl enable devtoolset-8 bash</code></li>
+</ul>
+<p><strong>如果在Centos7下，直接安装gcc就可以</strong>  ：<code>yum install gcc</code></p>
+<p>测试gcc版本 ： <code>gcc --version</code>  (GCC是一个用于linux系统下编程的编译器)</p>
+<p><img src="/2022/06/07/redis/image-20220607125734946.png" srcset="/img/loading.gif" lazyload alt="image-20220607125734946"></p>
+<p>（4）<strong>下载 <code>redis-6.2.1.tar.gz</code> 放&#x2F;opt&#x2F;redis 目录  中（</strong>运用文件传输软件，例如Xftp）</p>
+<p>（5）<strong>解压命令</strong>： <code>tar -zxvf redis-6.2.1.tar.gz</code>  </p>
+<p>（6）<strong>解压完成后进入目录</strong>： cd redis-6.2.1  </p>
+<p>（7）在 redis-6.2.1 目录下<strong>执行 <code>make</code> 命令</strong>  </p>
+<p>（8）如果没有准备好 C 语言编译环境， <code>make</code> 会报错—<code>Jemalloc/jemalloc.h</code>： 没有那个文件  </p>
+<ul>
+<li>解决方案： 运行 <code>make distclean</code>  后再次执行<code>make</code>。</li>
+</ul>
+<p>（9）跳过 make test 继续执行: <strong><code>make install</code></strong>  </p>
+<p>（10）<strong>默认的安装目录为</strong>：<code>/usr/local/bin</code>  </p>
+<p>查看默认安装目录：  </p>
+<ul>
+<li><code>redis-benchmark</code>:性能测试工具，可以在自己本子运行，看看自己本子性能如何  </li>
+<li><code>redis-check-aof</code>：修复有问题的 AOF 文件，rdb 和 aof 后面讲  </li>
+<li><code>redis-check-dump</code>：修复有问题的 dump.rdb 文件  </li>
+<li><code>redis-sentinel</code>：Redis 集群使用  </li>
+<li><code>redis-server</code>：Redis 服务器启动命令  </li>
+<li><code>redis-cli</code>：客户端，操作入口</li>
+</ul>
+<p>（11）<strong>后台启动</strong></p>
+<ul>
+<li>备份redis.conf     ：  <code>cp /opt/redis-3.2.5/redis.conf  /etc/ redis.conf</code></li>
+</ul>
+<p>（12）<strong>后台启动设置 daemonize no 改成 yes</strong>  ：修改 redis.conf(128 行)文件将里面的 daemonize no 改成 yes，让服务在后台启动  </p>
+<p>（13）<strong>Redis 启动</strong>  ：  <code>redis-server /ect/redis.conf</code>  </p>
+<p>（14）<strong>用客户端访问：</strong> <code>redis-cli</code>  </p>
+<p>（15）<strong>测试验证：</strong> ping  </p>
+<p><img src="/2022/06/07/redis/image-20220607131718774.png" srcset="/img/loading.gif" lazyload alt="image-20220607131718774"></p>
+<p>（16）<strong>Redis 关闭：</strong>  </p>
+<ul>
+<li>单实例关闭：redis-cli shutdown  </li>
+<li>也可以通过关闭进程进行关闭</li>
+</ul>
+<p><img src="/2022/06/07/redis/image-20220607131847688.png" srcset="/img/loading.gif" lazyload alt="image-20220607131847688"></p>
+<p><strong>redis的底层使用的是：单线程+多路IO服用 ：</strong></p>
+<p><img src="/2022/06/07/redis/image-20220607133051004.png" srcset="/img/loading.gif" lazyload alt="image-20220607133051004"></p>
+<p>黄牛还没有买到票的时候，123个人都在做自己的事情，而不是一直等待着票。</p>
+<h1 id="Redis中常用的五大数据类型"><a href="#Redis中常用的五大数据类型" class="headerlink" title="Redis中常用的五大数据类型"></a>Redis中常用的五大数据类型</h1><h2 id="Redis键（Key）"><a href="#Redis键（Key）" class="headerlink" title="Redis键（Key）"></a>Redis键（Key）</h2><p>（1）<code>keys *</code> ：查看当前库中所有的key</p>
+<p><img src="/2022/06/07/redis/image-20220607134236942.png" srcset="/img/loading.gif" lazyload alt="image-20220607134236942"></p>
+<p>（2）<code>exists key</code>  ：判断某个 key 是否存在  </p>
+<p>（3）<code>type key</code>：查看你的 key 是什么类型  </p>
+<p>（4）<code>del key</code> ：删除指定的 key 数据   &#x2F;  unlink key 根据 value 选择非阻塞删除  </p>
+<p>（5）<code>expire key 10</code> ：10 秒钟：为给定的 key 设置过期时间  </p>
+<p>（6）<code>ttl key</code> ：查看还有多少秒过期，-1 表示永不过期，-2 表示已过期  </p>
+<p>（7）<code>select</code> ：命令切换数据库  </p>
+<p>（8）<code>dbsize</code> ：查看当前数据库的 key 的数量  </p>
+<p>（9） <code>flushdb</code> ：清空当前库  &#x2F;   <code>flushall</code> ：通杀全部库  </p>
+<h2 id="Redis-字符串-String"><a href="#Redis-字符串-String" class="headerlink" title="Redis 字符串(String)"></a>Redis 字符串(String)</h2><p><strong>String 类型是二进制安全的（内容能用字符串表示的  ）。意味着 Redis 的 string 可以包含任何数据。比如 jpg 图片或者序列化的对象。</strong>  </p>
+<p><strong>String 类型是 Redis 最基本的数据类型，一个 Redis 中字符串 value 最多可以是 512M</strong>  </p>
+<p><strong>常用命令</strong>  </p>
+<p>（1）<code>set &lt;key&gt;&lt;value&gt;</code>：添加键值对(内容能用字符串表示的)如果设置相同的key，则前面的value被覆盖  </p>
+<p>（2）<code>get &lt;key&gt;</code>：查询对应键值  </p>
+<p>（3）<code>append &lt;key&gt;&lt;value&gt;</code>：将给定的<value> 追加到原值的末尾  </value></p>
+<p>（4）<code>strlen &lt;key&gt;</code>：获得值的长度  </p>
+<p>（5）<code>setnx &lt;key&gt;&lt;value&gt;</code>：只有在 key 不存在时 设置 key 的值</p>
+<p>（6）<code>incr &lt;key&gt;</code>    ：将 key 中储存的数字值增 1  （只能对数字操作）</p>
+<p>（7）<code>decr &lt;key&gt;</code>  ：将 key 中储存的数字值减 1  （只能对数字操作）</p>
+<p>（8） <code>incrby / decrby &lt;key&gt;&lt;步长&gt;</code>：将 key 中储存的数字值增减。自定义步长。  </p>
+<ul>
+<li>是原子性的：<strong>所谓原子操作是指不会被线程调度机制打断的操作；</strong>  </li>
+<li>（1）在单线程中， 能够在单条指令中完成的操作都可以认为是”原子操作”，因为中断只能发生于指令之间。</li>
+<li>（2）在多线程中，不能被其它进程（线程）打断的操作就叫原子操作。</li>
+<li>Redis 单命令的原子性主要得益于 Redis 的单线程。</li>
+</ul>
+<p>（9）<code>mset &lt;key1&gt;&lt;value1&gt;&lt;key2&gt;&lt;value2&gt; .....</code>同时设置一个或多个 key-value 对  </p>
+<p>（10）<code>mget &lt;key1&gt;&lt;key2&gt;&lt;key3&gt; .....</code>同时获取一个或多个 value  </p>
+<p>（11）<code>msetnx &lt;key1&gt;&lt;value1&gt;&lt;key2&gt;&lt;value2&gt; .....</code>  ：同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在  </p>
+<p>（12）<code>getrange &lt;key&gt;&lt;起始位置&gt;&lt;结束位置&gt;</code>： 获得值的范围  </p>
+<p>（13）<code>setrange &lt;key&gt;&lt;起始位置&gt;&lt;value&gt;</code> ：用 <value> 覆写<key>所储存的字符串值，从&lt;起始位置&gt;开始(索引从 0 开始)。  </key></value></p>
+<p>（14）<code>setex &lt;key&gt;&lt;过期时间&gt;&lt;value&gt;</code>：设置键值的同时，设置过期时间，单位秒  </p>
+<p>（15）<code>getset &lt;key&gt;&lt;value&gt;</code>：以新换旧，设置了新值同时获得旧值。  </p>
+<p><strong>数据结构：</strong></p>
+<p>String 的数据结构为<strong>简单动态字符串</strong>(Simple Dynamic String,缩写 SDS)。是可以修改的字符串，内部结构实现上类似于 Java 的 ArrayList，采用预分配冗余空间的方式来减少内存的频繁分配.  </p>
+<p><img src="/2022/06/07/redis/image-20220607151814346.png" srcset="/img/loading.gif" lazyload alt="image-20220607151814346"></p>
+<p>内部为当前字符串实际分配的空间 capacity 一般要高于实际字符串长度len。如果字符串小于1M，扩容加倍现有的空间，如果超过1M，扩容时多扩1M空间。  需要注意的是字符串最大长度为 512M  。</p>
+<h2 id="Redis-列表-List"><a href="#Redis-列表-List" class="headerlink" title="Redis 列表(List)"></a>Redis 列表(List)</h2><p><strong>单键多值  按照插入顺序排序。你可以添加一个元素到列表的头部（左边）或者尾部（右边）</strong>  <strong>它的底层实际是个双向链表，</strong>  </p>
+<p><strong>常用命令</strong></p>
+<p>（1）<code>lpush/rpush &lt;key&gt;&lt;value1&gt;&lt;value2&gt;&lt;value3&gt; ....</code>： 从左边&#x2F;右边插入一个或多个值。<br>（2）<code>lpop/rpop &lt;key&gt;</code>从左边&#x2F;右边吐出一个值。值在键在，值光键亡。<br>（3）<code>rpoplpush &lt;key1&gt;&lt;key2&gt;</code>从<key1>列表右边吐出一个值，插到<key2>列表左边。<br>（4）<code>lrange &lt;key&gt;&lt;start&gt;&lt;stop&gt;</code>按照索引下标获得元素(从左到右)<br>（5）<code>lrange mylist 0 -1 0</code> 左边第一个，-1 右边第一个，（0-1 表示获取所有）<br>（6）<code>lindex &lt;key&gt;&lt;index&gt;</code>按照索引下标获得元素(从左到右)<br>（7）<code>llen &lt;key&gt;</code>获得列表长度<br>（8）<code>linsert &lt;key&gt; before &lt;value&gt;&lt;newvalue&gt;</code>在<value>的后面插入<newvalue>插入值<br>（9）<code>lrem &lt;key&gt;&lt;n&gt;&lt;value&gt;</code>从左边删除 n 个 value(从左到右)<br>（10）<code>lset&lt;key&gt;&lt;index&gt;&lt;value&gt;</code>将列表 key 下标为 index 的值替换成 value  </newvalue></value></key2></key1></p>
+<p><strong>数据结构</strong></p>
+<p><strong>List 的数据结构为快速链表 quickList。</strong>  </p>
+<p><strong>当列表元素比较少的情况下</strong>，会使用一块连续的内存存储，<strong>这个结构是 ziplist，也即是压缩列表</strong>  。因为普通的链表需要的附加指针空间太大，会比较浪费空间。  </p>
+<p><strong>当数据量比较多的时候才会改成 quicklist</strong>  </p>
+<p>Redis 将链表和 ziplist 结合起来组成了 quicklist。也<strong>就是将多个 ziplist 使用双向指针串起来使用</strong>。这样既满足了快速的插入删除性能，又不会出现太大的空间冗余。</p>
+<h2 id="Redis-集合-Set"><a href="#Redis-集合-Set" class="headerlink" title="Redis 集合(Set)"></a>Redis 集合(Set)</h2><p>特殊之处在于 <strong>set 是可以自动排重的</strong></p>
+<p> <strong>常用命令</strong>  </p>
+<p><code>sadd &lt;key&gt;&lt;value1&gt;&lt;value2&gt; .....</code>将一个或多个 member 元素加入到集合 key 中，已经存在的 member 元素将被忽略<br><code>smembers &lt;key&gt;</code>取出该集合的所有值。<br><code>sismember &lt;key&gt;&lt;value&gt;</code>判断集合<key>是否为含有该<value>值，有 1，没有 0<br><code>scard&lt;key&gt;</code>返回该集合的元素个数。  </value></key></p>
+<p><code>srem &lt;key&gt;&lt;value1&gt;&lt;value2&gt; ....</code> 删除集合中的某个元素。<br><code>spop &lt;key&gt;</code>随机从该集合中吐出一个值。<br><code>srandmember &lt;key&gt;&lt;n&gt;</code>随机从该集合中取出 n 个值。不会从集合中删除 。<br><code>smove &lt;source&gt;&lt;destination&gt;value</code> 把集合中一个值从一个集合移动到另一个集合<br><code>sinter &lt;key1&gt;&lt;key2&gt;</code>返回两个集合的交集元素。<br><code>sunion &lt;key1&gt;&lt;key2&gt;</code>返回两个集合的并集元素。<br><code>sdiff &lt;key1&gt;&lt;key2&gt;</code>返回两个集合的差集元素(key1 中的，不包含 key2 中的)  </p>
+<p><strong>数据结构</strong>  </p>
+<p>Set 数据结构是 dict 字典，<strong>字典是用哈希表实现的</strong>  </p>
+<h2 id="Redis-哈希-Hash"><a href="#Redis-哈希-Hash" class="headerlink" title="Redis 哈希(Hash)"></a>Redis 哈希(Hash)</h2><p>Redis hash 是一个键值对集合。Redis hash 是一个 string 类型的 field 和 value 的映射表，hash 特别适合用于存储对象。  </p>
+<p><img src="/2022/06/07/redis/image-20220607155709655.png" srcset="/img/loading.gif" lazyload alt="image-20220607155709655"></p>
+<p><strong>常用命令</strong></p>
+<p><code>hset &lt;key&gt;&lt;field&gt;&lt;value&gt;</code>：给<key>集合中的 <field>键赋值<value><br><code>hget &lt;key1&gt;&lt;field&gt;</code>：从<key1>集合<field>取出 value<br><code>hmset &lt;key1&gt;&lt;field1&gt;&lt;value1&gt;&lt;field2&gt;&lt;value2&gt;...</code> ：批量设置 hash 的值<br><code>hexists&lt;key1&gt;&lt;field&gt;</code>：查看哈希表 key 中， 给定域 field 是否存在。<br><code>hkeys &lt;key&gt;</code>：列出该 hash 集合的所有 field<br><code>hvals &lt;key&gt;：</code>列出该 hash 集合的所有 value<br><code>hincrby &lt;key&gt;&lt;field&gt;&lt;increment&gt;：</code>为哈希表 key 中的域 field 的值加上增量 1 -1<br><code>hsetnx &lt;key&gt;&lt;field&gt;&lt;value&gt;：</code>将哈希表 key 中的域 field 的值设置为 value ， 当且仅当域field 不存在  </field></key1></value></field></key></p>
+<p><strong>数据结构</strong>  </p>
+<p>Hash 类型对应的数据结构是两种： ziplist（压缩列表）， hashtable（哈希表）。 当field-value 长度较短且个数较少时， 使用 ziplist， 否则使用 hashtable。  </p>
+<h2 id="Redis-有序集合-Zset-sorted-set"><a href="#Redis-有序集合-Zset-sorted-set" class="headerlink" title="Redis 有序集合 Zset(sorted set)"></a>Redis 有序集合 Zset(sorted set)</h2><p>Redis 有序集合 zset 与普通集合 set 非常相似，是一个<strong>没有重复元素</strong>的字符串集合。<br>不同之处是有序集合的每个成员都关联了一个<strong>评分（score）</strong>,这个评分（score）被用来按照从最低分到最高分的方式排序集合中的成员。<strong>集合的成员是唯一的，但是评分可以是重复了 。</strong>  </p>
+<p><strong>常用命令</strong></p>
+<p><code>zadd &lt;key&gt;&lt;score1&gt;&lt;value1&gt;&lt;score2&gt;&lt;value2&gt;…</code>将一个或多个 member 元素及其 score 值加入到有序集 key 当中。<br><code>zrange &lt;key&gt;&lt;start&gt;&lt;stop&gt;</code> [WITHSCORES]返回有序集 key 中，下标在<start><stop></stop>之间的元素带 WITHSCORES，可以让分数一起和值返回到结果集。<br><code>zrangebyscore key minmax [withscores] [limit offset count]</code>返回有序集 key 中，所有 score 值介于 min 和 max 之间(包括等于 min 或 max )的成员。有序集成员按 score 值递增(从小到大)次序排列。<br><code>zrevrangebyscore key maxmin [withscores] [limit offset count]</code>同上，改为从大到小排列。  </start></p>
+<p><code>zincrby &lt;key&gt;&lt;increment&gt;&lt;value&gt;</code> 为元素的 score 加上增量<br><code>zrem &lt;key&gt;&lt;value&gt;</code>删除该集合下，指定值的元素<br><code>zcount &lt;key&gt;&lt;min&gt;&lt;max&gt;</code>统计该集合，分数区间内的元素个数<br><code>zrank &lt;key&gt;&lt;value&gt;</code>返回该值在集合中的排名，从 0 开始。  </p>
+<p><strong>数据结构</strong></p>
+<p><strong>zset 底层使用了两个数据结构</strong><br>（1）hash，hash 的作用就是关联元素 value 和权重 score，保障元素 value 的唯一性，可以通过元素 value 找到相应的 score 值。<br>（2）跳跃表，跳跃表的目的在于给元素 value 排序，根据 score 的范围获取元素列表。  </p>
+<p><img src="/2022/06/07/redis/image-20220607161721235.png" srcset="/img/loading.gif" lazyload alt="image-20220607161721235"></p>
+<p><strong>从此可以看出跳跃表比有序链表效率要高</strong>  </p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/redis/">#redis</a>
+      
+        <a href="/tags/NoSQL/">#NoSQL</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>redis</div>
+      <div>http://example.com/2022/06/07/redis/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月7日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" title="相交链表">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">相交链表</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/06/%E6%9C%80%E5%B0%8F%E6%A0%88/" title="最小栈">
+                        <span class="hidden-mobile">最小栈</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","appKey":"MnpSoeG5QTTJ4GagUMOq5t7J","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://8pddcsrj.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
