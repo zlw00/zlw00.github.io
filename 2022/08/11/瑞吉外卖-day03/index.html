@@ -1,0 +1,849 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#447EA5">
+  <meta name="author" content="zlw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="菜品管理文件的上传和下载文件上传的介绍：  文件上传的代码实现： 首先将文件上传的upload.html页面复制到page目录下的demo目录中。 访问upload.html，上传文件时请求路径为：  因此新建一个CommonController进行文件上传和下载。 CommonController中文件上传的代码为： 123456789101112131415161718192021222324">
+<meta property="og:type" content="article">
+<meta property="og:title" content="瑞吉外卖-菜品管理">
+<meta property="og:url" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/index.html">
+<meta property="og:site_name" content="zlw">
+<meta property="og:description" content="菜品管理文件的上传和下载文件上传的介绍：  文件上传的代码实现： 首先将文件上传的upload.html页面复制到page目录下的demo目录中。 访问upload.html，上传文件时请求路径为：  因此新建一个CommonController进行文件上传和下载。 CommonController中文件上传的代码为： 123456789101112131415161718192021222324">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220722162919393.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220722163109156.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220722164859836.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220722163226124.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220809091310266.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220809215512022.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220809220732856.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220809220843612.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220810163605767.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220810163900469.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220810170247219.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220811213647314.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220811214704864.png">
+<meta property="og:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220811220005154.png">
+<meta property="article:published_time" content="2022-08-11T00:55:01.000Z">
+<meta property="article:modified_time" content="2022-08-18T01:56:29.019Z">
+<meta property="article:author" content="zlw">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220722162919393.png">
+  
+  
+  
+  <title>瑞吉外卖-菜品管理 - zlw</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>欢迎来到张露文的Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="瑞吉外卖-菜品管理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-11 08:55" pubdate>
+          2022年8月11日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          58 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">瑞吉外卖-菜品管理</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="菜品管理"><a href="#菜品管理" class="headerlink" title="菜品管理"></a>菜品管理</h1><h2 id="文件的上传和下载"><a href="#文件的上传和下载" class="headerlink" title="文件的上传和下载"></a>文件的上传和下载</h2><h3 id="文件上传的介绍："><a href="#文件上传的介绍：" class="headerlink" title="文件上传的介绍："></a><strong>文件上传的介绍：</strong></h3><p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220722162919393.png" srcset="/img/loading.gif" lazyload alt="image-20220722162919393"></p>
+<p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220722163109156.png" srcset="/img/loading.gif" lazyload alt="image-20220722163109156"></p>
+<p><strong>文件上传的代码实现：</strong></p>
+<p>首先将文件上传的upload.html页面复制到page目录下的demo目录中。</p>
+<p>访问upload.html，上传文件时请求路径为：</p>
+<p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220722164859836.png" srcset="/img/loading.gif" lazyload alt="image-20220722164859836"></p>
+<p>因此新建一个CommonController进行文件上传和下载。</p>
+<p><strong>CommonController中文件上传的代码为：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 文件上传和下载</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/common&quot;)</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CommonController</span> &#123;<br><br>    <span class="hljs-meta">@Value(&quot;$&#123;reggie.path&#125;&quot;)</span><br>    <span class="hljs-keyword">private</span> String basePath;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 文件上传</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> file</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@PostMapping(&quot;/upload&quot;)</span><br>    <span class="hljs-keyword">public</span> R&lt;String&gt; <span class="hljs-title function_">upload</span><span class="hljs-params">(MultipartFile file)</span>&#123;<br>        <span class="hljs-comment">//file是个临时文件，需要转存，否则本次请求完之后的临时文件将删除</span><br>        log.info(file.toString());<br><br>        <span class="hljs-type">String</span> <span class="hljs-variable">originalFilename</span> <span class="hljs-operator">=</span> file.getOriginalFilename();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">suffix</span> <span class="hljs-operator">=</span> originalFilename.substring(originalFilename.lastIndexOf(<span class="hljs-string">&quot;.&quot;</span>));<br><br>        <span class="hljs-type">String</span> <span class="hljs-variable">fileName</span> <span class="hljs-operator">=</span> UUID.randomUUID().toString()+suffix;<br>        <span class="hljs-comment">//新键目录</span><br>        <span class="hljs-type">File</span> <span class="hljs-variable">dir</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(basePath);<br>        <span class="hljs-keyword">if</span> (!dir.exists())&#123;  <span class="hljs-comment">//如果目录不存在，则创建目录</span><br>            dir.mkdirs();<br>        &#125;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">//将文件转移到指定的目录中</span><br>            file.transferTo(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(basePath+fileName));<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>        <span class="hljs-keyword">return</span> R.success(fileName);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>其中application.yml文件：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">reggie:<br>  path: D:\img\      #设置图片下载下来后存储的位置<br></code></pre></td></tr></table></figure>
+
+<h3 id="文件下载的介绍："><a href="#文件下载的介绍：" class="headerlink" title="文件下载的介绍："></a><strong>文件下载的介绍：</strong></h3><p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220722163226124.png" srcset="/img/loading.gif" lazyload alt="image-20220722163226124"></p>
+<p>根据浏览器发出的响应，所以应该为：<code>@GetMapping(&quot;/download&quot;)</code>：</p>
+<p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220809091310266.png" srcset="/img/loading.gif" lazyload alt="image-20220809091310266"></p>
+<p><strong>文件下载的代码：（下面这个代码将本机电脑作为服务器进行传输）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 文件下载</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> name</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> response</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@GetMapping(&quot;/download&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">download</span><span class="hljs-params">(String name, HttpServletResponse response)</span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">//输入流,通过输入流读取文件</span><br>        <span class="hljs-type">FileInputStream</span> <span class="hljs-variable">fileInputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(basePath+name));<br>        <span class="hljs-comment">//获取响应体的输出流，通过输出流将文件写回浏览器，在浏览器展示图片</span><br>        <span class="hljs-type">ServletOutputStream</span> <span class="hljs-variable">outputStream</span> <span class="hljs-operator">=</span> response.getOutputStream();<br>        <span class="hljs-comment">//设置响应给客户端的文件格式，格式为图片</span><br>        response.setContentType(<span class="hljs-string">&quot;image/jpeg&quot;</span>);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">byte</span>[] bytes = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>        <span class="hljs-comment">//将读到的内容放入到bytes中去</span><br>        <span class="hljs-keyword">while</span> ((len = fileInputStream.read(bytes))!=-<span class="hljs-number">1</span>)&#123;<br>            <span class="hljs-comment">//通过输出流向浏览器写</span><br>            outputStream.write(bytes,<span class="hljs-number">0</span>,len);<br>            outputStream.flush();<br>        &#125;<br>        fileInputStream.close();<br>        outputStream.close();<br>    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>        e.printStackTrace();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="新增菜品"><a href="#新增菜品" class="headerlink" title="新增菜品"></a>新增菜品</h2><p><strong>分析</strong></p>
+<p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220809215512022.png" srcset="/img/loading.gif" lazyload alt="image-20220809215512022"></p>
+<p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220809220732856.png" srcset="/img/loading.gif" lazyload alt="image-20220809220732856"></p>
+<p><strong>第一步：根据条件动态查询分类数据：</strong></p>
+<p>点击菜品分类时，所发出的请求为：</p>
+<p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220809220843612.png" srcset="/img/loading.gif" lazyload alt="image-20220809220843612"></p>
+<p>因此<code>CategoryController.java</code>的代码为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 根据类型查询的食品种类数据</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-meta">@RequestMapping(&quot;/list&quot;)</span><br>   <span class="hljs-keyword">public</span>  R&lt;List&lt;Category&gt;&gt; <span class="hljs-title function_">getCategory</span><span class="hljs-params">(Category category)</span>&#123;<br>       <span class="hljs-comment">//构造条件构造器</span><br>       LambdaQueryWrapper&lt;Category&gt; lambdaQueryWrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;&gt;();<br>       <span class="hljs-comment">//查询条件，从数据库中找到相同类型的菜品</span><br>       lambdaQueryWrapper.eq(category.getType()!=<span class="hljs-literal">null</span>,Category::getType,category.getType());<br>       <span class="hljs-comment">//排序顺序</span><br>       lambdaQueryWrapper.orderByAsc(Category::getSort).orderByDesc(Category::getUpdateTime);<br>       List&lt;Category&gt; list = categoryService.list(lambdaQueryWrapper);<br>       <span class="hljs-keyword">return</span> R.success(list);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<p>补充知识：</p>
+<blockquote>
+<p>DTO:（Data Transfer Object 数据传输对象）当实体中的属性不能够进行作为参数传输时，<strong>也就是浏览器发送过来的数据中的参数，实体类中不包含时进行使用。</strong></p>
+</blockquote>
+<p><strong>新增菜品的代码为：</strong></p>
+<p>因为新增菜品时，操作的是两个表，一个是菜品表，一个是口味表，所以不能用普通的save方法，因此自己写一个保存口味和菜品的方法：</p>
+<p><code>DishServiceImpl.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 新增菜品，同时保存对应的口味</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> dishDto</span><br><span class="hljs-comment">  */</span><br> <span class="hljs-meta">@Override</span><br> <span class="hljs-meta">@Transactional</span><br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">saveWithFlavor</span><span class="hljs-params">(DishDto dishDto)</span> &#123;<br><br>     <span class="hljs-comment">//保存到菜单中</span><br>     <span class="hljs-built_in">this</span>.save(dishDto);<br>     <span class="hljs-comment">//获取菜品的id，因为保存到口味表中时会用到</span><br>     <span class="hljs-type">Long</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> dishDto.getId();<br>     <br>     <span class="hljs-comment">//获取所有的口味列表</span><br>     List&lt;DishFlavor&gt; flavors = dishDto.getFlavors();<br>     <br>     <span class="hljs-comment">//将所有的口味添加菜品id，并转化为list</span><br>     flavors = flavors.stream().map((item)-&gt;&#123;<br>        item.setDishId(id);<br>        <span class="hljs-keyword">return</span> item;<br>     &#125;).collect(Collectors.toList());<br>      <span class="hljs-comment">//保存到口味中</span><br>     dishFlavorService.saveBatch(flavors);<br><br> &#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>DishController.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> *菜品管理</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@RequestMapping(&quot;/dish&quot;)</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DishController</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> DishService dishService;<br><br>    <span class="hljs-meta">@PostMapping</span><br>    <span class="hljs-keyword">public</span> R&lt;String&gt; <span class="hljs-title function_">save</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> DishDto dishDto)</span>&#123;<br>        log.info(dishDto.toString());<br>        dishService.saveWithFlavor(dishDto);<br>        <span class="hljs-keyword">return</span> R.success(<span class="hljs-string">&quot;添加菜品成功&quot;</span>);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="菜品信息分页查询"><a href="#菜品信息分页查询" class="headerlink" title="菜品信息分页查询"></a><strong>菜品信息分页查询</strong></h2><p>菜品的分页展示，比之前的两个分页要难一些，因为要展示图片，和菜品分类的名称（因为菜品里面没有菜品名称的属性，有的是菜品的id，因此要对照菜品的分类来进行显示）</p>
+<p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220810163605767.png" srcset="/img/loading.gif" lazyload alt="image-20220810163605767"></p>
+<p><strong>分析：</strong></p>
+<p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220810163900469.png" srcset="/img/loading.gif" lazyload alt="image-20220810163900469"></p>
+<p><strong>前端发送的请求：</strong></p>
+<p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220810170247219.png" srcset="/img/loading.gif" lazyload alt="image-20220810170247219"></p>
+<p><strong>代码为：</strong>（相对复杂，因为页面要展示菜品的名称而不是id，所以不能使用Dish，要使用DishDto）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 分页</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> page</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> pageSize</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> name</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">    */</span>    <br><span class="hljs-meta">@GetMapping(&quot;/page&quot;)</span><br>   <span class="hljs-keyword">public</span> R&lt;Page&gt; <span class="hljs-title function_">page</span><span class="hljs-params">(<span class="hljs-type">int</span> page,<span class="hljs-type">int</span> pageSize,String name)</span>&#123;<br>       <span class="hljs-comment">//构造分页构造器</span><br>       Page&lt;Dish&gt; pageInfo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;(page,pageSize);<br>       <span class="hljs-comment">//因为Dish中没有菜品分类名称，只有菜品分类id，而DishDTO中又分类名称，所以，要将查询的结果拷贝到DishDTO中</span><br>       Page&lt;DishDto&gt; dishDtoPage = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;();<br><br>       <span class="hljs-comment">//构造条件构造器</span><br>       LambdaQueryWrapper&lt;Dish&gt; lambdaQueryWrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;&gt;();<br>       lambdaQueryWrapper.like(name!=<span class="hljs-literal">null</span>,Dish::getName,name);<br>       lambdaQueryWrapper.orderByDesc(Dish::getUpdateTime);<br>       <span class="hljs-comment">//执行分页查询</span><br>       dishService.page(pageInfo,lambdaQueryWrapper);<br>       <span class="hljs-comment">//对象拷贝,忽略records属性(records就是所有菜品的列表项)，因为我们要自己定义records，将id变为name</span><br>       BeanUtils.copyProperties(pageInfo,dishDtoPage,<span class="hljs-string">&quot;records&quot;</span>);<br><br>       <span class="hljs-comment">//获取dish中菜单的每一项</span><br>       List&lt;Dish&gt; records = pageInfo.getRecords();<br><br>       <span class="hljs-comment">//将菜单的每一项拷贝到dishDto中，并重新设置菜品分类的名称，自己设置忽略的records</span><br>       List&lt;DishDto&gt; dishDtoList = records.stream().map((item)-&gt;&#123;<br>           <span class="hljs-type">DishDto</span> <span class="hljs-variable">dishDto</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DishDto</span>();<br><br>           <span class="hljs-comment">//对象拷贝，因为dishDto，是新建的，要将dish中的record拷贝到dishDto中</span><br>           BeanUtils.copyProperties(item,dishDto);<br><br>           <span class="hljs-comment">//获取分类id</span><br>           <span class="hljs-type">Long</span> <span class="hljs-variable">categoryId</span> <span class="hljs-operator">=</span> item.getCategoryId();<br>           <span class="hljs-comment">//根据分类id获取分类</span><br>           <span class="hljs-type">Category</span> <span class="hljs-variable">category</span> <span class="hljs-operator">=</span> categoryService.getById(categoryId);<br>           <span class="hljs-keyword">if</span> (category!=<span class="hljs-literal">null</span>)&#123;<br>               <span class="hljs-comment">//通过分类获取分类名称</span><br>               <span class="hljs-type">String</span> <span class="hljs-variable">categoryName</span> <span class="hljs-operator">=</span> category.getName();<br>               <span class="hljs-comment">//设置dishDto的分类名称</span><br>               dishDto.setCategoryName(categoryName);<br>           &#125;<br>           <span class="hljs-keyword">return</span> dishDto;<br><br>       &#125;).collect(Collectors.toList());<br><br>       <span class="hljs-comment">//将修改完的records设置给dishDtoPage</span><br>       dishDtoPage.setRecords(dishDtoList);<br>       <br>       <span class="hljs-keyword">return</span> R.success(dishDtoPage);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="修改菜品"><a href="#修改菜品" class="headerlink" title="修改菜品"></a>修改菜品</h2><p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220811213647314.png" srcset="/img/loading.gif" lazyload alt="image-20220811213647314"></p>
+<p><strong>第一步：首先,要将菜品信息进行回显</strong></p>
+<p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220811214704864.png" srcset="/img/loading.gif" lazyload alt="image-20220811214704864"></p>
+<p><strong>代码为：</strong></p>
+<p>首先要根据页面发送请求中的id查询，以上这些菜品的基本的信息以及口味。</p>
+<p>编写DishService代码，写根据id获取信息的代码，因为不仅要获取基本的Dish信息还要获取口味信息。</p>
+<p><strong>DishServiceImpl.java:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 根据id获取菜品基本信息和口味</span><br><span class="hljs-comment">    * 回显</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> id</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-keyword">public</span> DishDto <span class="hljs-title function_">getByIdWithFlavor</span><span class="hljs-params">(Long id)</span> &#123;<br><br>       <span class="hljs-type">Dish</span> <span class="hljs-variable">dish</span> <span class="hljs-operator">=</span> dishService.getById(id);<br><br>       <span class="hljs-type">DishDto</span> <span class="hljs-variable">dishDto</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DishDto</span>();<br><br>       <span class="hljs-comment">//将基本的信息copy过去</span><br>       BeanUtils.copyProperties(dish,dishDto);<br><br>       LambdaQueryWrapper&lt;DishFlavor&gt; lambdaQueryWrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;&gt;();<br>       <span class="hljs-comment">//根据id查询口味</span><br>       lambdaQueryWrapper.eq(DishFlavor::getDishId,dish.getId());<br>       <span class="hljs-comment">//以列表的形式展示</span><br>       List&lt;DishFlavor&gt; list = dishFlavorService.list(lambdaQueryWrapper);<br>       <span class="hljs-comment">//设置口味</span><br>       dishDto.setFlavors(list);<br>       <span class="hljs-keyword">return</span> dishDto;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>DishController.java:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 修改菜品时，将菜品信息进行回显</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> id</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span><br>   <span class="hljs-keyword">public</span> R&lt;DishDto&gt; <span class="hljs-title function_">get</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long id)</span>&#123;<br>       <span class="hljs-type">DishDto</span> <span class="hljs-variable">dishDto</span> <span class="hljs-operator">=</span> dishService.getByIdWithFlavor(id);<br>       <span class="hljs-keyword">return</span> R.success(dishDto);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>回显成功：</strong></p>
+<p><img src="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/image-20220811220005154.png" srcset="/img/loading.gif" lazyload alt="image-20220811220005154"></p>
+<p><strong>第二步：点击保存，修改成功：</strong></p>
+<p>修改也不能用系统给的普通修改，因为要修改两个表，菜品表和口味表。因此要重写更新方法</p>
+<p><strong>DishServiceImpl.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 更新菜品信息和口味</span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateWithFlavor</span><span class="hljs-params">(DishDto dishDto)</span> &#123;<br>       <span class="hljs-comment">//更新菜单信息</span><br>       <span class="hljs-built_in">this</span>.updateById(dishDto);<br><br>       <span class="hljs-comment">//清理当前菜品的口味数据</span><br>       LambdaQueryWrapper&lt;DishFlavor&gt; lambdaQueryWrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;&gt;();<br>       lambdaQueryWrapper.eq(DishFlavor::getDishId,dishDto.getId());<br>       dishFlavorService.remove(lambdaQueryWrapper);<br><br>       <span class="hljs-comment">//添加更新后的口味数据</span><br>       <span class="hljs-type">Long</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> dishDto.getId();<br>       <span class="hljs-comment">//获取新更新的口味</span><br>       List&lt;DishFlavor&gt; flavors = dishDto.getFlavors();<br>       <span class="hljs-comment">//设置口味的id</span><br>       flavors = flavors.stream().map((item)-&gt;&#123;<br>           item.setDishId(id);<br>           <span class="hljs-keyword">return</span> item;<br>       &#125;).collect(Collectors.toList());<br>       dishFlavorService.saveBatch(flavors);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>DishController.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 修改菜品，点击保存</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-meta">@PutMapping</span><br>   <span class="hljs-keyword">public</span> R&lt;String&gt; <span class="hljs-title function_">update</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> DishDto dishDto)</span>&#123;<br>       dishService.updateWithFlavor(dishDto);<br>       <span class="hljs-keyword">return</span> R.success(<span class="hljs-string">&quot;修改菜品成功&quot;</span>);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>成功~~</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/" class="category-chain-item">SpringBoot项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/" class="category-chain-item">瑞吉外卖</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>瑞吉外卖-菜品管理</div>
+      <div>http://example.com/2022/08/11/瑞吉外卖-day03/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月11日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/11/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" title="盛最多水的容器">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">盛最多水的容器</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/01/office/" title="office中的一些操作">
+                        <span class="hidden-mobile">office中的一些操作</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","appKey":"MnpSoeG5QTTJ4GagUMOq5t7J","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://8pddcsrj.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div>张露文的博客 | 记录成长过程</div> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

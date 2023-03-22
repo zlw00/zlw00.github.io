@@ -1,0 +1,852 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#447EA5">
+  <meta name="author" content="zlw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux常用命令基本命令 命令格式：  rm -f [文件名]：强制删除，不会有确认询问 ls -l：当前目录下详细的内容，除文件的名称外，同时显示文件型态（d表示目录，-表示文件），权限，拥有者，文件大小等信息。简写：ll echo  “内容” &gt;&gt; 文件：将内容追加到文件中 目录类操作命令进入指定目录：cd用于切换当前工作目录，进入指定目录  显示文件内容：cat 分页形式显示内">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux">
+<meta property="og:url" content="http://example.com/2022/08/24/linux/index.html">
+<meta property="og:site_name" content="zlw">
+<meta property="og:description" content="Linux常用命令基本命令 命令格式：  rm -f [文件名]：强制删除，不会有确认询问 ls -l：当前目录下详细的内容，除文件的名称外，同时显示文件型态（d表示目录，-表示文件），权限，拥有者，文件大小等信息。简写：ll echo  “内容” &gt;&gt; 文件：将内容追加到文件中 目录类操作命令进入指定目录：cd用于切换当前工作目录，进入指定目录  显示文件内容：cat 分页形式显示内">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825111341308.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825111434292.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825112247229.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825112411488.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825112517027.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825112722475.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825113051401.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825113344610.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825140456085.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825143853801.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825144313677.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825144912562.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825145759233.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825150015639.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825150601713.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825150821612.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825152619982.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825152716522.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825153304526.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825154458311.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825154710200.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825154909215.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825155003775.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825155140045.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825155617709.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825165625678.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825170211439.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825170322327.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825170403866.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825170509688.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825170625715.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825170956692.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825171131049.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825171328046.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825171454045.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825171707081.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825211147589.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825211856696.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825212236558.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825212752119.png">
+<meta property="og:image" content="http://example.com/2022/08/24/linux/image-20220825213757248.png">
+<meta property="article:published_time" content="2022-08-24T08:25:53.000Z">
+<meta property="article:modified_time" content="2022-08-29T03:11:53.437Z">
+<meta property="article:author" content="zlw">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/08/24/linux/image-20220825111341308.png">
+  
+  
+  
+  <title>linux - zlw</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>欢迎来到张露文的Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="linux"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-24 16:25" pubdate>
+          2022年8月24日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">linux</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><p><img src="/2022/08/24/linux/image-20220825111341308.png" srcset="/img/loading.gif" lazyload alt="image-20220825111341308"></p>
+<p>命令格式：</p>
+<p><img src="/2022/08/24/linux/image-20220825111434292.png" srcset="/img/loading.gif" lazyload alt="image-20220825111434292"></p>
+<p><code>rm -f [文件名]</code>：强制删除，不会有确认询问</p>
+<p><code>ls -l</code>：当前目录下详细的内容，除文件的名称外，同时显示文件型态（d表示目录，-表示文件），权限，拥有者，文件大小等信息。简写：<code>ll</code></p>
+<p><code>echo  “内容” &gt;&gt; 文件</code>：将内容追加到文件中</p>
+<h2 id="目录类操作命令"><a href="#目录类操作命令" class="headerlink" title="目录类操作命令"></a>目录类操作命令</h2><h3 id="进入指定目录：cd"><a href="#进入指定目录：cd" class="headerlink" title="进入指定目录：cd"></a>进入指定目录：cd</h3><p>用于切换当前工作目录，进入指定目录</p>
+<p><img src="/2022/08/24/linux/image-20220825112247229.png" srcset="/img/loading.gif" lazyload alt="image-20220825112247229"></p>
+<h3 id="显示文件内容：cat"><a href="#显示文件内容：cat" class="headerlink" title="显示文件内容：cat"></a>显示文件内容：cat</h3><p><img src="/2022/08/24/linux/image-20220825112411488.png" srcset="/img/loading.gif" lazyload alt="image-20220825112411488"></p>
+<h3 id="分页形式显示内容：more"><a href="#分页形式显示内容：more" class="headerlink" title="分页形式显示内容：more"></a>分页形式显示内容：more</h3><p><img src="/2022/08/24/linux/image-20220825112517027.png" srcset="/img/loading.gif" lazyload alt="image-20220825112517027"></p>
+<h3 id="查看文件末尾：tail"><a href="#查看文件末尾：tail" class="headerlink" title="查看文件末尾：tail"></a>查看文件末尾：tail</h3><p><img src="/2022/08/24/linux/image-20220825112722475.png" srcset="/img/loading.gif" lazyload alt="image-20220825112722475"></p>
+<h3 id="创建目录：mkdir"><a href="#创建目录：mkdir" class="headerlink" title="创建目录：mkdir"></a>创建目录：mkdir</h3><p><img src="/2022/08/24/linux/image-20220825113051401.png" srcset="/img/loading.gif" lazyload alt="image-20220825113051401"></p>
+<h3 id="删除空目录：rmdir"><a href="#删除空目录：rmdir" class="headerlink" title="删除空目录：rmdir"></a>删除空目录：rmdir</h3><p><img src="/2022/08/24/linux/image-20220825113344610.png" srcset="/img/loading.gif" lazyload alt="image-20220825113344610"></p>
+<h3 id="删除文件或目录：rm"><a href="#删除文件或目录：rm" class="headerlink" title="删除文件或目录：rm"></a>删除文件或目录：rm</h3><p><img src="/2022/08/24/linux/image-20220825140456085.png" srcset="/img/loading.gif" lazyload alt="image-20220825140456085"></p>
+<h2 id="拷贝移动命令"><a href="#拷贝移动命令" class="headerlink" title="拷贝移动命令"></a>拷贝移动命令</h2><h3 id="复制文件和目录：cp"><a href="#复制文件和目录：cp" class="headerlink" title="复制文件和目录：cp"></a>复制文件和目录：cp</h3><p><img src="/2022/08/24/linux/image-20220825143853801.png" srcset="/img/loading.gif" lazyload alt="image-20220825143853801"></p>
+<h3 id="移动文件目录命令：mv"><a href="#移动文件目录命令：mv" class="headerlink" title="移动文件目录命令：mv"></a>移动文件目录命令：mv</h3><p><img src="/2022/08/24/linux/image-20220825144313677.png" srcset="/img/loading.gif" lazyload alt="image-20220825144313677"></p>
+<h2 id="打包压缩"><a href="#打包压缩" class="headerlink" title="打包压缩"></a>打包压缩</h2><h3 id="对文件进行打包、解包、压缩、解压：tar"><a href="#对文件进行打包、解包、压缩、解压：tar" class="headerlink" title="对文件进行打包、解包、压缩、解压：tar"></a>对文件进行打包、解包、压缩、解压：tar</h3><p><img src="/2022/08/24/linux/image-20220825144912562.png" srcset="/img/loading.gif" lazyload alt="image-20220825144912562"></p>
+<p><strong>举例：</strong></p>
+<p><img src="/2022/08/24/linux/image-20220825145759233.png" srcset="/img/loading.gif" lazyload alt="image-20220825145759233"></p>
+<h2 id="文件编辑命令"><a href="#文件编辑命令" class="headerlink" title="文件编辑命令"></a>文件编辑命令</h2><h3 id="文件编辑命令：vi-x2F-vim"><a href="#文件编辑命令：vi-x2F-vim" class="headerlink" title="文件编辑命令：vi&#x2F;vim"></a>文件编辑命令：vi&#x2F;vim</h3><p><img src="/2022/08/24/linux/image-20220825150015639.png" srcset="/img/loading.gif" lazyload alt="image-20220825150015639"></p>
+<h2 id="查找命令"><a href="#查找命令" class="headerlink" title="查找命令"></a>查找命令</h2><h3 id="指定目录下查找文件：find"><a href="#指定目录下查找文件：find" class="headerlink" title="指定目录下查找文件：find"></a>指定目录下查找文件：find</h3><p><img src="/2022/08/24/linux/image-20220825150601713.png" srcset="/img/loading.gif" lazyload alt="image-20220825150601713"></p>
+<h3 id="指定文件中查找指定文本内容：grep"><a href="#指定文件中查找指定文本内容：grep" class="headerlink" title="指定文件中查找指定文本内容：grep"></a>指定文件中查找指定文本内容：grep</h3><p><img src="/2022/08/24/linux/image-20220825150821612.png" srcset="/img/loading.gif" lazyload alt="image-20220825150821612"></p>
+<h1 id="Linux软件安装"><a href="#Linux软件安装" class="headerlink" title="Linux软件安装"></a>Linux软件安装</h1><h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><p><img src="/2022/08/24/linux/image-20220825152619982.png" srcset="/img/loading.gif" lazyload alt="image-20220825152619982"></p>
+<h2 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h2><p><img src="/2022/08/24/linux/image-20220825152716522.png" srcset="/img/loading.gif" lazyload alt="image-20220825152716522"></p>
+<p><img src="/2022/08/24/linux/image-20220825153304526.png" srcset="/img/loading.gif" lazyload alt="image-20220825153304526"></p>
+<h2 id="安装MySql"><a href="#安装MySql" class="headerlink" title="安装MySql"></a>安装MySql</h2><p><img src="/2022/08/24/linux/image-20220825154458311.png" srcset="/img/loading.gif" lazyload alt="image-20220825154458311"></p>
+<p><img src="/2022/08/24/linux/image-20220825154710200.png" srcset="/img/loading.gif" lazyload alt="image-20220825154710200"></p>
+<p><img src="/2022/08/24/linux/image-20220825154909215.png" srcset="/img/loading.gif" lazyload alt="image-20220825154909215"></p>
+<p><img src="/2022/08/24/linux/image-20220825155003775.png" srcset="/img/loading.gif" lazyload alt="image-20220825155003775"></p>
+<p><img src="/2022/08/24/linux/image-20220825155140045.png" srcset="/img/loading.gif" lazyload alt="image-20220825155140045"></p>
+<p><img src="/2022/08/24/linux/image-20220825155617709.png" srcset="/img/loading.gif" lazyload alt="image-20220825155617709"></p>
+<h2 id="安装lrzsz"><a href="#安装lrzsz" class="headerlink" title="安装lrzsz"></a>安装lrzsz</h2><p><img src="/2022/08/24/linux/image-20220825165625678.png" srcset="/img/loading.gif" lazyload alt="image-20220825165625678"></p>
+<p>输入<code>rz</code>：可以弹出文件上传窗口</p>
+<h1 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h1><h2 id="手工部署项目"><a href="#手工部署项目" class="headerlink" title="手工部署项目"></a>手工部署项目</h2><p><img src="/2022/08/24/linux/image-20220825170211439.png" srcset="/img/loading.gif" lazyload alt="image-20220825170211439"></p>
+<p><img src="/2022/08/24/linux/image-20220825170322327.png" srcset="/img/loading.gif" lazyload alt="image-20220825170322327"></p>
+<p><code>java -jar name.jar</code></p>
+<p><img src="/2022/08/24/linux/image-20220825170403866.png" srcset="/img/loading.gif" lazyload alt="image-20220825170403866"></p>
+<p><img src="/2022/08/24/linux/image-20220825170509688.png" srcset="/img/loading.gif" lazyload alt="image-20220825170509688"></p>
+<p>上线的项目，运行信息不展示到控制台，而是输出到日志中。</p>
+<p><img src="/2022/08/24/linux/image-20220825170625715.png" srcset="/img/loading.gif" lazyload alt="image-20220825170625715"></p>
+<p><img src="/2022/08/24/linux/image-20220825170956692.png" srcset="/img/loading.gif" lazyload alt="image-20220825170956692"></p>
+<h2 id="通过Shell脚本自动部署项目"><a href="#通过Shell脚本自动部署项目" class="headerlink" title="通过Shell脚本自动部署项目"></a>通过Shell脚本自动部署项目</h2><p><img src="/2022/08/24/linux/image-20220825171131049.png" srcset="/img/loading.gif" lazyload alt="image-20220825171131049"></p>
+<h3 id="在Linux中安装Git"><a href="#在Linux中安装Git" class="headerlink" title="在Linux中安装Git"></a>在Linux中安装Git</h3><p><img src="/2022/08/24/linux/image-20220825171328046.png" srcset="/img/loading.gif" lazyload alt="image-20220825171328046"></p>
+<p><strong>使用Git克隆代码</strong></p>
+<p><img src="/2022/08/24/linux/image-20220825171454045.png" srcset="/img/loading.gif" lazyload alt="image-20220825171454045"></p>
+<h3 id="在Linux中安装maven"><a href="#在Linux中安装maven" class="headerlink" title="在Linux中安装maven"></a>在Linux中安装maven</h3><p><img src="/2022/08/24/linux/image-20220825171707081.png" srcset="/img/loading.gif" lazyload alt="image-20220825171707081"></p>
+<p><img src="/2022/08/24/linux/image-20220825211147589.png" srcset="/img/loading.gif" lazyload alt="image-20220825211147589"></p>
+<p><code>bootStart.sh</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/sh</span><br>echo =================================<br>echo  自动化部署脚本启动<br>echo =================================<br><br>echo 停止原来运行中的工程<br>APP_NAME=helloworld  #!运行项目的名称<br><br>tpid=`ps -ef|grep $APP_NAME|grep -v grep|grep -v kill|awk &#x27;&#123;print $2&#125;&#x27;`<br>if [ $&#123;tpid&#125; ]; then<br>    echo &#x27;Stop Process...&#x27;<br>    kill -15 $tpid<br>fi<br>sleep 2<br>tpid=`ps -ef|grep $APP_NAME|grep -v grep|grep -v kill|awk &#x27;&#123;print $2&#125;&#x27;`<br>if [ $&#123;tpid&#125; ]; then<br>    echo &#x27;Kill Process!&#x27;<br>    kill -9 $tpid<br>else<br>    echo &#x27;Stop Success!&#x27;<br>fi<br><br>echo 准备从Git仓库拉取最新代码<br>cd /usr/local/helloworld<br><br>echo 开始从Git仓库拉取最新代码<br>git pull<br>echo 代码拉取完成<br><br>echo 开始打包<br>output=`mvn clean package -Dmaven.test.skip=true`<br><br>cd target<br><br>echo 启动项目<br>nohup java -jar helloworld-1.0-SNAPSHOT.jar &amp;&gt; helloworld.log &amp;<br>echo 项目启动完成<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/24/linux/image-20220825211856696.png" srcset="/img/loading.gif" lazyload alt="image-20220825211856696"></p>
+<p><img src="/2022/08/24/linux/image-20220825212236558.png" srcset="/img/loading.gif" lazyload alt="image-20220825212236558"></p>
+<p><strong>通过Shell脚本自动部署项目</strong></p>
+<p>设置IP地址为静态的IP地址，如果是动态则，当断开连接的时候，再次连接有可能IP地址变化，就找不到了。</p>
+<p><img src="/2022/08/24/linux/image-20220825212752119.png" srcset="/img/loading.gif" lazyload alt="image-20220825212752119"></p>
+<p><img src="/2022/08/24/linux/image-20220825213757248.png" srcset="/img/loading.gif" lazyload alt="image-20220825213757248"></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/" class="category-chain-item">SpringBoot项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/" class="category-chain-item">瑞吉外卖</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>linux</div>
+      <div>http://example.com/2022/08/24/linux/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月24日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/" title="项目优化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">项目优化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/24/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%842/" title="不同路径2">
+                        <span class="hidden-mobile">不同路径2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","appKey":"MnpSoeG5QTTJ4GagUMOq5t7J","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://8pddcsrj.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div>张露文的博客 | 记录成长过程</div> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

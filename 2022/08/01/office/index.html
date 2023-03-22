@@ -1,0 +1,985 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#447EA5">
+  <meta name="author" content="zlw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Excel选中数据 方法一：ctrl+shif+上下左右键：用来选中数据  方法二：shif+双击四条边   求和将上面方法选中的数据，进行一下操作，计算金额求和。 选中的区域，右键：  选择运算的乘：   录入当前日期日期：快捷键：ctrl+；  时间：快捷键：ctrl+shif+；  日期和时间：快捷键：ctrl+；+空格+ctrl+shif+；  修改日期格式点击数据+–分列  一直下一步，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="office中的一些操作">
+<meta property="og:url" content="http://example.com/2022/08/01/office/index.html">
+<meta property="og:site_name" content="zlw">
+<meta property="og:description" content="Excel选中数据 方法一：ctrl+shif+上下左右键：用来选中数据  方法二：shif+双击四条边   求和将上面方法选中的数据，进行一下操作，计算金额求和。 选中的区域，右键：  选择运算的乘：   录入当前日期日期：快捷键：ctrl+；  时间：快捷键：ctrl+shif+；  日期和时间：快捷键：ctrl+；+空格+ctrl+shif+；  修改日期格式点击数据+–分列  一直下一步，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801093317369.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801093209028.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801093404927.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801093702219.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801093736536.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801093852671.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801094744264.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801094731471.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801094936645.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801095420692.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801095346106.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801095859835.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801095945981.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801100135012.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801100639916.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801100655326.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801103003121.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801103012018.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801102858593.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801104646855.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801105141709.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801105609852.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801105631602.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801105717571.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801105731330.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801110147549.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801110152914.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801110728924.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801110740485.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801110707990.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801135443735.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801135903541.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801140400035.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801140409797.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801140456758.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801140538157.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801140645198.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801140655441.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801140702838.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801142459688.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801142848453.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801144640852.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801153315665.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801154146393.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801161930239.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801161941434.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801161950887.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801162742208.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801163151726.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801163219988.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220801173230344.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220802090835021.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220802091251679.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220802102214969.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220802102256911.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220802102700605.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220802154727235.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220802094158081.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220802095552339.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220802165830333.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220802171246612.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220802171616681.png">
+<meta property="og:image" content="http://example.com/2022/08/01/office/image-20220802171741707.png">
+<meta property="article:published_time" content="2022-08-01T01:23:24.000Z">
+<meta property="article:modified_time" content="2022-08-02T09:25:26.378Z">
+<meta property="article:author" content="zlw">
+<meta property="article:tag" content="office">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/08/01/office/image-20220801093317369.png">
+  
+  
+  
+  <title>office中的一些操作 - zlw</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>欢迎来到张露文的Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="office中的一些操作"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-01 09:23" pubdate>
+          2022年8月1日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">office中的一些操作</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="Excel"><a href="#Excel" class="headerlink" title="Excel"></a>Excel</h1><h2 id="选中数据"><a href="#选中数据" class="headerlink" title="选中数据"></a>选中数据</h2><ul>
+<li><p>方法一：<code>ctrl+shif+上下左右键</code>：用来选中数据</p>
+</li>
+<li><p>方法二：<code>shif+双击四条边</code></p>
+</li>
+</ul>
+<h2 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h2><p>将上面方法选中的数据，进行一下操作，计算金额求和。</p>
+<p>选中的区域，右键：</p>
+<p><img src="/2022/08/01/office/image-20220801093317369.png" srcset="/img/loading.gif" lazyload alt="image-20220801093317369"></p>
+<p>选择运算的乘：</p>
+<p><img src="/2022/08/01/office/image-20220801093209028.png" srcset="/img/loading.gif" lazyload alt="image-20220801093209028"></p>
+<p><img src="/2022/08/01/office/image-20220801093404927.png" srcset="/img/loading.gif" lazyload alt="image-20220801093404927"></p>
+<h2 id="录入当前日期"><a href="#录入当前日期" class="headerlink" title="录入当前日期"></a>录入当前日期</h2><p>日期：快捷键：<code>ctrl+；</code></p>
+<p><img src="/2022/08/01/office/image-20220801093702219.png" srcset="/img/loading.gif" lazyload alt="image-20220801093702219"></p>
+<p>时间：快捷键：<code>ctrl+shif+；</code></p>
+<p><img src="/2022/08/01/office/image-20220801093736536.png" srcset="/img/loading.gif" lazyload alt="image-20220801093736536"></p>
+<p>日期和时间：快捷键：<code>ctrl+；+空格+ctrl+shif+；</code></p>
+<p><img src="/2022/08/01/office/image-20220801093852671.png" srcset="/img/loading.gif" lazyload alt="image-20220801093852671"></p>
+<h3 id="修改日期格式"><a href="#修改日期格式" class="headerlink" title="修改日期格式"></a>修改日期格式</h3><p>点击数据+–分列</p>
+<p><img src="/2022/08/01/office/image-20220801094744264.png" srcset="/img/loading.gif" lazyload alt="image-20220801094744264"></p>
+<p>一直下一步，到不能按为止：</p>
+<p><img src="/2022/08/01/office/image-20220801094731471.png" srcset="/img/loading.gif" lazyload alt="image-20220801094731471"></p>
+<p>设置单元格，日期对齐，类型填写以下：</p>
+<p><img src="/2022/08/01/office/image-20220801094936645.png" srcset="/img/loading.gif" lazyload alt="image-20220801094936645"></p>
+<h3 id="计算两个时间的差值："><a href="#计算两个时间的差值：" class="headerlink" title="计算两个时间的差值："></a>计算两个时间的差值：</h3><p><img src="/2022/08/01/office/image-20220801095420692.png" srcset="/img/loading.gif" lazyload alt="image-20220801095420692"></p>
+<p>以小时进行汇总：</p>
+<p><img src="/2022/08/01/office/image-20220801095346106.png" srcset="/img/loading.gif" lazyload alt="image-20220801095346106"></p>
+<h3 id="填充日期"><a href="#填充日期" class="headerlink" title="填充日期"></a>填充日期</h3><p><img src="/2022/08/01/office/image-20220801095859835.png" srcset="/img/loading.gif" lazyload alt="image-20220801095859835"></p>
+<p><img src="/2022/08/01/office/image-20220801095945981.png" srcset="/img/loading.gif" lazyload alt="image-20220801095945981"></p>
+<p>列与列的接缝处，双击，自适应行的长度</p>
+<p><img src="/2022/08/01/office/image-20220801100135012.png" srcset="/img/loading.gif" lazyload alt="image-20220801100135012"></p>
+<p><code>shif+上下左右键</code>：对当前选区进行扩展和减少选区的</p>
+<p><code>ctrl+d</code>：向下填充</p>
+<h3 id="设置星期："><a href="#设置星期：" class="headerlink" title="设置星期："></a>设置星期：</h3><p><img src="/2022/08/01/office/image-20220801100639916.png" srcset="/img/loading.gif" lazyload alt="image-20220801100639916"></p>
+<p><img src="/2022/08/01/office/image-20220801100655326.png" srcset="/img/loading.gif" lazyload alt="image-20220801100655326"></p>
+<h2 id="数据标准化"><a href="#数据标准化" class="headerlink" title="数据标准化"></a>数据标准化</h2><p><strong>汇总三年，金额比较：</strong></p>
+<p><img src="/2022/08/01/office/image-20220801103003121.png" srcset="/img/loading.gif" lazyload alt="image-20220801103003121"></p>
+<p><img src="/2022/08/01/office/image-20220801103012018.png" srcset="/img/loading.gif" lazyload alt="image-20220801103012018"></p>
+<p><img src="/2022/08/01/office/image-20220801102858593.png" srcset="/img/loading.gif" lazyload alt="image-20220801102858593"></p>
+<h2 id="表格中数据的填写"><a href="#表格中数据的填写" class="headerlink" title="表格中数据的填写"></a>表格中数据的填写</h2><p><strong><code>Alt+下</code>：</strong></p>
+<p><img src="/2022/08/01/office/image-20220801104646855.png" srcset="/img/loading.gif" lazyload alt="image-20220801104646855"></p>
+<p><strong>按tab键，右移表格</strong></p>
+<h2 id="数据的一致性问题"><a href="#数据的一致性问题" class="headerlink" title="数据的一致性问题"></a>数据的一致性问题</h2><blockquote>
+<p> ALT+下：也可以检查数据是否是一致性的问题</p>
+</blockquote>
+<p><img src="/2022/08/01/office/image-20220801105141709.png" srcset="/img/loading.gif" lazyload alt="image-20220801105141709"></p>
+<p>其中有两个神州行，说明两个神州行是不一样的格式</p>
+<p><strong>处理方法：</strong></p>
+<blockquote>
+<p> 将空格全部替换掉 ：<code>ctrl+h</code></p>
+</blockquote>
+<h2 id="数据对齐"><a href="#数据对齐" class="headerlink" title="数据对齐"></a>数据对齐</h2><p><img src="/2022/08/01/office/image-20220801105609852.png" srcset="/img/loading.gif" lazyload alt="image-20220801105609852"></p>
+<p><strong>选中右键：</strong></p>
+<p><img src="/2022/08/01/office/image-20220801105631602.png" srcset="/img/loading.gif" lazyload alt="image-20220801105631602"></p>
+<p><strong>设置如下的对齐方式：</strong></p>
+<p><img src="/2022/08/01/office/image-20220801105717571.png" srcset="/img/loading.gif" lazyload alt="image-20220801105717571"></p>
+<p><strong>结果：</strong></p>
+<p><img src="/2022/08/01/office/image-20220801105731330.png" srcset="/img/loading.gif" lazyload alt="image-20220801105731330"></p>
+<h2 id="删除重复值"><a href="#删除重复值" class="headerlink" title="删除重复值"></a>删除重复值</h2><p><img src="/2022/08/01/office/image-20220801110147549.png" srcset="/img/loading.gif" lazyload alt="image-20220801110147549"></p>
+<p><img src="/2022/08/01/office/image-20220801110152914.png" srcset="/img/loading.gif" lazyload alt="image-20220801110152914"></p>
+<h2 id="数据验证"><a href="#数据验证" class="headerlink" title="数据验证"></a>数据验证</h2><p><img src="/2022/08/01/office/image-20220801110728924.png" srcset="/img/loading.gif" lazyload alt="image-20220801110728924"></p>
+<p><img src="/2022/08/01/office/image-20220801110740485.png" srcset="/img/loading.gif" lazyload alt="image-20220801110740485"></p>
+<p><img src="/2022/08/01/office/image-20220801110707990.png" srcset="/img/loading.gif" lazyload alt="image-20220801110707990"></p>
+<h2 id="选取一部分数据的时候：A10-D20"><a href="#选取一部分数据的时候：A10-D20" class="headerlink" title="选取一部分数据的时候：A10:D20"></a><strong>选取一部分数据的时候：<code>A10:D20</code></strong></h2><p><img src="/2022/08/01/office/image-20220801135443735.png" srcset="/img/loading.gif" lazyload alt="image-20220801135443735"></p>
+<h2 id="换列"><a href="#换列" class="headerlink" title="换列"></a>换列</h2><p><img src="/2022/08/01/office/image-20220801135903541.png" srcset="/img/loading.gif" lazyload alt="image-20220801135903541"></p>
+<h2 id="日期改为星期"><a href="#日期改为星期" class="headerlink" title="日期改为星期"></a>日期改为星期</h2><blockquote>
+<p> 格式里面的自定义改为aaaa</p>
+</blockquote>
+<blockquote>
+<p> 英文的星期将格式的自定义改为：dddd（其中ddd为缩写）</p>
+</blockquote>
+<h2 id="高级筛选"><a href="#高级筛选" class="headerlink" title="高级筛选"></a>高级筛选</h2><p><img src="/2022/08/01/office/image-20220801140400035.png" srcset="/img/loading.gif" lazyload alt="image-20220801140400035"></p>
+<p><img src="/2022/08/01/office/image-20220801140409797.png" srcset="/img/loading.gif" lazyload alt="image-20220801140409797"></p>
+<p><strong>并条件：</strong></p>
+<p><img src="/2022/08/01/office/image-20220801140456758.png" srcset="/img/loading.gif" lazyload alt="image-20220801140456758"></p>
+<p><strong>或条件：</strong></p>
+<p><img src="/2022/08/01/office/image-20220801140538157.png" srcset="/img/loading.gif" lazyload alt="image-20220801140538157"></p>
+<p><strong>不同的条件可以随意抓取，需要录制宏</strong></p>
+<p><img src="/2022/08/01/office/image-20220801140645198.png" srcset="/img/loading.gif" lazyload alt="image-20220801140645198"></p>
+<p><img src="/2022/08/01/office/image-20220801140655441.png" srcset="/img/loading.gif" lazyload alt="image-20220801140655441"></p>
+<p><strong>重新抓取条件，后结束录制，这样以下，可以通过不同的条件进行查询</strong></p>
+<p><img src="/2022/08/01/office/image-20220801140702838.png" srcset="/img/loading.gif" lazyload alt="image-20220801140702838"></p>
+<h2 id="统计计算"><a href="#统计计算" class="headerlink" title="统计计算"></a>统计计算</h2><h3 id="对查询出来的数据进行统计"><a href="#对查询出来的数据进行统计" class="headerlink" title="对查询出来的数据进行统计"></a>对查询出来的数据进行统计</h3><p><img src="/2022/08/01/office/image-20220801142459688.png" srcset="/img/loading.gif" lazyload alt="image-20220801142459688"></p>
+<p><strong>名称公式：</strong></p>
+<p><img src="/2022/08/01/office/image-20220801142848453.png" srcset="/img/loading.gif" lazyload alt="image-20220801142848453"></p>
+<p>乘法表：</p>
+<p><img src="/2022/08/01/office/image-20220801144640852.png" srcset="/img/loading.gif" lazyload alt="image-20220801144640852"></p>
+<p>F4的功能键进行切换：</p>
+<table>
+<thead>
+<tr>
+<th>相对引用</th>
+<th>列号行号(A1)</th>
+<th>拷到哪变到哪</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>绝对引用</strong></td>
+<td><strong>$列号$行号($A$1)</strong></td>
+<td><strong>拷到哪都不变的引用</strong></td>
+</tr>
+<tr>
+<td><strong>混合引用</strong></td>
+<td><strong>列号$行号(A$1)</strong></td>
+<td><strong>锁什么就在什么上取值</strong></td>
+</tr>
+<tr>
+<td><strong>混合引用</strong></td>
+<td><strong>$列号行号($A1)</strong></td>
+<td><strong>要在什么上取值就把什么锁定</strong></td>
+</tr>
+</tbody></table>
+<p><strong>乘法表：</strong></p>
+<blockquote>
+<p> &#x3D;IF(R$21&gt;&#x3D;S$20,$R21&amp;”x”&amp;S$20&amp;”&#x3D;”&amp;$R21*S$20,” “)</p>
+</blockquote>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="多条件求和：sumifs-把什么求和，1在哪里找，1找什么。。。N在哪里找，n找什么"><a href="#多条件求和：sumifs-把什么求和，1在哪里找，1找什么。。。N在哪里找，n找什么" class="headerlink" title="多条件求和：sumifs(把什么求和，1在哪里找，1找什么。。。N在哪里找，n找什么)"></a>多条件求和：sumifs(把什么求和，1在哪里找，1找什么。。。N在哪里找，n找什么)</h3><p><img src="/2022/08/01/office/image-20220801153315665.png" srcset="/img/loading.gif" lazyload alt="image-20220801153315665"></p>
+<p><strong>二维统计：</strong></p>
+<p><img src="/2022/08/01/office/image-20220801154146393.png" srcset="/img/loading.gif" lazyload alt="image-20220801154146393"></p>
+<h3 id="多条件计数：countifs（1在哪找，2找什么。。。n在哪找，n找什么）"><a href="#多条件计数：countifs（1在哪找，2找什么。。。n在哪找，n找什么）" class="headerlink" title="多条件计数：countifs（1在哪找，2找什么。。。n在哪找，n找什么）"></a>多条件计数：countifs（1在哪找，2找什么。。。n在哪找，n找什么）</h3><p><img src="/2022/08/01/office/image-20220801161930239.png" srcset="/img/loading.gif" lazyload alt="image-20220801161930239"></p>
+<p><strong>numberstring：</strong>将数字转换为人民币数的大写</p>
+<p><img src="/2022/08/01/office/image-20220801161941434.png" srcset="/img/loading.gif" lazyload alt="image-20220801161941434"></p>
+<p><img src="/2022/08/01/office/image-20220801161950887.png" srcset="/img/loading.gif" lazyload alt="image-20220801161950887"></p>
+<p><strong>计算年龄：</strong></p>
+<p><img src="/2022/08/01/office/image-20220801162742208.png" srcset="/img/loading.gif" lazyload alt="image-20220801162742208"></p>
+<p><img src="/2022/08/01/office/image-20220801163151726.png" srcset="/img/loading.gif" lazyload alt="image-20220801163151726"></p>
+<p><img src="/2022/08/01/office/image-20220801163219988.png" srcset="/img/loading.gif" lazyload alt="image-20220801163219988"></p>
+<p>yd：除去整年余下的天数</p>
+<h2 id="vlookup-找什么，在哪个范围找，要这个范围中第几列的值，精确查找（0）"><a href="#vlookup-找什么，在哪个范围找，要这个范围中第几列的值，精确查找（0）" class="headerlink" title="vlookup(找什么，在哪个范围找，要这个范围中第几列的值，精确查找（0）)"></a>vlookup(找什么，在哪个范围找，要这个范围中第几列的值，精确查找（0）)</h2><p><strong>注意事项：</strong></p>
+<ul>
+<li><p>被找对象，在查找范围中，要唯一</p>
+</li>
+<li><p>查找范围的第一列要是被找对象，</p>
+</li>
+<li><p>格式要一致</p>
+</li>
+</ul>
+<p><img src="/2022/08/01/office/image-20220801173230344.png" srcset="/img/loading.gif" lazyload alt="image-20220801173230344"></p>
+<h1 id="PPT"><a href="#PPT" class="headerlink" title="PPT"></a>PPT</h1><h2 id="幻灯片的大纲"><a href="#幻灯片的大纲" class="headerlink" title="幻灯片的大纲"></a>幻灯片的大纲</h2><p><img src="/2022/08/01/office/image-20220802090835021.png" srcset="/img/loading.gif" lazyload alt="image-20220802090835021"></p>
+<blockquote>
+<p>tab：降级</p>
+</blockquote>
+<blockquote>
+<p>shift+tab：升级</p>
+</blockquote>
+<h2 id="引入word文档"><a href="#引入word文档" class="headerlink" title="引入word文档"></a>引入word文档</h2><p><img src="/2022/08/01/office/image-20220802091251679.png" srcset="/img/loading.gif" lazyload alt="image-20220802091251679"></p>
+<h2 id="套入主题"><a href="#套入主题" class="headerlink" title="套入主题"></a>套入主题</h2><p><img src="/2022/08/01/office/image-20220802102214969.png" srcset="/img/loading.gif" lazyload alt="image-20220802102214969"></p>
+<h2 id="将第一页设置为标题页"><a href="#将第一页设置为标题页" class="headerlink" title="将第一页设置为标题页"></a>将第一页设置为标题页</h2><p><img src="/2022/08/01/office/image-20220802102256911.png" srcset="/img/loading.gif" lazyload alt="image-20220802102256911"></p>
+<h2 id="擅长利用版式"><a href="#擅长利用版式" class="headerlink" title="擅长利用版式"></a>擅长利用版式</h2><p><img src="/2022/08/01/office/image-20220802102700605.png" srcset="/img/loading.gif" lazyload alt="image-20220802102700605"></p>
+<p><code>ctrl+y</code>：重复上一条命令</p>
+<h2 id="图标符号"><a href="#图标符号" class="headerlink" title="图标符号"></a>图标符号</h2><p><img src="/2022/08/01/office/image-20220802154727235.png" srcset="/img/loading.gif" lazyload alt="image-20220802154727235"></p>
+<h1 id="word"><a href="#word" class="headerlink" title="word"></a>word</h1><h2 id="标题排版"><a href="#标题排版" class="headerlink" title="标题排版"></a>标题排版</h2><p><code>ctrl+h:</code></p>
+<p><img src="/2022/08/01/office/image-20220802094158081.png" srcset="/img/loading.gif" lazyload alt="image-20220802094158081"></p>
+<p>？：表示一个字符</p>
+<p>*：表示一串字符</p>
+<p><strong>四级标题：</strong></p>
+<p><img src="/2022/08/01/office/image-20220802095552339.png" srcset="/img/loading.gif" lazyload alt="image-20220802095552339"></p>
+<h2 id="随机生成文本"><a href="#随机生成文本" class="headerlink" title="随机生成文本"></a>随机生成文本</h2><p><code>=rand(5,10)</code>（5：是段数，10：是每段几行）</p>
+<h2 id="首行缩进"><a href="#首行缩进" class="headerlink" title="首行缩进"></a>首行缩进</h2><p>右键选择段落：</p>
+<p><img src="/2022/08/01/office/image-20220802165830333.png" srcset="/img/loading.gif" lazyload alt="image-20220802165830333"></p>
+<h2 id="落款"><a href="#落款" class="headerlink" title="落款"></a>落款</h2><p>居中对齐，版面不会乱：</p>
+<p><img src="/2022/08/01/office/image-20220802171246612.png" srcset="/img/loading.gif" lazyload alt="image-20220802171246612"></p>
+<h2 id="更新标题格式"><a href="#更新标题格式" class="headerlink" title="更新标题格式"></a>更新标题格式</h2><p>根据最近更新的标题格式，统一后面全部标题的格式：</p>
+<p><img src="/2022/08/01/office/image-20220802171616681.png" srcset="/img/loading.gif" lazyload alt="image-20220802171616681"></p>
+<h2 id="对于多个段落的文章，进行段落的首行缩进"><a href="#对于多个段落的文章，进行段落的首行缩进" class="headerlink" title="对于多个段落的文章，进行段落的首行缩进"></a>对于多个段落的文章，进行段落的首行缩进</h2><p>如果段落要缩进，则不要全部选择，选择要进行缩进的某段中几个文字，进行以下操作。</p>
+<p><img src="/2022/08/01/office/image-20220802171741707.png" srcset="/img/loading.gif" lazyload alt="image-20220802171741707"></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/office/" class="category-chain-item">office</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/office/">#office</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>office中的一些操作</div>
+      <div>http://example.com/2022/08/01/office/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/11/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day03/" title="瑞吉外卖-菜品管理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">瑞吉外卖-菜品管理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/26/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" title="基础学习">
+                        <span class="hidden-mobile">基础学习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","appKey":"MnpSoeG5QTTJ4GagUMOq5t7J","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://8pddcsrj.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div>张露文的博客 | 记录成长过程</div> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

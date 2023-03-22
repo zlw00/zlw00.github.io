@@ -1,0 +1,935 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#447EA5">
+  <meta name="author" content="zlw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="TCP&#x2F;IP协议栈OSI模型应用层—表示层–会话层–传输层–网络层–数据链路层–物理层 TCP&#x2F;IP模型应用层–传输层–网路层–数据链路层–物理层  应用层：（HTTP、Telnet、FTP、TFTP、Ping）:主要用来提供应用程序网络接口 传输层：（TCP&#x2F;UDP）：建立端到端的连接 网络层：（IP）寻址和路由选择 数据链路层：（Ethernet）：物理介质访问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础学习">
+<meta property="og:url" content="http://example.com/2022/07/26/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="zlw">
+<meta property="og:description" content="TCP&#x2F;IP协议栈OSI模型应用层—表示层–会话层–传输层–网络层–数据链路层–物理层 TCP&#x2F;IP模型应用层–传输层–网路层–数据链路层–物理层  应用层：（HTTP、Telnet、FTP、TFTP、Ping）:主要用来提供应用程序网络接口 传输层：（TCP&#x2F;UDP）：建立端到端的连接 网络层：（IP）寻址和路由选择 数据链路层：（Ethernet）：物理介质访问">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/07/26/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/image-20220728143943958.png">
+<meta property="article:published_time" content="2022-07-26T06:06:12.000Z">
+<meta property="article:modified_time" content="2022-07-29T02:54:23.881Z">
+<meta property="article:author" content="zlw">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/07/26/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/image-20220728143943958.png">
+  
+  
+  
+  <title>基础学习 - zlw</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>欢迎来到张露文的Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="基础学习"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-26 14:06" pubdate>
+          2022年7月26日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基础学习</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="TCP-x2F-IP协议栈"><a href="#TCP-x2F-IP协议栈" class="headerlink" title="TCP&#x2F;IP协议栈"></a>TCP&#x2F;IP协议栈</h1><h2 id="OSI模型"><a href="#OSI模型" class="headerlink" title="OSI模型"></a>OSI模型</h2><p>应用层—表示层–会话层–传输层–网络层–数据链路层–物理层</p>
+<h2 id="TCP-x2F-IP模型"><a href="#TCP-x2F-IP模型" class="headerlink" title="TCP&#x2F;IP模型"></a>TCP&#x2F;IP模型</h2><p>应用层–传输层–网路层–数据链路层–物理层</p>
+<ul>
+<li>应用层：（HTTP、Telnet、FTP、TFTP、Ping）:主要用来提供应用程序网络接口</li>
+<li>传输层：（TCP&#x2F;UDP）：建立端到端的连接</li>
+<li>网络层：（IP）寻址和路由选择</li>
+<li>数据链路层：（Ethernet）：物理介质访问</li>
+<li>物理层：（接口和线缆）：二进制数据流传输</li>
+</ul>
+<h2 id="TCP-x2F-IP模型的层间通信与数据封装"><a href="#TCP-x2F-IP模型的层间通信与数据封装" class="headerlink" title="TCP&#x2F;IP模型的层间通信与数据封装"></a>TCP&#x2F;IP模型的层间通信与数据封装</h2><p>TCP&#x2F;IP中层与层之间的通信使用PDU（协议数据单元）来彼此交换信息，确保网络之间可以通信。不同层的PDU包含不同的信息。</p>
+<p>其中，这种添加报文和报尾的过程称为封装。</p>
+<ul>
+<li>传输层在上层数据中加入了TCP报文后得到的PDU被称为Segment（数据段）。</li>
+<li>数据段传递给网络层之后，添加IP不报文得到的PDU称为Packet（数据包）。</li>
+<li>数据包传递给数据链路层，封装数据链路层报文得到的PDU称为Frame（数据帧）</li>
+<li>最后帧被转换为比特，通过网络介质传输</li>
+</ul>
+<p>接受设备将删除添加的信息，根据报头中的信息决定如何将数据沿协议栈上传给合适的应用程序，这个过程称为解封装。</p>
+<p><strong>不同的设备对等层之间依靠封装和解封装来实现相互间的通信</strong></p>
+<h2 id="物理层的主要功能（传输数据所需要的机械、电气、功能特性及过程等手段）"><a href="#物理层的主要功能（传输数据所需要的机械、电气、功能特性及过程等手段）" class="headerlink" title="物理层的主要功能（传输数据所需要的机械、电气、功能特性及过程等手段）"></a>物理层的主要功能（传输数据所需要的机械、电气、功能特性及过程等手段）</h2><p><strong>功能：</strong></p>
+<ul>
+<li>规定介质类型，接口类型，信令类型</li>
+<li>规范在终端系统之间激活，维护和关闭物理链路的电气等</li>
+<li>规范电平，数据速率，最大传输距离和物理接头等特征</li>
+</ul>
+<p>物理层标准规定了物理介质和用于将设备与物理介质相连的接头。</p>
+<p><strong>物理层介质：</strong></p>
+<ul>
+<li>同轴电缆：分为粗（距离长、可靠性高，安装时不需要切断电缆，但必须安装收发器电缆）和细（简单，造价低，安装时要切断电缆，两头需要安装网络连接头），</li>
+<li>双绞线：常用的电缆线分为屏蔽双绞线（很强的抗电磁干扰和无线电干扰，昂贵）和非屏蔽双绞线（价格便宜相对来说抗干扰能力较弱）</li>
+<li>光纤：不受信号干扰，传输速率高，距离长，昂贵</li>
+<li>无线电波：可以实现两地之间不设置物理线路也能够迅速通信，无线电波指的时自由空间传播的电磁波</li>
+</ul>
+<p>物理层设备：</p>
+<ul>
+<li>中继器、集线器（很少使用，不作描述）</li>
+</ul>
+<h2 id="数据链路层的功能（提供对物理层的控制，纠正可能出现的错误）"><a href="#数据链路层的功能（提供对物理层的控制，纠正可能出现的错误）" class="headerlink" title="数据链路层的功能（提供对物理层的控制，纠正可能出现的错误）"></a>数据链路层的功能（提供对物理层的控制，纠正可能出现的错误）</h2><p><strong>分为两个子层：</strong></p>
+<p>MAC子层：数据如何通过物理线路进行传输，并与物理层进行通信</p>
+<p>LLC子层（位于MAC层和网络层之间）：识别协议类型，并对数据进行封装通过网络进行传输。</p>
+<p><strong>数据链路层的协议（规定了数据链路层的封装方式）：</strong></p>
+<p>局域网和广域网协议</p>
+<p><strong>数据链路层地址：</strong></p>
+<p>MAC地址：有48位。（每一台网络设备都用物理地址来标识自己，是全球唯一的，）</p>
+<blockquote>
+<p> RAM(random acess memory) 随机存储器，可读可写，存储速度快，但是容易丢失数据，断电后数据就会丢失，一般用来存储用户正在运行的程序</p>
+</blockquote>
+<blockquote>
+<p>ROM(read only memory) 只读存储器，仅仅能读取内容而不能写入的存储器，但是不易丢失数据，一般系统程序都存储在ROM中，一般硬盘，U盘，存储卡都是ROM类的</p>
+</blockquote>
+<h2 id="网络层功能与设备（检查网络拓扑，决定传输报文的最佳路由）"><a href="#网络层功能与设备（检查网络拓扑，决定传输报文的最佳路由）" class="headerlink" title="网络层功能与设备（检查网络拓扑，决定传输报文的最佳路由）"></a>网络层功能与设备（检查网络拓扑，决定传输报文的最佳路由）</h2><p><strong>功能：</strong></p>
+<p>在不同的网络之间转发数据包</p>
+<p>可以总结位两条：</p>
+<ul>
+<li>提供逻辑寻址：如果数据跨网络传递，则需要使用逻辑地址来寻址</li>
+<li>路由：将数据报文从一个网络转发到另一个网络</li>
+</ul>
+<p><strong>设备：</strong></p>
+<p>路由器（最常见）、三层交换机、</p>
+<p><strong>网络层协议：</strong></p>
+<p>IP、ICMP、ARP、RARP</p>
+<p>IP：最主要的协议，功能是网络层的主要功能（提供逻辑地址，提供路由功能，报文的封装和解封），寻找传送到目的端的最优路径，不关心报文的内容，无连接，不可靠的服务。</p>
+<p>ICMP：管理协议，为IP提供信息服务，定义了网络层控制和传递消息的功能，可以获取网络中问题的反馈</p>
+<p>ARP：实现IP地址到硬件地址的映射</p>
+<p>RARP：实现硬件地址和IP地址的映射</p>
+<p><strong>网络层地址：</strong></p>
+<p>IP地址包含两部分：网络ID和主机ID。（长度是4个字节）</p>
+<h2 id="传输层功能"><a href="#传输层功能" class="headerlink" title="传输层功能"></a>传输层功能</h2><p><strong>功能：</strong></p>
+<ul>
+<li>分段上层数据（应用层到网络层的数据进行分段，网络层发往应用层的数据进行合并）</li>
+<li>建立端到端的连接</li>
+<li>将数据从一端主机传送到另一端主机</li>
+<li>保证数据按序、可靠、正确传输。</li>
+</ul>
+<p><strong>协议：</strong></p>
+<p>TCP、UDP</p>
+<h2 id="应用层功能（为应用程序提供网络服务）"><a href="#应用层功能（为应用程序提供网络服务）" class="headerlink" title="应用层功能（为应用程序提供网络服务）"></a>应用层功能（为应用程序提供网络服务）</h2><p>功能：</p>
+<ul>
+<li>为用户提供接口、处理特定的应用</li>
+<li>数据加密、解密、压缩、解压缩</li>
+<li>定义数据表示的标准</li>
+</ul>
+<h1 id="报文"><a href="#报文" class="headerlink" title="报文"></a>报文</h1><h2 id="TCP报文"><a href="#TCP报文" class="headerlink" title="TCP报文"></a>TCP报文</h2><p>TCP数据段由TCP头部和TCP数据组成。</p>
+<p>TCP Head：</p>
+<ul>
+<li>Source Port：源端口号</li>
+<li>Destination Port：目的端口号</li>
+<li>Sequence Number：序列号：标识发送端到接收端发送的数据字节流</li>
+<li>Ack Num：确认序列号，上次是成功收到的数据序列号+1</li>
+<li>Option：选项字段</li>
+</ul>
+<h2 id="IP报文"><a href="#IP报文" class="headerlink" title="IP报文"></a>IP报文</h2><ul>
+<li>版本号：4&#x2F;6</li>
+<li>报文长度</li>
+<li>服务类型</li>
+<li>总长度：IP数据包的长度，包含数据部分</li>
+<li>标识符：唯一的标识主机发送的每一份数据包，每发送一份数据报文就+1</li>
+<li>生存时间：数据包可以经过的路由数目，经过一个-1，当为0时丢弃</li>
+<li>协议：TCP（6）&#x2F;UDP（17）</li>
+<li>报头检验和：检查头部的完整性</li>
+<li>源IP地址</li>
+<li>目的IP地址</li>
+</ul>
+<h2 id="数据帧"><a href="#数据帧" class="headerlink" title="数据帧-"></a>数据帧-</h2><ul>
+<li>DMAC：目的的终端MAC地址</li>
+<li>SMAC：源端MAC地址</li>
+<li>LENGTH&#x2F;TYPE：根据值的不同有不同的含义<ul>
+<li>大于1500时表示类型，</li>
+<li>小于1500时表示数据帧的长度</li>
+</ul>
+</li>
+</ul>
+<h1 id="MAC地址和IP地址的区别"><a href="#MAC地址和IP地址的区别" class="headerlink" title="MAC地址和IP地址的区别"></a>MAC地址和IP地址的区别</h1><p>mac地址：是固化在设备硬件上的物理地址，不能修改</p>
+<p>ip地址：存在于网络层，可以修改，分为公共地址（全球唯一）和私有地址（局域网内可以重复使用）</p>
+<h1 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h1><h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><p>IP地址分为两部分：网络地址（表示 一个网段）和主机地址部分（表示网段中的一台设备）</p>
+<p>主机地址部分也可以划分为子网部分和主机部分。</p>
+<h1 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h1><p>子网掩码中1的部分表示网络ID，0的部分表示主机ID。</p>
+<p>子网掩码的CIDR反斜杠表示方法：	IP地址&#x2F;网络ID的位数，比如192.168.23.35&#x2F;21，其中用21位表示网络ID。</p>
+<p>网络号：表示的是网络中的一个子网</p>
+<p>主机号：子网中的某台主机</p>
+<p><strong>IP地址和网络地址：</strong></p>
+<p>IP地址是指主机的地址，网络地址是网络中的地址。</p>
+<p>IP地址与子网掩码相与得到了网络地址。</p>
+<h1 id="主机数的计算"><a href="#主机数的计算" class="headerlink" title="主机数的计算"></a>主机数的计算</h1><p>主机数的计算：子网掩码中0的个数为N，则主机数为2的N次幂-2.其中的2值得是全为0的网络地址和全为1的广播地址。</p>
+<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><h2 id="路由器的作用"><a href="#路由器的作用" class="headerlink" title="路由器的作用"></a>路由器的作用</h2><p>运行在网络层，实现网路的连接</p>
+<p>主要作用是：将不同的网络互连为一个整体。</p>
+<ul>
+<li>数据转发：根据目的网络的地址转发分组</li>
+<li>路由寻址：建立，刷新路由表，根据路由表转发数据包</li>
+<li>备份和流量流控：保证网络可靠运行</li>
+<li>速率适配：可以利用自己的缓存来适配不同接口的速率</li>
+<li>隔离网络：隔离广播网络，防止广播风暴</li>
+<li>异种网络互连：实现不同网络协议之间的互连</li>
+</ul>
+<h2 id="路由表"><a href="#路由表" class="headerlink" title="路由表"></a>路由表</h2><p>所有的报文转发都要通过查找路由表从相应端口发送</p>
+<p><strong>内容：</strong></p>
+<ul>
+<li>目的地址</li>
+<li>网络掩码：与目的地址与得到网段的地址</li>
+<li>输出接口：从路由器的哪个接口转发</li>
+<li>下一跳：下一个路由器的接口地址</li>
+</ul>
+<h2 id="CIDR（无类域间路由）"><a href="#CIDR（无类域间路由）" class="headerlink" title="CIDR（无类域间路由）"></a>CIDR（无类域间路由）</h2><p>使用VLSM（可变长子网掩码）技术，将路由器表中的若干条路汇聚一条路由，减少路由表的规模，提高可扩展性。</p>
+<h2 id="Ping和Tracert的区别"><a href="#Ping和Tracert的区别" class="headerlink" title="Ping和Tracert的区别"></a>Ping和Tracert的区别</h2><p>都可以用于测试网络的连通性，</p>
+<ul>
+<li><p>ping：可以提供选项来满足不同的测试需求，如：发出报文的源ip和源端口，</p>
+</li>
+<li><p>Tracert：更多的是获取数据包的转发途径，通过Tracert可以初步的判断故障。</p>
+</li>
+</ul>
+<h2 id="路由协议"><a href="#路由协议" class="headerlink" title="路由协议"></a>路由协议</h2><p>是路由器之间交互信息的一种语言，路由器之间通过协议可以共享网络状态和网络中的一些可达路由信息，只有使用同种语言的路由器才可以交互信息，不同种语言的路由器也可以通过某些方式来获取其他路由器的信息。</p>
+<h2 id="自治系统（AS）"><a href="#自治系统（AS）" class="headerlink" title="自治系统（AS）"></a>自治系统（AS）</h2><p>是被统一管理的一组网路</p>
+<h1 id="PON网络"><a href="#PON网络" class="headerlink" title="PON网络"></a>PON网络</h1><p>PON网络包含：OLT、ODN、ONU</p>
+<p>OLT：光线路终端，终结PON协议的汇聚设备。</p>
+<p>ODN：是由一个或多个<strong>无源分光器</strong>组成，在OLT火绒ONU 之间提供光通道，起着连接OLT和ONU的作用。</p>
+<p>ONU：位于客户端的给用户提供各种接口的用户o侧单元或终端，</p>
+<p>OLT和ONU通过中间的无源光网络ODN连接起来进行互相通信，</p>
+<h2 id="数据复用原理"><a href="#数据复用原理" class="headerlink" title="数据复用原理"></a>数据复用原理</h2><p>10G GPON运用波分复用技术（WDM），实现一根光纤传输上行和下行。</p>
+<p>一根光纤上多个用户的信号：</p>
+<ul>
+<li>下行数据采用广播技术</li>
+<li>上行数据采用TDMA技术</li>
+</ul>
+<p>TDMA：时分多址</p>
+<h1 id="GPON"><a href="#GPON" class="headerlink" title="GPON"></a>GPON</h1><p><img src="/2022/07/26/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/image-20220728143943958.png" srcset="/img/loading.gif" lazyload alt="image-20220728143943958"></p>
+<h2 id="下行数据和上行数据"><a href="#下行数据和上行数据" class="headerlink" title="下行数据和上行数据"></a>下行数据和上行数据</h2><p>下行数据（发送给用户）：使用广播方式，将网络上的数据发送给ONU（用户），也就是客户端，ONU收到下行的数据，根据GEM Port-ID识别是否接受此数据。</p>
+<p>上行数据（用户发出的数据）：TDMA方式时分多址，根据不同的时隙（解决上行传输不冲突）来向服务器请求和确认，不能使用广播的方式，因为这样服务器将不知道处理哪个。</p>
+<h2 id="T-CONT"><a href="#T-CONT" class="headerlink" title="T-CONT"></a>T-CONT</h2><p>上行方向承载业务的载体，所有的GEM Port都要映射到T-CONT中，T-CONT是10G GPON系统上业务最基本的控制单元。</p>
+<h2 id="DBA"><a href="#DBA" class="headerlink" title="DBA"></a>DBA</h2><p>DBA（Dynamic Bandwidth Assignment）：动态带宽分配</p>
+<p>DBA能在微妙或毫秒的时间内完成对上行带宽的动态分配</p>
+<p><strong>为什么使用DBA：</strong></p>
+<p>可以提高PON端口的上行线路带宽利用率</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A0%A1%E6%8B%9B/" class="category-chain-item">校招</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%A0%A1%E6%8B%9B/%E5%9B%BD%E4%BC%81/" class="category-chain-item">国企</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%A0%A1%E6%8B%9B/%E5%9B%BD%E4%BC%81/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8/" class="category-chain-item">中国移动</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基础学习</div>
+      <div>http://example.com/2022/07/26/基础学习/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月26日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/01/office/" title="office中的一些操作">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">office中的一些操作</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/22/%E6%96%B9%E6%B3%95/" title="ThreadLocal的使用">
+                        <span class="hidden-mobile">ThreadLocal的使用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","appKey":"MnpSoeG5QTTJ4GagUMOq5t7J","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://8pddcsrj.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div>张露文的博客 | 记录成长过程</div> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1111 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#447EA5">
+  <meta name="author" content="zlw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="OSI七层模型 物理层：主要的作用就是将比特流转化为电流传输，到达目标后，再转化为比特流。所以作比喻的话，公路、汽车和飞机等承载货物（数据）的交通工具， 数据链路层：格式化数据进行传输，提供错误检测和纠正。封装为数据帧，传输给对方。根据帧中的信息把数据发送到正确的接受方。 网络层：寻址和路由选择，负责在两台主机中，选择一条相对流畅的通路将数据传递过去。IP地址通过不断转发到更近的IP地址，最终可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络问答">
+<meta property="og:url" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:site_name" content="zlw">
+<meta property="og:description" content="OSI七层模型 物理层：主要的作用就是将比特流转化为电流传输，到达目标后，再转化为比特流。所以作比喻的话，公路、汽车和飞机等承载货物（数据）的交通工具， 数据链路层：格式化数据进行传输，提供错误检测和纠正。封装为数据帧，传输给对方。根据帧中的信息把数据发送到正确的接受方。 网络层：寻址和路由选择，负责在两台主机中，选择一条相对流畅的通路将数据传递过去。IP地址通过不断转发到更近的IP地址，最终可以">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221012151019484.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220717222321278.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220717224547322.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220717225953602.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221028152944883.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221028154434202.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718131833415.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221102110249271.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221102110456546.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221102110725473.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/5e09cbb89fec46d6a40538bf7f4b554d~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/6f32242f0724406c845eca39f4882b2f~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/4d9460548b8248a0aad44849eb494156~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/250bdae9421f4a238f8300e8042a7ce7~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/099ff22bbcb141a5b48301a319c516a5~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718000141987.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718000557231.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718000546692.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718000535285.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718122334296.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718122341384.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718122351174.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718122359237.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718123733573.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718123928331.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718123943423.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718124231991.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718124301680.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221102150813853.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221102150818226.png">
+<meta property="article:published_time" content="2022-06-14T13:23:02.000Z">
+<meta property="article:modified_time" content="2023-03-03T06:37:29.216Z">
+<meta property="article:author" content="zlw">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221012151019484.png">
+  
+  
+  
+  <title>计算机网络问答 - zlw</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>欢迎来到张露文的Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="计算机网络问答"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-14 21:23" pubdate>
+          2022年6月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          109 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机网络问答</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h1><p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221012151019484.png" srcset="/img/loading.gif" lazyload alt="image-20221012151019484"></p>
+<p><strong>物理层：</strong>主要的作用就是将比特流转化为电流传输，到达目标后，再转化为比特流。所以作比喻的话，公路、汽车和飞机等承载货物（数据）的交通工具，</p>
+<p><strong>数据链路层：</strong>格式化数据进行传输，提供错误检测和纠正。封装为数据帧，传输给对方。根据帧中的信息把数据发送到正确的接受方。</p>
+<p><strong>网络层：</strong>寻址和路由选择，负责在两台主机中，选择一条相对流畅的通路将数据传递过去。IP地址通过不断转发到更近的IP地址，最终可以到达目标地址</p>
+<blockquote>
+<p>IP协议:</p>
+<p>ICMP协议：（对网络连接情况进行判断）能够检测网路的连线状况﹐也能确保连线的准确性。当路由器在处理一个数据包的过程中发生了意外，可以通过ICMP向数据包的源端报告有关事件。（Ping命令是一种使用ICMP协议的网络工具，用于测试主机之间的可达性和网络连接质量。）</p>
+<p>ARP协议（Address Resolution Protocol）：地址解析协议，根据IP地址获取物理地址（mac地址）。主机将APR请求广播到本地网络上的所有主机。</p>
+<p>RARP协议：通过MAC地址得到IP地址，主机向本地的RARP服务器进行广播。</p>
+</blockquote>
+<p><strong>传输层：</strong>提供数据传输，保证传输质量。为了传输大量文件的准确性，对数据进行切分，其中一个段落丢失是否重传和段落是否按序到达，都是传输层要考虑的问题。</p>
+<blockquote>
+<p>TCP协议、UDP协议</p>
+</blockquote>
+<p><strong>会话层：</strong>管理应用程序之间的会话（何时建立连接，断开连接，以及保持多久的连接）。</p>
+<p><strong>表示层：</strong>解决不同系统之间通信语法的问题。数据格式的转换，解密和加密。比如说linux系统给windows系统发包，不用系统语法不一致。</p>
+<p><strong>应用层：</strong>应用进程间的交互，向用户提供应用程序。其中存在：FTP（文件传输协议）、DNS（域名系统）、HTTP协议。应用层交互的数据单元称为报文。</p>
+<h1 id="TCP-x2F-IP协议的层级"><a href="#TCP-x2F-IP协议的层级" class="headerlink" title="TCP&#x2F;IP协议的层级"></a>TCP&#x2F;IP协议的层级</h1><p><strong>（1）应用层：</strong>应用进程间的交互，向用户提供应用程序。其中存在：FTP（文件传输协议）、DNS（域名系统）、HTTP协议。应用层交互的数据单元称为报文。</p>
+<p><strong>（2）传输层：</strong>对上层的应用层提供网络连接中的两台计算机之间的数据传输。其中有协议：TCP（传输控制协议）、UDP（ 用户数据报协议）</p>
+<p><strong>（3）网络层：</strong>用来处理网络上流动的数据包，该层规定了，<strong>通过怎么样的传输路线到达对方的计算机</strong>，并把数据包传递给对方。（当与对方计算机通信之间通过多台计算机或网络设备进行传输时，网络层的作用就是在众多选项中选择一条传输路线。），使用IP协议。</p>
+<p><strong>（4）数据链路层：</strong>两台主机之间的数据传输，总是在⼀段⼀段的链路上传送的，这就需要使⽤专⻔的链路层的协议。  数据链路层将⽹络层交下来的 IP 数据报组装成帧， 。</p>
+<p><strong>（5）物理层：</strong>相邻计算机节点之间⽐特流的透明传送，尽可能屏蔽掉具体传输介质和物理设备的差异 ， 物理层上传输的数据单位时是比特。</p>
+<p>使用HTTP举例来说明：</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220717222321278.png" srcset="/img/loading.gif" lazyload alt="image-20220717222321278"></p>
+<p>首先客户端在应用层发出一个HTTP请求，</p>
+<p>接着，为了传输方便，在传输层（TCP协议）把从应用层处收到的数据（HTTP报文）进行分割，打上标记序号和端口号传输给网络层，</p>
+<p>网络层增加MAC地址（网卡所属的固定地址）后发送给数据链路层，</p>
+<p>接收端的服务器在数据链路层接受到数据，按序往上层发送，一直到应用层，当传输到应用层才能算真正接收到客户端发送过来的请求。。。</p>
+<p>IP间的通信依赖MAC地址，在网络上，通信的双方在同一个局域网的情况很少，通常是多台计算机和网络设备中转才能连接到对方，而中转时会利用下一个中转设备的MAC地址来搜索下一个中转目标，这时会采用ARP协议，（<strong>ARP是一种解析地址的协议，根据通信方的IP地址反查出对应的MAC地址</strong>）</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220717224547322.png" srcset="/img/loading.gif" lazyload alt="image-20220717224547322"></p>
+<p>HTTP协议通信的过程中，各个协议发挥了哪些作用</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220717225953602.png" srcset="/img/loading.gif" lazyload alt="image-20220717225953602"></p>
+<h1 id="Tcp的三次握手和四次挥手"><a href="#Tcp的三次握手和四次挥手" class="headerlink" title="Tcp的三次握手和四次挥手"></a>Tcp的三次握手和四次挥手</h1><h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221028152944883.png" srcset="/img/loading.gif" lazyload alt="image-20221028152944883"></p>
+<p><strong>（1）第一握手：SYN&#x3D;1,seq&#x3D;x（客户端向服务器端发出连接请求）</strong></p>
+<p>SYN&#x3D;1：表示客户端与服务器段建立连接</p>
+<p>seq&#x3D;x：表示客户端向服务器端发送的序列号为x，表明传送数据时，第一个数据字节的序号为x。</p>
+<p><strong>（2）第二次握手：SYN&#x3D;1,ACK&#x3D;1,seq&#x3D;y,ack&#x3D;x+1（服务器端确认可以连接，并向客户端发起连接请求）</strong></p>
+<p>ACK&#x3D;1：服务器收到SYN&#x3D;1后知道客户端请求连接，确认标志位ACK为1，表示可以连接。</p>
+<p>ack&#x3D;x+1：表示服务器端确认序号，表明已经收到x+1序号之前的所有数据。</p>
+<p>SYN&#x3D;1：表示服务器要向客户端发起连接请求。（因为不是只有客户端才能发送数据）</p>
+<p>seq&#x3D;y：表示客户端向服务端发送数据的开始序号。</p>
+<p><strong>（3）第三次握手：ACK&#x3D;1,seq&#x3D;x+1,ack&#x3D;y+1（客户端确认可以连接）</strong></p>
+<p>ACK&#x3D;1：表示客户端确认，服务器端向客户端发起的连接请求。表明可以连接。</p>
+<p>seq&#x3D;x+1：发送下一个x+1的序列号。</p>
+<p>ack&#x3D;y+1：表明客户端已经成功接收了服务器端向客户端发送的前y+1个数据。</p>
+<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221028154434202.png" srcset="/img/loading.gif" lazyload alt="image-20221028154434202"></p>
+<p><strong>（1）第一次挥手：FIN&#x3D;1，seq&#x3D;u</strong></p>
+<p>FIN&#x3D;1：表示要关闭连接。</p>
+<p>seq&#x3D;u表示：表示u之前的数据已经全部发送，并且发送到u就截止。</p>
+<p><strong>（2）第二次挥手：ACK&#x3D;1，seq&#x3D;v，ack&#x3D;u+1</strong></p>
+<p>ACK&#x3D;1：确认断开连接</p>
+<p>seq&#x3D;v：服务器端传送数据，序列号为v。</p>
+<p>ack&#x3D;u+1：确认号，表明已经接收到u+1之前的所有数据</p>
+<p><strong>（3）第三次挥手：FIN &#x3D; 1，ACK&#x3D;1，seq&#x3D;w，ack&#x3D;u+1</strong></p>
+<p>FIN&#x3D;1：表示服务器端发起断开请求</p>
+<p>ACK&#x3D;1：收到确认</p>
+<p>seq&#x3D;w：服务器端发送数据</p>
+<p>ack&#x3D;u+1：发送确认号</p>
+<p><strong>（4）第四次挥手：ACK&#x3D;1，seq&#x3D;u+1，ack&#x3D;w+1</strong></p>
+<p>ACK&#x3D;1：确认断开连接</p>
+<p>seq&#x3D;u+1：发送序列号为u+1</p>
+<p>ack&#x3D;w+1：确认序列号，表明已经接收到w+1之前的所有数据</p>
+<h1 id="HTTP-和-HTTPS-的区别？"><a href="#HTTP-和-HTTPS-的区别？" class="headerlink" title="HTTP 和 HTTPS 的区别？"></a>HTTP 和 HTTPS 的区别？</h1><p><strong>（1）端口号不一致：</strong></p>
+<ul>
+<li>HTTP的URL是由”http:&#x2F;&#x2F;“开始，默认端口号为<strong>80</strong>，HTTPS的URL是由”https:&#x2F;&#x2F;“开始，默认端口号为<strong>443</strong></li>
+</ul>
+<p><strong>（2）安全性和资源消耗</strong></p>
+<ul>
+<li>HTTP是运行在TCP之上的，所有的传输的内容都是明文（没有加密的文字），HTTPS是运行在<strong>SSL&#x2F;TLS</strong>(客户端和服务器之间提供安全通信通道的加密协议)<strong>之上</strong>的协议，SSL&#x2F;TLS运行在TCP之上的，所有传输都是经过加密的。</li>
+<li>加密采用对称加密，密钥用服务器方的证书进行非对称加密，因此，<strong>HTTP 安全性没有 HTTPS⾼，但是 HTTPS ⽐HTTP耗费更多服务器资源。</strong></li>
+</ul>
+<blockquote>
+<p>对称加密：加密和解密的秘钥使用的是同一个</p>
+<p>非对称加密：与对称加密算法不同，非对称加密算法需要两个密钥：公开密钥（publickey）和私有密钥（privatekey）。</p>
+</blockquote>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718131833415.png" srcset="/img/loading.gif" lazyload alt="image-20220718131833415"></p>
+<p>SSL是独立于 HTTP 的协议， 所以不光是 HTTP 协议， 其他运行在应用层的 SMTP 和 Telnet 等协议均可配合 SSL协议使用。  </p>
+<h1 id="对称加密和非对称加密"><a href="#对称加密和非对称加密" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h1><ul>
+<li>对称加密：文件的加密和解密用的是同一个密钥，使用起来简单快捷，密钥较短</li>
+<li>非对称加密：需要两个密钥：公有密钥和私有密钥，组成一对，公有密钥对数据加密只能用私有密钥进行解密，私有密钥对数据进行加密只能用公有密钥进行解密。<ul>
+<li>实现过程：甲方生成一对密钥，把其中一把作为公用密钥，则乙方得到该公用密钥对文件进行加密，传送给甲方时，甲方通过自己保存的那个私有密钥进行解密，甲方只能用其专用密钥解密由其公用密钥加密后的任何信息。</li>
+</ul>
+</li>
+</ul>
+<p><strong>区别：</strong></p>
+<p>（1）加密过程不同</p>
+<p>（2）加密速度不同：对称加密快，适用于数据较长的，非对称加密速度较慢，适用于少量数据</p>
+<p>（3）传输安全不同：</p>
+<ul>
+<li>对称加密安全性较低，因为在传输的过程中，可能被其他第三方捕获。</li>
+<li>非对称加密：私钥通过一定的加密算法推到出的公钥，私钥到公钥的推导过程是单向的，不能通过公钥而推导出私钥。</li>
+</ul>
+<h1 id="常见的加密算法"><a href="#常见的加密算法" class="headerlink" title="常见的加密算法"></a>常见的加密算法</h1><p><strong>（1）对称加密算法：</strong></p>
+<p>过程：接收方收到加密后的报文后，结合解密算法使用相同密钥解密组合后得出原始数据</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221102110249271.png" srcset="/img/loading.gif" lazyload alt="image-20221102110249271"></p>
+<p>优点：效率高，简单，系统开销小，适合加密大量数据</p>
+<p>缺点：安全性差，扩展性差（n个用户的团体就需要协商n*(n-1)&#x2F;2个不同的密钥，不便于管理），</p>
+<p><strong>常见的对称加密算法：DES,3DES,AES..</strong></p>
+<p><strong>（2）非对称加密算法</strong></p>
+<p>过程：(非对称密钥加密适合对密钥或身份信息等敏感信息加密，从而在安全性上满足用户的需求。）)</p>
+<p>1.甲使用乙的公钥并结合相应的非对称算法将明文加密后发送给乙，并将密文发送给乙。<br>2.乙收到密文后，结合自己的私钥和非对称算法解密得到明文，得到最初的明文。</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221102110456546.png" srcset="/img/loading.gif" lazyload alt="image-20221102110456546"></p>
+<p>优点：更高的安全性，因为加密和解密用的是不同密钥，而且无法从一个密钥推导出另一个密钥，且公钥加密的信息只能用同一方的私钥进行解密。</p>
+<p>缺点：（1）算法复杂，加密时间长，适合对少量数据进行加密。（2）无法确认公钥的来源合法性以及数据的完整性</p>
+<p><strong>常见的算法：RSA,DSA,DSS</strong></p>
+<p><strong>（3）单向加密：</strong></p>
+<p>单向加密算法只能用于对数据的加密，无法被解密，其特点为定长输出、雪崩效应（少量消息位的变化会引起信息摘要的许多位变化）。</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221102110725473.png" srcset="/img/loading.gif" lazyload alt="image-20221102110725473"></p>
+<p><strong>常见的算法：MD5、sha1、sha224等等</strong></p>
+<h1 id="URI和URL的区别是什么"><a href="#URI和URL的区别是什么" class="headerlink" title="URI和URL的区别是什么?"></a>URI和URL的区别是什么?</h1><ul>
+<li><p>URI(Uniform Resource Identifier) 是统⼀资源标志符，可以唯⼀标识⼀个资源。  (身份证)</p>
+</li>
+<li><p>URL(Uniform Resource Location) 是统⼀资源定位符，可以提供该资源的路径。  <strong>不仅可以标识 一个资源，还可以定位这个资源。</strong>（家庭地址）</p>
+</li>
+</ul>
+<h1 id="HTTP-1-0和HTTP-1-1的主要区别是什么"><a href="#HTTP-1-0和HTTP-1-1的主要区别是什么" class="headerlink" title="HTTP 1.0和HTTP 1.1的主要区别是什么?"></a>HTTP 1.0和HTTP 1.1的主要区别是什么?</h1><p>（1）http1.0使用在1996年，只使用在一些简单的网页上和网络请求。</p>
+<p>（2）http1.1在1999年广泛使用于各大浏览器，也是目前最广泛的http协议。</p>
+<p><strong>有一下几个区别表现：</strong></p>
+<ul>
+<li><p><strong>长连接：</strong>http1.0使用的是短连接，也就是说每次请求都要重新建⽴⼀次连接。  （HTTP 是基于TCP&#x2F;IP协议的,每⼀次建⽴或者断开连接都需要三次握⼿四次挥⼿的开销  ）HTTP 1.1起，<strong>默认使⽤⻓连接 ,默认开启Connection： keep-alive。</strong>  </p>
+</li>
+<li><p>**错误状态响应码 : ** <strong>在HTTP1.1中新增了24个错误状态响应码</strong>，  409（Conflict）表示请求的资源与资源的当前状态发⽣冲突； 410（Gone）表示服务器上的某个资源被永久性的删除。  </p>
+</li>
+<li><p><strong>缓存处理</strong>  ：HTTP1.1引⼊了更多的缓存控制策略 </p>
+</li>
+<li><p><strong>带宽优化及⽹络连接的使⽤ :</strong>  HTTP1.0中，存在⼀些浪费带宽的现象  ，例如客户端只是需要某个对象的⼀部分，⽽服务器却将整个对象送过来了，并且不支持断点续传功能  <strong>HTTP1.1则在请求头引⼊了range头域，它允许只请求资源的某个部分（使用：range：bytes&#x3D;开始数据的索引位置-结束数据的索引位置）</strong>  </p>
+</li>
+<li><p><strong>管线化技术：</strong>从前发送请求，需要等待并收到响应，才能发送下一个请求，管线技术出现后，不用等待，可以直接发送下一个请求，可以做到并行发送多个请求，比长连接速度更快。</p>
+</li>
+<li><p><strong>Host字段：</strong>Http1.1中增加了这个字段，因为随着虚拟机的出现，一台服务器上可以存在多个虚拟主机，并且共享同一个IP地址。所以要通过host字段指定主机名称。<strong>如果没有该字段，则会返回一个400的状态码</strong>。</p>
+</li>
+<li><p><strong>100状态码：</strong>客户端首先发一个带头域的请求，如果服务器拒绝了请求，响应码为401，如果响应码为100，客户端可以继续发送一个带实体的完整请求。也就是用请求头试探服务器，看服务器要不要接受请求体。</p>
+</li>
+</ul>
+<h1 id="http的缓存策略有哪些"><a href="#http的缓存策略有哪些" class="headerlink" title="http的缓存策略有哪些"></a>http的缓存策略有哪些</h1><blockquote>
+<p>http的缓存策略是是浏览器每次发起请求时，先在本地缓存中查找结果以及缓存标识，通过缓存标识来判断是否用本地缓存。如果缓存有效则直接用，否则向服务器发起请求并携带缓存标识，http协议中有两种缓存策略：<strong>强制缓存和协商缓存</strong>，强制的优先级大于协商</p>
+</blockquote>
+<p><strong>强制缓存：</strong>强制缓存就是在第一次访问服务器取到数据之后，在过期时间之内不会再去重复请求，而是直接读取本地缓存数据库中的信息（from memory or from disk），两种方式根据浏览器的策略随机获取。</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/5e09cbb89fec46d6a40538bf7f4b554d~tplv-k3u1fbpfcp-watermark.image" srcset="/img/loading.gif" lazyload alt="http缓存-强制缓存"></p>
+<p>当发起请求的时间超过了设定的时间，即表示资源缓存时间到期，会再次发送请求到服务器重新获取资源。而如果发起请求的时间在限定的时间之内，浏览器会直接读取本地缓存数据库中的信息。</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/6f32242f0724406c845eca39f4882b2f~tplv-k3u1fbpfcp-watermark.image" srcset="/img/loading.gif" lazyload alt="http缓存-强制缓存-缓存失效"></p>
+<p>实现这个流程的核心就是<strong>如何知道当前时间是否超过了过期时间</strong>。强制缓存的过期时间通过第一次访问服务器时返回的响应头获取。在 http 1.0 和 http 1.1 版本中通过不同的响应头字段实现。</p>
+<p>在 http 1.0 版本中，强制缓存通过<code>Expires</code>响应头来实现。 expires 表示未来资源会过期的时间。</p>
+<p>在 http 1.1 版本中，强制缓存通过 <code>Cache-Control: max-age=xxx</code> 响应头来实现。</p>
+<p>一般来说，为了兼容，两个版本的强制缓存都会被实现。</p>
+<p><strong>协商缓存：</strong>协商缓存与强制缓存的不同之处在于，协商缓存每次读取数据时都需要跟服务器通信，并且会增加缓存标识。</p>
+<ol>
+<li>在第一次请求服务器时，服务器会返回资源，并且返回一个资源的缓存标识，一起存到浏览器的缓存数据库。</li>
+<li>当第二次请求资源时，浏览器会首先将缓存标识发送给服务器，服务器拿到标识后判断标识是否匹配，如果不匹配，表示资源有更新，服务器会将新数据和新的缓存标识一起返回到浏览器；如果缓存标识匹配，表示资源没有更新，并且返回 304 状态码，浏览器就读取本地缓存服务器中的数据。</li>
+</ol>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/4d9460548b8248a0aad44849eb494156~tplv-k3u1fbpfcp-watermark.image" srcset="/img/loading.gif" lazyload alt="协商缓存流程图"></p>
+<p><strong>Http缓存都是从第二次请求开始的：</strong></p>
+<p>​	第一次请求资源时，服务器返回资源并在响应头中回传缓存策略</p>
+<p>​	第二次请求资源时，浏览器判断这些请求参数，如果命中强制缓存，则直接返回状态码200，否则把请求参数加到请求头传给服务器，看是否	命中协商缓存，命中返回304状态码，否则服务器返回新的资源。</p>
+<p><strong>http1.0中的协商缓存</strong></p>
+<ol>
+<li>第一次请求资源时服务器通过 Last-Modified 来设置响应头的缓存标识，也就是最后修改修改的时间返回给浏览器</li>
+<li>在第二次请求时，浏览器会将 Last-Modified 的信息放到 If-Modified-Since 请求头去访问服务器。服务器会将 If-Modified-Since 中携带的时间与资源修改的时间匹配，如果时间不一致，服务器会返回新的资源，并且将 Last-Modified 值更新，作为响应头返回给浏览器。如果时间一致，表示资源没有更新，服务器返回 304 状态码，浏览器拿到响应状态码后从本地缓存数据库中读取缓存资源。</li>
+</ol>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/250bdae9421f4a238f8300e8042a7ce7~tplv-k3u1fbpfcp-watermark.image" srcset="/img/loading.gif" lazyload alt="协商缓存之last-Modified"></p>
+<p>这种方式有一个弊端，就是当服务器中的资源增加了一个字符，后来又把这个字符删掉，本身资源文件并没有发生变化，但修改时间发生了变化。当下次请求过来时，服务器也会把这个本来没有变化的资源重新返回给浏览器。</p>
+<p><strong>http1.1中的协商缓存</strong>（在 http 1.1 版本中，服务器通过 Etag 来设置响应头缓存标识。Etag 的值由服务端生成。）</p>
+<ol>
+<li>在第一次请求时，服务器会将资源和 Etag 一并返回给浏览器，浏览器将两者缓存到本地缓存数据库。</li>
+<li>在第二次请求时，浏览器会将 Etag 信息放到 If-None-Match 请求头去访问服务器。服务器收到请求后，会将服务器中的文件标识与浏览器发来的标识进行对比，如果不相同，服务器返回更新的资源和新的 Etag ，如果相同，服务器返回 304 状态码，浏览器读取缓存。</li>
+</ol>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/099ff22bbcb141a5b48301a319c516a5~tplv-k3u1fbpfcp-watermark.image" srcset="/img/loading.gif" lazyload alt="协商缓存之Etag"></p>
+<p>控制强制缓存的字段：Cache-Control（http1.1）和Expires（http1.0）。</p>
+<blockquote>
+<p>Cache-control是一个相对时间，用以表达自上次请求正确的资源之后的多少秒的时间段内缓存有效。 </p>
+<p>Expires是一个绝对时间。用以表达在这个时间点之前发起请求可以直接从浏览器中读取数据，而无需发起请求。</p>
+</blockquote>
+<p>控制协商缓存的字段有：Last-Modified&#x2F;If-Modified-since（http1.0）和Etag&#x2F;If-None-match（http1.1）</p>
+<blockquote>
+<p>Last-Modified&#x2F;If-Modified-since表示的是服务器的资源最后一次修改的时间。Etag(响应头)&#x2F;If-None-match（请求验证缓存）表示的是服务器资源的唯一标识，只要资源变化，Etag就会重新生成。</p>
+</blockquote>
+<p><strong>协商缓存的总结：</strong></p>
+<p>​	协商缓存每次请求都会与服务器交互，第一次是拿数据和标识的过程，第二次开始，就是浏览器询问服务器资源是否有更新的过程。每次请求都会传输数据，如果命中缓存，则资源的 Status 状态码为 304 而不是 200 。同样的，一般来讲为了兼容，两个版本的协商缓存都会被实现，http 1.1 版本的实现优先级会高于 http 1.0 版本的实现。</p>
+<h1 id="Http缓存用到了什么字段"><a href="#Http缓存用到了什么字段" class="headerlink" title="Http缓存用到了什么字段"></a>Http缓存用到了什么字段</h1><p>用到了以下三个字段</p>
+<p><strong>Cache-Control&#x2F;Pragma, Expires, Last-Modified&#x2F;Etag</strong></p>
+<p><strong>（1）Cache-Control&#x2F;Pragma：</strong>用于指定所有缓存机制的整个请求中必须服从的指令，可以指定下列可选值：<br>    public:所有内容都将被缓存，在响应头设置<br>    private：内容只缓存在私有缓存中，在响应头设置<br>    no-cache：所有内容都不会被缓存，在请求头和 响应头中设置<br>    no-store：所有内容都不会被缓存在缓存或Internet临时文件中，在响应头中设置</p>
+<p><strong>（2）Expires：</strong>后面跟着日期和时间，超过这个时间后，缓存内容将失效，浏览器发送请求之前，检查这个页面的字段，看页面是否已经过期，<br>如果过期就向服务器重新发起请求。</p>
+<p><strong>（3）Last-Modified：</strong>服务器上的资源最后的修改时间，服务器会在响应头中返回一个Last-Modified字段，告诉浏览器这个页面的最后修改时间<br>浏览器在请求时在请求头中增加If-Modified-Since字段，询问当前缓存页面是否是最新，如果是最新则返回304，告诉浏览器是最新的，服务器不会传输最新数据。z</p>
+<h1 id="Http1-x-和-Http2-0的区别"><a href="#Http1-x-和-Http2-0的区别" class="headerlink" title="Http1.x 和 Http2.0的区别"></a>Http1.x 和 Http2.0的区别</h1><ul>
+<li>新的二进制格式，Http1.x是基于文本的。</li>
+<li>多路复用，即连接共享，每一个request都是用作连接共享机制的，一个requeast对应一个id，所以一个连接中有多个请求，接收方根据request的id归属到不同的服务器请求里面。</li>
+<li>header压缩：Http1.x中的header中有大量的信息，每次都要重复发送，HTTP2.0将通讯双方各自cache一份header fields表，避免了重复header传输，减小了传输的大小。数据体积小，网络传输更快。</li>
+<li>服务端推送：当服务器接收到请求时，服务器会顺便把一些客户需要的资源一起推送到客户端。免得客户端再次创建连接发送请求。<ul>
+<li>举例来说，在浏览器刚请求 HTML 的时候，就提前把可能会用到的 JS、CSS 文件等静态资源主动发给客户端，<strong>减少延时的等待</strong>，也就是服务器推送。</li>
+</ul>
+</li>
+</ul>
+<h1 id="Cookie的作⽤是什么-和Session有什么区别？"><a href="#Cookie的作⽤是什么-和Session有什么区别？" class="headerlink" title="Cookie的作⽤是什么?和Session有什么区别？"></a>Cookie的作⽤是什么?和Session有什么区别？</h1><p>cookie是当客户端发送给服务器请求时，如果服务器需要记录该用户的状态，则服务器生成一串字符，respone客户端，客户端保存这个cookie，当再次访问服务器时，浏览器把请求的网址连同该cookie一同提交给服务器，服务器检查cookie，以此来辨认用户状态。</p>
+<p><strong>Session时另一种记录用户状态的机制</strong>，不同的是Cookie保存在客户端浏览器中，而Session保存在服务器上。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是Session。客户端浏览器再次访问时只需要从该Session中查找该客户的状态就可以了。</p>
+<p><strong>区别：</strong></p>
+<p><strong>1、数据存储位置：</strong>cookie数据存放在客户的浏览器上，session数据放在服务器上。</p>
+<p><strong>2、安全性：</strong>cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，考虑到安全应当使用session。</p>
+<p><strong>3、服务器性能：</strong>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie。</p>
+<p><strong>4、数据大小：</strong>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
+<p><strong>5、信息重要程度：</strong>可以考虑将登陆信息等重要信息存放为session，其他信息如果需要保留，可以放在cookie中。</p>
+<p><strong>（1）Cookie ⼀般⽤来保存⽤户信息   ：</strong></p>
+<ul>
+<li>我们在 Cookie 中保存已经登录过得⽤户信息，下次访问⽹站的时候⻚⾯可以⾃动帮你登录的⼀些基本信息给填了  </li>
+<li>保持登录功能：也就是说下次你再访问⽹站的时候就不需要重新登录了  这是因为⽤户登录的时候我们可以存放了⼀个Token 在 Cookie 中</li>
+</ul>
+<blockquote>
+<p>Token:<strong>Token是服务端生成的一串字符串</strong>当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。 token其实说的更通俗点可以叫暗号，在一些数据传输之前，要先进行暗号的核对，不同的暗号被授权不同的数据操作。  </p>
+</blockquote>
+<ul>
+<li>登录⼀次⽹站后访问⽹站其他⻚⾯不需要重新登录</li>
+</ul>
+<p><strong>（2）Session 的主要作⽤就是通过服务端记录⽤户的状态</strong>  </p>
+<ul>
+<li>服务端给特定的⽤户创建特定的 Session 之后就可以标识这个⽤户并且跟踪这个⽤户了  （典型的场景是购物⻋，当你要添加商品到购物⻋的时候，系统不知道是哪个⽤户操作的，因为 <strong>HTTP 协议是⽆状态的。</strong>  ）</li>
+</ul>
+<p><strong>Cookie 存储在客户端中，⽽Session存储在服务器上，相对来说 Session 安全性更⾼。</strong>  </p>
+<h1 id="HTTP是不保存状态的协议-如何保存⽤户状态"><a href="#HTTP是不保存状态的协议-如何保存⽤户状态" class="headerlink" title="HTTP是不保存状态的协议,如何保存⽤户状态?"></a>HTTP是不保存状态的协议,如何保存⽤户状态?</h1><p><strong>HTTP 是⼀种不保存状态  指的是：HTTP 协议⾃身不对请求和响应之间的通信状态进⾏保存。</strong>  </p>
+<p>如何保存用户状态：Session：Session 的主要作⽤就是通过服务端记录⽤户的状态。  </p>
+<p>服务端给特定的⽤户创建特定的 Session 之后就可以标识这个⽤户并且跟踪这个⽤户了  </p>
+<p> Session 存放在服务器端，⼤部分情况下，我们都是通过在 Cookie 中附加⼀个 Session ID 来⽅式来跟踪。  </p>
+<h1 id="返回结果的HTTP状态码"><a href="#返回结果的HTTP状态码" class="headerlink" title="返回结果的HTTP状态码"></a>返回结果的HTTP状态码</h1><p>状态码的职责是当客户端向服务器端发送请求时， 描述返回的请求结果。 借助状态码， 用户可以知道服务器端是正常处理了请求， 还是出现了错误。  </p>
+<p><strong>状态码的类别：</strong></p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718000141987.png" srcset="/img/loading.gif" lazyload alt="image-20220718000141987"></p>
+<p><strong>经常使用的14种状态码：</strong></p>
+<h2 id="2xx（请求被正常处理）"><a href="#2xx（请求被正常处理）" class="headerlink" title="2xx（请求被正常处理）"></a>2xx（请求被正常处理）</h2><p><strong>200(成功)：</strong>服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。<br><strong>201(已创建)：</strong>请求成功并且服务器创建了新的资源。<br><strong>202(已接受)：</strong>服务器已接受请求，但尚未处理。<br><strong>203(非授权信息)：</strong>服务器已成功处理了请求，但返回的信息可能来自另一来源。<br>*<em>204(无内容)：</em>**<em>服务器成功处理了请求，但没有返回任何内容。<br><strong>205(重置内容)：</strong></em>*服务器成功处理了请求，但没有返回任何内容。<br><strong>206(部分内容)：</strong>服务器成功处理了部分 GET 请求。</p>
+<p>（1）200 OK ：表示请求已经正常处理</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718000557231.png" srcset="/img/loading.gif" lazyload alt="image-20220718000557231"></p>
+<p>（2）204 No Content  ：请求处理成功，没有资源可以返回</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718000546692.png" srcset="/img/loading.gif" lazyload alt="image-20220718000546692"></p>
+<p>（3）206 Partial Content  ：该状态码表示客户端进行了范围请求， 而服务器成功执行了这部分的GET 请求。   </p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718000535285.png" srcset="/img/loading.gif" lazyload alt="image-20220718000535285"></p>
+<h2 id="3xx（重定向）"><a href="#3xx（重定向）" class="headerlink" title="3xx（重定向）"></a>3xx（重定向）</h2><p>响应结果表明浏览器需要执行某些特殊的处理从而正确处理请求</p>
+<p><strong>（1）301 Moved Permanently  ：</strong>永久性重定向，该状态码表示请求的资源已被分配了新的 URI， 以后应使用资源现在所指的 URI。   </p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718122334296.png" srcset="/img/loading.gif" lazyload alt="image-20220718122334296"></p>
+<p><strong>（2）302 Found  ：</strong>临时性重定向。 该状态码表示请求的资源已被分配了新的 URI， 希望用户（本次） 能使用新的 URI 访问。  </p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718122341384.png" srcset="/img/loading.gif" lazyload alt="image-20220718122341384"></p>
+<p><strong>301和302都会在响应头里使用字段location，指明后续要跳转的url，浏览器会自动重定向新的url</strong></p>
+<p><strong>（3）303 See Other</strong>  ：其执行后的处理结果是希望客户端能以 GET 方法重定向到另一个 URI 上去时。</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718122351174.png" srcset="/img/loading.gif" lazyload alt="image-20220718122351174"></p>
+<p><strong>（4）304 Not Modified  ：</strong>该状态码表示客户端发送附带条件的请求 2 时， 服务器端允许请求访问资源， 但未满足条件的情况。  </p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718122359237.png" srcset="/img/loading.gif" lazyload alt="image-20220718122359237"></p>
+<p><strong>（5）307 Temporary Redirect  ：</strong>也是临时重定向，307 会遵照浏览器标准， 不会从 POST 变成 GET。   </p>
+<h2 id="4xx（客户端错误）"><a href="#4xx（客户端错误）" class="headerlink" title="4xx（客户端错误）"></a>4xx（客户端错误）</h2><p>响应结果表明客户端是发生错误的原因所在  </p>
+<p><strong>（1）400 Bad Request</strong>  该状态码表示请求报文中存在语法错误  ，需要修改请求的内容再次发送。</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718123733573.png" srcset="/img/loading.gif" lazyload alt="image-20220718123733573"></p>
+<p><strong>（2）401 Unauthorized  ：</strong>该状态码表示发送的请求需要有通过 HTTP 认证（BASIC 认证、DIGEST 认证） 的认证信息。   </p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718123928331.png" srcset="/img/loading.gif" lazyload alt="image-20220718123928331"></p>
+<p><strong>（3）403 Forbidden  ：</strong>该状态码表明对请求资源的访问被服务器拒绝了。   </p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718123943423.png" srcset="/img/loading.gif" lazyload alt="image-20220718123943423"></p>
+<p><strong>（4）404 Not Found  ：</strong>该状态码表明服务器上无法找到请求的资源。 除此之外， 也可以在服务器端拒绝请求且不想说明理由时使用。  </p>
+<pre><code class="hljs"> ![image-20220718124038432](%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718124038432.png)
+</code></pre>
+<h2 id="5xx（服务器错误）"><a href="#5xx（服务器错误）" class="headerlink" title="5xx（服务器错误）"></a>5xx（服务器错误）</h2><p>响应结果表明服务器本身发生错误。  </p>
+<p><strong>（1）500 Internal Server Error  ：</strong>服务器端在执行请求时发生了错误。   </p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718124231991.png" srcset="/img/loading.gif" lazyload alt="image-20220718124231991"></p>
+<p><strong>（2）503 Service Unavailable  ：</strong>服务器停机维护</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718124301680.png" srcset="/img/loading.gif" lazyload alt="image-20220718124301680"></p>
+<h1 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别"></a>TCP和UDP的区别</h1><p><strong>（1）UDP：</strong>（qq语音，qq视频等等。）</p>
+<ul>
+<li><strong>面向无连接：</strong>在传送数据之前不需要先建立连接，想发送就发送，</li>
+<li><strong>面向报文的：</strong>不会对报文进行拆分和拼接。</li>
+<li><strong>不可靠：</strong>远地主机收到UDP报文后，不需要给出任何确认，传输速度快 ，</li>
+<li><strong>单播，多播，广播功能</strong></li>
+</ul>
+<p><strong>（2）TCP：</strong>（TCP ⼀般⽤于⽂件传输、发送和接收邮件、远程登录等场景。  ）</p>
+<ul>
+<li><strong>是面向连接的服务</strong>，在传送数据之前必须要建立连接（三次握手的方法），数据传送结束后要释放连接，</li>
+<li><strong>单播传播</strong>：TCP传输只能有两个端点，只进行点对点的数据传输，不支持多播和广播的传输方式。</li>
+<li><strong>面向字节流</strong>：以字节流的方式进行传播，不像UDP报文那样一个个报文独立的传播。</li>
+<li><strong>可靠传输</strong>：为了保证报文可靠传输，给每一个报文一个序号，同时这个需要也保证了接收端按包的顺序接受，接收端收到后给发送端发送OK，如果发送端在一定的时间内，没有收到确认，则重新发送。</li>
+<li><strong>提供拥塞控制</strong>：当网络出现拥塞时，TCP减少向网路注入数据的速度和数量，缓解拥塞。</li>
+</ul>
+<h1 id="ARQ协议"><a href="#ARQ协议" class="headerlink" title="ARQ协议"></a>ARQ协议</h1><p><strong>就是自动重传请求</strong>（Automatic Repeat-reQuest  ）：通过确认和超时两个机制，在不可靠服务的基础上实现可靠的信息传输。如果发送⽅在发送后⼀段时间之内没有收到确认帧，它通常会重新发送。  </p>
+<p>ARQ包括<strong>停⽌等待ARQ协议</strong>和<strong>连续ARQ协议</strong>  </p>
+<h2 id="运行在哪个层"><a href="#运行在哪个层" class="headerlink" title="运行在哪个层"></a>运行在哪个层</h2><p>ARQ是可以在不可靠的数据通道上可靠的传输数据的方案，所以链路层和传输层都用了ARQ，并不专属于哪一层。</p>
+<p>如果自己写程序，要在应用层通信，但传输层不想用TCP，想用UDP，也可以在你的程序里用ARQ协议来实现可靠性。</p>
+<h2 id="停止等待ARQ协议"><a href="#停止等待ARQ协议" class="headerlink" title="停止等待ARQ协议"></a>停止等待ARQ协议</h2><p>没发送一个分组后就停止等待，等待对方回复确认ACK，超过一段时候没有收到确认时，则重新发送。接收方如果接收到重复的分组则丢弃。</p>
+<p>优点： 简单<br>缺点： 信道利⽤率低，等待时间⻓  </p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221102150813853.png" srcset="/img/loading.gif" lazyload alt="image-20221102150813853"></p>
+<h2 id="连续ARQ协议"><a href="#连续ARQ协议" class="headerlink" title="连续ARQ协议"></a>连续ARQ协议</h2><p>可提高信道利用率，发送方维持一个窗口，凡是位于窗口内的分组可以连续发出，不需要等待对方确认，接收方一般采用累积确认，对按序到达的最后一个分组发送确认，表明到这个分组的所有分组都已经正确收到。</p>
+<p>优点： 信道利⽤率⾼，容易实现，即使确认丢失，也不必重传  </p>
+<p>缺点：不能像发送方反应已经收到的正确的所有分组的信息，例如，发送5个分组，第3个分组丢失，这时接受收方只能发送前两个成功发送的确认，而不能直到4和5 也成功接受，所以只能重新传递4和5。</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221102150818226.png" srcset="/img/loading.gif" lazyload alt="image-20221102150818226"></p>
+<h1 id="滑动窗⼝和流量控制"><a href="#滑动窗⼝和流量控制" class="headerlink" title="滑动窗⼝和流量控制"></a>滑动窗⼝和流量控制</h1><p>TCP 利⽤滑动窗⼝实现流量控制。流量控制是为了控制发送⽅发送速率，保证接收⽅来得及接收。 接收⽅发送的确认报⽂中的窗⼝字段可以⽤来控制发送⽅窗⼝⼤⼩，从⽽影响发送⽅的发送速率。将窗⼝字段设置为 0，则发送⽅不能发送数据。  </p>
+<h1 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h1><p>拥塞控制就是为了防⽌过多的数据注⼊到⽹络中，这样就可以使⽹络中的路由器或链路不致过载。  </p>
+<p>为了进⾏拥塞控制， TCP 发送⽅要维持⼀个 拥塞窗⼝(cwnd) 的状态变量。拥塞控制窗⼝的⼤⼩取决于⽹络的拥塞程度，并且动态变化。发送⽅让⾃⼰的发送窗⼝取为拥塞窗⼝和接收⽅的接受窗⼝中较⼩的⼀个。  </p>
+<h1 id="在浏览器中输⼊url地址-gt-gt-显示主⻚的过程-⾯试常客"><a href="#在浏览器中输⼊url地址-gt-gt-显示主⻚的过程-⾯试常客" class="headerlink" title="在浏览器中输⼊url地址 -&gt;&gt; 显示主⻚的过程(⾯试常客)"></a>在浏览器中输⼊url地址 -&gt;&gt; 显示主⻚的过程(⾯试常客)</h1><ol>
+<li>DNS 解析：获取域名对应IP</li>
+<li>TCP 连接：（三次握手）</li>
+<li>发送 HTTP 请求：向web服务器发送一个Http请求（get和post请求：请求行，请求头，请求体）</li>
+<li>服务器处理请求并返回 HTTP 报文：（响应行，响应头，响应体）</li>
+<li>浏览器解析渲染页面：（浏览器是一个边解析边渲染的过程）</li>
+<li>连接结束</li>
+</ol>
+<h1 id="TCP是怎么实现可靠传输的"><a href="#TCP是怎么实现可靠传输的" class="headerlink" title="TCP是怎么实现可靠传输的"></a>TCP是怎么实现可靠传输的</h1><ol>
+<li><strong>基于数据快传输</strong> ：应用数据被分割成 TCP 认为最适合发送的数据块，再传输给网络层，数据块被称为报文段或段。</li>
+<li><strong>对失序数据包重新排序以及去重</strong>：TCP 为了保证不发生丢包，就给每个包一个序列号，有了序列号能够将接收到的数据根据序列号排序，并且去掉重复序列号的数据就可以实现数据包去重。</li>
+<li><strong>校验和</strong> : TCP 将保持它首部和数据的检验和。这是一个端到端的检验和，目的是检测数据在传输过程中的任何变化。如果收到段的检验和有差错，TCP 将丢弃这个报文段和不确认收到此报文段。</li>
+<li><strong>超时重传</strong> : 当发送方发送数据之后，它启动一个定时器，等待目的端确认收到这个报文段。接收端实体对已成功收到的包发回一个相应的确认信息（ACK）。如果发送端实体在合理的往返时延（RTT）内未收到确认消息，那么对应的数据包就被假设为已丢失并进行重传。</li>
+<li><strong>流量控制</strong> : TCP 连接的每一方都有固定大小的缓冲空间，TCP 的接收端只允许发送端发送接收端缓冲区能接纳的数据。当接收方来不及处理发送方的数据，能提示发送方降低发送的速率，防止包丢失。TCP 使用的流量控制协议是可变大小的滑动窗口协议（TCP 利用滑动窗口实现流量控制）。</li>
+<li><strong>拥塞控制</strong> : 当网络拥塞时，减少数据的发送</li>
+</ol>
+<h1 id="IP协议中的TTL是什么"><a href="#IP协议中的TTL是什么" class="headerlink" title="IP协议中的TTL是什么"></a>IP协议中的TTL是什么</h1><p><strong>IP包被路由器丢弃之前允许通过的最大网段数量，。</strong></p>
+<p>TTL的最初设想是确定一个时间范围，超过此时间就把包丢弃。由于每个路由器都至少要把TTL域减一，TTL通常表示包在被丢弃前最多能经过的路由器个数。当记数到0时，路由器决定丢弃该包，并发送一个ICMP报文给最初的发送者。</p>
+<h1 id="Http的请求有哪些"><a href="#Http的请求有哪些" class="headerlink" title="Http的请求有哪些"></a>Http的请求有哪些</h1><p>（1）POST请求：向服务器提交数据（上传表单和提交文件等等），数据包含在请求头中。参数不可见，长度不受限制（新增）</p>
+<p>（2）GET请求：发送请求获取服务器上的资源。参数在url上，长度有限制，不安全（查询）</p>
+<p>（3）HEAD请求：获取报文头（用于客户端查看服务器性能）</p>
+<p>（4）PUT请求：更新服务器上的资源</p>
+<p>（5）PATCH请求：对put的补充，局部更新</p>
+<p>（6）OPTION请求：获取服务器支持的http请求方法，用来检查服务器的性能。（预请求，检测实际请求是否包含可以被浏览器接受）</p>
+<p>（7）DELETE请求：从服务器删除特定的资源</p>
+<p>（8）CONNECT请求：将连接改为管道方式的代理服务器。</p>
+<p>（9）TRACE请求：回显服务器收到的请求，主要用于测试和诊断。</p>
+<h2 id="get和post请求的区别"><a href="#get和post请求的区别" class="headerlink" title="get和post请求的区别"></a>get和post请求的区别</h2><ul>
+<li><strong>get请求参数是添加到head中的，可以在url中看到，post请求是添加到请求体中的，在url中不可见</strong>。</li>
+<li><strong>请求中的url长度限制</strong>，get请求的url长度要将请求参数的长度加进去，而post不用考虑请求参数的长度（<strong>是因为浏览器对url的限制</strong>）</li>
+<li><strong>get请求产生一个数据包，post请求产生两个数据包</strong>（并不是所有的浏览器都发送两个包，火狐浏览器就发动一个包）。<ul>
+<li>对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；</li>
+<li>而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。</li>
+</ul>
+</li>
+<li><strong>get请求会被浏览器缓存下来，留下历史记录，而post默认不会。</strong></li>
+<li><strong>get是获取数据，post是提交新增数据。</strong></li>
+<li><strong>get安全性非常低，post安全性较高。</strong></li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="category-chain-item">计算机网络</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">#计算机网络</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>计算机网络问答</div>
+      <div>http://example.com/2022/06/14/计算机网络/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月14日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/15/%E6%A8%A1%E6%9D%BF/" title="模板1-基础算法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">模板1-基础算法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/13/%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" title="两数相加">
+                        <span class="hidden-mobile">两数相加</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","appKey":"MnpSoeG5QTTJ4GagUMOq5t7J","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://8pddcsrj.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div>张露文的博客 | 记录成长过程</div> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
