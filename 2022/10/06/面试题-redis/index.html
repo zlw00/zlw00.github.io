@@ -16,13 +16,22 @@
   <meta name="author" content="zlw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="redis常用的基本类型key（1）keys * ：查看当前库中所有的key  image-20220607134236942 （2）exists key ：判断某个 key 是否存在 （3）type key：查看你的 key 是什么类型 （4）del key ：删除指定的 key 数据 &#x2F; unlink key 根据 value 选择非阻塞删除 （5）expire key 10 ：10">
+    <meta name="description" content="redis底层数据结构String因为redis是使用C语言开发的，自然没有java的哪些字符串类库，在redis中自定义了一种字符串，叫做SDS（简单动态字符串）（Simple Dynamic String） sds的底层是使用一个结构体实现的： 12345678struct sdshdr &amp;#123;	&#x2F;&#x2F; 记录 buf 数组中已使用字节的数量，它等于 SDS 所保存字符串的长度	int le">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试题-redis">
 <meta property="og:url" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/index.html">
 <meta property="og:site_name" content="zlw">
-<meta property="og:description" content="redis常用的基本类型key（1）keys * ：查看当前库中所有的key  image-20220607134236942 （2）exists key ：判断某个 key 是否存在 （3）type key：查看你的 key 是什么类型 （4）del key ：删除指定的 key 数据 &#x2F; unlink key 根据 value 选择非阻塞删除 （5）expire key 10 ：10">
+<meta property="og:description" content="redis底层数据结构String因为redis是使用C语言开发的，自然没有java的哪些字符串类库，在redis中自定义了一种字符串，叫做SDS（简单动态字符串）（Simple Dynamic String） sds的底层是使用一个结构体实现的： 12345678struct sdshdr &amp;#123;	&#x2F;&#x2F; 记录 buf 数组中已使用字节的数量，它等于 SDS 所保存字符串的长度	int le">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323123918257.png">
+<meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323123958954.png">
+<meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323133702901.png">
+<meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323135547951.png">
+<meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323135617155.png">
+<meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323135630954.png">
+<meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1754362-20210516161648249-356996541.png">
+<meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1754362-20210516161655382-2073870704.png">
+<meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1754362-20210516161703961-1686295837.png">
 <meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20220607134236942.png">
 <meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230322124156151.png">
 <meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221007091501846.png">
@@ -41,10 +50,10 @@
 <meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221126193921939.png">
 <meta property="og:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221126193957439.png">
 <meta property="article:published_time" content="2022-10-06T04:48:15.000Z">
-<meta property="article:modified_time" content="2023-03-22T05:06:39.652Z">
+<meta property="article:modified_time" content="2023-03-23T06:37:59.228Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20220607134236942.png">
+<meta name="twitter:image" content="http://example.com/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323123918257.png">
   
   
   
@@ -234,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          13k 字
+          16k 字
         
       </span>
     
@@ -245,7 +254,7 @@
         
         
         
-          108 分钟
+          133 分钟
         
       </span>
     
@@ -295,9 +304,94 @@
             
             <div class="markdown-body">
               
-              <h1 id="redis常用的基本类型"><a href="#redis常用的基本类型" class="headerlink" title="redis常用的基本类型"></a>redis常用的基本类型</h1><h2 id="key"><a href="#key" class="headerlink" title="key"></a>key</h2><p>（1）<code>keys *</code> ：查看当前库中所有的key</p>
+              <h1 id="redis底层数据结构"><a href="#redis底层数据结构" class="headerlink" title="redis底层数据结构"></a>redis底层数据结构</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>因为redis是使用C语言开发的，自然没有java的哪些字符串类库，在redis中自定义了一种字符串，叫做<strong>SDS（简单动态字符串）</strong>（Simple Dynamic String）</p>
+<p>sds的底层是使用一个结构体实现的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">struct sdshdr &#123;<br>	<span class="hljs-comment">// 记录 buf 数组中已使用字节的数量，它等于 SDS 所保存字符串的长度</span><br>	<span class="hljs-type">int</span> len;<br>	<span class="hljs-comment">// 记录 buf 数组中未使用字节的数量</span><br>	<span class="hljs-type">int</span> free;<br>	<span class="hljs-comment">// 字节数组，用于保存字符串</span><br>	<span class="hljs-type">char</span> buf[];<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323123918257.png" srcset="/img/loading.gif" lazyload alt="image-20230323123918257"></p>
+<ul>
+<li>free 属性的值为0， 表示这个SDS没有分配任何未使用空间</li>
+<li>len属性的值为5，表示这个SDS保存了一个五字节长的字符串。</li>
+<li>buf属性是一个char类型的数组，数组的前五个字节分别保存了’R’、‘e’、‘d’、‘i’、‘s’五个字符，而最后一个字节则保存了空字符’\0’。</li>
+</ul>
+<blockquote>
+<p>SDS 遵循C字符串以空字符串结尾的惯例，保存空字符的 1 字节空间不计算在 SDS 的 len 属性里面，并且为空字符分配额外的 1 字节空间</p>
+</blockquote>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323123958954.png" srcset="/img/loading.gif" lazyload alt="image-20230323123958954"></p>
+<p>这个SDS和之前展示的SDS一样,都保存了字符串值”Redis”。这个SDS和之前展示的SDS的区别在于，这个SDS为buf数组分配了五字节未使用空间，所以它的free属性的值为5(图中使用五个空格来表示五字节的未使用空间)</p>
+<p><strong>SDS与C字符串的区别：</strong></p>
+<p>（1）<strong>常数复杂度获取字符串长度</strong>：直接访问len就可以了。</p>
+<p>（2）<strong>杜绝缓冲区溢出，</strong>当对SDS进行修改时，会先检查空间是否满足修改所需要的要求，如果不满足，进行空间扩展，再修改。C如果不进行内存重新分配的话就会发生溢出。</p>
+<p>（3）<strong>减少内存重新分配次数</strong>：当增加和缩短字符串的时候，C每次都需要一次内存分配，扩展内存空间或者释放内存空间。由于内存分配涉及复杂的算法，需要系统调用，很耗时，而SDS通过空间预分配和惰性空间两种优化策略。</p>
+<p><strong>空间预分配：</strong></p>
+<ul>
+<li><p>对SDS修改之后，SDSlen属性的值小于1MB,  那么程序分配和len属性同样大小的未使用空间，这时SDS len属性的值将和free属性的值相同。例，SDS 的len将变成13字节，那么程序也会分配13字节的未使用空间，实际长度将变成 <strong>13+13+1&#x3D;27</strong> 字节</p>
+</li>
+<li><p>对SDS修改之后，SDS 的长度大于等于1MB，那么程序会分配1MB 的未使用空间。如果进行修改之后，SDS的len将变成30MB，SDS的buf数组的实际长度为 <strong>30 MB + 1 MB + 1bytes</strong></p>
+</li>
+</ul>
+<p><strong>惰性空间释放</strong></p>
+<p>优化SDS的字符串缩短操作:缩短字符串时，程序并不立即回收缩短多出来的字节，而是使用free属性记录起来，并等待将来使用。</p>
+<p>（4）<strong>二进制安全：通过使用二进制安全的SDS，而不是C字符串，使得Redis不仅可以保存文本数据，还可以保存任意格式的二进制数据。</strong></p>
+<p><strong>举个例子：</strong> 存入 “Redis Cluster” 这种格式就不能用C字符串来保存，因为C字符串所用的函数只会识别出其中的 “Redis” 而忽略之后的 “Cluster”。为了确保 Redis 可以使用不同的场景，SDS 的 API 都是二进制安全的，所有SDS API 都会以处理二进制的方式来处理 SDS 里的数据，数据在被写入时是什么样的，它被读取时就是什么样的。</p>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><h3 id="ziplist"><a href="#ziplist" class="headerlink" title="ziplist"></a>ziplist</h3><p><strong>存储在连续内存上的特殊双向链表</strong></p>
+<p>其中各部分代表的含义如下：</p>
+<ul>
+<li>zlbytes：4个字节（32bits），表示ziplist占用的总字节数</li>
+<li>zltail：4个字节（32bits），表示ziplist中最后一个节点在ziplist中的偏移字节数</li>
+<li>entries：2个字节（16bits），表示ziplist中的元素数</li>
+<li>entry：长度不定，表示ziplist中的数据</li>
+<li>zlend：1个字节（8bits），表示结束标记，这个值固定为ff（255）</li>
+</ul>
+<p><strong>特点：</strong></p>
+<ol>
+<li><p>ziplist 为了节省内存，采用了紧凑的连续存储。所以在修改操作下并不能像一般的链表那么容易，需要从新分配新的内存，然后复制到新的空间。</p>
+</li>
+<li><p>ziplist类似一个封装的数组，通过zltail可以方便地进行追加和删除尾部数据、使用entries可以方便地计算长度</p>
+</li>
+<li><p>新增或更新元素可能会出现连锁更新现象。</p>
+</li>
+<li><p>不能保存过多的元素，否则查询效率就会降低。</p>
+<p><strong>通过以上的3、4点就引出了quicklist。</strong></p>
+</li>
+</ol>
+<p><strong>连锁更新现象：</strong></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323133702901.png" srcset="/img/loading.gif" lazyload alt="image-20230323133702901"></p>
+<h3 id="quicklist"><a href="#quicklist" class="headerlink" title="quicklist"></a>quicklist</h3><p>由于ziplist不能保存过多的元素，否则查询性能大大降低，并且会发生连锁更新的情况。因此提出quicklist。</p>
+<p><strong>结合了原先 linkedlist 与 ziplist 各自的优势，本质还是一个链表，只不过链表的每个节点是一个 ziplist。</strong></p>
+<p>quicklist 是综合考虑了时间效率与空间效率引入的新型数据结构。<strong>结合了原先 linkedlist 与 ziplist 各自的优势，本质还是一个链表，只不过链表的每个节点是一个 ziplist。</strong></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323135547951.png" srcset="/img/loading.gif" lazyload alt="image-20230323135547951"></p>
+<p>可毕竟还是使用了 ziplist，本质上无法避免连锁更新的问题，于是乎在 5.0 版本设计出另一个内存紧凑型数据结构 listpack，于 7.0 版本替换掉 ziplist。</p>
+<h3 id="listpack"><a href="#listpack" class="headerlink" title="listpack"></a>listpack</h3><p><strong>listpack 也是一种紧凑型数据结构，用一块连续的内存空间来保存数据，并且使用多种编码方式来表示不同长度的数据来节省内存空间。</strong></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323135617155.png" srcset="/img/loading.gif" lazyload alt="image-20230323135617155"></p>
+<ul>
+<li>tot-bytes，也就是 total bytes，占用 4 字节，记录 listpack 占用的总字节数。</li>
+<li>num-elements，占用 2 字节，记录 listpack elements 元素个数。</li>
+<li>elements，listpack 元素，保存数据的部分。、</li>
+<li>listpack-end-byte，结束标志，占用 1 字节，值固定为 255。</li>
+</ul>
+<p>element <strong>不再像 ziplist 的 entry 保存前一项的长度</strong>。</p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323135630954.png" srcset="/img/loading.gif" lazyload alt="image-20230323135630954"></p>
+<h2 id="整数集合"><a href="#整数集合" class="headerlink" title="整数集合"></a>整数集合</h2><p>整数集合是集合键的底层实现之一，当一个集合只包含整数值元素，并且这个集合元素数量不多时，Redis就会使用整数集合作为集合键的底层实现。</p>
+<p>整数集合是Redis用于保存整数值的集合抽象数据结构，它可以保存int16_t、int32_t、int64_t的整数值，且保证集合中不出现重复元素。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">typedef struct intset&#123;<br>    <span class="hljs-comment">//编码方式</span><br>    uint32_t encoding;<br>    <span class="hljs-comment">//集合包含的元素数量</span><br>    uint32_t length;<br>    <span class="hljs-comment">//保存元素的数组</span><br>    int8_t contents[];<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="整数集合的升级"><a href="#整数集合的升级" class="headerlink" title="整数集合的升级"></a>整数集合的升级</h4><p>当我们向一个已经存在的整数集合中添加元素时，如果加入的元素的数据类型比contents[]数组元素的数据类型长，则整数集合需要进行升级，举个例子，我要在<strong>上面那个大小5的16位整数集合</strong>中插入一个类型为int32_t的整数65535：</p>
+<ol>
+<li>升级首先要做的是，根据新元素的长度，扩大空间，目前有5个元素，加入一个后有6个，且int16_t的元素要升级为int32_t类型（需要6 * 32 &#x3D; 192位的空间），因此需要先动态分配内存空间如下：</li>
+</ol>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1754362-20210516161648249-356996541.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ol>
+<li>移动元素的位置，将14632往后移动到新的位置，末尾留下一个位置存放32位的65535</li>
+</ol>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1754362-20210516161655382-2073870704.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ol>
+<li>同理移动233、18、-5、-6370，并最后将末尾的空间中存入65535</li>
+</ol>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1754362-20210516161703961-1686295837.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h4 id="整数集合不支持降级"><a href="#整数集合不支持降级" class="headerlink" title="整数集合不支持降级"></a>整数集合不支持降级</h4><p>如果因为插入一个32位的整数使得原本16位的contents[]数组转变为32位，后面又删去了这个32位的整数，这个整数集合将不会降级成16位的contents[]数组</p>
+<h1 id="redis常用的基本类型"><a href="#redis常用的基本类型" class="headerlink" title="redis常用的基本类型"></a>redis常用的基本类型</h1><h2 id="key"><a href="#key" class="headerlink" title="key"></a>key</h2><p>（1）<code>keys *</code> ：查看当前库中所有的key</p>
 <p><a target="_blank" rel="noopener" href="https://zlw00.github.io/2022/06/07/redis/image-20220607134236942.png"><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20220607134236942.png" srcset="/img/loading.gif" lazyload alt="image-20220607134236942"></a></p>
-<p>image-20220607134236942</p>
 <p>（2）<code>exists key</code> ：判断某个 key 是否存在</p>
 <p>（3）<code>type key</code>：查看你的 key 是什么类型</p>
 <p>（4）<code>del key</code> ：删除指定的 key 数据 &#x2F; unlink key 根据 value 选择非阻塞删除</p>
@@ -306,7 +400,7 @@
 <p>（7）<code>select</code> ：命令切换数据库</p>
 <p>（8）<code>dbsize</code> ：查看当前数据库的 key 的数量</p>
 <p>（9） <code>flushdb</code> ：清空当前库 &#x2F; <code>flushall</code> ：通杀全部库</p>
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>底层数据结构：<strong>动态字符串</strong>，是可以修改的字符串，内部结构上类似于java的ArrayList。</p>
+<h2 id="String-1"><a href="#String-1" class="headerlink" title="String"></a>String</h2><p>底层数据结构：<strong>动态字符串</strong>，是可以修改的字符串，内部结构上类似于java的ArrayList。</p>
 <p><strong>常用命令</strong></p>
 <p>（1）<code>set &lt;key&gt;&lt;value&gt;</code>：添加键值对(内容能用字符串表示的)如果设置相同的key，则前面的value被覆盖</p>
 <p>（2）<code>get &lt;key&gt;</code>：查询对应键值</p>

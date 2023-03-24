@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/2022/10/04/%E9%9D%A2%E8%AF%95%E9%A2%98-%E9%9B%86%E5%90%88/image-20220716231720069.png">
 <meta property="og:image" content="http://example.com/2022/10/04/%E9%9D%A2%E8%AF%95%E9%A2%98-%E9%9B%86%E5%90%88/image-20220716224443050.png">
 <meta property="article:published_time" content="2022-10-04T02:19:11.000Z">
-<meta property="article:modified_time" content="2023-02-18T10:22:36.918Z">
+<meta property="article:modified_time" content="2023-03-23T08:29:07.335Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/10/04/%E9%9D%A2%E8%AF%95%E9%A2%98-%E9%9B%86%E5%90%88/image-20221102111525959.png">
@@ -227,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          17k 字
+          18k 字
         
       </span>
     
@@ -238,7 +238,7 @@
         
         
         
-          140 分钟
+          150 分钟
         
       </span>
     
@@ -308,8 +308,15 @@
 <li><p><strong>内存空间占用：</strong><code>ArrayList</code> 的空 间浪费主要体现在在 list 列表的结尾会预留一定的容量空间，而 LinkedList 的空间花费则体现在它的每一个元素都需要消耗比 ArrayList 更多的空间（因为要存放直接后继和直接前驱以及数据）。</p>
 </li>
 </ul>
+<p><strong>使用场景</strong></p>
+<p>（1）如果应用程序对数据有较多的随机访问，ArrayList对象要优于LinkedList对象；、</p>
+<p>（2）如果应用程序有更多的插入或者删除操作，较少的随机访问，LinkedList对象要优于ArrayList对象；</p>
+<p>（3）不过ArrayList的插入，删除操作也不一定比LinkedList慢，如果在List靠近末尾的地方插入，那么ArrayList只需要移动较少的数据，而LinkedList则需要一直查找到列表尾部，反而耗费较多时间，这时ArrayList就比LinkedList要快。</p>
 <p><strong>总结：</strong></p>
 <p><strong>我们在项目中一般是不会使用到 <code>LinkedList</code> 的，需要用到 <code>LinkedList</code> 的场景几乎都可以使用 <code>ArrayList</code> 来代替，并且，性能通常会更好！就连 <code>LinkedList</code> 的作者约书亚 · 布洛克（Josh Bloch）自己都说从来不会使用 <code>LinkedList</code></strong></p>
+<h1 id="HashSet和TreeSet"><a href="#HashSet和TreeSet" class="headerlink" title="HashSet和TreeSet"></a>HashSet和TreeSet</h1><p>（1）TreeSet的底层是使用TreeMap实现的。HashSet的底层是使用HashMap实现的。</p>
+<p>（2）TreeSet判断两个对象不相等的方式是两个对象通过<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=equals&spm=1001.2101.3001.7020">equals</a>方法返回false，或者通过CompareTo方法比较没有返回0.HashSet是使用hashCode判断的。</p>
+<p>（3）TreeSet 是二叉树实现的，<strong>Treeset中的数据是自动排好序的，不允许放入null值</strong>。HashSet 是哈希表实现的,<strong>HashSet中的数据是无序的，可以放入null，但只能放入一个null</strong>，两者中的值都不能重复，就如数据库中唯一约束。</p>
 <h1 id="ArrayList扩容机制"><a href="#ArrayList扩容机制" class="headerlink" title="ArrayList扩容机制"></a>ArrayList扩容机制</h1><p><strong>ArrayList扩容的核心方法：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * ArrayList扩容的核心方法。</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">grow</span><span class="hljs-params">(<span class="hljs-type">int</span> minCapacity)</span> &#123;<br>        <span class="hljs-comment">// oldCapacity为旧容量，newCapacity为新容量</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">oldCapacity</span> <span class="hljs-operator">=</span> elementData.length;<br>        <span class="hljs-comment">//将oldCapacity 右移一位，其效果相当于oldCapacity /2，</span><br>        <span class="hljs-comment">//我们知道位运算的速度远远快于整除运算，整句运算式的结果就是将新容量更新为旧容量的1.5倍，</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">newCapacity</span> <span class="hljs-operator">=</span> oldCapacity + (oldCapacity &gt;&gt; <span class="hljs-number">1</span>);<br>        <span class="hljs-comment">//然后检查新容量是否大于最小需要容量，若还是小于最小需要容量，那么就把最小需要容量当作数组的新容量，</span><br>        <span class="hljs-keyword">if</span> (newCapacity - minCapacity &lt; <span class="hljs-number">0</span>)<br>            newCapacity = minCapacity;<br>        <span class="hljs-comment">//再检查新容量是否超出了ArrayList所定义的最大容量，</span><br>        <span class="hljs-comment">//若超出了，则调用hugeCapacity()来比较minCapacity和 MAX_ARRAY_SIZE，</span><br>        <span class="hljs-comment">//如果minCapacity大于MAX_ARRAY_SIZE，则新容量则为Interger.MAX_VALUE，否则，新容量大小则为 MAX_ARRAY_SIZE。</span><br>        <span class="hljs-keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="hljs-number">0</span>)<br>            newCapacity = hugeCapacity(minCapacity);<br>        <span class="hljs-comment">// minCapacity is usually close to size, so this is a win:</span><br>        elementData = Arrays.copyOf(elementData, newCapacity);<br>    &#125;<br>    <span class="hljs-comment">//比较minCapacity和 MAX_ARRAY_SIZE</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hugeCapacity</span><span class="hljs-params">(<span class="hljs-type">int</span> minCapacity)</span> &#123;<br>        <span class="hljs-keyword">if</span> (minCapacity &lt; <span class="hljs-number">0</span>) <span class="hljs-comment">// overflow</span><br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OutOfMemoryError</span>();<br>        <span class="hljs-keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE) ?<br>            Integer.MAX_VALUE :<br>            MAX_ARRAY_SIZE;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
@@ -563,7 +570,20 @@
 <li><p><strong>数据丢失</strong></p>
 </li>
 <li><p><strong>数据覆盖</strong></p>
-<p>当线程1和线程2都要调用put方法的时候，都进行了判断，且都满足插入的条件。这是线程1先插入，线程2后插入的时候就不会再次进行判断，这就出现了元素的覆盖。</p>
+<p>A、B两个线程put时，假设计算出的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=hash&spm=1001.2101.3001.7020">hash</a>值并对数组取余后是同一个位置，那么就会出现这种情况：A发现这个位置可以插入，但在插入前被挂起了，而B也发现可以插入，并且成功了，那么A继续执行后，由于刚刚已经判断过了是可以插入的，因此会直接把B的值给覆盖掉。</p>
+</li>
+</ul>
+<h1 id="ArrayList为什么是线程不安全的"><a href="#ArrayList为什么是线程不安全的" class="headerlink" title="ArrayList为什么是线程不安全的"></a>ArrayList为什么是线程不安全的</h1><ul>
+<li><p><strong>add元素之后，会出现有些位置的值为null的情况</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">(E e, Object[] elementData, <span class="hljs-type">int</span> s)</span> &#123;<br>    <span class="hljs-keyword">if</span> (s == elementData.length)  <span class="hljs-comment">// 先不看</span><br>        elementData = grow();<br>    elementData[s] = e;<br>    size = s + <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>假设有两个线程A和B都执行了add方法，并假设此时size为3，A添加完元素后(即执行完 <strong>elementData[s] &#x3D; e;</strong>)被挂起了，B也添加元素，注意，此时size还是3，这会导致两个问题：A写的被覆盖，size为5，但5的位置为null。</p>
+</li>
+<li><p><strong>数组下标越界</strong></p>
+<p>还是假设A、B两个线程，并设此时数组长度为10，而s为9，那么A和B同时进到if判断都不会扩容，现在A在上面代码标注位置挂起了，而B接着执行添加操作，所以size &#x3D; 10，A继续执行，此时就出现了数组下标越界错误。</p>
+</li>
+<li><p><strong>size大小不是预期的值</strong></p>
+<p>s+1不是原子操作，举个例子，假设现在s &#x3D; 4，A、B两个线程都去进行s + 1操作，在Java中每个线程是有自己的工作内存的，因此A和B各自都有一份s &#x3D; 4，然后分别执行s + 1，最后再写会主存。理想情况是A计算s + 1 &#x3D; 5之后写回主存，然后B再读取，将6写回主存。但事实却是A和B可能同时执行s + 1 &#x3D; 5然后写会主存，这就导致了size不是我们预期的结果。</p>
 </li>
 </ul>
 

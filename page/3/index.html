@@ -799,7 +799,7 @@
       <a class="index-excerpt" href="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/" target="_self">
         <div>
           
-          redis常用的基本类型key（1）keys * ：查看当前库中所有的key  image-20220607134236942 （2）exists key ：判断某个 key 是否存在 （3）type key：查看你的 key 是什么类型 （4）del key ：删除指定的 key 数据 &#x2F; unlink key 根据 value 选择非阻塞删除 （5）expire key 10 ：10
+          redis底层数据结构String因为redis是使用C语言开发的，自然没有java的哪些字符串类库，在redis中自定义了一种字符串，叫做SDS（简单动态字符串）（Simple Dynamic String） sds的底层是使用一个结构体实现的： 12345678struct sdshdr &amp;#123;	&#x2F;&#x2F; 记录 buf 数组中已使用字节的数量，它等于 SDS 所保存字符串的长度	int le
         </div>
       </a>
 
