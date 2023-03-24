@@ -47,7 +47,7 @@
 <meta property="og:image" content="http://example.com/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/other-bukfsdjavassmtjstd-be0964a8-856a-45c9-ab75-ce9505c2e237.png">
 <meta property="og:image" content="http://example.com/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221128161846036.png">
 <meta property="article:published_time" content="2022-06-21T15:37:40.000Z">
-<meta property="article:modified_time" content="2023-03-22T03:46:59.747Z">
+<meta property="article:modified_time" content="2023-03-24T05:40:52.232Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125202941749.png">
@@ -251,7 +251,7 @@
         
         
         
-          156 分钟
+          158 分钟
         
       </span>
     
@@ -351,7 +351,7 @@
 <p><strong>接口：</strong></p>
 <ul>
 <li>接口中所有方法都必须是抽象的</li>
-<li>接口中方法定义默认为public abstract类型，成员变量默认为public static final 类型。</li>
+<li>接口中方法定义默认为public abstract类型，成员变量默认为public static final 类型。（为什么是final：如果不是final，意味着实现该接口的子类都可以去修改这个变量，这会影响其他继承该接口的类，。为什么是static：如果是非静态的变量，则实现了该接口的实现类都会有这个变量，由于接口是可以多继承的，如果另一个接口也有这样一个变量，则不知道用哪个。因此定为static，只能放在静态存储区）</li>
 </ul>
 <p><strong>主要区别：</strong></p>
 <ul>
