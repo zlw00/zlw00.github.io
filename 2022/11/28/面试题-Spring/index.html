@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://example.com/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/20201015162555853.png">
 <meta property="og:image" content="http://example.com/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/20201015163850335.png">
 <meta property="article:published_time" content="2022-11-28T13:40:29.000Z">
-<meta property="article:modified_time" content="2022-12-08T06:46:28.868Z">
+<meta property="article:modified_time" content="2023-03-25T04:50:31.172Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/image-20221207213045946.png">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.7k 字
+          6.6k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          48 分钟
+          55 分钟
         
       </span>
     
@@ -409,6 +409,19 @@
 </ol>
 <h1 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h1><h2 id="mybatis中-和-的区别"><a href="#mybatis中-和-的区别" class="headerlink" title="mybatis中#和$的区别"></a>mybatis中#和$的区别</h2><p><strong>#传入的参数在SQL中显示为字符串，$传入的参数在SqL中直接显示为传入的值</strong>.</p>
 <p><strong>#方式能够很大程度防止sql注入，$方式无法防止Sql注入；</strong></p>
+<h2 id="Mybatis与mysql是怎么连接的"><a href="#Mybatis与mysql是怎么连接的" class="headerlink" title="Mybatis与mysql是怎么连接的"></a>Mybatis与mysql是怎么连接的</h2><p>（1）<strong>首先创建maven工程，引入依赖，mybatis和mysql-connector-java。</strong></p>
+<p>（2）<strong>创建mybatis的核心配置文件，</strong>习惯上命名为：<strong>mybatis-config.xml</strong>，主要用于连接数据库的环境以及mybatis的全局配置（driver、url、username、password等等）</p>
+<p>（3）<strong>创建实体类</strong>，User</p>
+<p>（4）<strong>创建mapper接口</strong>，相当于以前的dao层，UserMapper.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">UserMapper</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 添加用户信息</span><br><span class="hljs-comment">    */</span><br>    <span class="hljs-type">int</span> <span class="hljs-title function_">insertUser</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>（5）<strong>创建mybatis的映射文件</strong>，ORM（object，relation，mapping）对象关系映射，映射文件的命名为：实体名+Mapper.xml，因此一个映射文件对应一个实体类，对应一张表。UserMapper.xml</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> ?&gt;<br>&lt;!DOCTYPE mapper<br>	PUBLIC <span class="hljs-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span><br>	<span class="hljs-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;<br>	&lt;mapper namespace=<span class="hljs-string">&quot;com.atguigu.mybatis.mapper.UserMapper&quot;</span>&gt;<br>		&lt;!--<span class="hljs-type">int</span> <span class="hljs-title function_">insertUser</span><span class="hljs-params">()</span>;--&gt;<br>		&lt;insert id=<span class="hljs-string">&quot;insertUser&quot;</span>&gt;<br>			insert into t_user <span class="hljs-title function_">values</span><span class="hljs-params">(<span class="hljs-literal">null</span>,<span class="hljs-string">&#x27;张三&#x27;</span>,<span class="hljs-string">&#x27;123&#x27;</span>,<span class="hljs-number">23</span>,<span class="hljs-string">&#x27;女&#x27;</span>)</span><br>		&lt;/insert&gt;<br>	&lt;/mapper&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>mapper接口的全类名和映射文件中的namespace保持一致</li>
+<li>mapper接口中方法的方法名与映射文件中编写SQL标签的id属性保持一致</li>
+</ul>
 
               
             </div>
