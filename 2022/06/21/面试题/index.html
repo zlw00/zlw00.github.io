@@ -47,7 +47,7 @@
 <meta property="og:image" content="http://example.com/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/other-bukfsdjavassmtjstd-be0964a8-856a-45c9-ab75-ce9505c2e237.png">
 <meta property="og:image" content="http://example.com/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221128161846036.png">
 <meta property="article:published_time" content="2022-06-21T15:37:40.000Z">
-<meta property="article:modified_time" content="2023-03-24T05:40:52.232Z">
+<meta property="article:modified_time" content="2023-04-12T13:42:38.961Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125202941749.png">
@@ -630,7 +630,7 @@
 </code></pre>
 <p><strong>自旋锁执行流程：</strong><br>某个线程尝试获取同步资源锁失败，资源被占用—&gt;自旋锁—&gt;不放弃CPU时间片，通过自旋进行等待—&gt;再次尝试获取锁，获取成功—&gt;获取同步资源。<br><strong>非自旋锁的执行流程：</strong><br>某个线程尝试获取同步资源锁失败，资源被占用—&gt;非自旋锁—&gt;CPU切换状态,使当前线程进行休眠—&gt;CPU切换线程执行其他操作—&gt;占用同步资源的线程释放了的锁—&gt;恢复现场—&gt;再次尝试获取锁。</p>
 <p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/other-bukfsdjavassmtjstd-be0964a8-856a-45c9-ab75-ce9505c2e237.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h2 id="Java对象头"><a href="#Java对象头" class="headerlink" title="Java对象头"></a>Java对象头</h2><p>在说sychronized优化锁之前了解一下Java对象头，</p>
+<h1 id="Java对象头"><a href="#Java对象头" class="headerlink" title="Java对象头"></a>Java对象头</h1><p>在说sychronized优化锁之前了解一下Java对象头，</p>
 <p>对象在内存中的布局分为三块区域：对象头，实例数据和对齐填充。</p>
 <p>对象头中包含两部分：MarkWord 和 类型指针。如果是数组对象的话，对象头还有一部分是存储数组的长度。</p>
 <p><strong>MarkWord</strong>：用于存储对象自身的运行时数据，如 HashCode、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID等等。</p>

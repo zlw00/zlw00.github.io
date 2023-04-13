@@ -68,8 +68,12 @@
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20224285758787.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20224285758788.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20224285758789.png">
+<meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190611640.png">
+<meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190743985.png">
+<meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190723458.png">
+<meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190747912.png">
 <meta property="article:published_time" content="2022-09-05T14:17:24.000Z">
-<meta property="article:modified_time" content="2022-11-26T12:34:48.219Z">
+<meta property="article:modified_time" content="2023-04-13T10:23:54.693Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124314451.png">
@@ -262,7 +266,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          14k 字
+          17k 字
         
       </span>
     
@@ -273,7 +277,7 @@
         
         
         
-          121 分钟
+          143 分钟
         
       </span>
     
@@ -670,12 +674,14 @@
 <li>如果 <code>redo log</code> 只是预提交但不是 <code>commit</code> 状态，这个时候就会去判断 <code>binlog</code> 是否完整，如果完整就提交 <code>redo log</code>, 不完整就回滚事务。</li>
 </ul>
 <p>这样就保证了数据的一致性。</p>
-<h1 id="Mysql怎么保证事务的持久性"><a href="#Mysql怎么保证事务的持久性" class="headerlink" title="Mysql怎么保证事务的持久性"></a>Mysql怎么保证事务的持久性</h1><p><strong>利用了redo log</strong>。Mysql是先把磁盘上的数据加载到内存中，在内存中对数据进行修改，再刷回磁盘上。如果此时突然宕机，内存中的数据就会丢失。</p>
+<h1 id="Mysql怎么保证事务的持久性"><a href="#Mysql怎么保证事务的持久性" class="headerlink" title="Mysql怎么保证事务的持久性"></a>Mysql怎么保证事务的持久性</h1><p>InnoDB作为MySQL的存储引擎，数据是存放在磁盘中的，但如果每次读写数据都需要磁盘IO，效率会很低。</p>
+<p>为此，InnoDB提供了缓存(Buffer Pool)，Buffer Pool中包含了磁盘中部分数据页的映射，作为访问数据库的缓冲：当从数据库读取数据时，会首先从Buffer Pool中读取，如果Buffer Pool中没有，则从磁盘读取后放入Buffer Pool；当向数据库写入数据时，会首先写入Buffer Pool，<strong>Buffer Pool中修改的数据会定期刷新到磁盘中</strong>（这一过程称为刷脏）。</p>
+<p>Buffer Pool的使用大大提高了读写数据的效率，但是也带了新的问题：<strong>如果MySQL宕机，而此时Buffer Pool中修改的数据还没有刷新到磁盘，就会导致数据的丢失，事务的持久性无法保证。</strong></p>
+<p>于是，<strong>redo log被引入来解决这个问题：当数据修改时，除了修改Buffer Pool中的数据，还会在redo log记录这次操作；当事务提交时，会调用fsync接口对redo log进行刷盘。如果MySQL宕机，重启时可以读取redo log中的数据，对数据库进行恢复。redo log采用的是WAL（Write-ahead logging，预写式日志），所有修改先写入日志，再更新到Buffer Pool，保证了数据不会因MySQL宕机而丢失，从而满足了持久性要求。</strong></p>
 <p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/03.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><code>redo log</code>包括两部分：一是内存中的日志缓冲(<code>redo log buffer</code>)，该部分日志是易失性的；二是磁盘上的重做日志文件(<code>redo log file</code>)，该部分日志是持久的。</p>
-<p><code>innodb</code>通过<code>force log at commit</code>机制实现事务的持久性，即<strong>在事务提交的时候，必须先将该事务的所有事务日志写入到磁盘上的redo log file和undo log file中进行持久化。也就是说提交了两个日志文件。</strong></p>
-<p><strong>当事务提交的时候，会对redo log日志进行刷盘，当数据库挂掉重启的时候，会将redo log中的内存恢复到数据中，再根据undo log和bin log内容决定回滚数据还是提交数据。</strong></p>
 <h1 id="Mysql怎么保证事务的原子性"><a href="#Mysql怎么保证事务的原子性" class="headerlink" title="Mysql怎么保证事务的原子性"></a>Mysql怎么保证事务的原子性</h1><p><strong>是利用<code>Innodb</code>的<code>undo log</code>。</strong><br><code>undo log</code>名为回滚日志，是实现原子性的关键，<strong>当事务回滚时能够撤销所有已经成功执行的sql语句，他需要记录你要回滚的相应日志信息。</strong></p>
+<p><strong>是当事务回滚时能够撤销所有已经成功执行的sql语句</strong></p>
+<p>InnoDB实现回滚，靠的是undo log：当事务对数据库进行修改时，InnoDB会生成对应的undo log；如果事务执行失败或调用了rollback，导致事务需要回滚，便可以利用undo log中的信息将数据回滚到修改之前的样子。</p>
 <p>例如:<br>(1)当你<code>delete</code>一条数据的时候，就需要记录这条数据的信息，回滚的时候，<code>insert</code>这条旧数据<br>(2)当你<code>update</code>一条数据的时候，就需要记录之前的旧值，回滚的时候，根据旧值执行<code>update</code>操作<br>(3)当年<code>insert</code>一条数据的时候，就需要这条记录的主键，回滚的时候，根据主键执行<code>delete</code>操<br><strong><code>undo log</code>记录了这些回滚需要的信息，当事务执行失败或调用了rollback，导致事务需要回滚，便可以利用undo log中的信息将数据回滚到修改之前的样子。</strong></p>
 <h1 id="Mysql怎么保证事务的隔离性"><a href="#Mysql怎么保证事务的隔离性" class="headerlink" title="Mysql怎么保证事务的隔离性"></a>Mysql怎么保证事务的隔离性</h1><p><strong>有两种方法MVCC和LBCC保证事务的隔离性，至于到底使用的哪种，就看程序员的sql语句是怎样写的。</strong></p>
 <h2 id="MVCC-Multi-Version-Concurrency-Control-多版本并发控制"><a href="#MVCC-Multi-Version-Concurrency-Control-多版本并发控制" class="headerlink" title="MVCC (Multi-Version Concurrency Control) 多版本并发控制."></a>MVCC (Multi-Version Concurrency Control) 多版本并发控制.</h2><blockquote>
@@ -725,9 +731,13 @@
 <p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620172534743.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 </li>
 <li><p><strong>间隙锁</strong></p>
+<p>那么幻读能仅通过行锁解决么？答案是否定的，如上面示例，首先说明一下，select xx for update（当前读）是将所有条件涉及到的（符合where条件）行加上行锁。但是，就算我在select xx for update 事务开启时将所有的行都加上行锁。那么也锁不住Session C新增的行，<strong>因为在我给数据加锁的时刻，压根就还没有新增的那行，自然也不会给新增行加上锁。</strong></p>
+<p><strong>所以要解决幻读，就必须得解决新增行的问题。</strong></p>
+<p><strong>现在你应该明白了，产生幻读的原因是：行锁只能锁住行，但是新插入记录这个动作，要更新的是记录之间的“间隙”。因此，为了解决幻读问题，InnoDB 只好引入新的锁，也就是间隙锁 (Gap Lock)。</strong>顾名思义，间隙锁，锁的就是两个值之间的空隙。比如文章开头的表 LOL，初始化插入了 7 个记录，这就产生了 8 个间隙。</p>
 <p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620172630964.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 </li>
 <li><p><strong>临键锁</strong></p>
+<p>在一行行扫描的过程中，不仅将给行加上了行锁，还给行两边的空隙，也加上了间隙锁。<strong>MySQL将行锁 + 间隙锁组合统称为 next-key lock</strong>，通过 next-key lock 解决了幻读问题。</p>
 <p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620173251235.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 </li>
 </ul>
@@ -793,6 +803,37 @@
 <p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20224285758788.png" srcset="/img/loading.gif" lazyload alt="MySQL和Redis的数据一致性问题_缓存_05"></p>
 <p><strong>延时双删</strong>：就是更新数据库之后，再删除一次缓存。</p>
 <p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20224285758789.png" srcset="/img/loading.gif" lazyload alt="MySQL和Redis的数据一致性问题_缓存_06"></p>
+<h1 id="数据库的连接"><a href="#数据库的连接" class="headerlink" title="数据库的连接"></a>数据库的连接</h1><p>又称多表查询，当查询的字段分别来自于不同表时，就会用到连接查询。</p>
+<h2 id="连接的分类"><a href="#连接的分类" class="headerlink" title="连接的分类"></a><strong>连接的分类</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">内连接：inner<br>外连接：<br>	左外：left outer<br>	右外：right outer<br>	全外（用的较少）<br>交叉连接：cross（用的较少）相当于做了一个笛卡尔乘积<br></code></pre></td></tr></table></figure>
+
+<p>内连接：</p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190611640.png" srcset="/img/loading.gif" lazyload alt="image-20230412190611640"></p>
+<p>右外连接：</p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190743985.png" srcset="/img/loading.gif" lazyload alt="image-20230412190743985"></p>
+<p>左外连接：</p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190723458.png" srcset="/img/loading.gif" lazyload alt="image-20230412190723458"></p>
+<p>全连接：</p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190747912.png" srcset="/img/loading.gif" lazyload alt="image-20230412190747912"></p>
+<h2 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h2><p><strong>基本语法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select column<br>from table 1<br>inner join table 2<br>on 连接条件<br></code></pre></td></tr></table></figure>
+
+<p><strong>等值连接</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"># <span class="hljs-number">1</span> 查询员工名、部门名<br># 其中员工名在employees表，部门名在departments表<br>SELECT last_name,department_name<br>FROM departments d<br>JOIN  employees e<br>ON e.`department_id` = d.`department_id`;<br><br>#<span class="hljs-number">2.</span>查询名字中包含e的员工名和工种名（添加筛选）<br>SELECT last_name,job_title<br>FROM employees e<br>INNER JOIN jobs j<br>ON e.`job_id`=  j.`job_id`<br>WHERE e.`last_name` LIKE <span class="hljs-string">&#x27;%e%&#x27;</span>;<br><br>#<span class="hljs-number">3.</span> 查询部门个数&gt;<span class="hljs-number">3</span>的城市名和部门个数，（添加分组+筛选）<br>SELECT city, COUNT(*) 部门个数 <br>FROM departments d<br>INNER	JOIN locations l<br>ON d.`location_id` = l.`location_id`<br>GROUP BY city<br>HAVING 部门个数 &gt; <span class="hljs-number">3</span>;<br><br>#<span class="hljs-number">4.</span>查询员工名、部门名、工种名，并按部门名降序（添加三表连接）<br>SELECT last_name,department_name,job_title<br>FROM employees e<br>INNER JOIN departments d ON e.`department_id`=d.`department_id`<br>INNER JOIN jobs j ON e.`job_id` = j.`job_id`<br>ORDER BY department_name DESC;<br></code></pre></td></tr></table></figure>
+
+<p><strong>非等值连接</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">#<span class="hljs-number">1.</span> 查询工资级别的个数&gt;<span class="hljs-number">20</span>的个数，并且按工资级别降序<br> SELECT <span class="hljs-title function_">COUNT</span><span class="hljs-params">(*)</span>,grade_level<br>FROM employees e<br> JOIN job_grades g<br> ON e.`salary` BETWEEN g.`lowest_sal` AND g.`highest_sal`<br> GROUP BY grade_level<br> HAVING <span class="hljs-title function_">COUNT</span><span class="hljs-params">(*)</span>&gt;<span class="hljs-number">20</span><br> ORDER BY grade_level DESC;<br></code></pre></td></tr></table></figure>
+
+<p><strong>自连接</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java">#<span class="hljs-number">1.</span>查询员工的名字、上级的名字<br> SELECT e.last_name,m.last_name<br> FROM employees e<br> JOIN employees m<br> ON e.`manager_id`= m.`employee_id`;<br><br>#<span class="hljs-number">2.</span>查询姓名中包含字符k的员工的名字、上级的名字 <br> SELECT e.last_name,m.last_name<br> FROM employees e<br> JOIN employees m<br> ON e.`manager_id`= m.`employee_id`<br> WHERE e.`last_name` LIKE <span class="hljs-string">&#x27;%k%&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<h2 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h2><p>用于查询一个表中有，另一个表没有的记录</p>
+<p><strong>左外连接</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"># 查询没有员工的部门的信息<br> SELECT d.*,e.employee_id<br> FROM departments d<br> LEFT OUTER JOIN employees e<br> ON d.`department_id` = e.`department_id`<br> WHERE e.`employee_id` IS NULL;<br></code></pre></td></tr></table></figure>
+
+<p><strong>右外连接</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">SELECT d.*,e.employee_id<br> FROM employees e<br> RIGHT OUTER JOIN departments d<br> ON d.`department_id` = e.`department_id`<br> WHERE e.`employee_id` IS NULL;<br></code></pre></td></tr></table></figure>
+
+<p>上述两种方法得到结果一致，部门信息在departments表中，departments表没有employee_id，这时我们想要的结果是部门信息＋员工id，因此，如果使用左外连接，则departments为主表，右外连接则employees为主表。</p>
 
               
             </div>
