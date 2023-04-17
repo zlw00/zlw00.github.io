@@ -30,6 +30,7 @@
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210220122538388.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124511218.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124619358.png">
+<meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230416182424886.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221005221522286.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309560640.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221006121109983.png">
@@ -73,7 +74,7 @@
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190723458.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190747912.png">
 <meta property="article:published_time" content="2022-09-05T14:17:24.000Z">
-<meta property="article:modified_time" content="2023-04-13T10:23:54.693Z">
+<meta property="article:modified_time" content="2023-04-16T11:17:22.475Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124314451.png">
@@ -266,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          17k 字
+          20k 字
         
       </span>
     
@@ -277,7 +278,7 @@
         
         
         
-          143 分钟
+          164 分钟
         
       </span>
     
@@ -333,6 +334,12 @@
 <li>所以我们用SQL语句对数据进行操作，好像是我们的SQL语句对数据进行了直接操作，但是呢，本质上是通过存储引擎来真正对数据进行操作。</li>
 <li>存储引擎把怎么对数据操作什么的都封装好了，SQL语句更像是一个接口！你不用管存储引擎内部到底是怎样实现的，你只要会用SQL语句就好了！</li>
 </ol>
+<h1 id="MyISAM和InnoDB的区别"><a href="#MyISAM和InnoDB的区别" class="headerlink" title="MyISAM和InnoDB的区别"></a>MyISAM和InnoDB的区别</h1><p><strong>1.是否支持行级锁</strong>：InnoDB 支持行级别的锁粒度，MyISAM 不支持，只支持表级别的锁粒度。</p>
+<p><strong>2.是否支持事务</strong>：MyISAM 不提供事务支持。InnoDB 提供事务支持，实现了 SQL 标准定义了四个隔离级别。</p>
+<p><strong>3.是否支持外键</strong>：MyISAM 不支持外键，而 InnoDB 支持</p>
+<p><strong>4.是否支持数据库异常崩溃后的安全恢复</strong>：MyISAM 不支持数据库异常崩溃后的安全恢复，而 InnoDB 支持</p>
+<p><strong>5.是否支持 MVCC</strong>：MyISAM 不支持 MVCC，而 InnoDB 支持</p>
+<p><strong>6.索引实现不一样。</strong></p>
 <h1 id="数据库的三大范式"><a href="#数据库的三大范式" class="headerlink" title="数据库的三大范式"></a>数据库的三大范式</h1><ul>
 <li><p><strong>第一范式</strong></p>
 <p>第一范式的目标是确保每列的原子性:<strong>如果每列都是不可再分的最小数据单元</strong>（也称为最小的原子单元），则满足第一范式（1NF）  </p>
@@ -355,6 +362,39 @@
 <p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124619358.png" srcset="/img/loading.gif" lazyload alt="image-20220908124619358"></p>
 </li>
 </ul>
+<h1 id="什么是元组-码-候选码-主码-外码-主属性-非主属性？"><a href="#什么是元组-码-候选码-主码-外码-主属性-非主属性？" class="headerlink" title="什么是元组, 码, 候选码, 主码, 外码, 主属性, 非主属性？"></a>什么是元组, 码, 候选码, 主码, 外码, 主属性, 非主属性？</h1><p><strong>元组</strong> ： 元组（tuple）是关系数据库中的基本概念，关系是一张表，表中的每行（即数据库中的每条记录）就是一个元组，每列就是一个属性。 在二维表里，元组也称为行。</p>
+<p><strong>码</strong> ：码就是能唯一标识实体的属性，对应表中的列。</p>
+<p><strong>候选码</strong> ： 若关系中的某一属性或属性组的值能唯一的标识一个元组，而其任何、子集都不能再标识，则称该属性组为候选码。例如：在学生实体中，“学号”是能唯一的区分学生实体的，同时又假设“姓名”、“班级”的属性组合足以区分学生实体，那么{学号}和{姓名，班级}都是候选码。</p>
+<p><strong>主码</strong> : 主码也叫主键。主码是从候选码中选出来的。 一个实体集中只能有一个主码，但可以有多个候选码。</p>
+<p><strong>外码</strong> : 外码也叫外键。如果一个关系中的一个属性是另外一个关系中的主码则这个属性为外码。</p>
+<p><strong>主属性</strong> ： 候选码中出现过的属性称为主属性。比如关系 工人（工号，身份证号，姓名，性别，部门）. 显然工号和身份证号都能够唯一标示这个关系，所以都是候选码。工号、身份证号这两个属性就是主属性。如果主码是一个属性组，那么属性组中的属性都是主属性。</p>
+<p><strong>非主属性：</strong> 不包含在任何一个候选码中的属性称为非主属性。比如在关系——学生（学号，姓名，年龄，性别，班级）中，主码是“学号”，那么其他的“姓名”、“年龄”、“性别”、“班级”就都可以称为非主属性。</p>
+<h1 id="什么是-ER-图？"><a href="#什么是-ER-图？" class="headerlink" title="什么是 ER 图？"></a>什么是 ER 图？</h1><p>我们做一个项目的时候一定要试着画 ER 图来捋清数据库设计，这个也是面试官问你项目的时候经常会被问到的。</p>
+<p><strong>ER 图</strong> 全称是 Entity Relationship Diagram（实体联系图），提供了表示实体类型、属性和联系的方法。</p>
+<p>ER 图由下面 3 个要素组成：</p>
+<ul>
+<li><strong>实体</strong> ：通常是现实世界的业务对象，当然使用一些逻辑对象也可以。比如对于一个校园管理系统，会涉及学生、教师、课程、班级等等实体。在 ER 图中，实体使用矩形框表示。</li>
+<li><strong>属性</strong> ：即某个实体拥有的属性，属性用来描述组成实体的要素，对于产品设计来说可以理解为字段。在 ER 图中，属性使用椭圆形表示。</li>
+<li><strong>联系</strong> ：即实体与实体之间的关系，这个关系不仅有业务关联关系，还能通过数字表示实体之间的数量对照关系。例如，一个班级会有多个学生就是一种实体间的联系。</li>
+</ul>
+<p>下图是一个学生选课的 ER 图，每个学生可以选若干门课程，同一门课程也可以被若干人选择，所以它们之间的关系是多对多（M: N）。另外，还有其他两种实体之间的关系是：1 对 1（1:1）、1 对多（1: N）。</p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230416182424886.png" srcset="/img/loading.gif" lazyload alt="image-20230416182424886"></p>
+<h1 id="drop、delete-与-truncate-区别"><a href="#drop、delete-与-truncate-区别" class="headerlink" title="drop、delete 与 truncate 区别"></a>drop、delete 与 truncate 区别</h1><ul>
+<li><code>drop</code>(丢弃数据): <code>drop table 表名</code> ，直接将表都删除掉，在删除表的时候使用。-DDL</li>
+<li><code>truncate</code> (清空数据) : <code>truncate table 表名</code> ，只删除表中的数据，再插入数据的时候自增长 id 又从 1 开始，在清空表中数据的时候使用。-DDL</li>
+<li><code>delete</code>（删除数据） : <code>delete from 表名 where 列名=值</code>，删除某一行的数据，如果不加 <code>where</code> 子句和<code>truncate table 表名</code>作用类似。-DML</li>
+</ul>
+<p><code>truncate</code> 和不带 where&#96;&#96;子句的 <code>delete</code>、以及 <code>drop</code> 都会删除表内的数据，但是 **<code>truncate</code> 和 <code>delete</code> 只删除数据不删除表的结构(定义)，执行 <code>drop</code> 语句，此表的结构也会删除，也就是执行 <code>drop</code> 之后对应的表不复存在。</p>
+<h1 id="DML-语句和-DDL-语句区别："><a href="#DML-语句和-DDL-语句区别：" class="headerlink" title="DML 语句和 DDL 语句区别："></a><strong>DML 语句和 DDL 语句区别：</strong></h1><ul>
+<li>DML 是数据库操作语言（Data Manipulation Language）的缩写，是指对数据库中表记录的操作，主要包括表记录的插入、更新、删除和查询，是开发人员日常使用最频繁的操作。</li>
+<li>DDL （Data Definition Language）是数据定义语言的缩写，简单来说，就是对数据库内部的对象进行创建、删除、修改的操作语言。它和 DML 语言的最大区别是 DML 只是对表内部数据的操作，而不涉及到表的定义、结构的修改，更不会涉及到其他对象。DDL 语句更多的被数据库管理员（DBA）所使用，一般的开发人员很少使用。</li>
+</ul>
+<h1 id="数据库设计通常分为哪几步"><a href="#数据库设计通常分为哪几步" class="headerlink" title="数据库设计通常分为哪几步?"></a>数据库设计通常分为哪几步?</h1><p><strong>需求分析</strong> : 分析用户的需求，包括数据、功能和性能需求。</p>
+<p><strong>概念结构设计</strong> : 主要采用 E-R 模型进行设计，包括画 E-R 图。</p>
+<p><strong>逻辑结构设计</strong> : 通过将 E-R 图转换成表，实现从 E-R 模型到关系模型的转换。</p>
+<p><strong>物理结构设计</strong> : 主要是为所设计的数据库选择合适的存储结构和存取路径。</p>
+<p><strong>数据库实施</strong> : 包括编程、测试和试运行</p>
+<p><strong>数据库的运行和维护</strong> : 系统的运行与数据库的日常维护。</p>
 <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/257835.htm">https://www.jb51.net/article/257835.htm</a></p>
 <h2 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h2><p>索引是对数据库表中的一列或多列的值进行排序的一种数据结构，使用索引可以快速访问数据表中的特定信息。</p>
 <p><strong>索引是一种用于快速查询和检索数据的数据结构。常见的索引结构有: B 树， B+树和 Hash。</strong></p>
@@ -399,6 +439,25 @@
 <h2 id="数据库为什么使用B-树而不是B树"><a href="#数据库为什么使用B-树而不是B树" class="headerlink" title="数据库为什么使用B+树而不是B树"></a>数据库为什么使用B+树而不是B树</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908120042584.png" srcset="/img/loading.gif" lazyload alt="image-20220908120042584"></p>
 <h2 id="什么是聚簇索引，什么是非聚簇索引"><a href="#什么是聚簇索引，什么是非聚簇索引" class="headerlink" title="什么是聚簇索引，什么是非聚簇索引"></a>什么是聚簇索引，什么是非聚簇索引</h2><p><strong>聚簇索引：</strong>将数据和索引放到一起存储，索引结构的叶子节点保留了数据行。</p>
 <p><strong>非聚簇索引</strong>：将数据和索引分开存储，索引叶子节点存储的是指向数据行的地址。（叶子节点存储的是主键）</p>
+<p><strong>（1）聚簇索引的优缺点</strong></p>
+<p><strong>优点</strong> ：</p>
+<ul>
+<li><strong>查询速度非常快</strong> ：聚簇索引的查询速度非常的快，因为整个 B+树本身就是一颗多叉平衡树，叶子节点也都是有序的，定位到索引的节点，就相当于定位到了数据。相比于非聚簇索引， 聚簇索引少了一次读取数据的 IO 操作。</li>
+<li><strong>对排序查找和范围查找优化</strong> ：聚簇索引对于主键的排序查找和范围查找速度非常快。</li>
+</ul>
+<p><strong>缺点</strong> ：</p>
+<ul>
+<li><strong>依赖于有序的数据</strong> ：因为 B+树是多路平衡树，如果索引的数据不是有序的，那么就需要在插入时排序，如果数据是整型还好，否则类似于字符串或 UUID 这种又长又难比较的数据，插入或查找的速度肯定比较慢。</li>
+<li><strong>更新代价大</strong> ： 如果对索引列的数据被修改时，那么对应的索引也将会被修改，而且聚簇索引的叶子节点还存放着数据，修改代价肯定是较大的，所以对于主键索引来说，主键一般都是不可被修改的。</li>
+</ul>
+<p><strong>（2）非聚簇索引的优缺点</strong></p>
+<p><strong>优点</strong> ：</p>
+<p>更新代价比聚簇索引要小 。非聚簇索引的更新代价就没有聚簇索引那么大了，非聚簇索引的叶子节点是不存放数据的</p>
+<p><strong>缺点</strong> ：</p>
+<ul>
+<li><strong>依赖于有序的数据</strong> ：跟聚簇索引一样，非聚簇索引也依赖于有序的数据</li>
+<li><strong>可能会二次查询(回表)</strong> ：这应该是非聚簇索引最大的缺点了。 当查到索引对应的指针或主键后，可能还需要根据指针或主键再到数据文件或表中查询。</li>
+</ul>
 <p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309560646.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong>也就是说通过非聚簇索引找到主键，再通过聚簇索引找到主键对应的数据。</strong></p>
 <p><strong>当我们执行如下的SQL语句时，具体的查找过程是什么样子的。</strong></p>
@@ -751,7 +810,7 @@
 <li>在rr（可重复读）里面，有mvcc，有锁，有记录锁，有间隙锁，可以解决幻读问题</li>
 <li>在serializable（串行化），只有锁，没有mvcc</li>
 </ul>
-<h1 id="mysql中explain"><a href="#mysql中explain" class="headerlink" title="mysql中explain"></a>mysql中explain</h1><p><strong>返回执行计划的信息</strong></p>
+<h1 id="Mysql中explain"><a href="#Mysql中explain" class="headerlink" title="Mysql中explain"></a>Mysql中explain</h1><p><strong>返回执行计划的信息</strong></p>
 <blockquote>
 <p>select语句前面加explain关键字，执行mysql就会返回执行计划的信息，而不是执行mysql。</p>
 </blockquote>

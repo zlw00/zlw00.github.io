@@ -16,18 +16,18 @@
   <meta name="author" content="zlw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Spring什么是Spring Bean简单来说，Bean 代指的就是那些被 IoC 容器所管理的对象。 我们需要告诉 IoC 容器帮助我们管理哪些对象，这个是通过配置元数据来定义的。配置元数据可以是 XML 文件、注解或者 Java 配置类。 将一个类声明为Bean的注解有哪些@Component ：通用的注解，可标注任意类为 Spring 组件。如果一个 Bean 不知道属于哪个层，可以使用@">
+    <meta name="description" content="Spring、SpringMVC和SpringBoot的关系（1）Spring：是一个开源的java框架，核心是控制反转和面向切面， （2）SpringMVC：是Spring框架基础上的一个MVC框架，一种基于 MVC（模型-视图-控制器）架构的 Web 应用程序开发方式。主要处理Web开发的路径映射和视图的渲染 （3）Springboot：是为了简化Spring配置的快速开发整合包，简化了Spr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试题-Spring">
 <meta property="og:url" content="http://example.com/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/index.html">
 <meta property="og:site_name" content="zlw">
-<meta property="og:description" content="Spring什么是Spring Bean简单来说，Bean 代指的就是那些被 IoC 容器所管理的对象。 我们需要告诉 IoC 容器帮助我们管理哪些对象，这个是通过配置元数据来定义的。配置元数据可以是 XML 文件、注解或者 Java 配置类。 将一个类声明为Bean的注解有哪些@Component ：通用的注解，可标注任意类为 Spring 组件。如果一个 Bean 不知道属于哪个层，可以使用@">
+<meta property="og:description" content="Spring、SpringMVC和SpringBoot的关系（1）Spring：是一个开源的java框架，核心是控制反转和面向切面， （2）SpringMVC：是Spring框架基础上的一个MVC框架，一种基于 MVC（模型-视图-控制器）架构的 Web 应用程序开发方式。主要处理Web开发的路径映射和视图的渲染 （3）Springboot：是为了简化Spring配置的快速开发整合包，简化了Spr">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/image-20221207213045946.png">
 <meta property="og:image" content="http://example.com/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/20201015162555853.png">
 <meta property="og:image" content="http://example.com/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/20201015163850335.png">
 <meta property="article:published_time" content="2022-11-28T13:40:29.000Z">
-<meta property="article:modified_time" content="2023-03-25T04:50:31.172Z">
+<meta property="article:modified_time" content="2023-04-16T12:39:51.694Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/image-20221207213045946.png">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.6k 字
+          12k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          55 分钟
+          99 分钟
         
       </span>
     
@@ -281,7 +281,11 @@
             
             <div class="markdown-body">
               
-              <h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="什么是Spring-Bean"><a href="#什么是Spring-Bean" class="headerlink" title="什么是Spring Bean"></a>什么是Spring Bean</h2><p>简单来说，Bean 代指的就是那些被 IoC 容器所管理的对象。</p>
+              <h1 id="Spring、SpringMVC和SpringBoot的关系"><a href="#Spring、SpringMVC和SpringBoot的关系" class="headerlink" title="Spring、SpringMVC和SpringBoot的关系"></a>Spring、SpringMVC和SpringBoot的关系</h1><p><strong>（1）Spring：</strong>是一个开源的java框架，核心是控制反转和面向切面，</p>
+<p><strong>（2）SpringMVC：</strong>是Spring框架基础上的一个MVC框架，一种基于 MVC（模型-视图-控制器）架构的 Web 应用程序开发方式。主要处理Web开发的路径映射和视图的渲染</p>
+<p><strong>（3）Springboot：</strong>是为了简化Spring配置的快速开发整合包，简化了Spring的搭建和开发，Spring Boot 可以帮助开发人员快速搭建 Web 应用程序、批处理应用程序、集成测试应用程序等等。它集成了常用的第三方库和框架，并提供了自己的自动化配置和启动器，使得应用程序的搭建和开发更加快速、简单和方便。</p>
+<p>简单来说，Spring 提供了一个全面的编程和配置模型，Spring MVC 提供了 Web 应用程序开发的框架，而 Spring Boot 则是在 Spring MVC 的基础上进一步简化了应用程序的开发。因此，它们都是 Spring Framework 的不同模块，可以灵活地根据需要进行选择和使用。</p>
+<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="什么是Spring-Bean"><a href="#什么是Spring-Bean" class="headerlink" title="什么是Spring Bean"></a>什么是Spring Bean</h2><p>简单来说，Bean 代指的就是那些被 IoC 容器所管理的对象。</p>
 <p>我们需要告诉 IoC 容器帮助我们管理哪些对象，这个是通过配置元数据来定义的。配置元数据可以是 XML 文件、注解或者 Java 配置类。</p>
 <h2 id="将一个类声明为Bean的注解有哪些"><a href="#将一个类声明为Bean的注解有哪些" class="headerlink" title="将一个类声明为Bean的注解有哪些"></a>将一个类声明为Bean的注解有哪些</h2><p><code>@Component</code> ：通用的注解，可标注任意类为 <code>Spring</code> 组件。如果一个 Bean 不知道属于哪个层，可以使用<code>@Component</code> 注解标注。</p>
 <p><code>@Repository</code> : 对应持久层即 Dao 层，主要用于数据库相关操作。</p>
@@ -320,11 +324,12 @@
 <li><code>@Component</code>通常是通过类路径扫描来自动装配到 Spring 容器中，<code>@Bean</code> 注解通常是我们在标有该注解的方法中定义产生这个 bean,<code>@Bean</code>告诉了 Spring 这是某个类的实例，当我需要用它的时候还给我。</li>
 </ul>
 <h2 id="注入bean的注解有哪些"><a href="#注入bean的注解有哪些" class="headerlink" title="注入bean的注解有哪些"></a>注入bean的注解有哪些</h2><p>Spring 内置的 <code>@Autowired</code> 以及 JDK 内置的 <code>@Resource</code> 和 <code>@Inject</code> 都可以用于注入 Bean。</p>
-<h2 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h2><p>（1）通过构造器创建 bean 实例（无参数构造）</p>
-<p>（2）为 bean 的属性设置值和对其他 bean 引用（调用 set 方法）</p>
-<p>（3）调用 bean 的初始化的方法（需要进行配置初始化的方法）</p>
-<p>（4）bean 可以使用了（对象获取到了）</p>
-<p>（5）当容器关闭时候，调用 bean 的销毁的方法（需要进行配置销毁的方法）</p>
+<h2 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h2><p><strong>（1）实例化</strong>：在容器启动时，Spring 会根据配置文件或注解等方式实例化 Bean 对象。</p>
+<p><strong>（2）属性赋值：</strong>在 Bean 对象实例化后，Spring 会将配置文件或注解中配置的属性值注入到 Bean 对象中</p>
+<p><strong>（3）自定义初始化方法：</strong>如果 Bean 类实现了 InitializingBean 接口，或在配置文件或注解中通过 init-method 属性配置了初始化方法，Spring 会在属性赋值完成后调用该方法进行自定义初始化</p>
+<p><strong>（4）Bean 可用：</strong>Bean 对象初始化完成后，可以被容器使用</p>
+<p><strong>（5）自定义销毁方法</strong>：如果 Bean 类实现了 DisposableBean 接口，或在配置文件或注解中通过 destroy-method 属性配置了销毁方法，当容器关闭时，Spring 会调用该方法进行自定义销毁</p>
+<p><strong>（6）销毁：</strong>容器关闭时，会销毁 Bean 对象</p>
 <h2 id="Spring-事务中哪几种事务传播行为"><a href="#Spring-事务中哪几种事务传播行为" class="headerlink" title="Spring 事务中哪几种事务传播行为?"></a>Spring 事务中哪几种事务传播行为?</h2><p><strong>事务传播行为是为了解决业务层方法之间互相调用的事务问题</strong>。</p>
 <p>当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。例如：方法可能继续在现有事务中运行，也可能开启一个新事务，并在自己的事务中运行。</p>
 <p><strong>1.<code>TransactionDefinition.PROPAGATION_REQUIRED</code></strong></p>
@@ -335,6 +340,13 @@
 <p>如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；如果当前没有事务，则该取值等价于<code>TransactionDefinition.PROPAGATION_REQUIRED</code>。</p>
 <p><strong>4.<code>TransactionDefinition.PROPAGATION_MANDATORY</code></strong></p>
 <p>如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。（mandatory：强制性），这个使用的很少。</p>
+<h2 id="Spring框架中用到了哪些设计模式"><a href="#Spring框架中用到了哪些设计模式" class="headerlink" title="Spring框架中用到了哪些设计模式"></a>Spring框架中用到了哪些设计模式</h2><p><strong>工厂设计模式</strong> : Spring 使用工厂模式通过 <code>BeanFactory</code>、<code>ApplicationContext</code> 创建 bean 对象。</p>
+<p><strong>代理设计模式</strong> : Spring AOP 功能的实现。</p>
+<p><strong>单例设计模式</strong> : Spring 中的 Bean 默认都是单例的。</p>
+<p><strong>模板方法模式</strong> : Spring 中 <code>jdbcTemplate</code>、<code>hibernateTemplate</code> 等以 Template 结尾的对数据库操作的类，它们就使用到了模板模式。</p>
+<p><strong>包装器设计模式</strong> : 我们的项目需要连接多个数据库，而且不同的客户在每次访问中根据需要会去访问不同的数据库。这种模式让我们可以根据客户的需求能够动态切换不同的数据源。</p>
+<p><strong>观察者模式:</strong> Spring 事件驱动模型就是观察者模式很经典的一个应用。</p>
+<p><strong>适配器模式</strong> : Spring AOP 的增强或通知(Advice)使用到了适配器模式、spring MVC 中也是用到了适配器模式适配<code>Controller</code></p>
 <h1 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h1><h2 id="SpringMVC的核心组件"><a href="#SpringMVC的核心组件" class="headerlink" title="SpringMVC的核心组件"></a>SpringMVC的核心组件</h2><p>记住下面这些核心组件，也就记住了工作原理</p>
 <ul>
 <li><code>DispatcherServlet</code>：<strong>核心中央处理器</strong>，负责接收请求、分发，并给予客户端响应。</li>
@@ -387,7 +399,10 @@
 <p>（3）starter会把所有jar包依赖的全部导入进来，避免开发者自己去引入依赖带来麻烦</p>
 <p>（4）只需要在application.properties文件里面进行维护就行了，比如Redis这个starter，只需要在application.properties文件里面添加redis的连接信息就可以直接使用了.</p>
 <p>（5）starter中集成了自动装配的机制，也就是说程序中依赖对应的starter组件以后，这个组件会自动集成到Spring中，</p>
-<h2 id="SpringBoot自动装配原理"><a href="#SpringBoot自动装配原理" class="headerlink" title="SpringBoot自动装配原理"></a>SpringBoot自动装配原理</h2><p>使用@<strong>EnableAutoConfiguration</strong>注解来实现的，将所有符合条件的配置都加载到当前的SpringBoot创建。</p>
+<h2 id="SpringBoot自动装配原理"><a href="#SpringBoot自动装配原理" class="headerlink" title="SpringBoot自动装配原理"></a>SpringBoot自动装配原理</h2><p>SpringBoot 定义了一套接口规范，这套规范规定：SpringBoot 在启动时会扫描外部引用 jar 包中的<code>META-INF/spring.factories</code>文件，将文件中配置的类型信息加载到 Spring 容器（此处涉及到 JVM 类加载机制与 Spring 的容器知识），并执行类中定义的各种操作。对于外部 jar 来说，只需要按照 SpringBoot 定义的标准，就能将自己的功能装置进 SpringBoot。</p>
+<p>使用@<strong>EnableAutoConfiguration</strong>注解来实现的，将所有符合条件的配置都加载到当前的SpringBoot创建。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Target(&#123;ElementType.TYPE&#125;)</span><br><span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="hljs-meta">@Documented</span><br><span class="hljs-meta">@Inherited</span><br><span class="hljs-meta">@AutoConfigurationPackage</span> <span class="hljs-comment">//作用：将main包下的所有组件注册到容器中</span><br><span class="hljs-meta">@Import(&#123;AutoConfigurationImportSelector.class&#125;)</span> <span class="hljs-comment">//加载自动装配类 xxxAutoconfiguration</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> EnableAutoConfiguration &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">ENABLED_OVERRIDE_PROPERTY</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;spring.boot.enableautoconfiguration&quot;</span>;<br><br>    Class&lt;?&gt;[] exclude() <span class="hljs-keyword">default</span> &#123;&#125;;<br><br>    String[] excludeName() <span class="hljs-keyword">default</span> &#123;&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>在EnableAutoConfiguration 这个注解中发现有下面这个注解：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Import(&#123;AutoConfigurationImportSelector.class&#125;)</span><br></code></pre></td></tr></table></figure>
 
@@ -409,6 +424,17 @@
 </ol>
 <h1 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h1><h2 id="mybatis中-和-的区别"><a href="#mybatis中-和-的区别" class="headerlink" title="mybatis中#和$的区别"></a>mybatis中#和$的区别</h2><p><strong>#传入的参数在SQL中显示为字符串，$传入的参数在SqL中直接显示为传入的值</strong>.</p>
 <p><strong>#方式能够很大程度防止sql注入，$方式无法防止Sql注入；</strong></p>
+<h2 id="Mybatis怎么防止sql注入"><a href="#Mybatis怎么防止sql注入" class="headerlink" title="Mybatis怎么防止sql注入"></a>Mybatis怎么防止sql注入</h2><p><strong>（1）适用预编译语句：</strong>使用预编译语句可以防止 SQL 注入。在 Mybatis 中，可以使用 <code>#&#123;&#125;</code> 占位符来代替用户输入的参数。例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;getUserByName&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;User&quot;</span>&gt;</span><br>    SELECT * FROM user WHERE name = #&#123;name&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>（2）适用参数类型</strong></p>
+<p>使用参数类型可以限制用户输入的参数类型，从而防止 SQL 注入。在 Mybatis 中，可以使用 <code>parameterType</code> 属性来指定参数类型。例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;getUserById&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;User&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;java.lang.Long&quot;</span>&gt;</span><br>    SELECT * FROM user WHERE id = #&#123;id&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>（3）使用Mybatis内置的动态SQL</strong></p>
+<p>Mybatis 提供了内置的动态 SQL 功能，可以根据条件动态生成 SQL 语句，从而防止 SQL 注入。例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;getUserByCondition&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;User&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;Map&quot;</span>&gt;</span><br>    SELECT * FROM user<br>    <span class="hljs-tag">&lt;<span class="hljs-name">where</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;name != null and name != &#x27;&#x27;&quot;</span>&gt;</span><br>            AND name = #&#123;name&#125;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;age != null&quot;</span>&gt;</span><br>            AND age = #&#123;age&#125;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">where</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <h2 id="Mybatis与mysql是怎么连接的"><a href="#Mybatis与mysql是怎么连接的" class="headerlink" title="Mybatis与mysql是怎么连接的"></a>Mybatis与mysql是怎么连接的</h2><p>（1）<strong>首先创建maven工程，引入依赖，mybatis和mysql-connector-java。</strong></p>
 <p>（2）<strong>创建mybatis的核心配置文件，</strong>习惯上命名为：<strong>mybatis-config.xml</strong>，主要用于连接数据库的环境以及mybatis的全局配置（driver、url、username、password等等）</p>
 <p>（3）<strong>创建实体类</strong>，User</p>
@@ -422,6 +448,56 @@
 <li>mapper接口的全类名和映射文件中的namespace保持一致</li>
 <li>mapper接口中方法的方法名与映射文件中编写SQL标签的id属性保持一致</li>
 </ul>
+<h2 id="Mybatis和原生JDBC的区别"><a href="#Mybatis和原生JDBC的区别" class="headerlink" title="Mybatis和原生JDBC的区别"></a>Mybatis和原生JDBC的区别</h2><p><strong>传统的JDBC操作：</strong></p>
+<ul>
+<li>连接数据库，注册驱动和数据库信息</li>
+<li>操作Connection，打开Sataement对象</li>
+<li>通过Statement执行SQL，返回结果到ResultSet对象</li>
+<li>适用ResultSet读取数据，然后通过代码转化为具体的POJO对象</li>
+<li>关闭数据库相关资源</li>
+</ul>
+<p><strong>jdbc存在弊端：</strong></p>
+<blockquote>
+<p>工作量相对较大，每次都要去创建，关闭，获取<br>JDBC编程可能产生的异常进行捕捉处理并正确关闭资源</p>
+</blockquote>
+<p><strong>MyBatis是一个支持普通SQL查询，存储过程和高级映射的持久层的框架</strong></p>
+<p>MyBatis是对JDBC的封装，它可以基于xml或者注解的方式进行配置和原始映射，消除了几乎所有的jdbc代码和参数的手动设置和对结果集的封装。<br> MyBatis可以使用简单的XML配置，将接口和Java的POJO（普通的Java对象）映射成数据库中的记录。</p>
+<p><strong>相对于JDBC,MyBatis具有以下优点：</strong></p>
+<blockquote>
+<p>1.MyBatis通过dataSource实现数据库连接池的配置，实现了隔离解耦，统一从dataSource中获取数据库连接，具体实现通过让用户配置应对变化。<br> 2.MyBatis将所有的SQL统一放在配置文件（XXXMapper.xml）中统一管理，不需要再次编译，而传统的jdbc的SQL语句分布在代码中，修改之后需要再次编译。可读性差，不便于维护。<br> 3.MyBatis还可以通过标签动态的生成SQL语句。<br> 4.MyBatis可以直接将结果映射为自己需要的类型，如：Javabean，map，list等。而在使用jdbc时，我们要从返回的结果集ResultSet中获取结果封装为我们需要的类型中。</p>
+</blockquote>
+<h2 id="MybatisPlus怎么与数据库连接的"><a href="#MybatisPlus怎么与数据库连接的" class="headerlink" title="MybatisPlus怎么与数据库连接的"></a>MybatisPlus怎么与数据库连接的</h2><hr>
+<ol>
+<li><strong>配置 Maven 依赖</strong></li>
+</ol>
+<p>在 Maven 项目的 pom.xml 文件中，添加 Mybatis-Plus 和 MySQL 连接驱动的依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- Mybatis-Plus --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.baomidou<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.4.3.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- MySQL 连接驱动 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>mysql<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mysql-connector-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>8.0.26<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>配置数据源</strong></li>
+</ol>
+<p>在 Spring Boot 项目中，可以在 <code>application.properties</code> 或 <code>application.yml</code> 文件中配置 MySQL 数据库的连接信息，例如：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># MySQL 数据库配置</span><br><span class="hljs-attr">spring.datasource.driver-class-name</span>=<span class="hljs-string">com.mysql.cj.jdbc.Driver</span><br><span class="hljs-attr">spring.datasource.url</span>=<span class="hljs-string">jdbc:mysql://localhost:3306/mybatisplus?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</span><br><span class="hljs-attr">spring.datasource.username</span>=<span class="hljs-string">root</span><br><span class="hljs-attr">spring.datasource.password</span>=<span class="hljs-string">123456</span><br><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>配置 Mybatis-Plus</strong></li>
+</ol>
+<p>在 Spring Boot 项目中，可以使用 <code>MybatisPlusAutoConfiguration</code> 类自动配置 Mybatis-Plus。在 <code>application.properties</code> 或 <code>application.yml</code> 文件中添加以下配置即可：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># Mybatis-Plus 配置</span><br><span class="hljs-attr">mybatis-plus.configuration.map-underscore-to-camel-case</span>=<span class="hljs-string">true</span><br><br></code></pre></td></tr></table></figure>
+
+<p>其中，<code>map-underscore-to-camel-case</code> 配置项可以使 Mybatis-Plus 自动将下划线命名的数据库字段转换为驼峰命名的 Java 对象属性。</p>
+<ol start="4">
+<li><strong>创建实体类和 Mapper</strong></li>
+</ol>
+<p>使用 Mybatis-Plus 的关键是创建实体类和 Mapper 接口。实体类需要使用 <code>@TableName</code> 注解指定对应的数据库表名，Mapper 接口需要继承 <code>BaseMapper</code> 接口。例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@TableName(&quot;user&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> &#123;<br>    <span class="hljs-meta">@TableId(type = IdType.AUTO)</span><br>    <span class="hljs-keyword">private</span> Long id;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> Integer age;<br>    <span class="hljs-comment">// 省略 getter 和 setter 方法</span><br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">UserMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseMapper</span>&lt;User&gt; &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><strong>使用 Mybatis-Plus 进行 CRUD 操作</strong></li>
+</ol>
+<p>创建好实体类和 Mapper 接口后，就可以使用 Mybatis-Plus 进行 CRUD 操作了。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserService</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> UserMapper userMapper;<br><br>    <span class="hljs-keyword">public</span> User <span class="hljs-title function_">getUserById</span><span class="hljs-params">(Long id)</span> &#123;<br>        <span class="hljs-keyword">return</span> userMapper.selectById(id);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">saveUser</span><span class="hljs-params">(User user)</span> &#123;<br>        <span class="hljs-keyword">return</span> userMapper.insert(user) &gt; <span class="hljs-number">0</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">updateUser</span><span class="hljs-params">(User user)</span> &#123;<br>        <span class="hljs-keyword">return</span> userMapper.updateById(user) &gt; <span class="hljs-number">0</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">deleteUser</span><span class="hljs-params">(Long id)</span> &#123;<br>        <span class="hljs-keyword">return</span> userMapper.deleteById(id) &gt; <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
 
               
             </div>

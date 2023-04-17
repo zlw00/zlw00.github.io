@@ -221,6 +221,318 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/08/18/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%94%A8%E6%88%B7%E4%B8%8B%E5%8D%95/" target="_self">
+          瑞吉外卖-移动端用户下单
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2022/08/18/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%94%A8%E6%88%B7%E4%B8%8B%E5%8D%95/" target="_self">
+        <div>
+          
+          用户下单需求分析 代码的交互过程 准备工作 去支付发送的请求：   流程：  获取当前用户ID 查询当前用户的购物车数据 像订单插入数据，一条数据 像订单明细表插入数据，多条数据（订单里面可能有多条商品） 清空购物车数据 因为要操作两个表，因此要加入事务注解  OrderServiceImpl.java的代码为： 123456789101112131415161718192021222324252
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-18 10:01" pubdate>
+              2022-08-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/" class="category-chain-item">SpringBoot项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/" class="category-chain-item">瑞吉外卖</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/18/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-%E7%A7%BB%E5%8A%A8%E7%AB%AF/" target="_self">
+          瑞吉外卖-移动端验证码和菜品展示
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2022/08/18/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-%E7%A7%BB%E5%8A%A8%E7%AB%AF/" target="_self">
+        <div>
+          
+          移动端短信发送在阿里云申请 代码实现为： 添加以下两个依赖： 1234567891011&lt;dependency&gt;          &lt;groupId&gt;com.aliyun&lt;&#x2F;groupId&gt;          &lt;artifactId&gt;aliyun-java-sdk-core&lt;&#x2F;artifactId&gt;          &lt;versio
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-18 09:58" pubdate>
+              2022-08-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/" class="category-chain-item">SpringBoot项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/" class="category-chain-item">瑞吉外卖</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/17/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day05/" target="_self">
+          瑞吉外卖-移动端购物车功能
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2022/08/17/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day05/" target="_self">
+        <div>
+          
+          购物车需求分析 交互过程 代码开发-准备工作 添加购物车流程：  根据前端发送过来的json数据可以发现，用户id并没有传送过来，所以先获取用户的id，并设置userid 查询添加购物车的数据是菜品还是套餐 判断购物车中是否已经存在目前要加入的菜品或菜单 如果已经存在，则在购物车中，在原来商品的基础上，数量+1 如果不存在，则保存到购物车数据库中。    请求方式：  代码为： 123456789
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-17 14:09" pubdate>
+              2022-08-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/" class="category-chain-item">SpringBoot项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/" class="category-chain-item">瑞吉外卖</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/16/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E7%BB%93%E7%82%B9/" target="_self">
+          删除链表的倒数第N个结点
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2022/08/16/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E7%BB%93%E7%82%B9/" target="_self">
+        <div>
+          
+          leetCode-19（删除链表的倒数第N个结点）给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。 示例 1：  12输入：head &#x3D; [1,2,3,4,5], n &#x3D; 2输出：[1,2,3,5]  示例 2： 12输入：head &#x3D; [1], n &#x3D; 1输出：[]  示例 3： 12输入：head &#x3D; [1,2], n &#x3D; 1输出：[1]  解法一，自己瞎写123456789
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-16 16:58" pubdate>
+              2022-08-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/leetCode/" class="category-chain-item">leetCode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/leetCode/%E4%B8%AD%E7%AD%89%E9%A2%98/" class="category-chain-item">中等题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/16/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day04/" target="_self">
+          瑞吉外卖-套餐管理、短信、验证码
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2022/08/16/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day04/" target="_self">
+        <div>
+          
+          套餐管理新增套餐 代码准备：  代码的交互过程：  步骤一，已经在新增菜品中实现完成。 步骤二： 添加菜品时，所发送的请求：  DishController.java 1234567891011121314151617&#x2F;**     * 添加套餐时，显示套餐中所对应的菜品     *&#x2F;    @GetMapping(&quot;&#x2F;list&quot;)    public R&lt;List&amp;lt
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-16 09:44" pubdate>
+              2022-08-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/" class="category-chain-item">SpringBoot项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/" class="category-chain-item">瑞吉外卖</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/08/12/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/" target="_self">
           电话号码的字母组合
         </a>
@@ -536,304 +848,6 @@
               <a href="/tags/office/">#office</a>
             
           </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/07/26/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" target="_self">
-          基础学习
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2022/07/26/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" target="_self">
-        <div>
-          
-          TCP&#x2F;IP协议栈OSI模型应用层—表示层–会话层–传输层–网络层–数据链路层–物理层 TCP&#x2F;IP模型应用层–传输层–网路层–数据链路层–物理层  应用层：（HTTP、Telnet、FTP、TFTP、Ping）:主要用来提供应用程序网络接口 传输层：（TCP&#x2F;UDP）：建立端到端的连接 网络层：（IP）寻址和路由选择 数据链路层：（Ethernet）：物理介质访问
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-07-26 14:06" pubdate>
-              2022-07-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%A0%A1%E6%8B%9B/" class="category-chain-item">校招</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A0%A1%E6%8B%9B/%E5%9B%BD%E4%BC%81/" class="category-chain-item">国企</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A0%A1%E6%8B%9B/%E5%9B%BD%E4%BC%81/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8/" class="category-chain-item">中国移动</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/07/22/%E6%96%B9%E6%B3%95/" target="_self">
-          ThreadLocal的使用
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2022/07/22/%E6%96%B9%E6%B3%95/" target="_self">
-        <div>
-          
-          ThreadLocal（day02中）在新增过程中，需要设置以下四个字段，在更新的过程中需要设置后两个字段，每次新增（新增员工，菜单等等）时就需要设置。而这些代码属于重复部分，可以拿出来，不用反复重写。在mybatisplus中提供了一种方法，公共字段自动填充功能  ​	元数据对象处理的代码为： 123456789101112131415161718192021222324252627282930
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-07-22 13:50" pubdate>
-              2022-07-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/" class="category-chain-item">SpringBoot项目</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/" class="category-chain-item">瑞吉外卖</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/%E6%96%B9%E6%B3%95/" class="category-chain-item">方法</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/07/22/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day02/" target="_self">
-          瑞吉外卖-分类管理
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2022/07/22/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-day02/" target="_self">
-        <div>
-          
-          公共字段填充在新增过程中，需要设置以下四个字段，在更新的过程中需要设置后两个字段，每次新增（新增员工，菜单等等）时就需要设置。  而这些代码属于重复部分，可以拿出来，不用反复重写。 1234567891011&#x2F;&#x2F;设置创建时间，在实体类中可以看到时间的类型为：LocalDateTime        employee.setCreateTime(LocalDateTime.now());
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-07-22 12:36" pubdate>
-              2022-07-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/" class="category-chain-item">SpringBoot项目</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/SpringBoot%E9%A1%B9%E7%9B%AE/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/" class="category-chain-item">瑞吉外卖</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/07/21/redis%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_self">
-          redis面试题
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2022/07/21/redis%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_self">
-        <div>
-          
-          
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-07-21 19:40" pubdate>
-              2022-07-21
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/07/15/%E9%A2%98/" target="_self">
-          题
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2022/07/15/%E9%A2%98/" target="_self">
-        <div>
-          
-          自我介绍面试官，上午好，我叫张露文，来自辽宁鞍山，现就读于东北大学软件学院，研究生二年级，下面通过两个方面来介绍一下自己，学习方面，在研一的时候获取了学习奖学金，并发表了一篇论文，考虑防护和隔离的传染病传播建模与分析，第二篇论文正在投稿中，性格方面，如果要用三个词来形容的话，那就是自信，乐观，有趣，并且向往着稳定的生活。中国移动是我最佳的选择，是值得信赖的大公司，具有广阔的发展平台，如果可以进入中
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-07-15 18:59" pubdate>
-              2022-07-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%A0%A1%E6%8B%9B/" class="category-chain-item">校招</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A0%A1%E6%8B%9B/%E5%9B%BD%E4%BC%81/" class="category-chain-item">国企</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A0%A1%E6%8B%9B/%E5%9B%BD%E4%BC%81/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8/" class="category-chain-item">中国移动</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
         
       </div>
     </article>
