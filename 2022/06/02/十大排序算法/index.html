@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://example.com/2022/06/02/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/image-20220603151000661.png">
 <meta property="og:image" content="http://example.com/2022/06/02/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/image-20220603151011686.png">
 <meta property="article:published_time" content="2022-06-02T08:33:46.000Z">
-<meta property="article:modified_time" content="2022-12-12T03:15:00.541Z">
+<meta property="article:modified_time" content="2023-04-18T05:43:34.909Z">
 <meta property="article:author" content="zlw">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="排序">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.5k 字
+          9.9k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          79 分钟
+          83 分钟
         
       </span>
     
@@ -362,6 +362,13 @@
 <h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><p><strong>与计数排序和基数排序都是同等类型，但是它处理的问题更加广泛，可以处理非整数数字的排序。</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 桶排序</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> arr</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">bucketSort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[])</span>&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> arr.length;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> arr[<span class="hljs-number">0</span>];<br>    <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> arr[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;i&lt;n;i++)&#123;<br>        <span class="hljs-keyword">if</span> (max&lt;arr[i])&#123;<br>            max = arr[i];<br>        &#125;<br>        <span class="hljs-keyword">if</span> (min&gt;arr[i])&#123;<br>            min = arr[i];<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">//计算桶的数量</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">range</span> <span class="hljs-operator">=</span> (max-min+<span class="hljs-number">1</span>)/n;<br>    List&lt;List&lt;Integer&gt;&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i&lt;range;i++)&#123;<br>        list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;());<br>    &#125;<br>    <span class="hljs-comment">//将每个元素放入桶中</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">l</span> <span class="hljs-operator">=</span> (arr[i]-min+<span class="hljs-number">1</span>)/range;<br>        list.get(l).add(arr[i]);<br>    &#125;<br>    <span class="hljs-comment">//对每个桶进行排序</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i&lt;range;i++)&#123;<br>        Collections.sort(list.get(i));<br>    &#125;<br>    <span class="hljs-comment">// 将桶中的元素赋值到原序列</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i&lt;range;i++)&#123;<br>        <span class="hljs-keyword">if</span> (list.get(i)!=<span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; list.get(i).size(); j++) &#123;<br>                arr[index++] = list.get(i).get(j);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<h1 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h1><p><strong>冒泡：</strong>适用的情景为数据量量不大，对稳定性有要求，且<strong>数据基本有序</strong>的情况下</p>
+<p><strong>选择：</strong>当数据量不大，且对稳定性没有要求的时候，适用于选择排序</p>
+<p><strong>插入：</strong>如果大部分数据距离它正确的位置很近或者近乎有序？例如银行的业务完成的时间。如果是这样的话，插入排序是更好的选择。</p>
+<p><strong>快速：</strong>由于快速排序的原理，常用于查找一组中前k大的数据<br><strong>堆：</strong>堆排序适合于数据量非常大的场合（百万数据）。（堆排序会将所有的数据建成一个堆，最大的数据在堆顶，然后将堆顶数据和序列的最后一个数据交换。接下来再次重建堆，交换数据，依次下去，就可以排序所有的数据。）</p>
+<p><strong>希尔：</strong>当数据量较小的时候适用</p>
+<p><strong>计数</strong>：计数排序需要占用大量空间，它仅适用于数据比较集中的情况。比如 [0100]，[1000019999] 这样的数据。</p>
+<p><strong>桶排序</strong>：桶排序(Bucket Sort)对要排序的数据要求较多。<br>1 要排序的数据需要很容易就能划分成 N 个桶，并且，桶与桶之间有着天然的大小顺序<br>2 数据在各个桶之间的分布最好比较均匀。否则可能出现，有些桶里的数据非常多，有些非常少，极端情况可能会被 划分到同一个桶中</p>
 <h1 id="排序算法的分类和复杂度"><a href="#排序算法的分类和复杂度" class="headerlink" title="排序算法的分类和复杂度"></a>排序算法的分类和复杂度</h1><p><img src="/2022/06/02/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/image-20220603151000661.png" srcset="/img/loading.gif" lazyload alt="image-20220603151000661"></p>
 <p><img src="/2022/06/02/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/image-20220603151011686.png" srcset="/img/loading.gif" lazyload alt="image-20220603151011686"></p>
 

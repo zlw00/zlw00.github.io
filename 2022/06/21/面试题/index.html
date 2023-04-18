@@ -50,7 +50,7 @@
 <meta property="og:image" content="http://example.com/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/other-bukfsdjavassmtjstd-be0964a8-856a-45c9-ab75-ce9505c2e237.png">
 <meta property="og:image" content="http://example.com/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221128161846036.png">
 <meta property="article:published_time" content="2022-06-21T15:37:40.000Z">
-<meta property="article:modified_time" content="2023-04-16T10:11:26.136Z">
+<meta property="article:modified_time" content="2023-04-18T05:01:07.724Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125202941749.png">
@@ -254,7 +254,7 @@
         
         
         
-          174 分钟
+          178 分钟
         
       </span>
     
@@ -492,6 +492,16 @@
 <li><strong><code>Exception</code></strong> :程序本身可以处理的异常，可以通过 <code>catch</code> 来进行捕获。<code>Exception</code> 又可以分为 Checked Exception (受检查异常，必须处理) 和 Unchecked Exception (不受检查异常，可以不处理)。</li>
 <li><strong><code>Error</code></strong> ：<code>Error</code> 属于程序无法处理的错误 ，我们没办法通过 <code>catch</code> 来进行捕获不建议通过<code>catch</code>捕获 。例如 Java 虚拟机运行错误（<code>Virtual MachineError</code>）、虚拟机内存不够错误(<code>OutOfMemoryError</code>)、类定义错误（<code>NoClassDefFoundError</code>）等 。这些异常发生时，Java 虚拟机（JVM）一般会选择线程终止。</li>
 </ul>
+<h1 id="Hash冲突的解决方法"><a href="#Hash冲突的解决方法" class="headerlink" title="Hash冲突的解决方法"></a>Hash冲突的解决方法</h1><p><strong>开放寻址法、链地址法（拉链法）、再哈希法、建立公共溢出区</strong>等方法。</p>
+<p><strong>（1）开放寻址法：</strong></p>
+<p>​		开放寻址法又叫做<strong>开放定址法</strong>、<strong>开地址法</strong>，从发生冲突的那个单元起，按照一定的次序，从哈希表中找到一个空闲的单元。然后把发生冲突的元素存入到该单元的一种方法。开放定址法需要的表长度要大于等于所需要存放的元素。</p>
+<p>​		开放定址法的<strong>缺点</strong>在于删除元素的时候不能真的删除，否则会引起查找错误，只能做一个特殊标记。只到有下个元素插入才能真正删除该元素。</p>
+<p><strong>（2）链地址法</strong></p>
+<p>​		链地址法（Separate Chaining）的思路是将哈希值相同的元素构成一个同义词的单向链表，并将单向链表的头指针存放在哈希表的第 i 个单元中，查找、插入和删除主要在同义词链表中进行。链地址法适用于经常进行插入和删除的情况。</p>
+<p><strong>（3）再哈希法</strong></p>
+<p>​		就是同时构造多个不同的哈希函数，当使用其中一个h哈希函数出现冲突后，再使用下一个哈希函数进行计算。直到冲突不再产生，这种方法不易产生聚集，但是增加了计算时间。</p>
+<p><strong>（4）建立公共溢出区域</strong></p>
+<p>​		将哈希表分为基本表和溢出表两部分，凡是和基本表发生冲突的元素，一律填入溢出表。</p>
 <h1 id="JAVA-IO流"><a href="#JAVA-IO流" class="headerlink" title="JAVA IO流"></a>JAVA IO流</h1><p><strong>IO 即 <code>Input/Output</code>，输入和输出。数据输入到计算机内存的过程即输入，反之输出到外部存储（比如数据库，文件，远程主机）的过程即输出。</strong>数据传输过程类似于水流，因此称为 IO 流。IO 流在 Java 中分为输入流和输出流，而根据数据的处理方式又分为字节流和字符流。</p>
 <p><strong>字符流和字节流的使用场景：</strong></p>
 <p>（1）字节流：主要用于处理图像、音频、视频、ppt等。它也可以处理文本文件</p>

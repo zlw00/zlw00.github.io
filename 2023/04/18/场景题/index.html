@@ -16,21 +16,21 @@
   <meta name="author" content="zlw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="对Linux的理解是一个开源的、免费的操作系统 linux的应用领域： （1）服务器领域：因此，在许多对安全性要求极高的关键领域，都可以找到Linux的身影。linux server的应用非常广泛，在电信、金融、政府、教育、银行、石油等领域都可以看到它的身影。许多软件公司也使用Linux作为代码测试和托管服务器。 （2）嵌入式Linux：因为任何人仍然可以获得和修改Linux内核，所以Linux广">
+    <meta name="description" content="设计一个秒杀系统秒杀系统主要是有三个特点高性能、高并发、高可用。 （1）秒杀页面的获取  动静分离。将页面的静态资源等部署到Nginx或者CDN（内容分发网路），这样可以加快秒杀页面获取。 静态资源合并获取。通过将多个请求合并为单个请求，一次获取多个静态资源，这样可以加快秒杀页面获取。 服务降级。秒杀页面做服务降级处理，将商品推荐列表、评论等做降级处理，少显示或者不显示。秒杀页面需要登录才能查看，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面试题-linux">
-<meta property="og:url" content="http://example.com/2023/04/16/%E9%9D%A2%E8%AF%95%E9%A2%98-linux/index.html">
+<meta property="og:title" content="场景题">
+<meta property="og:url" content="http://example.com/2023/04/18/%E5%9C%BA%E6%99%AF%E9%A2%98/index.html">
 <meta property="og:site_name" content="zlw">
-<meta property="og:description" content="对Linux的理解是一个开源的、免费的操作系统 linux的应用领域： （1）服务器领域：因此，在许多对安全性要求极高的关键领域，都可以找到Linux的身影。linux server的应用非常广泛，在电信、金融、政府、教育、银行、石油等领域都可以看到它的身影。许多软件公司也使用Linux作为代码测试和托管服务器。 （2）嵌入式Linux：因为任何人仍然可以获得和修改Linux内核，所以Linux广">
+<meta property="og:description" content="设计一个秒杀系统秒杀系统主要是有三个特点高性能、高并发、高可用。 （1）秒杀页面的获取  动静分离。将页面的静态资源等部署到Nginx或者CDN（内容分发网路），这样可以加快秒杀页面获取。 静态资源合并获取。通过将多个请求合并为单个请求，一次获取多个静态资源，这样可以加快秒杀页面获取。 服务降级。秒杀页面做服务降级处理，将商品推荐列表、评论等做降级处理，少显示或者不显示。秒杀页面需要登录才能查看，">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-04-16T11:21:52.000Z">
-<meta property="article:modified_time" content="2023-04-18T04:15:33.156Z">
+<meta property="article:published_time" content="2023-04-18T03:07:13.000Z">
+<meta property="article:modified_time" content="2023-04-18T05:34:21.517Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>面试题-linux - zlw</title>
+  <title>场景题 - zlw</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,7 +193,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="面试题-linux"></span>
+            <span id="subtitle" data-typed-text="场景题"></span>
           
         </div>
 
@@ -204,8 +204,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-16 19:21" pubdate>
-          2023年4月16日 晚上
+        <time datetime="2023-04-18 11:07" pubdate>
+          2023年4月18日 上午
         </time>
       </span>
     
@@ -216,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          376 字
+          3.2k 字
         
       </span>
     
@@ -227,7 +227,7 @@
         
         
         
-          4 分钟
+          27 分钟
         
       </span>
     
@@ -273,16 +273,113 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">面试题-linux</h1>
+            <h1 style="display: none">场景题</h1>
             
             <div class="markdown-body">
               
-              <h1 id="对Linux的理解"><a href="#对Linux的理解" class="headerlink" title="对Linux的理解"></a>对Linux的理解</h1><p>是一个开源的、免费的操作系统</p>
-<p><strong>linux的应用领域：</strong></p>
-<p><strong>（1）服务器领域：</strong>因此，在许多对安全性要求极高的关键领域，都可以找到Linux的身影。linux server的应用非常广泛，在电信、金融、政府、教育、银行、石油等领域都可以看到它的身影。许多软件公司也使用Linux作为代码测试和托管服务器。</p>
-<p><strong>（2）嵌入式Linux</strong>：因为任何人仍然可以获得和修改Linux内核，所以Linux广泛存在于一些对计算资源有严格要求的领域，例如路由器、交换机、自动售货机、手机、PDA以及各种家用电器。</p>
-<p><strong>（3）通用桌面操作系统</strong>：目前微软的Windows在桌面操作系统领域占据了主导地位，但是各种Linux桌面版本也有很大的生命力。经过这么多年的发展，基于linux的各类软件越来越丰富，已经能够在一定程度上取代Windows成为日常的桌面操作系统。</p>
-<h1 id="linux排查"><a href="#linux排查" class="headerlink" title="linux排查"></a>linux排查</h1>
+              <h1 id="设计一个秒杀系统"><a href="#设计一个秒杀系统" class="headerlink" title="设计一个秒杀系统"></a>设计一个秒杀系统</h1><p>秒杀系统主要是有三个特点<strong>高性能</strong>、<strong>高并发</strong>、<strong>高可用</strong>。</p>
+<p><strong>（1）秒杀页面的获取</strong></p>
+<ul>
+<li>动静分离。将页面的静态资源等部署到Nginx或者CDN（内容分发网路），这样可以加快秒杀页面获取。</li>
+<li>静态资源合并获取。通过将多个请求合并为单个请求，一次获取多个静态资源，这样可以加快秒杀页面获取。</li>
+<li>服务降级。秒杀页面做服务降级处理，将商品推荐列表、评论等做降级处理，少显示或者不显示。秒杀页面需要登录才能查看，对未登录用户直接返回登录界面。</li>
+<li>服务监控。对流量进行监控，使用令牌桶算法等限流算法对流量进行控制。有必要时将部分任务进行熔断。</li>
+<li>页面数据缓存。将页面数据缓存到Redis中，减少数据库操作。</li>
+</ul>
+<p>CDN：</p>
+<blockquote>
+<p> CDN的全称是Content Delivery Network，即内容分发网络。CDN是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘<a target="_blank" rel="noopener" href="https://www.xinnet.com/tag/12523">服务器</a>，通过中心平台的<a target="_blank" rel="noopener" href="https://www.xinnet.com/tag/11199">负载均衡</a>、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN的关键技术主要有内容存储和分发技术。</p>
+</blockquote>
+<p>CDN的作用：</p>
+<blockquote>
+<p>1，减轻源站服务器压力，CDN能处理整个网站页面的70%～95％的内容访问量，从而解决了网站的并发量，由此减轻了源服务器的访问压力，也同时提升了网站的性能、可扩展性以及安全性。</p>
+<p>2，实现加速，将网站原服务器中的内容存储到分布于各地的缓存服务(Cache Server)中（也就是CDN的节点），通过智能的中心管理系统对网络的动态流量进行分配控制，使用户能以最快的速度从最接近用户的地方获得所需的信息，一般的静态数据，如图片、多媒体资料等将基本从CDN节点上读取，这使得从源文件服务器上读取的数据量大大减少。从而提高用户访问的响应速度和服务的可用性，解决Internet网络拥塞状况，提高用户访问网站的响应速度。</p>
+<p>3，隐藏源站服务器IP地址，使用CDN<a target="_blank" rel="noopener" href="https://www.xinnet.com/tag/6">域名</a>会解析到由我们提供的解析记录值上，既然域名没有解析到源站服务器IP上，那么源站服务器IP自然就不会暴露。<br>4，网站被攻击，不会影响到源站，由于域名是解析到我们提供的解析记录值上，那么被攻击，攻击的量也只会打到我们CDN节点上，所以网站被攻击源站服务器不会受到影响。<br>5，CDN国内的节点（中国大陆机房的服务器）域名就一定需要有备案的，海外的节点（香港、美国等地区机房的服务器）不需要<a target="_blank" rel="noopener" href="https://www.xinnet.com/tag/2089">域名备案</a>。</p>
+</blockquote>
+<p><strong>(2)商品下单</strong></p>
+<ul>
+<li>前端&#x2F;后端限流。前端&#x2F;客户端防抖。限制时间间隔内的下单次数。</li>
+<li>防机器人刷单。对下单操作增加填写验证码步骤，如：55+44&#x3D;？、“你好”的小写拼音、选出所有飞机等问题，将非法请求过滤掉。</li>
+<li>商品下单预扣库存。数据库表设计的时候需要设置锁库存字段。进行秒杀的时候，减少库存将在Redis中使用分布式锁进行操作。其它后续操作可以使用RabbitMQ进行操作。</li>
+<li>商品下单预扣库存（库存预热）可以添加延时队列。将超时商品转发到死信路由，然后进行操作。</li>
+<li>商品下单可以进行异步操作，如双次验价等操作可以使用多线程。</li>
+</ul>
+<p><strong>(3)支付</strong></p>
+<ul>
+<li>将支付划分为一个单独的系统，只开放对应的支付接口。因为支付系统是金融敏感的，所以应该保证支付系统的高可用。</li>
+<li>回滚机制。建议使用分布式事务，对支付业务进行TCC事务，因为支付系统是金融敏感的。</li>
+</ul>
+<p>++++++++++++++++++++</p>
+<p>于是，秒杀系统一般会引入MQ、Redis、MySQL、Nginx等中间件，需要对每个中间件进行<strong>高性能</strong>、<strong>高并发</strong>、<strong>高可用</strong>的分析。</p>
+<p><strong>MQ</strong></p>
+<ol>
+<li>集群部署。MQ系统一般都是集群部署的，进行镜像集群部署，可以提升系统的可用性。</li>
+<li>开启持久化。对MQ系统中的信息开启持久化，将其刷到硬盘内，防止宕机。</li>
+<li>关闭消费自动ACK，需要进行手动ACK。防止信息消费异常。</li>
+</ol>
+<p><strong>Redis</strong></p>
+<ol>
+<li>Redis进行读写分离，Master节点进行写操作，其他节点进行读操作。</li>
+<li>Redis进行哨兵部署，让某一个节点宕机后可以迅速有机器顶替上。</li>
+<li>Redis进行分片集群部署，让请求分布到每一台Redis机器上。</li>
+<li>开启持久化日志。AOF和RDB根据业务状况进行调整。</li>
+<li>一个系统可以有多个Redis集群，例如页面数据和商品下单两个方面的Redis可以用多个集群的Redis。</li>
+</ol>
+<p><strong>MySQL</strong></p>
+<ol>
+<li>根据业务建立索引。唯一索引、普通索引、联合索引等。</li>
+<li>看业务是否有优化的地方，减少回表操作。</li>
+<li>分库分表。MySQL应该进行集群部署，单台Redis一般只有2000QPS左右。<ol>
+<li>分库。使用MyCat或者ShardingSphere等进行分库，将操作通过算法分配到相对应的机器上面。</li>
+<li>分表。分表有垂直划分和水平划分两种。垂直划分是将部分字段分割到其它表上面。水平划分是将数据水平划分到同一数据库中的不同表上面，避免一个表上面的数据过大。</li>
+<li>一般来说，建议分32个库，每个库分32张表，这样完全能够满足大部分企业的需求。</li>
+</ol>
+</li>
+<li>MySQL的瓶颈是磁盘IO，可以更换固态硬盘。</li>
+</ol>
+<p><strong>Nginx</strong></p>
+<ol>
+<li>动静分离。将静态资源部署到Nginx中，无需到其它中间件中查询。</li>
+<li>Nginx可以开启限流操作。令牌桶和露铜算法都支持。</li>
+<li>Nginx开启负载均衡，将服务请求打到不同的服务器上，降低单台服务器压力。</li>
+</ol>
+<p>+++++++++++++++</p>
+<p><strong>除了上面列出来的，还有很多的优化操作。</strong></p>
+<p><strong>热点数据分离</strong></p>
+<p>热点商品和普通商品使用的系统可以隔离开来，这样即使秒杀系统宕机了，普通的商品下单也不会有任何问题。</p>
+<ol>
+<li>秒杀商品放到热点数据系统内。</li>
+<li>直播商品也可以放到热点数据系统内。</li>
+<li>流量监控。可以将下单比较多的商品放到热点数据系统内。</li>
+<li>商家上报。商家可以将未来可能售卖较多的商品上报，放到热点数据系统内。</li>
+<li>数据分析。分析以往数据，得出一些未来可能售卖较多的商品，放到热点数据系统内。</li>
+</ol>
+<h1 id="如何设计数据库"><a href="#如何设计数据库" class="headerlink" title="如何设计数据库"></a>如何设计数据库</h1><p><strong>(1)需求分析</strong></p>
+<p>进行数据库设计首先必须准确了解和分析用户需求（包括数据与处理）。需求分析的任务，是通过详细调查现实世界要处理的对象，充分了解原系统工作概况，明确用户的各种需求，然后在此基础上确定新的系统功能，新系统还得充分考虑今后可能的扩充与改变，不仅仅能够按当前应用需求来设计。</p>
+<p><strong>（2）概念结构设计</strong></p>
+<p>它通过对用户需求进行综合，归纳与抽象。在概念结构设计阶段，先设计各个应用的视图，即各个应用所看到的数据及其结构，然后再进行视图集成，以形成一个单一的概念数据模型。然后，经过数据库设计者和用户的审查与修改，最后形成所需的概念数据模型</p>
+<p><strong>（3）逻辑结构设计</strong></p>
+<p>逻辑结构设计使用E-R图和DBMS提供的数据定义语言（DDL）描述数据模式，具体方法与DBMS的逻辑数据模型紧密相关，并满足数据库存取、一致性及运行等各方面的用户需求。</p>
+<p><strong>(4)物理设计</strong></p>
+<p>首先要对运行的事务详细分析，获得选择物理数据库设计所需要的参数，其次，要充分了解所用的RDBMS的内部特征，特别是系统提供的存取方法和存储结构。</p>
+<p>常用的存取方法有三类：</p>
+<ol>
+<li>索引方法，目前主要是B+树索引方法。</li>
+<li>聚簇方法（Clustering）方法。</li>
+<li>是HASH方法。</li>
+</ol>
+<p><strong>（5）数据库实施阶段</strong></p>
+<p>数据库实施阶段，设计人员运营DBMS提供的数据库语言（如sql）及其宿主语言，根据逻辑设计和物理设计的结果建立数据库，编制和调试应用程序，组织数据入库，并进行试运行。</p>
+<p><strong>数据库表的设计：</strong></p>
+<ol>
+<li>单一职责原则：一个表应该只包含一个实体或对象的相关信息，不要将不同实体或对象的信息混在一起。</li>
+<li>数据的完整性：表中的数据应该保证完整性，比如使用外键关联表、添加非空约束、唯一约束等。</li>
+<li>数据冗余的最小化：尽量避免将重复的数据存储在不同的表中，减少数据冗余，降低数据不一致的风险。</li>
+<li>性能优化：表的设计应该考虑性能问题，包括表的大小、索引的设计、数据类型的选择等。</li>
+<li>可扩展性：表的设计应该考虑到未来可能的扩展需求，比如新增字段、增加关联表等。</li>
+<li>数据库的范式：根据实际业务需求，可以考虑采用不同的范式，比如第一范式（1NF）、第二范式（2NF）和第三范式（3NF）等。</li>
+</ol>
+
               
             </div>
             <hr/>
@@ -326,8 +423,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>面试题-linux</div>
-      <div>http://example.com/2023/04/16/面试题-linux/</div>
+      <div>场景题</div>
+      <div>http://example.com/2023/04/18/场景题/</div>
     </div>
     <div class="license-meta">
       
@@ -339,7 +436,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年4月16日</div>
+          <div>2023年4月18日</div>
         </div>
       
       
@@ -369,18 +466,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/18/%E5%9C%BA%E6%99%AF%E9%A2%98/" title="场景题">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">场景题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/04/16/341%E5%9C%BA%E5%91%A8%E8%B5%9B/" title="341场周赛">
-                        <span class="hidden-mobile">341场周赛</span>
+                      <a href="/2023/04/16/%E9%9D%A2%E8%AF%95%E9%A2%98-linux/" title="面试题-linux">
+                        <span class="hidden-mobile">面试题-linux</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

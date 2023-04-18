@@ -23,6 +23,7 @@
 <meta property="og:site_name" content="zlw">
 <meta property="og:description" content="MySQL 存储引擎架构了解吗？MySQL 存储引擎采用的是插件式架构，支持多种存储引擎，我们甚至可以为不同的数据库表设置不同的存储引擎以适应不同场景的需要。存储引擎是基于表的，而不是数据库。 存储引擎说白了就是如何存储数据、如何为存储的数据建立索引和如何更新、查询数据等技术的实现方法。  所以我们用SQL语句对数据进行操作，好像是我们的SQL语句对数据进行了直接操作，但是呢，本质上是通过存储引擎">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/13526879-3037b144ed09eb88.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124314451.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210220122011873.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210220122426319.png">
@@ -57,7 +58,6 @@
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908130942497.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908131726920.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908132425625.png">
-<meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/13526879-3037b144ed09eb88.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/03.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620160153106.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620161433980.png">
@@ -74,10 +74,10 @@
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190723458.png">
 <meta property="og:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190747912.png">
 <meta property="article:published_time" content="2022-09-05T14:17:24.000Z">
-<meta property="article:modified_time" content="2023-04-16T11:17:22.475Z">
+<meta property="article:modified_time" content="2023-04-18T04:22:46.790Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124314451.png">
+<meta name="twitter:image" content="http://example.com/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/13526879-3037b144ed09eb88.png">
   
   
   
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          20k 字
+          21k 字
         
       </span>
     
@@ -278,7 +278,7 @@
         
         
         
-          164 分钟
+          173 分钟
         
       </span>
     
@@ -334,6 +334,66 @@
 <li>所以我们用SQL语句对数据进行操作，好像是我们的SQL语句对数据进行了直接操作，但是呢，本质上是通过存储引擎来真正对数据进行操作。</li>
 <li>存储引擎把怎么对数据操作什么的都封装好了，SQL语句更像是一个接口！你不用管存储引擎内部到底是怎样实现的，你只要会用SQL语句就好了！</li>
 </ol>
+<h1 id="Mysql的执行流程"><a href="#Mysql的执行流程" class="headerlink" title="Mysql的执行流程"></a>Mysql的执行流程</h1><h2 id="Mysql基础架构分析"><a href="#Mysql基础架构分析" class="headerlink" title="Mysql基础架构分析"></a>Mysql基础架构分析</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/13526879-3037b144ed09eb88.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>Server层：</strong>所有跨存储引擎的功能都在这层实现，比如存储过程，触发器，函数等，还有一个通用的binlog模块。</p>
+<p><strong>存储引擎：</strong>支持多个引擎（InnoDB、MyISAM、Memory）。其中InnoDB引擎有自由的redolog模块。</p>
+<p><strong>下面解释Server层里面的组件：</strong></p>
+<ul>
+<li><p><strong>连接器：</strong>主要和身份认证和权限相关，主要负责登录数据库，用户身份验证，权限等操作。如果用户名和密码通过，连接器会到权限表中查询该用户的权限（一直到断开，权限都是相同的）。</p>
+</li>
+<li><p><strong>查询缓存：</strong>在Mysql8.0之后就取消了这个组件，因为很少去用，它主要就是查询数据的时候，以 Key-Value 的形式缓存在内存中，会先在查询缓存中查询，如果查到则直接返回，否则执行后序的操作，并且也会存储到查询缓存中。</p>
+<ul>
+<li><strong>MySQL 查询不建议使用缓存，</strong>因为查询缓存失效在实际业务场景中可能会非常频繁，假如你对一个表更新的话，这个表上的所有的查询缓存都会被清空。对于不经常更新的数据来说，使用缓存还是可以的。</li>
+</ul>
+</li>
+<li><p><strong>分析器：</strong>分析器主要是用来分析 SQL 语句是来干嘛的，分析器也会分为几步：</p>
+<ul>
+<li>词法分析：提取关键字，提出查询的表，提出字段名，提出查询条件等。</li>
+<li>语法分析：主要是判断输入的SQL是否正确</li>
+</ul>
+</li>
+<li><p><strong>优化器：</strong>选择最优的执行方案去执行（比如有多个条件的时候，先执行哪个条件）</p>
+</li>
+<li><p><strong>执行器：</strong>选择执行方案后，开始执行，校验用户有没有权限，如果没有则返回错误，如果有则调用引擎接口，返回执行结果。</p>
+</li>
+</ul>
+<h2 id="查询语句分析"><a href="#查询语句分析" class="headerlink" title="查询语句分析"></a>查询语句分析</h2><p><strong>分析下面这条查询语句：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from tb_student  A where A.age=&#x27;18&#x27; and A.name=&#x27; 张三 &#x27;;<br></code></pre></td></tr></table></figure>
+
+<p><strong>权限校验（如果命中缓存）—&gt;查询缓存—&gt;分析器—&gt;优化器—&gt;权限校验—&gt;执行器—&gt;引擎</strong></p>
+<p>（1）先检查语句是否有权限，Mysql8.0之前先查询缓存，有直接返回，没有接着执行。</p>
+<p>（2）通过分析器进行语法分析，提取上面的select，查询表名为tb_student，需要查询所有的列，查询条件是什么，然后判断是否有语法错误，如果没有则下一步</p>
+<p>（3）接下来就是优化器，可能有以下两种方案，优化器选择一个效率最高的方案进行执行，</p>
+<blockquote>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile">a.先查询学生表中姓名为“张三”的学生，然后判断是否年龄是 18。<br>b.先找出学生中年龄 18 岁的学生，然后再查询姓名为“张三”的学生。<br></code></pre></td></tr></table></figure>
+</blockquote>
+<p>（4）权限校验，如果没有权限则返回错误，如果有权限，则调用引擎接口，返回引擎结果。</p>
+<h2 id="更新语句分析"><a href="#更新语句分析" class="headerlink" title="更新语句分析"></a>更新语句分析</h2><p><strong>分析下面这条更新语句：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">update tb_student A set A.age=&#x27;19&#x27; where A.name=&#x27; 张三 &#x27;;<br></code></pre></td></tr></table></figure>
+
+<p>在更新的时候要引入日志模块，Mysql自带的日志模块是bin log（归档日志），InnoDB引擎还引入了一个自带的日志模块 redo log（重做日志）</p>
+<p><strong>分析器—-&gt;权限校验—-&gt;执行器—&gt;引擎—redo log(prepare 状态)—&gt;binlog—&gt;redo log(commit状态)</strong></p>
+<p>（1）通过分析器进行语法分析，更新操作，操作哪张表，条件是什么，检查有没有语法错误。</p>
+<p>（2）权限校验，如果没有权限则返回错误信息，如果有权限则调用引擎接口执行。</p>
+<p>（3）调用引擎 API 接口，写入这一行数据，InnoDB 引擎把数据保存在内存中，同时记录 redo log，此时 redo log 进入 prepare 状态，然后告诉执行器，执行完成了，随时可以提交。</p>
+<p>（4）执行器收到通过后记录bin log，然后调用引擎接口，提交redo log为提交状态。</p>
+<p>（5）更新完成</p>
+<h2 id="为什么同时用redo-log和bin-log"><a href="#为什么同时用redo-log和bin-log" class="headerlink" title="为什么同时用redo log和bin log"></a>为什么同时用redo log和bin log</h2><p><strong>redo log</strong>是InnoDB特有的，它有一个特殊的功能：<strong>如果数据库发生异常重启，之前提交的记录都不会丢失。</strong></p>
+<p>并不是说只用一个<code>bin log</code>日志不行，而是<strong>使用<code>redo log</code>来支持事务。</strong></p>
+<p><strong>那如果说用两个日志，但不用这么复杂可不可以，没有<code>prepare</code>状态和提交状态？</strong></p>
+<ul>
+<li>**先写 <code>redo log</code> 直接提交，然后写 <code>binlog</code>**，假设写完 <code>redo log</code> 后，机器挂了，<code>binlog</code> 日志没有被写入，那么机器重启后，这台机器会通过 redo log 恢复数据，但是这个时候 binlog 并没有记录该数据，后续进行机器备份的时候，就会丢失这一条数据，同时主从同步也会丢失这一条数据。</li>
+<li>**先写 <code>binlog</code>，然后写 <code>redo log</code>**，假设写完了 <code>binlog</code>，机器异常重启了，由于没有 <code>redo log</code>，本机是无法恢复这一条记录的，但是 binlog 又有记录，那么和上面同样的道理，就会产生数据不一致的情况。</li>
+</ul>
+<blockquote>
+<p> <strong>如果采用 <code>redo log</code> 两阶段提交的方式就不一样了，写完 <code>binlog</code> 后，然后再提交 <code>redo log</code> 就会防止出现上述的问题，从而保证了数据的一致性。</strong></p>
+</blockquote>
+<p><strong>假设 <code>redo log</code> 处于预提交状态，<code>binlog</code> 也已经写完了，这个时候发生了异常重启会怎么样呢？</strong>下面为Mysql的处理机制：</p>
+<ul>
+<li>判断 <code>redo log</code> 是否完整，如果判断是完整的，就立即提交。</li>
+<li>如果 <code>redo log</code> 只是预提交但不是 <code>commit</code> 状态，这个时候就会去判断 <code>binlog</code> 是否完整，如果完整就提交 <code>redo log</code>, 不完整就回滚事务。</li>
+</ul>
+<p>这样就保证了数据的一致性。</p>
 <h1 id="MyISAM和InnoDB的区别"><a href="#MyISAM和InnoDB的区别" class="headerlink" title="MyISAM和InnoDB的区别"></a>MyISAM和InnoDB的区别</h1><p><strong>1.是否支持行级锁</strong>：InnoDB 支持行级别的锁粒度，MyISAM 不支持，只支持表级别的锁粒度。</p>
 <p><strong>2.是否支持事务</strong>：MyISAM 不提供事务支持。InnoDB 提供事务支持，实现了 SQL 标准定义了四个隔离级别。</p>
 <p><strong>3.是否支持外键</strong>：MyISAM 不支持外键，而 InnoDB 支持</p>
@@ -664,7 +724,49 @@
 <p>记录内容是“在某个数据页上做了什么修改”，属于 <code>InnoDB</code> 存储引擎。</p>
 <h2 id="bin-log-归档日志"><a href="#bin-log-归档日志" class="headerlink" title="bin log(归档日志)"></a><code>bin log</code>(归档日志)</h2><p> <code>binlog</code> 是逻辑日志，记录内容是语句的原始逻辑，类似于“给 ID&#x3D;2 这一行的 c 字段加 1”，属于<code>MySQL Server</code> 层。</p>
 <p>不管用什么存储引擎，只要发生了表数据更新，都会产生 <code>binlog</code> 日志。</p>
-<h1 id="数据库的优化"><a href="#数据库的优化" class="headerlink" title="数据库的优化"></a>数据库的优化</h1><p>Sql中in包含的值不应该过多</p>
+<h1 id="数据库执行过慢怎么办"><a href="#数据库执行过慢怎么办" class="headerlink" title="数据库执行过慢怎么办"></a>数据库执行过慢怎么办</h1><ul>
+<li><p>SQL及<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96&spm=1001.2101.3001.7020">索引优化</a></p>
+<p><strong>（1）开启慢查询，查找哪条执行语句过慢。</strong></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">log-slow-queries</span>=/data/mysqldata/slow-query.log<br><span class="hljs-attr">long_query_time</span>=<span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>log-slow-queries参数为慢查询日志存放的位置，一般这个目录要有mysql的运行账号的可写权限，一般都将这个目录设置为mysql的数据存放目录。</li>
+<li>long_query_time&#x3D;5中的5表示查询超过五秒才记录。</li>
+</ul>
+<p><strong>（2）通过Explain分析，优化语句。</strong></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E7%BB%93%E6%9E%84&spm=1001.2101.3001.7020">数据库表结构</a>优化</p>
+<ul>
+<li><p>尽量将表字段定义为NOT NULL约束，这时由于在MySQL中含有空值的列很难进行查询优化，NULL值会使索引以及索引的统计信息变得很复杂。</p>
+</li>
+<li><p>对于只包含特定类型的字段，可以使用enum、set 等数据类型。</p>
+</li>
+<li><p>数值型字段的比较比字符串的比较效率高得多，字段类型尽量使用最小、最简单的数据类型。例如IP地址可以使用int类型。</p>
+</li>
+<li><p>尽量使用TINYINT、SMALLINT、MEDIUM_INT作为整数类型而非INT，如果非负则加上UNSIGNED。但对整数类型指定宽度，比如INT(11)，没有任何用，因为指定的类型标识范围已经确定。</p>
+</li>
+<li><p>VARCHAR的长度只分配真正需要的空间。</p>
+</li>
+<li><p>尽量使用TIMESTAMP而非DATETIME，但TIMESTAMP只能表示1970 - 2038年，比DATETIME表示的范围小得多，而且TIMESTAMP的值因时区不同而不同。</p>
+</li>
+<li><p>单表不要有太多字段，建议在20以内。</p>
+</li>
+<li><p>合理的加入冗余字段可以提高查询速度。</p>
+</li>
+</ul>
+</li>
+<li><p>硬件优化</p>
+</li>
+</ul>
+<p><strong>四. 总结</strong></p>
+<p>（1）首先数据库优化的主要思路，是先找到当前数据库的瓶颈所在，然后再针对具体问题具体优化；</p>
+<p>（2）由于优化成本限制，所以要考虑SQL语句及索引优化，通过<strong>慢查询日志发现项目中是哪条SQL语句导致了查询变慢</strong>；</p>
+<p>（3）然后<strong>通过Explain执行计划分析这条要优化的SQL语句到底是哪里有问题</strong>，再进行优化；</p>
+<p>（4）对于<strong>有索引的字段</strong>，要在查询条件中遵循最左匹配原则，<strong>确保能够命中索引</strong>；</p>
+<p>（5）然后<strong>再考虑优化表结构</strong>，对于单表500万条以上数据的大表，可以进行水平分表，比如使用数据库中间件Mycat进行分表；</p>
+<p>（6）最后<strong>再考虑是否是服务器硬件导致的瓶颈</strong>，可以通过Zabbix监控软件进行分析，优化服务器硬件配置。</p>
+<h1 id="数据库的优化"><a href="#数据库的优化" class="headerlink" title="数据库的优化"></a>数据库的优化</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/orecle_littleboy/article/details/88534160">https://blog.csdn.net/orecle_littleboy/article/details/88534160</a></p>
+<p>Sql中in包含的值不应该过多</p>
 <p>SELECT语句务必指明字段名称</p>
 <p>当只需要一条数据的时候，使用limit 1</p>
 <p>如果限制条件中其他字段没有索引，尽量少用or</p>
@@ -673,66 +775,8 @@
 <p>不建议使用%前缀模糊查询</p>
 <p>避免在where子句中对字段进行表达式操作</p>
 <p>禁止使用 order by rand() 进行随机排序</p>
-<h1 id="Mysql的执行流程"><a href="#Mysql的执行流程" class="headerlink" title="Mysql的执行流程"></a>Mysql的执行流程</h1><h2 id="Mysql基础架构分析"><a href="#Mysql基础架构分析" class="headerlink" title="Mysql基础架构分析"></a>Mysql基础架构分析</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/13526879-3037b144ed09eb88.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><strong>Server层：</strong>所有跨存储引擎的功能都在这层实现，比如存储过程，触发器，函数等，还有一个通用的binlog模块。</p>
-<p><strong>存储引擎：</strong>支持多个引擎（InnoDB、MyISAM、Memory）。其中InnoDB引擎有自由的redolog模块。</p>
-<p><strong>下面解释Server层里面的组件：</strong></p>
-<ul>
-<li><p><strong>连接器：</strong>主要和身份认证和权限相关，主要负责登录数据库，用户身份验证，权限等操作。如果用户名和密码通过，连接器会到权限表中查询该用户的权限（一直到断开，权限都是相同的）。</p>
-</li>
-<li><p><strong>查询缓存：</strong>在Mysql8.0之后就取消了这个组件，因为很少去用，它主要就是查询数据的时候，以 Key-Value 的形式缓存在内存中，会先在查询缓存中查询，如果查到则直接返回，否则执行后序的操作，并且也会存储到查询缓存中。</p>
-<ul>
-<li><strong>MySQL 查询不建议使用缓存，</strong>因为查询缓存失效在实际业务场景中可能会非常频繁，假如你对一个表更新的话，这个表上的所有的查询缓存都会被清空。对于不经常更新的数据来说，使用缓存还是可以的。</li>
-</ul>
-</li>
-<li><p><strong>分析器：</strong>分析器主要是用来分析 SQL 语句是来干嘛的，分析器也会分为几步：</p>
-<ul>
-<li>词法分析：提取关键字，提出查询的表，提出字段名，提出查询条件等。</li>
-<li>语法分析：主要是判断输入的SQL是否正确</li>
-</ul>
-</li>
-<li><p><strong>优化器：</strong>选择最优的执行方案去执行（比如有多个条件的时候，先执行哪个条件）</p>
-</li>
-<li><p><strong>执行器：</strong>选择执行方案后，开始执行，校验用户有没有权限，如果没有则返回错误，如果有则调用引擎接口，返回执行结果。</p>
-</li>
-</ul>
-<h2 id="查询语句分析"><a href="#查询语句分析" class="headerlink" title="查询语句分析"></a>查询语句分析</h2><p><strong>分析下面这条查询语句：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from tb_student  A where A.age=&#x27;18&#x27; and A.name=&#x27; 张三 &#x27;;<br></code></pre></td></tr></table></figure>
-
-<p><strong>权限校验（如果命中缓存）—&gt;查询缓存—&gt;分析器—&gt;优化器—&gt;权限校验—&gt;执行器—&gt;引擎</strong></p>
-<p>（1）先检查语句是否有权限，Mysql8.0之前先查询缓存，有直接返回，没有接着执行。</p>
-<p>（2）通过分析器进行语法分析，提取上面的select，查询表名为tb_student，需要查询所有的列，查询条件是什么，然后判断是否有语法错误，如果没有则下一步</p>
-<p>（3）接下来就是优化器，可能有以下两种方案，优化器选择一个效率最高的方案进行执行，</p>
-<blockquote>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile">a.先查询学生表中姓名为“张三”的学生，然后判断是否年龄是 18。<br>b.先找出学生中年龄 18 岁的学生，然后再查询姓名为“张三”的学生。<br></code></pre></td></tr></table></figure>
-</blockquote>
-<p>（4）权限校验，如果没有权限则返回错误，如果有权限，则调用引擎接口，返回引擎结果。</p>
-<h2 id="更新语句分析"><a href="#更新语句分析" class="headerlink" title="更新语句分析"></a>更新语句分析</h2><p><strong>分析下面这条更新语句：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">update tb_student A set A.age=&#x27;19&#x27; where A.name=&#x27; 张三 &#x27;;<br></code></pre></td></tr></table></figure>
-
-<p>在更新的时候要引入日志模块，Mysql自带的日志模块是bin log（归档日志），InnoDB引擎还引入了一个自带的日志模块 redo log（重做日志）</p>
-<p><strong>分析器—-&gt;权限校验—-&gt;执行器—&gt;引擎—redo log(prepare 状态)—&gt;binlog—&gt;redo log(commit状态)</strong></p>
-<p>（1）通过分析器进行语法分析，更新操作，操作哪张表，条件是什么，检查有没有语法错误。</p>
-<p>（2）权限校验，如果没有权限则返回错误信息，如果有权限则调用引擎接口执行。</p>
-<p>（3）调用引擎 API 接口，写入这一行数据，InnoDB 引擎把数据保存在内存中，同时记录 redo log，此时 redo log 进入 prepare 状态，然后告诉执行器，执行完成了，随时可以提交。</p>
-<p>（4）执行器收到通过后记录bin log，然后调用引擎接口，提交redo log为提交状态。</p>
-<p>（5）更新完成</p>
-<h2 id="为什么同时用redo-log和bin-log"><a href="#为什么同时用redo-log和bin-log" class="headerlink" title="为什么同时用redo log和bin log"></a>为什么同时用redo log和bin log</h2><p><strong>redo log</strong>是InnoDB特有的，它有一个特殊的功能：<strong>如果数据库发生异常重启，之前提交的记录都不会丢失。</strong></p>
-<p>并不是说只用一个<code>bin log</code>日志不行，而是<strong>使用<code>redo log</code>来支持事务。</strong></p>
-<p><strong>那如果说用两个日志，但不用这么复杂可不可以，没有<code>prepare</code>状态和提交状态？</strong></p>
-<ul>
-<li>**先写 <code>redo log</code> 直接提交，然后写 <code>binlog</code>**，假设写完 <code>redo log</code> 后，机器挂了，<code>binlog</code> 日志没有被写入，那么机器重启后，这台机器会通过 redo log 恢复数据，但是这个时候 binlog 并没有记录该数据，后续进行机器备份的时候，就会丢失这一条数据，同时主从同步也会丢失这一条数据。</li>
-<li>**先写 <code>binlog</code>，然后写 <code>redo log</code>**，假设写完了 <code>binlog</code>，机器异常重启了，由于没有 <code>redo log</code>，本机是无法恢复这一条记录的，但是 binlog 又有记录，那么和上面同样的道理，就会产生数据不一致的情况。</li>
-</ul>
-<blockquote>
-<p> <strong>如果采用 <code>redo log</code> 两阶段提交的方式就不一样了，写完 <code>binlog</code> 后，然后再提交 <code>redo log</code> 就会防止出现上述的问题，从而保证了数据的一致性。</strong></p>
-</blockquote>
-<p><strong>假设 <code>redo log</code> 处于预提交状态，<code>binlog</code> 也已经写完了，这个时候发生了异常重启会怎么样呢？</strong>下面为Mysql的处理机制：</p>
-<ul>
-<li>判断 <code>redo log</code> 是否完整，如果判断是完整的，就立即提交。</li>
-<li>如果 <code>redo log</code> 只是预提交但不是 <code>commit</code> 状态，这个时候就会去判断 <code>binlog</code> 是否完整，如果完整就提交 <code>redo log</code>, 不完整就回滚事务。</li>
-</ul>
-<p>这样就保证了数据的一致性。</p>
+<p>对查询进行优化，要尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。</p>
+<p>对于连续的数值，能用 between 就不要用 in 了：</p>
 <h1 id="Mysql怎么保证事务的持久性"><a href="#Mysql怎么保证事务的持久性" class="headerlink" title="Mysql怎么保证事务的持久性"></a>Mysql怎么保证事务的持久性</h1><p>InnoDB作为MySQL的存储引擎，数据是存放在磁盘中的，但如果每次读写数据都需要磁盘IO，效率会很低。</p>
 <p>为此，InnoDB提供了缓存(Buffer Pool)，Buffer Pool中包含了磁盘中部分数据页的映射，作为访问数据库的缓冲：当从数据库读取数据时，会首先从Buffer Pool中读取，如果Buffer Pool中没有，则从磁盘读取后放入Buffer Pool；当向数据库写入数据时，会首先写入Buffer Pool，<strong>Buffer Pool中修改的数据会定期刷新到磁盘中</strong>（这一过程称为刷脏）。</p>
 <p>Buffer Pool的使用大大提高了读写数据的效率，但是也带了新的问题：<strong>如果MySQL宕机，而此时Buffer Pool中修改的数据还没有刷新到磁盘，就会导致数据的丢失，事务的持久性无法保证。</strong></p>
