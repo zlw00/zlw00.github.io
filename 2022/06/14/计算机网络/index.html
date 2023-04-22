@@ -38,6 +38,8 @@
 <meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/4d9460548b8248a0aad44849eb494156~tplv-k3u1fbpfcp-watermark.image">
 <meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/250bdae9421f4a238f8300e8042a7ce7~tplv-k3u1fbpfcp-watermark.image">
 <meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/099ff22bbcb141a5b48301a319c516a5~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20210602090029248.jpg">
+<meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20210602090201958.jpg">
 <meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718000141987.png">
 <meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718000557231.png">
 <meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718000546692.png">
@@ -54,7 +56,7 @@
 <meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221102150813853.png">
 <meta property="og:image" content="http://example.com/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221102150818226.png">
 <meta property="article:published_time" content="2022-06-14T13:23:02.000Z">
-<meta property="article:modified_time" content="2023-03-03T06:37:29.216Z">
+<meta property="article:modified_time" content="2023-04-20T12:26:30.566Z">
 <meta property="article:author" content="zlw">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary_large_image">
@@ -248,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          13k 字
+          14k 字
         
       </span>
     
@@ -259,7 +261,7 @@
         
         
         
-          109 分钟
+          120 分钟
         
       </span>
     
@@ -386,6 +388,24 @@
 </blockquote>
 <p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220718131833415.png" srcset="/img/loading.gif" lazyload alt="image-20220718131833415"></p>
 <p>SSL是独立于 HTTP 的协议， 所以不光是 HTTP 协议， 其他运行在应用层的 SMTP 和 Telnet 等协议均可配合 SSL协议使用。  </p>
+<h1 id="SSL和TLS"><a href="#SSL和TLS" class="headerlink" title="SSL和TLS"></a>SSL和TLS</h1><p><a target="_blank" rel="noopener" href="https://www.wbolt.com/tls-vs-ssl.html">https://www.wbolt.com/tls-vs-ssl.html</a></p>
+<h2 id="SSL和TLS区别"><a href="#SSL和TLS区别" class="headerlink" title="SSL和TLS区别"></a>SSL和TLS区别</h2><p>（1）TLS和SSL都是对Internet上的数据传输进行身份验证和加密的协议。</p>
+<p><strong>（2）TLS 实际上只是SSL的更新版本</strong>。它修复了早期SSL协议中的一些安全漏洞。</p>
+<p>以下是SSL和TLS版本的完整历史：</p>
+<ul>
+<li>SSL 1.0 – 由于安全问题从未公开发布。</li>
+<li>SSL 2.0 – 1995年发布。2011年弃用。存在已知的安全问题。</li>
+<li>SSL 3.0 – 1996年发布。2015年弃用。存在已知的安全问题。</li>
+<li>TLS 1.0 – 1999年作为SSL 3.0的升级发布。计划在2020年弃用。</li>
+<li>TLS 1.1 – 2006年发布。计划在2020年弃用。</li>
+<li>TLS 1.2 – 2008年发布。</li>
+<li>TLS 1.3 – 2018年发布。</li>
+</ul>
+<h2 id="TLS和SSL如何保护数据？"><a href="#TLS和SSL如何保护数据？" class="headerlink" title="TLS和SSL如何保护数据？"></a>TLS和SSL如何保护数据？</h2><p>当您在Web服务器上<a target="_blank" rel="noopener" href="https://www.wbolt.com/how-to-install-ssl-certificate.html">安装SSL&#x2F;TLS证书</a>（<em>通常简称为“SSL 证书”）时</em>，它包含一个公钥和一个私钥，用于验证您的服务器并让您的服务器加密和解密数据。</p>
+<p>当访问者访问您的站点时，他们的Web浏览器将查找您站点的SSL&#x2F;TLS证书。然后，浏览器将执行“握手”以<a target="_blank" rel="noopener" href="https://www.wbolt.com/how-to-verify-your-ssl-certificate.html">检查您的证书的有效性</a>并验证您的服务器。如果SSL证书无效，您的用户可能会遇到“<a target="_blank" rel="noopener" href="https://www.wbolt.com/your-connection-is-not-private.html">您的连接不是私密连接</a>”错误，这可能会导致他们离开您的网站。</p>
+<p>一旦访问者的浏览器确定您的证书有效并对您的服务器进行身份验证，它实际上会在它和您的服务器之间创建一个加密链接，以安全地传输数据。</p>
+<p>使用普通HTTP，该信息容易受到攻击。但是，当您<strong>通过SSL或TLS</strong> (HTTPS)使用HTTP时，您会在传输过程中对该数据进行加密和身份验证，从而确保其安全。</p>
+<p>这就是为什么您可以通过HTTPS而<strong>不是</strong>通过HTTP安全地处理信用卡详细信息的原因，也是Google Chrome如此努力地推动采用HTTPS的原因。</p>
 <h1 id="对称加密和非对称加密"><a href="#对称加密和非对称加密" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h1><ul>
 <li>对称加密：文件的加密和解密用的是同一个密钥，使用起来简单快捷，密钥较短</li>
 <li>非对称加密：需要两个密钥：公有密钥和私有密钥，组成一对，公有密钥对数据加密只能用私有密钥进行解密，私有密钥对数据进行加密只能用公有密钥进行解密。<ul>
@@ -424,11 +444,13 @@
 <li><p>URL(Uniform Resource Location) 是统⼀资源定位符，可以提供该资源的路径。  <strong>不仅可以标识 一个资源，还可以定位这个资源。</strong>（家庭地址）</p>
 </li>
 </ul>
+<h1 id="TCP队头阻塞"><a href="#TCP队头阻塞" class="headerlink" title="TCP队头阻塞"></a>TCP队头阻塞</h1><p>我们知道，TCP传输过程中会把数据拆分为一个个<strong>按照顺序</strong>排列的数据包，这些数据包通过网络传输到了接收端，接收端再<strong>按照顺序</strong>将这些数据包组合成原始数据，这样就完成了数据传输。</p>
+<p>但是如果其中的某一个数据包没有按照顺序到达，接收端会一直保持连接等待数据包返回，这时候就会阻塞后续请求。这就发生了<strong>TCP队头阻塞。</strong></p>
 <h1 id="HTTP-1-0和HTTP-1-1的主要区别是什么"><a href="#HTTP-1-0和HTTP-1-1的主要区别是什么" class="headerlink" title="HTTP 1.0和HTTP 1.1的主要区别是什么?"></a>HTTP 1.0和HTTP 1.1的主要区别是什么?</h1><p>（1）http1.0使用在1996年，只使用在一些简单的网页上和网络请求。</p>
 <p>（2）http1.1在1999年广泛使用于各大浏览器，也是目前最广泛的http协议。</p>
 <p><strong>有一下几个区别表现：</strong></p>
 <ul>
-<li><p><strong>长连接：</strong>http1.0使用的是短连接，也就是说每次请求都要重新建⽴⼀次连接。  （HTTP 是基于TCP&#x2F;IP协议的,每⼀次建⽴或者断开连接都需要三次握⼿四次挥⼿的开销  ）HTTP 1.1起，<strong>默认使⽤⻓连接 ,默认开启Connection： keep-alive。</strong>  </p>
+<li><p><strong>长连接：</strong>http1.0使用的是短连接，也就是说每次请求都要重新建⽴⼀次连接。  （HTTP 是基于TCP&#x2F;IP协议的,每⼀次建⽴或者断开连接都需要三次握⼿四次挥⼿的开销  ）HTTP 1.1起，<strong>默认使⽤⻓连接 ,默认开启Connection： keep-alive。</strong>  如果客户端想关闭 HTTP 连接，可以在请求头中携带 Connection: false 来告知服务器关闭  <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43690495/article/details/117458860">https://blog.csdn.net/weixin_43690495/article/details/117458860</a></p>
 </li>
 <li><p>**错误状态响应码 : ** <strong>在HTTP1.1中新增了24个错误状态响应码</strong>，  409（Conflict）表示请求的资源与资源的当前状态发⽣冲突； 410（Gone）表示服务器上的某个资源被永久性的删除。  </p>
 </li>
@@ -492,11 +514,22 @@
 <p><strong>（1）Cache-Control&#x2F;Pragma：</strong>用于指定所有缓存机制的整个请求中必须服从的指令，可以指定下列可选值：<br>    public:所有内容都将被缓存，在响应头设置<br>    private：内容只缓存在私有缓存中，在响应头设置<br>    no-cache：所有内容都不会被缓存，在请求头和 响应头中设置<br>    no-store：所有内容都不会被缓存在缓存或Internet临时文件中，在响应头中设置</p>
 <p><strong>（2）Expires：</strong>后面跟着日期和时间，超过这个时间后，缓存内容将失效，浏览器发送请求之前，检查这个页面的字段，看页面是否已经过期，<br>如果过期就向服务器重新发起请求。</p>
 <p><strong>（3）Last-Modified：</strong>服务器上的资源最后的修改时间，服务器会在响应头中返回一个Last-Modified字段，告诉浏览器这个页面的最后修改时间<br>浏览器在请求时在请求头中增加If-Modified-Since字段，询问当前缓存页面是否是最新，如果是最新则返回304，告诉浏览器是最新的，服务器不会传输最新数据。z</p>
-<h1 id="Http1-x-和-Http2-0的区别"><a href="#Http1-x-和-Http2-0的区别" class="headerlink" title="Http1.x 和 Http2.0的区别"></a>Http1.x 和 Http2.0的区别</h1><ul>
-<li>新的二进制格式，Http1.x是基于文本的。</li>
-<li>多路复用，即连接共享，每一个request都是用作连接共享机制的，一个requeast对应一个id，所以一个连接中有多个请求，接收方根据request的id归属到不同的服务器请求里面。</li>
-<li>header压缩：Http1.x中的header中有大量的信息，每次都要重复发送，HTTP2.0将通讯双方各自cache一份header fields表，避免了重复header传输，减小了传输的大小。数据体积小，网络传输更快。</li>
-<li>服务端推送：当服务器接收到请求时，服务器会顺便把一些客户需要的资源一起推送到客户端。免得客户端再次创建连接发送请求。<ul>
+<h1 id="Http1-x-和-Http2-0的区别"><a href="#Http1-x-和-Http2-0的区别" class="headerlink" title="Http1.x 和 Http2.0的区别"></a>Http1.x 和 Http2.0的区别</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43690495/article/details/117458860">https://blog.csdn.net/weixin_43690495/article/details/117458860</a></p>
+<ul>
+<li><p><strong>新的二进制格式，</strong>Http1.x是基于文本的。在应用层和传输层之间增加一个二进制分帧层，突破了HTTP1.1的性能限制、改进传输性能。</p>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20210602090029248.jpg" srcset="/img/loading.gif" lazyload alt="2.0二进制分帧"></p>
+<p>简单来说，HTTP2.0只是把原来HTTP1.x的header和body部分用frame重新封装了一层而已。</p>
+</li>
+<li><p><strong>多路复用，</strong>所有的HTTP2.0通信都在一个TCP连接上完成，这个连接可以承载任意数量的双向数据流。每个数据流以消息的形式发送，而消息由一或多个帧组成。这些帧可以乱序发送，然后再根据每个帧头部的流标识符（stream id）重新组装。</p>
+<blockquote>
+<p>举个例子，每个请求是一个数据流，数据流以消息的方式发送，而消息又分为多个帧，帧头部记录着 stream id 用来标识所属的数据流，不同属的帧可以在连接中随机混杂在一起。接收方可以根据 stream id 将帧再归属到各自不同的请求当中去。</p>
+</blockquote>
+<p><img src="/2022/06/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20210602090201958.jpg" srcset="/img/loading.gif" lazyload alt="2.0多路复用"></p>
+</li>
+<li><p>header压缩：Http1.x中的header中有大量的信息，每次都要重复发送，HTTP2.0将通讯双方各自cache一份header fields表，避免了重复header传输，减小了传输的大小。数据体积小，网络传输更快。</p>
+</li>
+<li><p>服务端推送：当服务器接收到请求时，服务器会顺便把一些客户需要的资源一起推送到客户端。免得客户端再次创建连接发送请求。</p>
+<ul>
 <li>举例来说，在浏览器刚请求 HTML 的时候，就提前把可能会用到的 JS、CSS 文件等静态资源主动发给客户端，<strong>减少延时的等待</strong>，也就是服务器推送。</li>
 </ul>
 </li>
