@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -306,7 +306,7 @@
 
 
 
-<h1 id="解法二：移位实现位计数"><a href="#解法二：移位实现位计数" class="headerlink" title="解法二：移位实现位计数"></a>解法二：移位实现位计数</h1><p><img src="/2022/06/09/%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/image-20220609220904552.png" srcset="/img/loading.gif" lazyload alt="image-20220609220904552"></p>
+<h1 id="解法二：移位实现位计数"><a href="#解法二：移位实现位计数" class="headerlink" title="解法二：移位实现位计数"></a>解法二：移位实现位计数</h1><p><img src="/2022/06/09/%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/image-20220609220904552.png" alt="image-20220609220904552"></p>
 <p><strong>我们可以不断地检查 s 的最低位，如果最低位为 1，那么令计数器加一，然后我们令 s 整体右移一位，这样 s 的最低位将被舍去，原本的次低位就变成了新的最低位。我们重复这个过程直到 s&#x3D;0 为止。这样计数器中就累计了 s 的二进制表示中 1 的数量。</strong></p>
 <p><strong>代码为：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hammingDistance</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>        <span class="hljs-comment">//异或，通过移位的方法计算1 的个数</span><br>        <span class="hljs-comment">//每次像右移动一位。如果最低位为1，则数量加1</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> x^y;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (a!=<span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-comment">//判断最低为是否为1 </span><br>            <span class="hljs-keyword">if</span> ((a&amp;<span class="hljs-number">1</span>)==<span class="hljs-number">1</span>) count++;<br>            a = a&gt;&gt;<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -436,7 +436,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -645,7 +645,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

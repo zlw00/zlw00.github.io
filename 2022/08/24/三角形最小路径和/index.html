@@ -76,7 +76,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -294,7 +294,7 @@
 <p><strong>示例 2：</strong></p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">输入：triangle = <span class="hljs-string">[[-10]]</span><br>输出：<span class="hljs-number">-10</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="/2022/08/24/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/944bf8ff57b54e1bac0584c3f774c3f0.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="/2022/08/24/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/944bf8ff57b54e1bac0584c3f774c3f0.png" alt="在这里插入图片描述"></p>
 <p><strong>注意：</strong></p>
 <blockquote>
 <p>f[i,j]里面包含两种情况，两种情况不一定全部都包含， 分两种情况，但两种情况也不是全部都在的：<br>例如三角形的最左边，不可能从左上下来，三角形的最右面，不可能从右上下来。</p>
@@ -417,7 +417,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -626,7 +626,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

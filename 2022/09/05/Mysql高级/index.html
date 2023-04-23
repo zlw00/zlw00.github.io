@@ -125,7 +125,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -340,7 +340,7 @@
 <li>所以我们用SQL语句对数据进行操作，好像是我们的SQL语句对数据进行了直接操作，但是呢，本质上是通过存储引擎来真正对数据进行操作。</li>
 <li>存储引擎把怎么对数据操作什么的都封装好了，SQL语句更像是一个接口！你不用管存储引擎内部到底是怎样实现的，你只要会用SQL语句就好了！</li>
 </ol>
-<h1 id="Mysql的执行流程"><a href="#Mysql的执行流程" class="headerlink" title="Mysql的执行流程"></a>Mysql的执行流程</h1><h2 id="Mysql基础架构分析"><a href="#Mysql基础架构分析" class="headerlink" title="Mysql基础架构分析"></a>Mysql基础架构分析</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/13526879-3037b144ed09eb88.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h1 id="Mysql的执行流程"><a href="#Mysql的执行流程" class="headerlink" title="Mysql的执行流程"></a>Mysql的执行流程</h1><h2 id="Mysql基础架构分析"><a href="#Mysql基础架构分析" class="headerlink" title="Mysql基础架构分析"></a>Mysql基础架构分析</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/13526879-3037b144ed09eb88.png" alt="img"></p>
 <p><strong>Server层：</strong>所有跨存储引擎的功能都在这层实现，比如存储过程，触发器，函数等，还有一个通用的binlog模块。</p>
 <p><strong>存储引擎：</strong>支持多个引擎（InnoDB、MyISAM、Memory）。其中InnoDB引擎有自由的redolog模块。</p>
 <p><strong>下面解释Server层里面的组件：</strong></p>
@@ -409,23 +409,23 @@
 <h1 id="数据库的三大范式"><a href="#数据库的三大范式" class="headerlink" title="数据库的三大范式"></a>数据库的三大范式</h1><ul>
 <li><p><strong>第一范式</strong></p>
 <p>第一范式的目标是确保每列的原子性:<strong>如果每列都是不可再分的最小数据单元</strong>（也称为最小的原子单元），则满足第一范式（1NF）  </p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124314451.png" srcset="/img/loading.gif" lazyload alt="image-20220908124314451"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124314451.png" alt="image-20220908124314451"></p>
 </li>
 <li><p><strong>第二范式</strong></p>
 <p>满足第一范式，表中非主键列不存在对主键的部分依赖  （<strong>也就是第二范式要求每个表只描述一件事情</strong>  ）</p>
 <p><strong>什么叫“部分依赖”：</strong></p>
 <p>如果确定一个表中的某个数据组合（A，B），则就可以确定该表中的其他另一个数据（C），则我们说：C依赖于（A，B）（此时A，B通常就是做出主键）。</p>
 <p>但：如果某个数据D，它只依赖于数据A，或者说，A一确定，则D也可以确定，此时我们就称为“数据D部分依赖于数据A——可见部分依赖是指某个非主键字段，依赖于联合主键字段的其中部分字段。</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210220122011873.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210220122011873.png" alt="img"></p>
 <p>学生和课程作为联合主键，第二范式的要求非主键字段必须完全依赖主键，所以上表中，学分是依赖课程的，成绩和依赖学生的。要进行修改：</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210220122426319.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2021022012244740.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210220122538388.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124511218.png" srcset="/img/loading.gif" lazyload alt="image-20220908124511218"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210220122426319.png" alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2021022012244740.png" alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210220122538388.png" alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124511218.png" alt="image-20220908124511218"></p>
 </li>
 <li><p><strong>第三范式</strong></p>
 <p>满足第一和第二范式，<strong>不存在对非主键列的传递依赖</strong>  ，非主键的属性对主键都是直接依赖，而不是间接依赖</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124619358.png" srcset="/img/loading.gif" lazyload alt="image-20220908124619358"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908124619358.png" alt="image-20220908124619358"></p>
 </li>
 </ul>
 <h1 id="什么是元组-码-候选码-主码-外码-主属性-非主属性？"><a href="#什么是元组-码-候选码-主码-外码-主属性-非主属性？" class="headerlink" title="什么是元组, 码, 候选码, 主码, 外码, 主属性, 非主属性？"></a>什么是元组, 码, 候选码, 主码, 外码, 主属性, 非主属性？</h1><p><strong>元组</strong> ： 元组（tuple）是关系数据库中的基本概念，关系是一张表，表中的每行（即数据库中的每条记录）就是一个元组，每列就是一个属性。 在二维表里，元组也称为行。</p>
@@ -444,7 +444,7 @@
 <li><strong>联系</strong> ：即实体与实体之间的关系，这个关系不仅有业务关联关系，还能通过数字表示实体之间的数量对照关系。例如，一个班级会有多个学生就是一种实体间的联系。</li>
 </ul>
 <p>下图是一个学生选课的 ER 图，每个学生可以选若干门课程，同一门课程也可以被若干人选择，所以它们之间的关系是多对多（M: N）。另外，还有其他两种实体之间的关系是：1 对 1（1:1）、1 对多（1: N）。</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230416182424886.png" srcset="/img/loading.gif" lazyload alt="image-20230416182424886"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230416182424886.png" alt="image-20230416182424886"></p>
 <h1 id="drop、delete-与-truncate-区别"><a href="#drop、delete-与-truncate-区别" class="headerlink" title="drop、delete 与 truncate 区别"></a>drop、delete 与 truncate 区别</h1><ul>
 <li><code>drop</code>(丢弃数据): <code>drop table 表名</code> ，直接将表都删除掉，在删除表的时候使用。-DDL</li>
 <li><code>truncate</code> (清空数据) : <code>truncate table 表名</code> ，只删除表中的数据，再插入数据的时候自增长 id 又从 1 开始，在清空表中数据的时候使用。-DDL</li>
@@ -476,12 +476,12 @@
 </ul>
 <h2 id="索引的数据结构"><a href="#索引的数据结构" class="headerlink" title="索引的数据结构"></a>索引的数据结构</h2><h3 id="hash表"><a href="#hash表" class="headerlink" title="hash表"></a>hash表</h3><p>哈希表是键值对的集合，通过键(key)即可快速取出对应的值(value)，因此哈希表可以快速检索数据（接近 O（1））。</p>
 <p><strong>为何能够通过 key 快速取出 value呢？</strong> 原因在于 <strong>哈希算法</strong>（也叫散列算法）。通过哈希算法，我们可以快速找到 key 对应的 index，找到了 index 也就找到了对应的 value。</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221005221522286.png" srcset="/img/loading.gif" lazyload alt="image-20221005221522286"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221005221522286.png" alt="image-20221005221522286"></p>
 <p>但是hash算法存在hash冲突问题,也就是说多个不同的 key 最后得到的 index 相同。通常情况下，我们常用的解决办法是 <strong>链地址法</strong>。</p>
 <p><strong>为什么MySQL 没有使用hash表这个数据结构呢？</strong></p>
 <p><strong>1.Hash 冲突问题</strong> ：我们上面也提到过Hash 冲突了，不过对于数据库来说这还不算最大的缺点。</p>
 <p><strong>2.Hash 索引不支持顺序和范围查询(Hash 索引不支持顺序和范围查询是它最大的缺点：</strong> 假如我们要对表中的数据进行排序或者进行范围查询，那 Hash 索引可就不行了。</p>
-<h3 id="B-树索引"><a href="#B-树索引" class="headerlink" title="B+树索引"></a><strong>B+树索引</strong></h3><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309560640.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="B-树索引"><a href="#B-树索引" class="headerlink" title="B+树索引"></a><strong>B+树索引</strong></h3><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309560640.png" alt="img"></p>
 <ul>
 <li>所有的数据都会出现在叶子节点。</li>
 <li>叶子节点形成一个单向链表。</li>
@@ -499,10 +499,10 @@
 <li>B树中的内部节点和叶子节点均存放键和值，而B+树的内部节点只有键没有值，叶子节点存放所有的键和值。</li>
 <li>B+树的叶子节点相连，方便顺序检索</li>
 </ul>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221006121109983.png" srcset="/img/loading.gif" lazyload alt="image-20221006121109983"></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221006121114693.png" srcset="/img/loading.gif" lazyload alt="image-20221006121114693"></p>
-<h2 id="索引的种类"><a href="#索引的种类" class="headerlink" title="索引的种类"></a>索引的种类</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908115444190.png" srcset="/img/loading.gif" lazyload alt="image-20220908115444190"></p>
-<h2 id="数据库为什么使用B-树而不是B树"><a href="#数据库为什么使用B-树而不是B树" class="headerlink" title="数据库为什么使用B+树而不是B树"></a>数据库为什么使用B+树而不是B树</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908120042584.png" srcset="/img/loading.gif" lazyload alt="image-20220908120042584"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221006121109983.png" alt="image-20221006121109983"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221006121114693.png" alt="image-20221006121114693"></p>
+<h2 id="索引的种类"><a href="#索引的种类" class="headerlink" title="索引的种类"></a>索引的种类</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908115444190.png" alt="image-20220908115444190"></p>
+<h2 id="数据库为什么使用B-树而不是B树"><a href="#数据库为什么使用B-树而不是B树" class="headerlink" title="数据库为什么使用B+树而不是B树"></a>数据库为什么使用B+树而不是B树</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908120042584.png" alt="image-20220908120042584"></p>
 <h2 id="什么是聚簇索引，什么是非聚簇索引"><a href="#什么是聚簇索引，什么是非聚簇索引" class="headerlink" title="什么是聚簇索引，什么是非聚簇索引"></a>什么是聚簇索引，什么是非聚簇索引</h2><p><strong>聚簇索引：</strong>将数据和索引放到一起存储，索引结构的叶子节点保留了数据行。</p>
 <p><strong>非聚簇索引</strong>：将数据和索引分开存储，索引叶子节点存储的是指向数据行的地址。（叶子节点存储的是主键）</p>
 <p><strong>（1）聚簇索引的优缺点</strong></p>
@@ -524,10 +524,10 @@
 <li><strong>依赖于有序的数据</strong> ：跟聚簇索引一样，非聚簇索引也依赖于有序的数据</li>
 <li><strong>可能会二次查询(回表)</strong> ：这应该是非聚簇索引最大的缺点了。 当查到索引对应的指针或主键后，可能还需要根据指针或主键再到数据文件或表中查询。</li>
 </ul>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309560646.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309560646.jpg" alt="img"></p>
 <p><strong>也就是说通过非聚簇索引找到主键，再通过聚簇索引找到主键对应的数据。</strong></p>
 <p><strong>当我们执行如下的SQL语句时，具体的查找过程是什么样子的。</strong></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309560647.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309560647.jpg" alt="img"></p>
 <ul>
 <li>由于是根据name字段进行查询，所以先根据name&#x3D;’Arm’到name字段的二级索引中进行匹配查找。但是在二级索引中只能查找到 Arm 对应的主键值 10。</li>
 <li>由于查询返回的数据是*，所以此时，还需要根据主键值10，到聚集索引中查找10对应的记录，最终找到10对应的行row。</li>
@@ -536,10 +536,10 @@
 <blockquote>
 <p> 回表查询： 这种先到二级索引中查找数据，找到主键值，然后再到聚集索引中根据主键值，获取数据的方式，就称之为回表查询。</p>
 </blockquote>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908120558009.png" srcset="/img/loading.gif" lazyload alt="image-20220908120558009"></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908120605893.png" srcset="/img/loading.gif" lazyload alt="image-20220908120605893"></p>
-<h2 id="索引的使用场景"><a href="#索引的使用场景" class="headerlink" title="索引的使用场景"></a>索引的使用场景</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908121149094.png" srcset="/img/loading.gif" lazyload alt="image-20220908121149094"></p>
-<h2 id="索引在什么情况下会失效"><a href="#索引在什么情况下会失效" class="headerlink" title="索引在什么情况下会失效"></a>索引在什么情况下会失效</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908123400865.png" srcset="/img/loading.gif" lazyload alt="image-20220908123400865"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908120558009.png" alt="image-20220908120558009"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908120605893.png" alt="image-20220908120605893"></p>
+<h2 id="索引的使用场景"><a href="#索引的使用场景" class="headerlink" title="索引的使用场景"></a>索引的使用场景</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908121149094.png" alt="image-20220908121149094"></p>
+<h2 id="索引在什么情况下会失效"><a href="#索引在什么情况下会失效" class="headerlink" title="索引在什么情况下会失效"></a>索引在什么情况下会失效</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908123400865.png" alt="image-20220908123400865"></p>
 <h2 id="创建索引的原则"><a href="#创建索引的原则" class="headerlink" title="创建索引的原则"></a>创建索引的原则</h2><ul>
 <li>选择唯一性索引： 唯一性索引一般基于 Hash 算法实现， 可以快速、唯一地定位某条数据。</li>
 <li>为经常需要排序、分组和联合操作的字段建立索引。</li>
@@ -597,24 +597,24 @@
 <p>下面以一个表的例子进行展示，查询表中的索引，看是否有联合索引</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show index from tb_user<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221126140105574.png" srcset="/img/loading.gif" lazyload alt="image-20221126140105574"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221126140105574.png" alt="image-20221126140105574"></p>
 <p><strong>（1）符合最左原则，成功！红框中的是联合索引，最左边的列是profession，因此下面的查询都是有效的：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">explain select * from tb_user where profession = &#x27;软件工程&#x27; and age = 31 and status = &#x27;0&#x27;;<br>explain select * from tb_user where profession = &#x27;软件工程&#x27; and age = 31;<br>explain select * from tb_user where profession = &#x27;软件工程&#x27;;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221126140422974.png" srcset="/img/loading.gif" lazyload alt="image-20221126140422974"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221126140422974.png" alt="image-20221126140422974"></p>
 <p><strong>（2）不符合最左原则，失败！如果profession列没有用到的时候，则索引失效</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">explain select * from tb_user where age = 31 and status = &#x27;0&#x27;;<br>explain select * from tb_user where status = &#x27;0&#x27;;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221126140549906.png" srcset="/img/loading.gif" lazyload alt="image-20221126140549906"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221126140549906.png" alt="image-20221126140549906"></p>
 <p><strong>（3）跨列查询</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">explain select * from tb_user where profession = &#x27;软件工程&#x27; and status = &#x27;0&#x27;;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221126140922771.png" srcset="/img/loading.gif" lazyload alt="image-20221126140922771"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221126140922771.png" alt="image-20221126140922771"></p>
 <p><strong>根据索引使用的长度，索引的部分生效，只用到了profession列的部分</strong></p>
 <p><strong>思考：如果顺序不同的话是否可以执行索引，答案是：可以！</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">explain select * from tb_user <span class="hljs-type">where</span> <span class="hljs-variable">age</span> <span class="hljs-operator">=</span> <span class="hljs-number">31</span> <span class="hljs-type">and</span> <span class="hljs-variable">status</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;0&#x27;</span> <span class="hljs-type">and</span> <span class="hljs-variable">profession</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;软件工程&#x27;</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221126141104785.png" srcset="/img/loading.gif" lazyload alt="image-20221126141104785"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221126141104785.png" alt="image-20221126141104785"></p>
 <p><strong>出现 &gt; 或 &lt; 时，&gt;或&lt;的列失效，其他的不是失效</strong></p>
 <p><strong>mysql8的时候，如果条件语句中有or，并且两边都有索引，则走索引，否则失效。而mysql5无论两边是否有索引，出现or就会失效</strong></p>
 <p><strong>对于is null 和 is not null，按照情况说是否走索引，会判断走索引块还是查询表块</strong></p>
@@ -630,12 +630,12 @@
 
 <p>id是主键，是一个聚集索引。 name字段建立了普通索引，是一个二级索引（辅助索引）。</p>
 <p>执行SQL : <code>select * from tb_user where id = 2;</code></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309561197.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309561197.jpg" alt="img"></p>
 <p>根据id查询，直接走聚集索引查询，一次索引扫描，直接返回数据，性能高。</p>
 <p>执行SQL：<code>selet id,name from tb_user where name = &#39;Arm&#39;;</code></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309561198.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309561198.jpg" alt="img"></p>
 <p>执行SQL：<code>selet id,name,gender from tb_user where name = &#39;Arm&#39;;</code></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309561199.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2022080309561199.jpg" alt="img"></p>
 <p><strong>思考题：</strong> 一张表, 有四个字段(id, username, password, status), 由于数据量大, 需要对以下SQL语句进行优化, 该如何进行才是最优方案:</p>
 <figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span><span class="hljs-symbol">` `</span>id,username,<span class="hljs-symbol">``</span><span class="hljs-keyword">password</span><span class="hljs-symbol">` `</span><span class="hljs-keyword">from</span><span class="hljs-symbol">` `</span>tb_user <span class="hljs-symbol">``</span><span class="hljs-keyword">where</span><span class="hljs-symbol">` `</span>username =<span class="hljs-symbol">``</span><span class="hljs-string">&#x27;zhangsan&#x27;</span><span class="hljs-symbol">``</span>;<br></code></pre></td></tr></table></figure>
 
@@ -644,9 +644,9 @@
 <p>语法：<code>create index idx_xxxx on table_name(column(n)) ;</code></p>
 <p>实例：</p>
 <p><code>create index idx_email_5 on tb_user(email(5));</code></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221126145423129.png" srcset="/img/loading.gif" lazyload alt="image-20221126145423129"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20221126145423129.png" alt="image-20221126145423129"></p>
 <p><strong>查询流程：</strong></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20220803095611101.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20220803095611101.jpg" alt="img"></p>
 <h2 id="单列索引与联合索引"><a href="#单列索引与联合索引" class="headerlink" title="单列索引与联合索引"></a>单列索引与联合索引</h2><ul>
 <li><p>单列索引：即一个索引只包含单个列。</p>
 </li>
@@ -656,7 +656,7 @@
 </li>
 </ul>
 <p><strong>在业务场景中，如果存在多个查询条件，考虑针对于查询字段建立索引时，建议建立联合索引，而非单列索引。</strong></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20220803095612105.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20220803095612105.jpg" alt="img"></p>
 <h2 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h2><p> 覆盖索引是指 查询使用了索引，并且需要返回的列，在该索引中已经全部能够找到 。说白了就是避免回表查询</p>
 <h1 id="事务篇"><a href="#事务篇" class="headerlink" title="事务篇"></a>事务篇</h1><h2 id="什么是数据库事务"><a href="#什么是数据库事务" class="headerlink" title="什么是数据库事务"></a>什么是数据库事务</h2><p>数据库事务执行一系列基本操作，这些基本操作组成一个逻辑工作单元一起向数据库提交，要么都执行，要么都不执行。事务是一个不可分割的工作逻辑单元。  </p>
 <h2 id="事务的四大特性"><a href="#事务的四大特性" class="headerlink" title="事务的四大特性"></a>事务的四大特性</h2><ul>
@@ -679,7 +679,7 @@
 <li><strong>可重复读</strong>：同一事务中多次读取到的数据是一致的</li>
 <li><strong>串行化</strong>：加锁实现，事务串行执行</li>
 </ul>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908130942497.png" srcset="/img/loading.gif" lazyload alt="image-20220908130942497"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908130942497.png" alt="image-20220908130942497"></p>
 <h2 id="Mysql的默认隔离级别：可重复读是怎么实现的"><a href="#Mysql的默认隔离级别：可重复读是怎么实现的" class="headerlink" title="Mysql的默认隔离级别：可重复读是怎么实现的"></a>Mysql的默认隔离级别：可重复读是怎么实现的</h2><p>InnoDB是通过维护两个隐藏列来实现mvcc，隐藏列记录了数据行<strong>创建版本号</strong>和<strong>删除版本号</strong></p>
 <p><strong>mvcc在可重复读级别下的具体实现：</strong></p>
 <ul>
@@ -697,8 +697,8 @@
 </li>
 </ul>
 <h1 id="数据的锁"><a href="#数据的锁" class="headerlink" title="数据的锁"></a>数据的锁</h1><h2 id="什么是数据库的锁"><a href="#什么是数据库的锁" class="headerlink" title="什么是数据库的锁"></a>什么是数据库的锁</h2><p>有并发事务时，保证事务的访问顺序机制是锁机制</p>
-<h2 id="数据库锁的类型"><a href="#数据库锁的类型" class="headerlink" title="数据库锁的类型"></a>数据库锁的类型</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908131726920.png" srcset="/img/loading.gif" lazyload alt="image-20220908131726920"></p>
-<h2 id="数据库的乐观锁和悲观锁"><a href="#数据库的乐观锁和悲观锁" class="headerlink" title="数据库的乐观锁和悲观锁"></a>数据库的乐观锁和悲观锁</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908132425625.png" srcset="/img/loading.gif" lazyload alt="image-20220908132425625"></p>
+<h2 id="数据库锁的类型"><a href="#数据库锁的类型" class="headerlink" title="数据库锁的类型"></a>数据库锁的类型</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908131726920.png" alt="image-20220908131726920"></p>
+<h2 id="数据库的乐观锁和悲观锁"><a href="#数据库的乐观锁和悲观锁" class="headerlink" title="数据库的乐观锁和悲观锁"></a>数据库的乐观锁和悲观锁</h2><p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20220908132425625.png" alt="image-20220908132425625"></p>
 <h2 id="MySql锁"><a href="#MySql锁" class="headerlink" title="MySql锁"></a>MySql锁</h2><h3 id="表级锁和行级锁"><a href="#表级锁和行级锁" class="headerlink" title="表级锁和行级锁"></a>表级锁和行级锁</h3><p><strong>MyISAM 仅仅支持表级锁</strong>(table-level locking)，一锁就锁整张表，这在并发写的情况下性非常差。</p>
 <p><strong>InnoDB 不光支持表级锁</strong>(table-level locking)，<strong>还支持行级锁(row-level locking)，默认为行级锁。</strong>行级锁的粒度更小，仅对相关的记录上锁即可（对一行或者多行记录加锁），所以对于并发写入操作来说， InnoDB 的性能更高.</p>
 <p><strong>表级锁和行级锁对比</strong> ：</p>
@@ -787,7 +787,7 @@
 <p>为此，InnoDB提供了缓存(Buffer Pool)，Buffer Pool中包含了磁盘中部分数据页的映射，作为访问数据库的缓冲：当从数据库读取数据时，会首先从Buffer Pool中读取，如果Buffer Pool中没有，则从磁盘读取后放入Buffer Pool；当向数据库写入数据时，会首先写入Buffer Pool，<strong>Buffer Pool中修改的数据会定期刷新到磁盘中</strong>（这一过程称为刷脏）。</p>
 <p>Buffer Pool的使用大大提高了读写数据的效率，但是也带了新的问题：<strong>如果MySQL宕机，而此时Buffer Pool中修改的数据还没有刷新到磁盘，就会导致数据的丢失，事务的持久性无法保证。</strong></p>
 <p>于是，<strong>redo log被引入来解决这个问题：当数据修改时，除了修改Buffer Pool中的数据，还会在redo log记录这次操作；当事务提交时，会调用fsync接口对redo log进行刷盘。如果MySQL宕机，重启时可以读取redo log中的数据，对数据库进行恢复。redo log采用的是WAL（Write-ahead logging，预写式日志），所有修改先写入日志，再更新到Buffer Pool，保证了数据不会因MySQL宕机而丢失，从而满足了持久性要求。</strong></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/03.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/03.png" alt="img"></p>
 <h1 id="Mysql怎么保证事务的原子性"><a href="#Mysql怎么保证事务的原子性" class="headerlink" title="Mysql怎么保证事务的原子性"></a>Mysql怎么保证事务的原子性</h1><p><strong>是利用<code>Innodb</code>的<code>undo log</code>。</strong><br><code>undo log</code>名为回滚日志，是实现原子性的关键，<strong>当事务回滚时能够撤销所有已经成功执行的sql语句，他需要记录你要回滚的相应日志信息。</strong></p>
 <p><strong>是当事务回滚时能够撤销所有已经成功执行的sql语句</strong></p>
 <p>InnoDB实现回滚，靠的是undo log：当事务对数据库进行修改时，InnoDB会生成对应的undo log；如果事务执行失败或调用了rollback，导致事务需要回滚，便可以利用undo log中的信息将数据回滚到修改之前的样子。</p>
@@ -797,7 +797,7 @@
 <p> 建立一个快照，同一个事务无论查多少次都是一个结果。某一个事务第一次查询确认了快照之后，无论后面的事务插入数据，删除数据还是更新数据，都不会影响该事务的查询结果，只能看到最初建立快照时饿情况。</p>
 </blockquote>
 <p><strong>(1)MVCC的底层支持，InnoDB为每个表提供了三个隐藏的字段以及事务id和删除版本号的使用</strong></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620160153106.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620160153106.png" alt="在这里插入图片描述"></p>
 <p><strong>(2)MVCC的底层是read view（一致性视图）。</strong></p>
 <p>不同的表类型生成的时机不同：</p>
 <ul>
@@ -807,7 +807,7 @@
 </li>
 </ul>
 <p><strong>(3)readview一致性视图的结构</strong></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620161433980.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620161433980.png" alt="在这里插入图片描述"></p>
 <p><strong>readview一致性视图的应用</strong></p>
 <ul>
 <li><p>对于某个事务<code>trx_id</code>，如果这个<code>trx_id=creator_trx_id</code>，表示这个<code>readview</code>就是这个<code>trx_id</code>创建的，自然可以访问这个<code>trx_id</code></p>
@@ -834,20 +834,20 @@
 <p>对于程序员给表加上行锁（读共享锁 写独占锁），<br>如果存在索引，锁住的索引，如果where条件中有索引列，仅锁住where条件命中的这一行或多行数据；如果where条件中没有索引列 或者 没有根本就没有where子句，会锁住整个表（连插入都插入不进去了 解决幻读问题）。<br>如果不存在索引，锁住的隐藏的rowid，此时会锁住整个表（连插入都插入不进去了 解决幻读问题）。</p>
 </blockquote>
 <p><strong>（3）三种高级锁</strong></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620172422570.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620172422570.png" alt="在这里插入图片描述"></p>
 <ul>
 <li><p><strong>record记录锁</strong></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620172534743.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620172534743.png" alt="在这里插入图片描述"></p>
 </li>
 <li><p><strong>间隙锁</strong></p>
 <p>那么幻读能仅通过行锁解决么？答案是否定的，如上面示例，首先说明一下，select xx for update（当前读）是将所有条件涉及到的（符合where条件）行加上行锁。但是，就算我在select xx for update 事务开启时将所有的行都加上行锁。那么也锁不住Session C新增的行，<strong>因为在我给数据加锁的时刻，压根就还没有新增的那行，自然也不会给新增行加上锁。</strong></p>
 <p><strong>所以要解决幻读，就必须得解决新增行的问题。</strong></p>
 <p><strong>现在你应该明白了，产生幻读的原因是：行锁只能锁住行，但是新插入记录这个动作，要更新的是记录之间的“间隙”。因此，为了解决幻读问题，InnoDB 只好引入新的锁，也就是间隙锁 (Gap Lock)。</strong>顾名思义，间隙锁，锁的就是两个值之间的空隙。比如文章开头的表 LOL，初始化插入了 7 个记录，这就产生了 8 个间隙。</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620172630964.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620172630964.png" alt="在这里插入图片描述"></p>
 </li>
 <li><p><strong>临键锁</strong></p>
 <p>在一行行扫描的过程中，不仅将给行加上了行锁，还给行两边的空隙，也加上了间隙锁。<strong>MySQL将行锁 + 间隙锁组合统称为 next-key lock</strong>，通过 next-key lock 解决了幻读问题。</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620173251235.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20210620173251235.png" alt="在这里插入图片描述"></p>
 </li>
 </ul>
 <p><strong>（4）四种隔离级别的锁，哪种mvcc,哪种加锁</strong></p>
@@ -865,7 +865,7 @@
 <p>select语句前面加explain关键字，执行mysql就会返回执行计划的信息，而不是执行mysql。</p>
 </blockquote>
 <p><strong>exception中的列：</strong></p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2f768fa6e05f4d89ab95c3b27a2886d5.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/2f768fa6e05f4d89ab95c3b27a2886d5.png" alt="img"></p>
 <p><strong>（1）id：</strong>id列的编号是select的序列号，有几个select就有几个id</p>
 <p><strong>（2）select_type：</strong>对应行的查询是简单查询还是复杂查询。</p>
 <blockquote>
@@ -905,24 +905,24 @@
 <p><strong>（1）先更新数据库，再删除缓存</strong></p>
 <p><strong>问题：</strong>更新数据库成功，线程出现问题，缓存删除失败，缓存中的是旧数据，数据不一致，有两种解决方式；<strong>失败重试</strong>和<strong>异步更新</strong></p>
 <p><strong>失败重试：</strong>把删除的key放入到消息队中，从消息队列中进行删除，（有个缺点，首先会对业务代码造成入侵，其次引入了消息队列，增加了系统的不确定性。）</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20224285758787.png" srcset="/img/loading.gif" lazyload alt="MySQL和Redis的数据一致性问题_一致性问题_04"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20224285758787.png" alt="MySQL和Redis的数据一致性问题_一致性问题_04"></p>
 <p><strong>异步更新：</strong>因为更新数据库时会往 <code>binlog </code>中写入日志，所以我们可以启动一个监听 binlog变化的服务（比如使用阿里的 canal开源组件），然后在客户端完成删除 key 的操作。如果删除失败的话，再发送到消息队列。</p>
 <p><strong>（2）先删除缓存，再更新数据库</strong></p>
 <p><strong>问题：</strong>如果先删除Redis缓存数据，然而还没有来得及写入MySQL，另一个线程就来读取。这个时候发现缓存为空，则去Mysql数据库中读取旧数据写入缓存，此时缓存中为脏数据。出现了数据不一致的问题。可以采用<strong>延时双删</strong>的策略解决。</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20224285758788.png" srcset="/img/loading.gif" lazyload alt="MySQL和Redis的数据一致性问题_缓存_05"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20224285758788.png" alt="MySQL和Redis的数据一致性问题_缓存_05"></p>
 <p><strong>延时双删</strong>：就是更新数据库之后，再删除一次缓存。</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20224285758789.png" srcset="/img/loading.gif" lazyload alt="MySQL和Redis的数据一致性问题_缓存_06"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/20224285758789.png" alt="MySQL和Redis的数据一致性问题_缓存_06"></p>
 <h1 id="数据库的连接"><a href="#数据库的连接" class="headerlink" title="数据库的连接"></a>数据库的连接</h1><p>又称多表查询，当查询的字段分别来自于不同表时，就会用到连接查询。</p>
 <h2 id="连接的分类"><a href="#连接的分类" class="headerlink" title="连接的分类"></a><strong>连接的分类</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">内连接：inner<br>外连接：<br>	左外：left outer<br>	右外：right outer<br>	全外（用的较少）<br>交叉连接：cross（用的较少）相当于做了一个笛卡尔乘积<br></code></pre></td></tr></table></figure>
 
 <p>内连接：</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190611640.png" srcset="/img/loading.gif" lazyload alt="image-20230412190611640"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190611640.png" alt="image-20230412190611640"></p>
 <p>右外连接：</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190743985.png" srcset="/img/loading.gif" lazyload alt="image-20230412190743985"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190743985.png" alt="image-20230412190743985"></p>
 <p>左外连接：</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190723458.png" srcset="/img/loading.gif" lazyload alt="image-20230412190723458"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190723458.png" alt="image-20230412190723458"></p>
 <p>全连接：</p>
-<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190747912.png" srcset="/img/loading.gif" lazyload alt="image-20230412190747912"></p>
+<p><img src="/2022/09/05/Mysql%E9%AB%98%E7%BA%A7/image-20230412190747912.png" alt="image-20230412190747912"></p>
 <h2 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h2><p><strong>基本语法：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select column<br>from table 1<br>inner join table 2<br>on 连接条件<br></code></pre></td></tr></table></figure>
 
@@ -1045,7 +1045,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -1254,7 +1254,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

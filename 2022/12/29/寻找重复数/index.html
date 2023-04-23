@@ -76,7 +76,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -323,7 +323,7 @@
 <p>其映射关系 <code>n-&gt;f(n)</code> 为：<br>0-&gt;1<br>1-&gt;3<br>2-&gt;4<br>3-&gt;2<br>4-&gt;2</p>
 <p>以此类推产生一个类似链表一样的序列。<br><code>0-&gt;1-&gt;3-&gt;2-&gt;4-&gt;2-&gt;4-&gt;2-&gt;……</code></p>
 <p>可以抽象为下图：</p>
-<p><img src="/2022/12/29/%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/999e055b41e499d9ac704abada4a1b8e6697374fdfedc17d06b0e8aa10a8f8f6-287.png" srcset="/img/loading.gif" lazyload alt="287.png"></p>
+<p><img src="/2022/12/29/%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/999e055b41e499d9ac704abada4a1b8e6697374fdfedc17d06b0e8aa10a8f8f6-287.png" alt="287.png"></p>
 <p>综上<br>1.数组中有一个重复的整数 &lt;&#x3D;&#x3D;&gt; 链表中存在环<br>2.找到数组中的重复整数 &lt;&#x3D;&#x3D;&gt; 找到链表的环入口</p>
 <p>因此：</p>
 <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf">题中慢指针走一步 slow <span class="hljs-operator">=</span> slow.next <span class="hljs-operator">=</span><span class="hljs-operator">=</span>&gt; 本题 slow <span class="hljs-operator">=</span> nums[slow]<br>题中快指针走两步 fast <span class="hljs-operator">=</span> fast.next.next <span class="hljs-operator">=</span><span class="hljs-operator">=</span>&gt; 本题 fast <span class="hljs-operator">=</span> nums[nums[fast]]<br></code></pre></td></tr></table></figure>
@@ -450,7 +450,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -659,7 +659,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

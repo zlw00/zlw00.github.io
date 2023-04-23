@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -425,7 +425,7 @@
 <p><code>@Transactional</code>：标注在类或方法上，</p>
 <p><strong>配置相关：</strong></p>
 <p><code>@Value</code>：在任意Spring管理的Bean中，通过这个注解可获取任何配置文件的属性值。</p>
-<h2 id="SpringBoot的启动类"><a href="#SpringBoot的启动类" class="headerlink" title="SpringBoot的启动类"></a>SpringBoot的启动类</h2><p><img src="/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/image-20221207213045946.png" srcset="/img/loading.gif" lazyload alt="image-20221207213045946"></p>
+<h2 id="SpringBoot的启动类"><a href="#SpringBoot的启动类" class="headerlink" title="SpringBoot的启动类"></a>SpringBoot的启动类</h2><p><img src="/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/image-20221207213045946.png" alt="image-20221207213045946"></p>
 <blockquote>
 <p>元注解：可以注解到注解上的注解，对其它注解进行说明的注解</p>
 </blockquote>
@@ -449,10 +449,10 @@
 
 <p>我们springboot项目为什么可以自动载入应用程序所需的<code>bean</code>？<strong>就是因为这个神奇的注解<code>@Import</code>。</strong></p>
 <p>进入<code>AutoConfigurationImportSelector</code>类，可以看到他有一个方法<code>selectImports()</code>，</p>
-<p><img src="/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/20201015162555853.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/20201015162555853.png" alt="在这里插入图片描述"></p>
 <p>进入<code>getAutoConfigurationEntry()</code>方法</p>
 <p>可以看到这里有个<code>List</code>集合，那这个<code>List</code>集合又是干嘛的？没事，我们继续跟踪<code>getCandidateConfigurations()</code>方法！</p>
-<p><img src="/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/20201015163850335.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/2022/11/28/%E9%9D%A2%E8%AF%95%E9%A2%98-Spring/20201015163850335.png" alt="在这里插入图片描述"></p>
 <p>红框中的方法：<strong>就是读取<code>classpath</code>下的<code>META-INF/spring.factories</code>文件的配置，将<code>key</code>为 <code>org.springframework.boot.autoconfigure.EnableAutoConfiguration</code> 对应的配置项读取出来，通过反射机制实例化为配置文件，然后注入<code>spring</code>容器。</strong></p>
 <p><strong>这个方法可以返回集合里找到我们自定义的配置文件路径！</strong></p>
 <h2 id="SpringBoot的starter"><a href="#SpringBoot的starter" class="headerlink" title="SpringBoot的starter"></a>SpringBoot的starter</h2><p>starter是启动依赖，日常企业应用研发中的各种场景都抽取出来，做成一个个的 starter（启动器），starter 中整合了该场景下各种可能用到的依赖，用户只需要在 Maven 中引入 starter 依赖，SpringBoot 就能自动扫描到要加载的信息并启动相应的默认配置。让用户摆脱了处理各种依赖和配置的困扰。</p>
@@ -670,7 +670,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -879,7 +879,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

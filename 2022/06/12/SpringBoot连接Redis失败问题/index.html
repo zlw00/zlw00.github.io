@@ -80,7 +80,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -291,14 +291,14 @@
               
               <h1 id="SpringBoot集成Redis连接不上的问题"><a href="#SpringBoot集成Redis连接不上的问题" class="headerlink" title="SpringBoot集成Redis连接不上的问题"></a>SpringBoot集成Redis连接不上的问题</h1><p>问题描述<br>初学SpringBoot</p>
 <p>当进行SpringBoot集成Redis时。测试向redis中添加String类型的数据，key&#x3D;name , value &#x3D; zlw。<br>但出现了一下错误：（Whitelabel Error Page）</p>
-<p><img src="/2022/06/12/SpringBoot%E8%BF%9E%E6%8E%A5Redis%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/image-20220612105150148.png" srcset="/img/loading.gif" lazyload alt="image-20220612105150148"></p>
+<p><img src="/2022/06/12/SpringBoot%E8%BF%9E%E6%8E%A5Redis%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/image-20220612105150148.png" alt="image-20220612105150148"></p>
 <p>看控制台输出发现，大致应该是redis没有连接成功。</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">Servlet.service() <span class="hljs-keyword">for</span> servlet [dispatcherServlet] <span class="hljs-keyword">in</span> context <span class="hljs-keyword">with</span> <span class="hljs-type">path</span> [] threw <span class="hljs-keyword">exception</span> [Request processing failed; nested <span class="hljs-keyword">exception</span> <span class="hljs-keyword">is</span> org.springframework.data.redis.RedisConnectionFailureException: Unable <span class="hljs-keyword">to</span> <span class="hljs-keyword">connect</span> <span class="hljs-keyword">to</span> Redis; nested <span class="hljs-keyword">exception</span> <span class="hljs-keyword">is</span> io.lettuce.core.RedisConnectionException: Unable <span class="hljs-keyword">to</span> <span class="hljs-keyword">connect</span> <span class="hljs-keyword">to</span> <span class="hljs-number">192.168</span><span class="hljs-number">.86</span><span class="hljs-number">.129</span>/&lt;unresolved&gt;:<span class="hljs-number">6379</span>] <span class="hljs-keyword">with</span> root cause<br></code></pre></td></tr></table></figure>
 
 
 <p>上网搜索了好多这个问题的错误，但好像都没有解决，不是自己的错误，但后来回想到，学习linux的时候，想要连接成功<strong>必须要关闭linux的防火墙才行。。。</strong></p>
 <p>试一试</p>
-<p><img src="/2022/06/12/SpringBoot%E8%BF%9E%E6%8E%A5Redis%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/image-20220612105210233.png" srcset="/img/loading.gif" lazyload alt="image-20220612105210233"></p>
+<p><img src="/2022/06/12/SpringBoot%E8%BF%9E%E6%8E%A5Redis%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/image-20220612105210233.png" alt="image-20220612105210233"></p>
 <p>可以看到防火墙已经关闭了，</p>
 <p>哇~有新发现了，，虽然页面还是没有变化，但控制台的信息发生了变化。提示：</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">WRONGPASS invalid username-password pair <span class="hljs-keyword">or</span> <span class="hljs-keyword">user</span> <span class="hljs-title">is</span> disabled.<br></code></pre></td></tr></table></figure>
@@ -308,7 +308,7 @@
 <p>这应该是我的redis密码有问题。。</p>
 <p>原来是我的密码加上了引号<br><strong>记住：密码要去掉引号！！！</strong></p>
 <p>去掉双引号之后再次访问，成功！！</p>
-<p><strong><img src="/2022/06/12/SpringBoot%E8%BF%9E%E6%8E%A5Redis%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/image-20220612105234002.png" srcset="/img/loading.gif" lazyload alt="image-20220612105234002"></strong></p>
+<p><strong><img src="/2022/06/12/SpringBoot%E8%BF%9E%E6%8E%A5Redis%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/image-20220612105234002.png" alt="image-20220612105234002"></strong></p>
 
               
             </div>
@@ -427,7 +427,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -636,7 +636,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

@@ -76,7 +76,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -449,7 +449,7 @@
 <li>上行数据采用TDMA技术</li>
 </ul>
 <p>TDMA：时分多址</p>
-<h1 id="GPON"><a href="#GPON" class="headerlink" title="GPON"></a>GPON</h1><p><img src="/2022/07/26/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/image-20220728143943958.png" srcset="/img/loading.gif" lazyload alt="image-20220728143943958"></p>
+<h1 id="GPON"><a href="#GPON" class="headerlink" title="GPON"></a>GPON</h1><p><img src="/2022/07/26/%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/image-20220728143943958.png" alt="image-20220728143943958"></p>
 <h2 id="下行数据和上行数据"><a href="#下行数据和上行数据" class="headerlink" title="下行数据和上行数据"></a>下行数据和上行数据</h2><p>下行数据（发送给用户）：使用广播方式，将网络上的数据发送给ONU（用户），也就是客户端，ONU收到下行的数据，根据GEM Port-ID识别是否接受此数据。</p>
 <p>上行数据（用户发出的数据）：TDMA方式时分多址，根据不同的时隙（解决上行传输不冲突）来向服务器请求和确认，不能使用广播的方式，因为这样服务器将不知道处理哪个。</p>
 <h2 id="T-CONT"><a href="#T-CONT" class="headerlink" title="T-CONT"></a>T-CONT</h2><p>上行方向承载业务的载体，所有的GEM Port都要映射到T-CONT中，T-CONT是10G GPON系统上业务最基本的控制单元。</p>
@@ -573,7 +573,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -782,7 +782,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

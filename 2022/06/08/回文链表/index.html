@@ -82,7 +82,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -293,16 +293,16 @@
               
               <h1 id="leetCode–234（回文串）"><a href="#leetCode–234（回文串）" class="headerlink" title="leetCode–234（回文串）"></a>leetCode–234（回文串）</h1><p>给你一个单链表的头节点 <code>head</code> ，请你判断该链表是否为回文链表。如果是，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="/2022/06/08/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/image-20220608172057862.png" srcset="/img/loading.gif" lazyload alt="image-20220608172057862"></p>
+<p><img src="/2022/06/08/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/image-20220608172057862.png" alt="image-20220608172057862"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">输入：<span class="hljs-built_in">head</span> = [1,2,2,1]<br>输出：<span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="/2022/06/08/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/image-20220608172106828.png" srcset="/img/loading.gif" lazyload alt="image-20220608172106828"></p>
+<p><img src="/2022/06/08/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/image-20220608172106828.png" alt="image-20220608172106828"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">输入：<span class="hljs-built_in">head</span> = [1,2]<br>输出：<span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="解法一：自己，使用栈完成"><a href="#解法一：自己，使用栈完成" class="headerlink" title="解法一：自己，使用栈完成"></a>解法一：自己，使用栈完成</h2><p>使用栈来存储遍历的链表，后依次出栈，和链表比较。</p>
 <p>太低了吧！！ 哈哈哈  加油加油！</p>
-<p><img src="/2022/06/08/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/image-20220608172154883.png" srcset="/img/loading.gif" lazyload alt="image-20220608172154883"></p>
+<p><img src="/2022/06/08/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/image-20220608172154883.png" alt="image-20220608172154883"></p>
 <p><strong>代码为：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * public class ListNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     ListNode next;</span><br><span class="hljs-comment"> *     ListNode() &#123;&#125;</span><br><span class="hljs-comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span><br><span class="hljs-comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPalindrome</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-keyword">if</span> (head==<span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (head.next==<span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (head.next.next==<span class="hljs-literal">null</span> &amp;&amp; head.val==head.next.val) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (head.next.next==<span class="hljs-literal">null</span> &amp;&amp; head.val!=head.next.val) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        Stack&lt;ListNode&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-keyword">while</span> (cur!=<span class="hljs-literal">null</span>)&#123;<br>            stack.push(cur);<br>            cur = cur.next;<br>        &#125;<br>        cur = head;<br>        <span class="hljs-keyword">while</span> (cur!=<span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">if</span> (cur.val!=stack.peek().val) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            <span class="hljs-keyword">else</span> stack.pop();<br>            cur = cur.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> stack.isEmpty();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -451,7 +451,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -660,7 +660,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

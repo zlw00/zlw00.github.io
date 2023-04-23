@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -295,18 +295,18 @@
 <li><strong>一部分为用户空间</strong>。</li>
 </ul>
 <h2 id="I-x2F-O运行过程"><a href="#I-x2F-O运行过程" class="headerlink" title="I&#x2F;O运行过程"></a>I&#x2F;O运行过程</h2><p><strong>以read为例：</strong></p>
-<p><img src="/2022/11/27/java%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84IO%E6%A8%A1%E5%9E%8B/image-20221127200400663.png" srcset="/img/loading.gif" lazyload alt="image-20221127200400663"></p>
+<p><img src="/2022/11/27/java%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84IO%E6%A8%A1%E5%9E%8B/image-20221127200400663.png" alt="image-20221127200400663"></p>
 <p>通过上图的操作流程可以发现，应用程序调用read方法时，是需要<strong>等待</strong>的，有两个过程：</p>
 <ul>
 <li>从内核空间中找数据</li>
 <li>将内核空间的数据拷贝到用户空间中</li>
 </ul>
 <h1 id="阻塞IO模型（BIO）"><a href="#阻塞IO模型（BIO）" class="headerlink" title="阻塞IO模型（BIO）"></a>阻塞IO模型（BIO）</h1><p>应用程序发起系统调用到数据包被复制到应用程序的缓冲区中或者发生错误返回，在此期间是一直等待的。</p>
-<p><img src="/2022/11/27/java%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84IO%E6%A8%A1%E5%9E%8B/image-20221127200735955.png" srcset="/img/loading.gif" lazyload alt="image-20221127200735955"></p>
+<p><img src="/2022/11/27/java%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84IO%E6%A8%A1%E5%9E%8B/image-20221127200735955.png" alt="image-20221127200735955"></p>
 <p><strong>优点：</strong>开发简单，容易入门。在阻塞等待期间，用户线程挂起，在挂起期间不会占用 CPU 资源</p>
 <p><strong>缺点：</strong>一个线程维护一个 IO ，不适合大并发，在并发量大的时候需要创建大量的线程来维护网络连接，内存、线程开销非常大</p>
 <h1 id="非阻塞IO模型（NIO）"><a href="#非阻塞IO模型（NIO）" class="headerlink" title="非阻塞IO模型（NIO）"></a>非阻塞IO模型（NIO）</h1><p>进程<strong>反复</strong>进行系统调用，如果数据没有准备好，则返回一个EAGAIN。一般都对非阻塞I&#x2F;O模型<strong>进行轮询检查这个状态</strong>，看内核是不是有数据到来。</p>
-<p><img src="/2022/11/27/java%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84IO%E6%A8%A1%E5%9E%8B/image-20221127201120197.png" srcset="/img/loading.gif" lazyload alt="image-20221127201120197"></p>
+<p><img src="/2022/11/27/java%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84IO%E6%A8%A1%E5%9E%8B/image-20221127201120197.png" alt="image-20221127201120197"></p>
 <p>在非阻塞状态下，recv() 接口在被调用后立即返回，返回值代表了不同的含义。如在本例中</p>
 <ul>
 <li>recv() 返回值大于 0，表示接受数据完毕，返回值即是接受到的字节数；</li>
@@ -317,7 +317,7 @@
 <p><strong>同步非阻塞 IO 优点：</strong>每次发起 IO 调用，在内核等待数据的过程中可以立即返回，用户线程不会阻塞，实时性好</p>
 <p><strong>同步非阻塞 IO 缺点：</strong>多个线程不断轮询内核是否有数据，占用大量 CPU 资源，效率不高。一般 Web 服务器不会采用此模式</p>
 <h1 id="IO多路复用模型"><a href="#IO多路复用模型" class="headerlink" title="IO多路复用模型"></a>IO多路复用模型</h1><p>它的基本原理就是 select&#x2F;epoll 这个 function会不断的轮询所负责的所有 socket，当某个 socket 有数据到达了，就通知用户进程。</p>
-<p><img src="/2022/11/27/java%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84IO%E6%A8%A1%E5%9E%8B/image-20221127201540663.png" srcset="/img/loading.gif" lazyload alt="image-20221127201540663"></p>
+<p><img src="/2022/11/27/java%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84IO%E6%A8%A1%E5%9E%8B/image-20221127201540663.png" alt="image-20221127201540663"></p>
 <p><strong>IO多路复用的流程</strong></p>
 <p>（1）当用户进程调用了select，那么整个进程会被block；</p>
 <p>（2）而同时，kernel会“监视”所有select负责的socket；</p>
@@ -434,7 +434,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -643,7 +643,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

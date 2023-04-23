@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -293,14 +293,14 @@
 <p>返回合并后的二叉树。</p>
 <p><strong>注意</strong>: 合并过程必须从两个树的根节点开始。</p>
 <p><strong>示例1：</strong></p>
-<p><img src="/2022/06/11/%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/image-20220611130151737.png" srcset="/img/loading.gif" lazyload alt="image-20220611130151737"></p>
+<p><img src="/2022/06/11/%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/image-20220611130151737.png" alt="image-20220611130151737"></p>
 <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nix">输入：<span class="hljs-attr">root1</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>], <span class="hljs-attr">root2</span> = [<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-literal">null</span>,<span class="hljs-number">4</span>,<span class="hljs-literal">null</span>,<span class="hljs-number">7</span>]<br>输出：[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">4</span>,<span class="hljs-literal">null</span>,<span class="hljs-number">7</span>]<br></code></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
 <figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs inform7">输入：root1 = <span class="hljs-comment">[1]</span>, root2 = <span class="hljs-comment">[1,2]</span><br>输出：<span class="hljs-comment">[2,2]</span><br></code></pre></td></tr></table></figure>
 
 <h1 id="解法一：递归"><a href="#解法一：递归" class="headerlink" title="解法一：递归"></a>解法一：递归</h1><p>先判断两个树是否为空，如果不为空将，两棵树的根节点相加，再递归遍历两个数的左子树和右子树。</p>
-<p><img src="/2022/06/11/%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/23fbf9388a4193475a7606a6390729f575e3329e0a810d2047682f701d3ddd1f-recursion.gif" srcset="/img/loading.gif" lazyload alt="recursion.gif"></p>
+<p><img src="/2022/06/11/%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/23fbf9388a4193475a7606a6390729f575e3329e0a810d2047682f701d3ddd1f-recursion.gif" alt="recursion.gif"></p>
 <p><strong>代码为：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for a binary tree node.</span><br><span class="hljs-comment"> * public class TreeNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     TreeNode left;</span><br><span class="hljs-comment"> *     TreeNode right;</span><br><span class="hljs-comment"> *     TreeNode() &#123;&#125;</span><br><span class="hljs-comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span><br><span class="hljs-comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span><br><span class="hljs-comment"> *         this.val = val;</span><br><span class="hljs-comment"> *         this.left = left;</span><br><span class="hljs-comment"> *         this.right = right;</span><br><span class="hljs-comment"> *     &#125;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">//递归</span><br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">mergeTrees</span><span class="hljs-params">(TreeNode root1, TreeNode root2)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root1==<span class="hljs-literal">null</span> &amp;&amp; root2==<span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">if</span> (root1==<span class="hljs-literal">null</span> || root2==<span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> root1==<span class="hljs-literal">null</span>?root2:root1;<br>        root1.val = root1.val+root2.val;<br>        <span class="hljs-comment">//合并该节点的左子树</span><br>        root1.left = mergeTrees(root1.left,root2.left);<br>        root1.right = mergeTrees(root1.right,root2.right);<br>        <span class="hljs-keyword">return</span> root1;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -427,7 +427,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -636,7 +636,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

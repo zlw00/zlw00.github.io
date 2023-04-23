@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -288,7 +288,7 @@
             <div class="markdown-body">
               
               <h1 id="leetCode–155-最小栈"><a href="#leetCode–155-最小栈" class="headerlink" title="leetCode–155(最小栈)"></a>leetCode–155(最小栈)</h1><h1 id="解法一：辅助栈"><a href="#解法一：辅助栈" class="headerlink" title="解法一：辅助栈"></a>解法一：辅助栈</h1><p><strong>使用一个辅助栈来存储所扫描元素的最小值。</strong></p>
-<p><img src="/2022/06/06/%E6%9C%80%E5%B0%8F%E6%A0%88/155_fig1.gif" srcset="/img/loading.gif" lazyload alt="fig1"></p>
+<p><img src="/2022/06/06/%E6%9C%80%E5%B0%8F%E6%A0%88/155_fig1.gif" alt="fig1"></p>
 <p><strong>代码为：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MinStack</span> &#123;<br>    <span class="hljs-comment">//使用辅助栈</span><br>    Stack&lt;Integer&gt; stack;<br>    Stack&lt;Integer&gt; minStack;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MinStack</span><span class="hljs-params">()</span> &#123;<br>        stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        minStack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">push</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> &#123;<br>        stack.push(val);<br>        <span class="hljs-keyword">if</span> (minStack.isEmpty()) minStack.push(val);<br>        <span class="hljs-comment">//最小栈，每次添加所遍历到的最小值</span><br>        <span class="hljs-keyword">else</span> minStack.push(Math.min(val,minStack.peek()));<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">pop</span><span class="hljs-params">()</span> &#123;<br>        stack.pop();<br>        <span class="hljs-comment">//这一步千万不要忘记，存储最小值的栈也要出栈</span><br>        minStack.pop();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">top</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> stack.peek();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getMin</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> minStack.peek();<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your MinStack object will be instantiated and called as such:</span><br><span class="hljs-comment"> * MinStack obj = new MinStack();</span><br><span class="hljs-comment"> * obj.push(val);</span><br><span class="hljs-comment"> * obj.pop();</span><br><span class="hljs-comment"> * int param_3 = obj.top();</span><br><span class="hljs-comment"> * int param_4 = obj.getMin();</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
 
@@ -414,7 +414,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -623,7 +623,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

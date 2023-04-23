@@ -80,7 +80,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -337,15 +337,15 @@
 <p>如果添加额外的边后，可以使得图中所有点的度数都是偶数，返回 <code>true</code> ，否则返回 <code>false</code> 。</p>
 <p>点的度数是连接一个点的边的数目。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="/2022/12/18/%E7%AC%AC%E5%85%AD%E6%AC%A1-324%E5%9C%BA%E5%91%A8%E8%B5%9B/agraphdrawio.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/18/%E7%AC%AC%E5%85%AD%E6%AC%A1-324%E5%9C%BA%E5%91%A8%E8%B5%9B/agraphdrawio.png" alt="img"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">输入：n = <span class="hljs-number">5</span>, edges = [[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">1</span>,<span class="hljs-number">4</span>],[<span class="hljs-number">2</span>,<span class="hljs-number">5</span>]]<br>输出：<span class="hljs-literal">true</span><br>解释：上图展示了添加一条边的合法方案。<br>最终图中每个节点都连接偶数条边。<br></code></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="/2022/12/18/%E7%AC%AC%E5%85%AD%E6%AC%A1-324%E5%9C%BA%E5%91%A8%E8%B5%9B/aagraphdrawio.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/18/%E7%AC%AC%E5%85%AD%E6%AC%A1-324%E5%9C%BA%E5%91%A8%E8%B5%9B/aagraphdrawio.png" alt="img"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">输入：n = <span class="hljs-number">4</span>, edges = [[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]]<br>输出：<span class="hljs-literal">true</span><br>解释：上图展示了添加两条边的合法方案。<br></code></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="/2022/12/18/%E7%AC%AC%E5%85%AD%E6%AC%A1-324%E5%9C%BA%E5%91%A8%E8%B5%9B/aaagraphdrawio.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/18/%E7%AC%AC%E5%85%AD%E6%AC%A1-324%E5%9C%BA%E5%91%A8%E8%B5%9B/aaagraphdrawio.png" alt="img"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">输入：n = <span class="hljs-number">4</span>, edges = [[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">1</span>,<span class="hljs-number">4</span>]]<br>输出：<span class="hljs-literal">false</span><br>解释：无法添加至多 <span class="hljs-number">2</span> 条边得到一个符合要求的图。<br></code></pre></td></tr></table></figure>
 
 <p>++++++++++++</p>
@@ -393,11 +393,11 @@
 <li>在树中添加额外的边后，两个点之间可能会有多条边。<br>请你返回一个长度为 <code>m</code> 的数组 <code>answer</code> ，其中 <code>answer[i]</code> 是第 <code>i</code> 个查询的结果。</li>
 </ul>
 <p><strong>示例 1：</strong></p>
-<p><img src="/2022/12/18/%E7%AC%AC%E5%85%AD%E6%AC%A1-324%E5%9C%BA%E5%91%A8%E8%B5%9B/bexample1.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/18/%E7%AC%AC%E5%85%AD%E6%AC%A1-324%E5%9C%BA%E5%91%A8%E8%B5%9B/bexample1.png" alt="img"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">输入：n = <span class="hljs-number">3</span>, queries = [[<span class="hljs-number">5</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">7</span>],[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]]<br>输出：[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">3</span>]<br>解释：上图是一棵有 <span class="hljs-number">23</span> - <span class="hljs-number">1</span> 个节点的树。红色节点表示添加额外边后形成环的节点。<br>- 在节点 <span class="hljs-number">3</span> 和节点 <span class="hljs-number">5</span> 之间添加边后，环为 [<span class="hljs-number">5</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>] ，所以第一个查询的结果是 <span class="hljs-number">4</span> 。删掉添加的边后处理下一个查询。<br>- 在节点 <span class="hljs-number">4</span> 和节点 <span class="hljs-number">7</span> 之间添加边后，环为 [<span class="hljs-number">4</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">7</span>] ，所以第二个查询的结果是 <span class="hljs-number">5</span> 。删掉添加的边后处理下一个查询。<br>- 在节点 <span class="hljs-number">2</span> 和节点 <span class="hljs-number">3</span> 之间添加边后，环为 [<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>] ，所以第三个查询的结果是 <span class="hljs-number">3</span> 。删掉添加的边。<br></code></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="/2022/12/18/%E7%AC%AC%E5%85%AD%E6%AC%A1-324%E5%9C%BA%E5%91%A8%E8%B5%9B/aexample2.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/18/%E7%AC%AC%E5%85%AD%E6%AC%A1-324%E5%9C%BA%E5%91%A8%E8%B5%9B/aexample2.png" alt="img"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">输入：n = <span class="hljs-number">2</span>, queries = [[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]]<br>输出：[<span class="hljs-number">2</span>]<br>解释：上图是一棵有 <span class="hljs-number">22</span> - <span class="hljs-number">1</span> 个节点的树。红色节点表示添加额外边后形成环的节点。<br>- 在节点 <span class="hljs-number">1</span> 和节点 <span class="hljs-number">2</span> 之间添加边后，环为 [<span class="hljs-number">2</span>,<span class="hljs-number">1</span>] ，所以第一个查询的结果是 <span class="hljs-number">2</span> 。删掉添加的边。<br></code></pre></td></tr></table></figure>
 
 <p>++++++++++++++</p>
@@ -521,7 +521,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -730,7 +730,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

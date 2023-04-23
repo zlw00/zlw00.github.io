@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -292,14 +292,14 @@
 <p>现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？</p>
 <p>网格中的障碍物和空位置分别用 <code>1</code> 和 0 来表示。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="/2022/08/24/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%842/robot1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/08/24/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%842/robot1.jpg" alt="img"></p>
 <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs clean">输入：obstacleGrid = [[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]]<br>输出：<span class="hljs-number">2</span><br>解释：<span class="hljs-number">3</span>x3 网格的正中间有一个障碍物。<br>从左上角到右下角一共有 <span class="hljs-number">2</span> 条不同的路径：<br><br><span class="hljs-number">1.</span> 向右 -&gt; 向右 -&gt; 向下 -&gt; 向下<br><span class="hljs-number">2.</span> 向下 -&gt; 向下 -&gt; 向右 -&gt; 向右<br><br></code></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="/2022/08/24/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%842/robot2.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/08/24/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%842/robot2.jpg" alt="img"></p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">输入：obstacleGrid = <span class="hljs-string">[[0,1],[0,0]]</span><br>输出：<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="/2022/08/24/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%842/1afcfae835024eac94d327f93c406149.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="/2022/08/24/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%842/1afcfae835024eac94d327f93c406149.png" alt="在这里插入图片描述"></p>
 <p><strong>注意：</strong></p>
 <blockquote>
 <p>f[i,j]里面包含两种情况，但两种情况不一定全部都包含，从某一个点的路径数量由两部分组成，一种是：从左边到该位置，一种是从上边到该位置， 但不是所有的点都满足，当<code>i = 0</code>时，不能满足从上边到该位置，当<code>j = 0</code>时不能满足从左边到该位置。<br>如果遇到障碍物也就是该点为1的时候跳过，当第一个点不为1，状态数组为1.</p>
@@ -422,7 +422,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -631,7 +631,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

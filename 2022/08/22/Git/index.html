@@ -129,7 +129,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -341,124 +341,124 @@
               <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><blockquote>
 <p>Git是分布式版本控制工具，主要用于管理开发过程中的源代码文件（Java类、xml文件、html页面等）。</p>
 </blockquote>
-<h2 id="Git概述"><a href="#Git概述" class="headerlink" title="Git概述"></a>Git概述</h2><p><img src="/2022/08/22/Git/image-20220822085724395.png" srcset="/img/loading.gif" lazyload alt="image-20220822085724395"></p>
+<h2 id="Git概述"><a href="#Git概述" class="headerlink" title="Git概述"></a>Git概述</h2><p><img src="/2022/08/22/Git/image-20220822085724395.png" alt="image-20220822085724395"></p>
 <h2 id="Git下载安装"><a href="#Git下载安装" class="headerlink" title="Git下载安装"></a>Git下载安装</h2><p>下载路径:<a target="_blank" rel="noopener" href="https://git-scm.com/download">https://git-scm.com/download</a></p>
 <p>安装成功后，在任意目录下右键，可以显示：</p>
-<p><img src="/2022/08/22/Git/image-20220822090055165.png" srcset="/img/loading.gif" lazyload alt="image-20220822090055165"></p>
+<p><img src="/2022/08/22/Git/image-20220822090055165.png" alt="image-20220822090055165"></p>
 <p>其中</p>
 <p><code>Git GUI Here：</code>打开Git图形界面</p>
 <p><code>Git Bash Here:</code>打开Git命令行</p>
 <h2 id="Git代码托管服务"><a href="#Git代码托管服务" class="headerlink" title="Git代码托管服务"></a>Git代码托管服务</h2><p>以gitee为例，注册账号，登录账号，新建仓库。</p>
-<p><img src="/2022/08/22/Git/image-20220822091048308.png" srcset="/img/loading.gif" lazyload alt="image-20220822091048308"></p>
+<p><img src="/2022/08/22/Git/image-20220822091048308.png" alt="image-20220822091048308"></p>
 <h2 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h2><h3 id="Git全局设置"><a href="#Git全局设置" class="headerlink" title="Git全局设置"></a>Git全局设置</h3><p>当安装Git后首先要做的是设置用户名和email地址，这是非常重要的，因为每次提交都会使用该用户的信息。</p>
 <p>在Git命令中执行以下：</p>
 <p><code>git config --global user.name</code></p>
-<p><img src="/2022/08/22/Git/image-20220822091743137.png" srcset="/img/loading.gif" lazyload alt="image-20220822091743137"></p>
+<p><img src="/2022/08/22/Git/image-20220822091743137.png" alt="image-20220822091743137"></p>
 <p><code>git config --global user.email</code></p>
-<p><img src="/2022/08/22/Git/image-20220822091748656.png" srcset="/img/loading.gif" lazyload alt="image-20220822091748656"></p>
+<p><img src="/2022/08/22/Git/image-20220822091748656.png" alt="image-20220822091748656"></p>
 <p>查看配置信息：</p>
 <p><code>git config --list</code></p>
-<p><img src="/2022/08/22/Git/image-20220822091809664.png" srcset="/img/loading.gif" lazyload alt="image-20220822091809664"></p>
-<h3 id="获取Git仓库"><a href="#获取Git仓库" class="headerlink" title="获取Git仓库"></a>获取Git仓库</h3><p><img src="/2022/08/22/Git/image-20220822091911085.png" srcset="/img/loading.gif" lazyload alt="image-20220822091911085"></p>
+<p><img src="/2022/08/22/Git/image-20220822091809664.png" alt="image-20220822091809664"></p>
+<h3 id="获取Git仓库"><a href="#获取Git仓库" class="headerlink" title="获取Git仓库"></a>获取Git仓库</h3><p><img src="/2022/08/22/Git/image-20220822091911085.png" alt="image-20220822091911085"></p>
 <p><strong>（1）在本地初始化一个Git仓库</strong></p>
 <p><code>git init</code></p>
-<p><img src="/2022/08/22/Git/image-20220822092406019.png" srcset="/img/loading.gif" lazyload alt="image-20220822092406019"></p>
+<p><img src="/2022/08/22/Git/image-20220822092406019.png" alt="image-20220822092406019"></p>
 <p><strong>（2）从远程克隆</strong></p>
 <p>复制远程仓库的地址：</p>
-<p><img src="/2022/08/22/Git/image-20220822092427908.png" srcset="/img/loading.gif" lazyload alt="image-20220822092427908"></p>
+<p><img src="/2022/08/22/Git/image-20220822092427908.png" alt="image-20220822092427908"></p>
 <p>执行以下命令：</p>
 <p><code>git clone</code></p>
-<p><img src="/2022/08/22/Git/image-20220822092558274.png" srcset="/img/loading.gif" lazyload alt="image-20220822092558274"></p>
-<h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><p><img src="/2022/08/22/Git/image-20220822104044152.png" srcset="/img/loading.gif" lazyload alt="image-20220822104044152"></p>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="本地仓库操作的命令"><a href="#本地仓库操作的命令" class="headerlink" title="本地仓库操作的命令"></a>本地仓库操作的命令</h3><p><img src="/2022/08/22/Git/image-20220823204616363.png" srcset="/img/loading.gif" lazyload alt="image-20220823204616363"></p>
+<p><img src="/2022/08/22/Git/image-20220822092558274.png" alt="image-20220822092558274"></p>
+<h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><p><img src="/2022/08/22/Git/image-20220822104044152.png" alt="image-20220822104044152"></p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="本地仓库操作的命令"><a href="#本地仓库操作的命令" class="headerlink" title="本地仓库操作的命令"></a>本地仓库操作的命令</h3><p><img src="/2022/08/22/Git/image-20220823204616363.png" alt="image-20220823204616363"></p>
 <p><code>git commit -m &quot;init user.java&quot; user.java</code>:其中”init user.java”可以随意写，是log日志。</p>
 <p>切换到指定版本：</p>
-<p><img src="/2022/08/22/Git/image-20220823205059464.png" srcset="/img/loading.gif" lazyload alt="image-20220823205059464"></p>
-<h3 id="远程仓库操作的命令"><a href="#远程仓库操作的命令" class="headerlink" title="远程仓库操作的命令"></a>远程仓库操作的命令</h3><p><img src="/2022/08/22/Git/image-20220823205433537.png" srcset="/img/loading.gif" lazyload alt="image-20220823205433537"></p>
+<p><img src="/2022/08/22/Git/image-20220823205059464.png" alt="image-20220823205059464"></p>
+<h3 id="远程仓库操作的命令"><a href="#远程仓库操作的命令" class="headerlink" title="远程仓库操作的命令"></a>远程仓库操作的命令</h3><p><img src="/2022/08/22/Git/image-20220823205433537.png" alt="image-20220823205433537"></p>
 <p><code>git remote</code>:展示的不够完全，<code>git remote -v</code>：展示的完全</p>
-<p><img src="/2022/08/22/Git/image-20220823205721615.png" srcset="/img/loading.gif" lazyload alt="image-20220823205721615"></p>
+<p><img src="/2022/08/22/Git/image-20220823205721615.png" alt="image-20220823205721615"></p>
 <p><code>git remote add 别名 url地址</code>：让本地创建的仓库与远程的仓库关联。</p>
 <p>下面这个仓库repo1是本地初始化的仓库</p>
 <p>想要与远程仓库建立联系要进行操作：</p>
-<p><img src="/2022/08/22/Git/image-20220823210331912.png" srcset="/img/loading.gif" lazyload alt="image-20220823210331912"></p>
+<p><img src="/2022/08/22/Git/image-20220823210331912.png" alt="image-20220823210331912"></p>
 <p><code>git push origin master</code>：将本地文件推送到远程仓库</p>
-<p><img src="/2022/08/22/Git/image-20220823211302960.png" srcset="/img/loading.gif" lazyload alt="image-20220823211302960"></p>
+<p><img src="/2022/08/22/Git/image-20220823211302960.png" alt="image-20220823211302960"></p>
 <p><strong>将文件推送到远程仓库时，切记先要提交给本地仓库后再推送到远程仓库，就是上图的步骤</strong></p>
-<p><img src="/2022/08/22/Git/image-20220823211411991.png" srcset="/img/loading.gif" lazyload alt="image-20220823211411991"></p>
+<p><img src="/2022/08/22/Git/image-20220823211411991.png" alt="image-20220823211411991"></p>
 <p><code>git pull origin master</code>：主要用于多人协作，将远程上的东西拉取下来，一般是某个人推送上去，另一人拉取下来。</p>
-<p><img src="/2022/08/22/Git/image-20220823212800237.png" srcset="/img/loading.gif" lazyload alt="image-20220823212800237"></p>
+<p><img src="/2022/08/22/Git/image-20220823212800237.png" alt="image-20220823212800237"></p>
 <p><strong>注意：</strong></p>
 <p>如果本地仓库不是从远程仓库克隆下来的，而是本地初始化的话，此时再从远程仓库拉取文件将会报错。因为没有关联之前的文件是没有相关性的，不能合并。要加入下面的语句：</p>
 <p><code>--allow-unrelated-histories</code>      完整的：  <code>git push origin master --allow-unrelated-histories</code></p>
-<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><p><img src="/2022/08/22/Git/image-20220823213457668.png" srcset="/img/loading.gif" lazyload alt="image-20220823213457668"></p>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><p><img src="/2022/08/22/Git/image-20220823213457668.png" alt="image-20220823213457668"></p>
 <p><strong>查看分支</strong></p>
 <p>git branck：查看本地分支</p>
 <p>git branch -r:列出所有远程分支</p>
 <p>git branch -a :列出所有本地和远程的分支</p>
-<p><img src="/2022/08/22/Git/image-20220823214250863.png" srcset="/img/loading.gif" lazyload alt="image-20220823214250863"></p>
+<p><img src="/2022/08/22/Git/image-20220823214250863.png" alt="image-20220823214250863"></p>
 <p><strong>创建分支</strong></p>
-<p><img src="/2022/08/22/Git/image-20220823215337530.png" srcset="/img/loading.gif" lazyload alt="image-20220823215337530"></p>
+<p><img src="/2022/08/22/Git/image-20220823215337530.png" alt="image-20220823215337530"></p>
 <p><strong>切换分支</strong></p>
-<p><img src="/2022/08/22/Git/image-20220823215417676.png" srcset="/img/loading.gif" lazyload alt="image-20220823215417676"></p>
+<p><img src="/2022/08/22/Git/image-20220823215417676.png" alt="image-20220823215417676"></p>
 <p><strong>将分支推送至远程</strong></p>
-<p><img src="/2022/08/22/Git/image-20220823215352630.png" srcset="/img/loading.gif" lazyload alt="image-20220823215352630"></p>
-<p><img src="/2022/08/22/Git/image-20220823215359005.png" srcset="/img/loading.gif" lazyload alt="image-20220823215359005"></p>
+<p><img src="/2022/08/22/Git/image-20220823215352630.png" alt="image-20220823215352630"></p>
+<p><img src="/2022/08/22/Git/image-20220823215359005.png" alt="image-20220823215359005"></p>
 <p><strong>合并分支</strong></p>
-<p><img src="/2022/08/22/Git/image-20220823220120130.png" srcset="/img/loading.gif" lazyload alt="image-20220823220120130"></p>
-<h3 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h3><p><img src="/2022/08/22/Git/image-20220824093538544.png" srcset="/img/loading.gif" lazyload alt="image-20220824093538544"></p>
+<p><img src="/2022/08/22/Git/image-20220823220120130.png" alt="image-20220823220120130"></p>
+<h3 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h3><p><img src="/2022/08/22/Git/image-20220824093538544.png" alt="image-20220824093538544"></p>
 <p>以repo2为例：</p>
-<p><img src="/2022/08/22/Git/image-20220824094245773.png" srcset="/img/loading.gif" lazyload alt="image-20220824094245773"></p>
-<p><img src="/2022/08/22/Git/image-20220824094254892.png" srcset="/img/loading.gif" lazyload alt="image-20220824094254892"></p>
+<p><img src="/2022/08/22/Git/image-20220824094245773.png" alt="image-20220824094245773"></p>
+<p><img src="/2022/08/22/Git/image-20220824094254892.png" alt="image-20220824094254892"></p>
 <p><strong>检出标签时，要新建一个分支来指向某个标签，</strong></p>
-<p><img src="/2022/08/22/Git/image-20220824094435083.png" srcset="/img/loading.gif" lazyload alt="image-20220824094435083"></p>
-<p><img src="/2022/08/22/Git/image-20220824094419085.png" srcset="/img/loading.gif" lazyload alt="image-20220824094419085"></p>
-<p><img src="/2022/08/22/Git/image-20220824094425944.png" srcset="/img/loading.gif" lazyload alt="image-20220824094425944"></p>
-<h2 id="在IDEA中使用Git"><a href="#在IDEA中使用Git" class="headerlink" title="在IDEA中使用Git"></a>在IDEA中使用Git</h2><h3 id="本地初始化仓库"><a href="#本地初始化仓库" class="headerlink" title="本地初始化仓库"></a>本地初始化仓库</h3><p><img src="/2022/08/22/Git/image-20220824135419327.png" srcset="/img/loading.gif" lazyload alt="image-20220824135419327"></p>
-<p><img src="/2022/08/22/Git/image-20220824135610735.png" srcset="/img/loading.gif" lazyload alt="image-20220824135610735"></p>
-<p><img src="/2022/08/22/Git/image-20220824135624799.png" srcset="/img/loading.gif" lazyload alt="image-20220824135624799"></p>
+<p><img src="/2022/08/22/Git/image-20220824094435083.png" alt="image-20220824094435083"></p>
+<p><img src="/2022/08/22/Git/image-20220824094419085.png" alt="image-20220824094419085"></p>
+<p><img src="/2022/08/22/Git/image-20220824094425944.png" alt="image-20220824094425944"></p>
+<h2 id="在IDEA中使用Git"><a href="#在IDEA中使用Git" class="headerlink" title="在IDEA中使用Git"></a>在IDEA中使用Git</h2><h3 id="本地初始化仓库"><a href="#本地初始化仓库" class="headerlink" title="本地初始化仓库"></a>本地初始化仓库</h3><p><img src="/2022/08/22/Git/image-20220824135419327.png" alt="image-20220824135419327"></p>
+<p><img src="/2022/08/22/Git/image-20220824135610735.png" alt="image-20220824135610735"></p>
+<p><img src="/2022/08/22/Git/image-20220824135624799.png" alt="image-20220824135624799"></p>
 <h3 id="从远程克隆仓库"><a href="#从远程克隆仓库" class="headerlink" title="从远程克隆仓库"></a>从远程克隆仓库</h3><p><strong>方式一：点击Get from VCS</strong></p>
-<p><img src="/2022/08/22/Git/image-20220824135830143.png" srcset="/img/loading.gif" lazyload alt="image-20220824135830143"></p>
-<p><img src="/2022/08/22/Git/image-20220824135838423.png" srcset="/img/loading.gif" lazyload alt="image-20220824135838423"></p>
+<p><img src="/2022/08/22/Git/image-20220824135830143.png" alt="image-20220824135830143"></p>
+<p><img src="/2022/08/22/Git/image-20220824135838423.png" alt="image-20220824135838423"></p>
 <p><strong>方式二：</strong></p>
-<p><img src="/2022/08/22/Git/image-20220824135920425.png" srcset="/img/loading.gif" lazyload alt="image-20220824135920425"></p>
+<p><img src="/2022/08/22/Git/image-20220824135920425.png" alt="image-20220824135920425"></p>
 <p>填写远程仓库的url地址</p>
-<p><img src="/2022/08/22/Git/image-20220824135931849.png" srcset="/img/loading.gif" lazyload alt="image-20220824135931849"></p>
-<h2 id="在IDEA中操作Git"><a href="#在IDEA中操作Git" class="headerlink" title="在IDEA中操作Git"></a>在IDEA中操作Git</h2><h3 id="本地仓库的操作"><a href="#本地仓库的操作" class="headerlink" title="本地仓库的操作"></a>本地仓库的操作</h3><p><img src="/2022/08/22/Git/image-20220824140443197.png" srcset="/img/loading.gif" lazyload alt="image-20220824140443197"></p>
+<p><img src="/2022/08/22/Git/image-20220824135931849.png" alt="image-20220824135931849"></p>
+<h2 id="在IDEA中操作Git"><a href="#在IDEA中操作Git" class="headerlink" title="在IDEA中操作Git"></a>在IDEA中操作Git</h2><h3 id="本地仓库的操作"><a href="#本地仓库的操作" class="headerlink" title="本地仓库的操作"></a>本地仓库的操作</h3><p><img src="/2022/08/22/Git/image-20220824140443197.png" alt="image-20220824140443197"></p>
 <p><strong>将类加入到暂存区</strong></p>
-<p><img src="/2022/08/22/Git/image-20220824140353439.png" srcset="/img/loading.gif" lazyload alt="image-20220824140353439"></p>
+<p><img src="/2022/08/22/Git/image-20220824140353439.png" alt="image-20220824140353439"></p>
 <p><strong>将暂存区的文件提交到版本库</strong></p>
 <p>下图中的√就是提交</p>
-<p><img src="/2022/08/22/Git/image-20220824140700241.png" srcset="/img/loading.gif" lazyload alt="image-20220824140700241"></p>
+<p><img src="/2022/08/22/Git/image-20220824140700241.png" alt="image-20220824140700241"></p>
 <p><strong>查看日志</strong></p>
 <p>下图中一个小钟的图形就可以查看日志</p>
-<h3 id="远程仓库的操作"><a href="#远程仓库的操作" class="headerlink" title="远程仓库的操作"></a>远程仓库的操作</h3><p><img src="/2022/08/22/Git/image-20220824140926453.png" srcset="/img/loading.gif" lazyload alt="image-20220824140926453"></p>
+<h3 id="远程仓库的操作"><a href="#远程仓库的操作" class="headerlink" title="远程仓库的操作"></a>远程仓库的操作</h3><p><img src="/2022/08/22/Git/image-20220824140926453.png" alt="image-20220824140926453"></p>
 <p><strong>查看远程仓库</strong></p>
-<p><img src="/2022/08/22/Git/image-20220824141351657.png" srcset="/img/loading.gif" lazyload alt="image-20220824141351657"></p>
-<p><img src="/2022/08/22/Git/image-20220824141404377.png" srcset="/img/loading.gif" lazyload alt="image-20220824141404377"></p>
+<p><img src="/2022/08/22/Git/image-20220824141351657.png" alt="image-20220824141351657"></p>
+<p><img src="/2022/08/22/Git/image-20220824141404377.png" alt="image-20220824141404377"></p>
 <p><strong>添加远程仓库</strong>	</p>
 <p>按下面的加号进行添加</p>
-<p><img src="/2022/08/22/Git/image-20220824141458844.png" srcset="/img/loading.gif" lazyload alt="image-20220824141458844"></p>
+<p><img src="/2022/08/22/Git/image-20220824141458844.png" alt="image-20220824141458844"></p>
 <p><strong>推送远程仓库</strong></p>
-<p><img src="/2022/08/22/Git/image-20220824141713621.png" srcset="/img/loading.gif" lazyload alt="image-20220824141713621"></p>
+<p><img src="/2022/08/22/Git/image-20220824141713621.png" alt="image-20220824141713621"></p>
 <p>提交并推送：（第一个是只提交，第二个是提交并推送）</p>
-<p><img src="/2022/08/22/Git/image-20220824141836404.png" srcset="/img/loading.gif" lazyload alt="image-20220824141836404"></p>
+<p><img src="/2022/08/22/Git/image-20220824141836404.png" alt="image-20220824141836404"></p>
 <p><strong>从远程仓库拉取</strong></p>
 <p>点击向下的箭头</p>
-<p><img src="/2022/08/22/Git/image-20220824140700241.png" srcset="/img/loading.gif" lazyload alt="image-20220824140700241"></p>
-<h3 id="在IDEA中分支操作"><a href="#在IDEA中分支操作" class="headerlink" title="在IDEA中分支操作"></a>在IDEA中分支操作</h3><p><img src="/2022/08/22/Git/image-20220824142045040.png" srcset="/img/loading.gif" lazyload alt="image-20220824142045040"></p>
+<p><img src="/2022/08/22/Git/image-20220824140700241.png" alt="image-20220824140700241"></p>
+<h3 id="在IDEA中分支操作"><a href="#在IDEA中分支操作" class="headerlink" title="在IDEA中分支操作"></a>在IDEA中分支操作</h3><p><img src="/2022/08/22/Git/image-20220824142045040.png" alt="image-20220824142045040"></p>
 <p><strong>查看分支</strong></p>
 <p>快捷方式：点击右下角的master分支进行查看</p>
-<p><img src="/2022/08/22/Git/image-20220824142615707.png" srcset="/img/loading.gif" lazyload alt="image-20220824142615707"></p>
-<p><img src="/2022/08/22/Git/image-20220824142629848.png" srcset="/img/loading.gif" lazyload alt="image-20220824142629848"></p>
+<p><img src="/2022/08/22/Git/image-20220824142615707.png" alt="image-20220824142615707"></p>
+<p><img src="/2022/08/22/Git/image-20220824142629848.png" alt="image-20220824142629848"></p>
 <p><strong>创建分支</strong></p>
-<p><img src="/2022/08/22/Git/image-20220824142721945.png" srcset="/img/loading.gif" lazyload alt="image-20220824142721945"></p>
+<p><img src="/2022/08/22/Git/image-20220824142721945.png" alt="image-20220824142721945"></p>
 <p><strong>切换分支</strong></p>
 <p>也是以上的操作，选择要切换的分支</p>
 <p><strong>将分支推送到远程仓库</strong></p>
 <p>点击要推送分支里面的push</p>
 <p><strong>合并分支</strong></p>
 <p>master合并b1分支时：</p>
-<p><img src="/2022/08/22/Git/image-20220824143027816.png" srcset="/img/loading.gif" lazyload alt="image-20220824143027816"></p>
+<p><img src="/2022/08/22/Git/image-20220824143027816.png" alt="image-20220824143027816"></p>
 
               
             </div>
@@ -568,7 +568,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -777,7 +777,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

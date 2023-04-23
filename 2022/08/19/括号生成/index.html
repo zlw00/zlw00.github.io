@@ -77,7 +77,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -296,14 +296,14 @@
 
 
 <h2 id="解法一（DFS）"><a href="#解法一（DFS）" class="headerlink" title="解法一（DFS）"></a>解法一（DFS）</h2><p><strong>过程：</strong></p>
-<p><img src="/2022/08/19/%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/7ec04f84e936e95782aba26c4663c5fe7aaf94a2a80986a97d81574467b0c513-LeetCode%20%E7%AC%AC%2022%20%E9%A2%98%EF%BC%9A%E2%80%9C%E6%8B%AC%E5%8F%B7%E7%94%9F%E5%87%BA%E2%80%9D%E9%A2%98%E8%A7%A3%E9%85%8D%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="LeetCode 第 22 题：“括号生出”题解配图.png"></p>
+<p><img src="/2022/08/19/%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/7ec04f84e936e95782aba26c4663c5fe7aaf94a2a80986a97d81574467b0c513-LeetCode%20%E7%AC%AC%2022%20%E9%A2%98%EF%BC%9A%E2%80%9C%E6%8B%AC%E5%8F%B7%E7%94%9F%E5%87%BA%E2%80%9D%E9%A2%98%E8%A7%A3%E9%85%8D%E5%9B%BE.png" alt="LeetCode 第 22 题：“括号生出”题解配图.png"></p>
 <p><strong>代码为：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> List&lt;String&gt; res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    <span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title function_">generateParenthesis</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br><br>        returnList(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(),n,n);<br><br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">returnList</span><span class="hljs-params">(String s,<span class="hljs-type">int</span> left,<span class="hljs-type">int</span> right)</span>&#123;<br>        <span class="hljs-keyword">if</span> (left==<span class="hljs-number">0</span> &amp;&amp; right==<span class="hljs-number">0</span>)&#123;<br>            res.add(s);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (left&gt;right)&#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (left&gt;<span class="hljs-number">0</span>)&#123;<br>            returnList(s+<span class="hljs-string">&#x27;(&#x27;</span>,left-<span class="hljs-number">1</span>,right);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (right&gt;<span class="hljs-number">0</span>)&#123;<br>            returnList(s+<span class="hljs-string">&#x27;)&#x27;</span>,left,right-<span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
 <h2 id="解法二（慢慢-分析）"><a href="#解法二（慢慢-分析）" class="headerlink" title="解法二（慢慢 分析）"></a>解法二（慢慢 分析）</h2><p>回溯的灵魂就是画出数的结构图，首先先将所有的情况都列出：</p>
-<p><img src="/2022/08/19/%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/1612765058-NToQkc-image.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p><img src="/2022/08/19/%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/1612765058-NToQkc-image.png" alt="image.png"></p>
 <p>观察上图就是一个满二叉树，我们只需要DFS去遍历所有的节点即可，先把最基本的实现，热后再去改进，</p>
 <p>基本的实现：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> List&lt;String&gt; res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    <span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title function_">generateParenthesis</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br><br>        returnList(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(),n);<br><br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">returnList</span><span class="hljs-params">(String s,<span class="hljs-type">int</span> n)</span> &#123;<br>        <span class="hljs-keyword">if</span> (s.length() == <span class="hljs-number">2</span>*n) &#123;<br>            res.add(s);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        returnList(s + <span class="hljs-string">&#x27;(&#x27;</span>,n);<br>        returnList(s + <span class="hljs-string">&#x27;)&#x27;</span>, n);<br>    &#125;<br></code></pre></td></tr></table></figure>
@@ -434,7 +434,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -643,7 +643,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

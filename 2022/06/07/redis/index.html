@@ -148,7 +148,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -360,13 +360,13 @@
               <h1 id="NoSQL数据库简介"><a href="#NoSQL数据库简介" class="headerlink" title="NoSQL数据库简介"></a>NoSQL数据库简介</h1><p><strong>主要解决性能问题</strong></p>
 <p>Web1.0 的时代，数据访问量很有限，用一夫当关的高性能的单点服务器可以解决大部分问题。  </p>
 <p>随着 Web2.0 的时代的到来，用户访问量大幅度提升，同时产生了大量的用户数据。加上后来的智能移动设备的普及，所有的互联网平台都面临了巨大的性能挑战。  </p>
-<p><img src="/2022/06/07/redis/image-20220607112049192.png" srcset="/img/loading.gif" lazyload alt="image-20220607112049192"></p>
+<p><img src="/2022/06/07/redis/image-20220607112049192.png" alt="image-20220607112049192"></p>
 <p><strong>NoSQL的出现解决了解决 CPU 及内存压力  和 IO 压力</strong>  </p>
 <h2 id="解决-CPU-及内存压力"><a href="#解决-CPU-及内存压力" class="headerlink" title="解决 CPU 及内存压力"></a>解决 CPU 及内存压力</h2><p>将服务器进行 集群 或 分布式 部署，也就是多台服务器。通过nginx（负载均衡）进行分配服务器。</p>
 <p>但存在一个问题，就是当用户访问服务器时，例如，分配了第一个服务器，将session存储到服务器1中，但当第二次访问时，分配的是第二台服务器，此时第二台服务器没有session对象，怎么办？</p>
-<p><img src="/2022/06/07/redis/image-20220607112137349.png" srcset="/img/loading.gif" lazyload alt="image-20220607112137349"></p>
+<p><img src="/2022/06/07/redis/image-20220607112137349.png" alt="image-20220607112137349"></p>
 <p><strong>NoSql可以减少cpu和io的压力，直接通过内存进行读取，nosql可以缓存数据库，提高访问速度，减少io操作</strong>  </p>
-<h2 id="解决-IO-压力"><a href="#解决-IO-压力" class="headerlink" title="解决 IO 压力"></a>解决 IO 压力</h2><p><img src="/2022/06/07/redis/image-20220607124939134.png" srcset="/img/loading.gif" lazyload alt="image-20220607124939134"></p>
+<h2 id="解决-IO-压力"><a href="#解决-IO-压力" class="headerlink" title="解决 IO 压力"></a>解决 IO 压力</h2><p><img src="/2022/06/07/redis/image-20220607124939134.png" alt="image-20220607124939134"></p>
 <h2 id="NoSQL-数据库概述"><a href="#NoSQL-数据库概述" class="headerlink" title="NoSQL 数据库概述"></a>NoSQL 数据库概述</h2><p><strong>非关系型的数据库</strong>  。NoSQL 不依赖业务逻辑方式存储，而以简单的 key-value 模式存储。因此大大的增加了数据库的扩展能力。  </p>
 <ul>
 <li>不遵循 SQL 标准。</li>
@@ -416,7 +416,7 @@
 </ul>
 <p><strong>如果在Centos7下，直接安装gcc就可以</strong>  ：<code>yum install gcc</code></p>
 <p>测试gcc版本 ： <code>gcc --version</code>  (GCC是一个用于linux系统下编程的编译器)</p>
-<p><img src="/2022/06/07/redis/image-20220607125734946.png" srcset="/img/loading.gif" lazyload alt="image-20220607125734946"></p>
+<p><img src="/2022/06/07/redis/image-20220607125734946.png" alt="image-20220607125734946"></p>
 <p>（4）<strong>下载 <code>redis-6.2.1.tar.gz</code> 放&#x2F;opt&#x2F;redis 目录  中（</strong>运用文件传输软件，例如Xftp）</p>
 <p>（5）<strong>解压命令</strong>： <code>tar -zxvf redis-6.2.1.tar.gz</code>  </p>
 <p>（6）<strong>解压完成后进入目录</strong>： cd redis-6.2.1  </p>
@@ -444,13 +444,13 @@
 <p>（13）<strong>Redis 启动</strong>  ：  <code>redis-server /etc/redis.conf</code>  </p>
 <p>（14）<strong>用客户端访问：</strong> <code>redis-cli</code>  </p>
 <p>（15）<strong>测试验证：</strong> ping  </p>
-<p><img src="/2022/06/07/redis/image-20220607131718774.png" srcset="/img/loading.gif" lazyload alt="image-20220607131718774"></p>
+<p><img src="/2022/06/07/redis/image-20220607131718774.png" alt="image-20220607131718774"></p>
 <p>（16）<strong>Redis 关闭：</strong>  </p>
 <ul>
 <li>单实例关闭：redis-cli shutdown  </li>
 <li>也可以通过关闭进程进行关闭</li>
 </ul>
-<p><img src="/2022/06/07/redis/image-20220607131847688.png" srcset="/img/loading.gif" lazyload alt="image-20220607131847688"></p>
+<p><img src="/2022/06/07/redis/image-20220607131847688.png" alt="image-20220607131847688"></p>
 <p><strong>(17)给redis设置密码：</strong></p>
 <p>修改redis.conf配置文件中的requirepass，修改为如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"># requirepass foobared<br>requirepass Zlw199805<br></code></pre></td></tr></table></figure>
@@ -463,10 +463,10 @@
 <li>可以充分利用服务器CPU资源，目前主线程只能利用一个核。</li>
 <li>多线程任务可以分摊Redis同步IO读写负荷。</li>
 </ul>
-<p><img src="/2022/06/07/redis/image-20220607133051004.png" srcset="/img/loading.gif" lazyload alt="image-20220607133051004"></p>
+<p><img src="/2022/06/07/redis/image-20220607133051004.png" alt="image-20220607133051004"></p>
 <p>黄牛还没有买到票的时候，123个人都在做自己的事情，而不是一直等待着票。</p>
 <h1 id="Redis中常用的五大数据类型"><a href="#Redis中常用的五大数据类型" class="headerlink" title="Redis中常用的五大数据类型"></a>Redis中常用的五大数据类型</h1><h2 id="Redis键（Key）"><a href="#Redis键（Key）" class="headerlink" title="Redis键（Key）"></a>Redis键（Key）</h2><p>（1）<code>keys *</code> ：查看当前库中所有的key</p>
-<p><img src="/2022/06/07/redis/image-20220607134236942.png" srcset="/img/loading.gif" lazyload alt="image-20220607134236942"></p>
+<p><img src="/2022/06/07/redis/image-20220607134236942.png" alt="image-20220607134236942"></p>
 <p>（2）<code>exists key</code>  ：判断某个 key 是否存在  </p>
 <p>（3）<code>type key</code>：查看你的 key 是什么类型  </p>
 <p>（4）<code>del key</code> ：删除指定的 key 数据   &#x2F;  unlink key 根据 value 选择非阻塞删除  </p>
@@ -501,7 +501,7 @@
 <p>（15）<code>getset &lt;key&gt;&lt;value&gt;</code>：以新换旧，设置了新值同时获得旧值。  </p>
 <p><strong>数据结构：</strong></p>
 <p>String 的数据结构为<strong>简单动态字符串</strong>(Simple Dynamic String,缩写 SDS)。是可以修改的字符串，内部结构实现上类似于 Java 的 ArrayList，采用预分配冗余空间的方式来减少内存的频繁分配.  </p>
-<p><img src="/2022/06/07/redis/image-20220607151814346.png" srcset="/img/loading.gif" lazyload alt="image-20220607151814346"></p>
+<p><img src="/2022/06/07/redis/image-20220607151814346.png" alt="image-20220607151814346"></p>
 <p>内部为当前字符串实际分配的空间 capacity 一般要高于实际字符串长度len。如果字符串小于1M，扩容加倍现有的空间，如果超过1M，扩容时多扩1M空间。  需要注意的是字符串最大长度为 512M  。</p>
 <h2 id="Redis-列表-List"><a href="#Redis-列表-List" class="headerlink" title="Redis 列表(List)"></a>Redis 列表(List)</h2><p><strong>单键多值  按照插入顺序排序。你可以添加一个元素到列表的头部（左边）或者尾部（右边）</strong>  <strong>它的底层实际是个双向链表，</strong>  </p>
 <p><strong>常用命令</strong></p>
@@ -518,7 +518,7 @@
 <p><strong>数据结构</strong>  </p>
 <p>Set 数据结构是 dict 字典，<strong>字典是用哈希表实现的</strong>  </p>
 <h2 id="Redis-哈希-Hash"><a href="#Redis-哈希-Hash" class="headerlink" title="Redis 哈希(Hash)"></a>Redis 哈希(Hash)</h2><p>Redis hash 是一个键值对集合。Redis hash 是一个 string 类型的 field 和 value 的映射表，hash 特别适合用于存储对象。  </p>
-<p><img src="/2022/06/07/redis/image-20220607155709655.png" srcset="/img/loading.gif" lazyload alt="image-20220607155709655"></p>
+<p><img src="/2022/06/07/redis/image-20220607155709655.png" alt="image-20220607155709655"></p>
 <p><strong>常用命令</strong></p>
 <p><code>hset &lt;key&gt;&lt;field&gt;&lt;value&gt;</code>：给<key>集合中的 <field>键赋值<value><br><code>hget &lt;key1&gt;&lt;field&gt;</code>：从<key1>集合<field>取出 value<br><code>hmset &lt;key1&gt;&lt;field1&gt;&lt;value1&gt;&lt;field2&gt;&lt;value2&gt;...</code> ：批量设置 hash 的值<br><code>hexists&lt;key1&gt;&lt;field&gt;</code>：查看哈希表 key 中， 给定域 field 是否存在。<br><code>hkeys &lt;key&gt;</code>：列出该 hash 集合的所有 field<br><code>hvals &lt;key&gt;：</code>列出该 hash 集合的所有 value<br><code>hincrby &lt;key&gt;&lt;field&gt;&lt;increment&gt;：</code>为哈希表 key 中的域 field 的值加上增量 1 -1<br><code>hsetnx &lt;key&gt;&lt;field&gt;&lt;value&gt;：</code>将哈希表 key 中的域 field 的值设置为 value ， 当且仅当域field 不存在  </field></key1></value></field></key></p>
 <p><strong>数据结构</strong>  </p>
@@ -529,16 +529,16 @@
 <p><code>zincrby &lt;key&gt;&lt;increment&gt;&lt;value&gt;</code> 为元素的 score 加上增量<br><code>zrem &lt;key&gt;&lt;value&gt;</code>删除该集合下，指定值的元素<br><code>zcount &lt;key&gt;&lt;min&gt;&lt;max&gt;</code>统计该集合，分数区间内的元素个数<br><code>zrank &lt;key&gt;&lt;value&gt;</code>返回该值在集合中的排名，从 0 开始。  </p>
 <p><strong>数据结构</strong></p>
 <p><strong>zset 底层使用了两个数据结构</strong><br>（1）hash，hash 的作用就是关联元素 value 和权重 score，保障元素 value 的唯一性，可以通过元素 value 找到相应的 score 值。<br>（2）跳跃表，跳跃表的目的在于给元素 value 排序，根据 score 的范围获取元素列表。  </p>
-<p><img src="/2022/06/07/redis/image-20220607161721235.png" srcset="/img/loading.gif" lazyload alt="image-20220607161721235"></p>
+<p><img src="/2022/06/07/redis/image-20220607161721235.png" alt="image-20220607161721235"></p>
 <p><strong>从此可以看出跳跃表比有序链表效率要高</strong>  </p>
 <h1 id="Redis-的发布和订阅"><a href="#Redis-的发布和订阅" class="headerlink" title="Redis 的发布和订阅"></a>Redis 的发布和订阅</h1><p>Redis 发布订阅 (pub&#x2F;sub) 是一种消息通信模式：发送者 (pub) 发送消息，订阅者(sub) 接收消息  </p>
 <p>当订阅者订阅A频道时，A频道发布消息，则订阅者就能收到，如果B频道也发布消息，但订阅者没有订阅，则不会收到。</p>
-<p><img src="/2022/06/07/redis/image-20220607221305094.png" srcset="/img/loading.gif" lazyload alt="image-20220607221305094"></p>
+<p><img src="/2022/06/07/redis/image-20220607221305094.png" alt="image-20220607221305094"></p>
 <p><strong>命令行实现：</strong></p>
 <p>（1）打开客户端的订阅 channel1  ：<code>SUBSCRIBE channel1</code>  </p>
 <p>（2）打开另一个客户端，给 channel1 发布消息 hello  ：<code>publish channel1 hello</code>  </p>
 <p>（3）打开第一个客户端，可以看到发送的消息</p>
-<p><img src="/2022/06/07/redis/image-20220607221433147.png" srcset="/img/loading.gif" lazyload alt="image-20220607221433147"></p>
+<p><img src="/2022/06/07/redis/image-20220607221433147.png" alt="image-20220607221433147"></p>
 <h1 id="Redis-新数据类型"><a href="#Redis-新数据类型" class="headerlink" title="Redis 新数据类型"></a>Redis 新数据类型</h1><h2 id="Bitmaps"><a href="#Bitmaps" class="headerlink" title="Bitmaps"></a>Bitmaps</h2><p>​		<strong>在我们平时的开发过程中，会有一些bool类型数据需要存取，比如用户一年的签到记录，签了是1，没签是0，要记录365天。如果使用普通的key&#x2F;value,每个用户要记录365个，当用户数上亿的时候，需要的存储空间是惊人的。</strong></p>
 <p>​    <strong>为了解决这个问题，Redis提供了位图数据结构，这样每天的签到记录只占据了一个位，365天就是365个位，46个字节(一个稍长一点的字符串)就可以完全容纳下来，这就大大节约了存储空间。位图的最小单位是bit，每个bit的取值只能是0或1。</strong></p>
 <p>Redis 提供了 Bitmaps 这个“数据类型”可以实现对位的操作：  </p>
@@ -548,32 +548,32 @@
 <p><code>setbit&lt;key&gt;&lt;offset&gt;&lt;value&gt;</code>设置 Bitmaps 中某个偏移量的值（0 或 1）  </p>
 <p>实例：<br>        每个独立用户是否访问过网站存放在 Bitmaps 中， 将访问的用户记做 1， 没有访问的用户记做 0， 用偏移量作为用户的 id。  </p>
 <p>​		设置键的第 offset 个位的值（从 0 算起） ， 假设现在有 20 个用户，userid&#x3D;1，6， 11， 15， 19 的用户对网站进行了访问  </p>
-<p><img src="/2022/06/07/redis/image-20220608094714290.png" srcset="/img/loading.gif" lazyload alt="image-20220608094714290"></p>
+<p><img src="/2022/06/07/redis/image-20220608094714290.png" alt="image-20220608094714290"></p>
 <p>注意：</p>
 <p>​	由于很多用户id 以一个指定数字（例如 10000） 开头， 直接将用户 id 和Bitmaps 的偏移量对应势必会造成一定的浪费， 通常的做法是每次做 setbit 操作时将用户 id 减去这个指定数字  。</p>
 <p><strong>（2）getbit</strong></p>
 <p><code>getbit&lt;key&gt;&lt;offset&gt;</code>获取 Bitmaps 中某个偏移量的值  </p>
 <p>获取用户id为，15，18，19的用户是否被访问过，如果被访问过值为1，否则为0.</p>
-<p><img src="/2022/06/07/redis/image-20220608100244411.png" srcset="/img/loading.gif" lazyload alt="image-20220608100244411"></p>
+<p><img src="/2022/06/07/redis/image-20220608100244411.png" alt="image-20220608100244411"></p>
 <p><strong>（3）bitcount</strong>  </p>
 <p>统计字符串被设置为 1 的 bit 数  一般情况下，给定的整个字符串都会被进行计数，通过指定额外的 start 或 end 参数，  </p>
 <p>start 和 end 参数的设置，都可以使用负数值：比如 -1 表示最后一个位，而 -2 表示倒数第二个位，start、end 是指 bit 组的字节的下标数，二者皆包含 。</p>
 <p><code>bitcount&lt;key&gt;[start end]</code> 统计字符串从 start 字节到 end 字节比特值为 1 的数量  </p>
 <p>实例：</p>
 <p>计算用户 id 在第 1 个字节到第 3 个字  </p>
-<p><img src="/2022/06/07/redis/image-20220608100603141.png" srcset="/img/loading.gif" lazyload alt="image-20220608100603141"></p>
+<p><img src="/2022/06/07/redis/image-20220608100603141.png" alt="image-20220608100603141"></p>
 <p>举例： K1 【01000001 01000000 00000000 00100001】，对应【0，1，2，3】  </p>
-<p><img src="/2022/06/07/redis/image-20220608101336433.png" srcset="/img/loading.gif" lazyload alt="image-20220608101336433"></p>
+<p><img src="/2022/06/07/redis/image-20220608101336433.png" alt="image-20220608101336433"></p>
 <p><strong>（4）bitop</strong>  </p>
 <p><code>bitop and(or/not/xor) &lt;destkey&gt; [key…]</code>   ： bitop 是一个复合操作， 它可以做多个 Bitmaps 的 and（交集） 、 or（并集） 、 not<br>（非） 、 xor（异或） 操作并将结果保存在 destkey 中 。</p>
 <p>**实例 ：计算出两天都访问过网站的用户数量  **（使用and）</p>
 <p>​		2020-11-04 日访问网站的 userid&#x3D;1,2,5,9。  </p>
 <p>​		2020-11-03 日访问网站的 userid&#x3D;0,1,4,9 。</p>
-<p><img src="/2022/06/07/redis/image-20220608101808071.png" srcset="/img/loading.gif" lazyload alt="image-20220608101808071"></p>
-<p><img src="/2022/06/07/redis/image-20220608101833339.png" srcset="/img/loading.gif" lazyload alt="image-20220608101833339"></p>
+<p><img src="/2022/06/07/redis/image-20220608101808071.png" alt="image-20220608101808071"></p>
+<p><img src="/2022/06/07/redis/image-20220608101833339.png" alt="image-20220608101833339"></p>
 <p><strong>Bitmaps 与 set 对比</strong>  </p>
 <p>​		在存储活跃用户时，bitmap要比set要大大节省空间。</p>
-<p><img src="/2022/06/07/redis/image-20220608101952307.png" srcset="/img/loading.gif" lazyload alt="image-20220608101952307"></p>
+<p><img src="/2022/06/07/redis/image-20220608101952307.png" alt="image-20220608101952307"></p>
 <p>但如果该网站每天的独立访问用户很少， 例如只有 10万（大量的僵尸用户） ， 那么两者的对比如下表所示， 很显然， 这时候使用Bitmaps 就不太合适了， 因为基本上大部分位都是 0  。</p>
 <h2 id="HyperLogLog"><a href="#HyperLogLog" class="headerlink" title="HyperLogLog"></a>HyperLogLog</h2><p>在工作当中，我们经常会遇到与统计相关的功能需求，比如统计网站 PV（PageView 页面访问量）,可以使用 Redis 的 incr、incrby 轻松实现  </p>
 <p><strong>用于解决UV（独立访客  ）独立 IP 数、搜索记录数等需要去重和计数的问题</strong>  </p>
@@ -586,24 +586,24 @@
 <p><strong>命令：</strong></p>
 <p><strong>（1）pfadd</strong></p>
 <p><code>pfadd &lt;key&gt;&lt; element&gt; [element ...]</code> 添加指定元素到 HyperLogLog 中  </p>
-<p><img src="/2022/06/07/redis/image-20220608103326649.png" srcset="/img/loading.gif" lazyload alt="image-20220608103326649"></p>
+<p><img src="/2022/06/07/redis/image-20220608103326649.png" alt="image-20220608103326649"></p>
 <p><strong>（2）pfcount</strong>  </p>
 <p><code>pfcount&lt;key&gt; [key ...]</code> 计算 HLL 的近似基数  ，可以计算多个</p>
-<p><img src="/2022/06/07/redis/image-20220608103423389.png" srcset="/img/loading.gif" lazyload alt="image-20220608103423389"></p>
+<p><img src="/2022/06/07/redis/image-20220608103423389.png" alt="image-20220608103423389"></p>
 <p><strong>（3）pfmerge</strong>  </p>
 <p><code>pfmerge&lt;destkey&gt;&lt;sourcekey&gt; [sourcekey ...]</code> 将一个或多个 HLL 合并后的结果存储在另一个 HLL 中，比如每月活跃用户可以使用每天的活跃用户来合并计算可得  </p>
-<p><img src="/2022/06/07/redis/image-20220608103630010.png" srcset="/img/loading.gif" lazyload alt="image-20220608103630010"></p>
+<p><img src="/2022/06/07/redis/image-20220608103630010.png" alt="image-20220608103630010"></p>
 <h2 id="Geospatial"><a href="#Geospatial" class="headerlink" title="Geospatial"></a>Geospatial</h2><p>​		<strong>该类型，就是元素的 2 维坐标，在地图上就是经纬度。redis 基于该类型，提供了经纬度设置，查询，范围查询，距离查询，经纬度 Hash 等常见操作。</strong>  </p>
 <p><strong>命令</strong></p>
 <p><strong>（1）getadd</strong></p>
 <p><code>geoadd&lt;key&gt;&lt; longitude&gt;&lt;latitude&gt;&lt;member&gt; [longitude latitude member...]</code> 添加地理位置（经度，纬度，名称）  </p>
-<p><img src="/2022/06/07/redis/image-20220608104301235.png" srcset="/img/loading.gif" lazyload alt="image-20220608104301235"></p>
+<p><img src="/2022/06/07/redis/image-20220608104301235.png" alt="image-20220608104301235"></p>
 <p><strong>（2）geopos</strong></p>
 <p><code>geopos &lt;key&gt;&lt;member&gt; [member...]</code> 获得指定地区的坐标值  </p>
-<p><img src="/2022/06/07/redis/image-20220608104401677.png" srcset="/img/loading.gif" lazyload alt="image-20220608104401677"></p>
+<p><img src="/2022/06/07/redis/image-20220608104401677.png" alt="image-20220608104401677"></p>
 <p><strong>（3）geodist</strong></p>
 <p><code>geodist&lt;key&gt;&lt;member1&gt;&lt;member2&gt; [m|km|ft|mi ]</code> 获取两个位置之间的直线距离  </p>
-<p><img src="/2022/06/07/redis/image-20220608104503203.png" srcset="/img/loading.gif" lazyload alt="image-20220608104503203"></p>
+<p><img src="/2022/06/07/redis/image-20220608104503203.png" alt="image-20220608104503203"></p>
 <ul>
 <li>m 表示单位为米[默认值]。</li>
 <li>km 表示单位为千米。</li>
@@ -613,7 +613,7 @@
 </ul>
 <p><strong>（4）georadius</strong>  </p>
 <p><code>georadius&lt;key&gt;&lt; longitude&gt;&lt;latitude&gt;radius m|km|ft|mi</code>   以给定的经纬度为中心，找出某一半径内的元素  </p>
-<p><img src="/2022/06/07/redis/image-20220608104720055.png" srcset="/img/loading.gif" lazyload alt="image-20220608104720055"></p>
+<p><img src="/2022/06/07/redis/image-20220608104720055.png" alt="image-20220608104720055"></p>
 <h1 id="Redis-Jedis-测试"><a href="#Redis-Jedis-测试" class="headerlink" title="Redis_Jedis_测试"></a>Redis_Jedis_测试</h1><h2 id="Jedis-所需要的-jar-包"><a href="#Jedis-所需要的-jar-包" class="headerlink" title="Jedis 所需要的 jar 包"></a>Jedis 所需要的 jar 包</h2><p><strong>引入依赖：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;dependency&gt;<br>&lt;groupId&gt;redis.clients&lt;/groupId&gt;<br>&lt;artifactId&gt;jedis&lt;/artifactId&gt;<br>&lt;version&gt;<span class="hljs-number">3.2</span><span class="hljs-number">.0</span>&lt;/version&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure>
 
@@ -629,33 +629,33 @@
 <p><strong>（2）测试：Jedis-API: Key</strong>  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 测试：key</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testKey</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">Jedis</span> <span class="hljs-variable">jedis</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Jedis</span>(<span class="hljs-string">&quot;192.168.86.129&quot;</span>,<span class="hljs-number">6379</span>);<br>    jedis.auth(<span class="hljs-string">&quot;Zlw199805&quot;</span>);<br>    jedis.set(<span class="hljs-string">&quot;k1&quot;</span>,<span class="hljs-string">&quot;v1&quot;</span>);<br>    jedis.set(<span class="hljs-string">&quot;k2&quot;</span>,<span class="hljs-string">&quot;v2&quot;</span>);<br>    jedis.set(<span class="hljs-string">&quot;k3&quot;</span>,<span class="hljs-string">&quot;v3&quot;</span>);<br>    <span class="hljs-type">String</span> <span class="hljs-variable">k2</span> <span class="hljs-operator">=</span> jedis.get(<span class="hljs-string">&quot;k2&quot;</span>);<br>    System.out.println(k2);<br>    Set&lt;String&gt; keys = jedis.keys(<span class="hljs-string">&quot;*&quot;</span>);<br>    <span class="hljs-keyword">for</span> (String key:keys)&#123;<br>        System.out.print(key+<span class="hljs-string">&quot; &quot;</span>);<br>    &#125;<br>    System.out.println();<br>    System.out.println(jedis.exists(<span class="hljs-string">&quot;k3&quot;</span>));<br>    System.out.println(jedis.ttl(<span class="hljs-string">&quot;k2&quot;</span>));<span class="hljs-comment">//-1 表示永不过期</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/06/07/redis/image-20220608114625329.png" srcset="/img/loading.gif" lazyload alt="image-20220608114625329"></p>
+<p><img src="/2022/06/07/redis/image-20220608114625329.png" alt="image-20220608114625329"></p>
 <p><strong>（3）测试 ：Jedis-API: String</strong>  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 测试String</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">StringTest</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-type">Jedis</span> <span class="hljs-variable">jedis</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Jedis</span>(<span class="hljs-string">&quot;192.168.86.129&quot;</span>,<span class="hljs-number">6379</span>);<br>        jedis.auth(<span class="hljs-string">&quot;Zlw199805&quot;</span>);<br>        jedis.flushDB();<br>        jedis.set(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;zlw&quot;</span>);<br>        jedis.mset(<span class="hljs-string">&quot;name1&quot;</span>,<span class="hljs-string">&quot;jack&quot;</span>,<span class="hljs-string">&quot;name2&quot;</span>,<span class="hljs-string">&quot;mary&quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> jedis.get(<span class="hljs-string">&quot;name&quot;</span>);<br>        System.out.println(name);<br>        List&lt;String&gt; name1 = jedis.mget(<span class="hljs-string">&quot;name1&quot;</span>,<span class="hljs-string">&quot;name2&quot;</span>);<br>        System.out.println(name1);<br>        <span class="hljs-type">Long</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> jedis.strlen(<span class="hljs-string">&quot;name&quot;</span>);<br>        System.out.println(len);<br><br>    &#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/06/07/redis/image-20220608134027626.png" srcset="/img/loading.gif" lazyload alt="image-20220608134027626"></p>
+<p><img src="/2022/06/07/redis/image-20220608134027626.png" alt="image-20220608134027626"></p>
 <p><strong>（4）测试：Jedis-API: List</strong>  </p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 测试list</span><br><span class="hljs-comment">     */</span><br>    @Test<br>    <span class="hljs-built_in">public</span> <span class="hljs-type">void</span> ListTest()&#123;<br>        Jedis jedis = <span class="hljs-built_in">new</span> Jedis(&quot;192.168.86.129&quot;,<span class="hljs-number">6379</span>);<br>        jedis.auth(&quot;Zlw199805&quot;);<br>        jedis.flushDB();<br>        jedis.lpush(&quot;name&quot;, &quot;zlw&quot;, &quot;hhh&quot;, &quot;aaa&quot;);<br>        String <span class="hljs-type">name</span> = jedis.lpop(&quot;name&quot;);<br>        <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(<span class="hljs-type">name</span>);<br>        List&lt;String&gt; name1 = jedis.lrange(&quot;name&quot;, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>);<br>        <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(name1);<br>        Long len = jedis.llen(&quot;name&quot;);<br>        <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(len);<br>    &#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/06/07/redis/image-20220608133540388.png" srcset="/img/loading.gif" lazyload alt="image-20220608133540388"></p>
+<p><img src="/2022/06/07/redis/image-20220608133540388.png" alt="image-20220608133540388"></p>
 <p><strong>（5）测试：Jedis-API: set</strong>  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 测试set</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setTest</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">Jedis</span> <span class="hljs-variable">jedis</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Jedis</span>(<span class="hljs-string">&quot;192.168.86.129&quot;</span>,<span class="hljs-number">6379</span>);<br>    jedis.auth(<span class="hljs-string">&quot;Zlw199805&quot;</span>);<br>    jedis.flushDB();<br>    jedis.sadd(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;jack&quot;</span>,<span class="hljs-string">&quot;mary&quot;</span>,<span class="hljs-string">&quot;zlw&quot;</span>);<br>    Set&lt;String&gt; name = jedis.smembers(<span class="hljs-string">&quot;name&quot;</span>);<br>    System.out.println(name);<br>    <span class="hljs-comment">//判断集合中是否有：zlw</span><br>    System.out.println(jedis.sismember(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;zlw&quot;</span>));<br>    <span class="hljs-comment">//返回集合中元素的数量</span><br>    <span class="hljs-type">Long</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> jedis.scard(<span class="hljs-string">&quot;name&quot;</span>);<br>    System.out.println(len);<br>    <span class="hljs-comment">//删除集合中的元素</span><br>    jedis.srem(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;zlw&quot;</span>);<br>    Set&lt;String&gt; name1 = jedis.smembers(<span class="hljs-string">&quot;name&quot;</span>);<br>    System.out.println(name1);<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/06/07/redis/image-20220608134454960.png" srcset="/img/loading.gif" lazyload alt="image-20220608134454960"></p>
+<p><img src="/2022/06/07/redis/image-20220608134454960.png" alt="image-20220608134454960"></p>
 <p><strong>（6）测试：Jedis-API: hash</strong>  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 测试hash</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">hashTest</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-type">Jedis</span> <span class="hljs-variable">jedis</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Jedis</span>(<span class="hljs-string">&quot;192.168.86.129&quot;</span>,<span class="hljs-number">6379</span>);<br>        jedis.auth(<span class="hljs-string">&quot;Zlw199805&quot;</span>);<br>        jedis.flushDB();<br>        jedis.hset(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;zlw&quot;</span>,<span class="hljs-string">&quot;20&quot;</span>);<br>        System.out.println(jedis.hget(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;zlw&quot;</span>));<br>        Map&lt;String,String&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        map.put(<span class="hljs-string">&quot;jack&quot;</span>,<span class="hljs-string">&quot;22&quot;</span>);<br>        map.put(<span class="hljs-string">&quot;mary&quot;</span>,<span class="hljs-string">&quot;21&quot;</span>);<br>        jedis.hset(<span class="hljs-string">&quot;names&quot;</span>,map);<br>        System.out.println(jedis.hmget(<span class="hljs-string">&quot;names&quot;</span>,<span class="hljs-string">&quot;jack&quot;</span>,<span class="hljs-string">&quot;mary&quot;</span>));<br>        <span class="hljs-comment">//查看是否有元素</span><br>        System.out.println(jedis.hexists(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;zlw&quot;</span>));<br>        <span class="hljs-comment">//列出key中所有的filed</span><br>        System.out.println(jedis.hkeys(<span class="hljs-string">&quot;names&quot;</span>));<br>        <span class="hljs-comment">//列出key中所有的value</span><br>        System.out.println(jedis.hvals(<span class="hljs-string">&quot;names&quot;</span>));<br>    &#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/06/07/redis/image-20220608135235012.png" srcset="/img/loading.gif" lazyload alt="image-20220608135235012"></p>
+<p><img src="/2022/06/07/redis/image-20220608135235012.png" alt="image-20220608135235012"></p>
 <p><strong>（7）测试：Jedis-API: zset</strong>  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 测试zset</span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-meta">@Test</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">zsetTest</span><span class="hljs-params">()</span>&#123;<br>       <span class="hljs-type">Jedis</span> <span class="hljs-variable">jedis</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Jedis</span>(<span class="hljs-string">&quot;192.168.86.129&quot;</span>,<span class="hljs-number">6379</span>);<br>       jedis.auth(<span class="hljs-string">&quot;Zlw199805&quot;</span>);<br>       jedis.flushDB();<br>       jedis.zadd(<span class="hljs-string">&quot;name1&quot;</span>,<span class="hljs-number">100d</span>,<span class="hljs-string">&quot;zlw&quot;</span>);<br>       jedis.zadd(<span class="hljs-string">&quot;name1&quot;</span>,<span class="hljs-number">99d</span>,<span class="hljs-string">&quot;jack&quot;</span>);<br>       jedis.zadd(<span class="hljs-string">&quot;name1&quot;</span>,<span class="hljs-number">98d</span>,<span class="hljs-string">&quot;mary&quot;</span>);<br>       System.out.println(jedis.zrange(<span class="hljs-string">&quot;name1&quot;</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>));<br>       System.out.println(jedis.zrangeByScore(<span class="hljs-string">&quot;name1&quot;</span>, <span class="hljs-number">99</span>, <span class="hljs-number">100</span>));<br>       jedis.zincrby(<span class="hljs-string">&quot;name1&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-string">&quot;mary&quot;</span>);<br>       System.out.println(jedis.zrange(<span class="hljs-string">&quot;name1&quot;</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>));<br>   &#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/06/07/redis/image-20220608140213830.png" srcset="/img/loading.gif" lazyload alt="image-20220608140213830"></p>
+<p><img src="/2022/06/07/redis/image-20220608140213830.png" alt="image-20220608140213830"></p>
 <h1 id="Redis-Jedis-实例-完成手机验证"><a href="#Redis-Jedis-实例-完成手机验证" class="headerlink" title="Redis_Jedis_实例 (完成手机验证)"></a>Redis_Jedis_实例 (完成手机验证)</h1><h2 id="完成一个手机验证码功能"><a href="#完成一个手机验证码功能" class="headerlink" title="完成一个手机验证码功能"></a>完成一个手机验证码功能</h2><p><strong>要求：</strong></p>
 <p>（1）输入手机号，点击发送后随机生成 6 位数字码，2 分钟有效</p>
 <p>（2）输入验证码，点击验证，返回成功或失败</p>
 <p>（3）每个手机号每天只能输入 3 次  </p>
 <p><strong>对要求的分析：</strong></p>
-<p><img src="/2022/06/07/redis/image-20220608140726491.png" srcset="/img/loading.gif" lazyload alt="image-20220608140726491"></p>
+<p><img src="/2022/06/07/redis/image-20220608140726491.png" alt="image-20220608140726491"></p>
 <p><strong>代码为：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.zlw.redis;<br><br><span class="hljs-keyword">import</span> redis.clients.jedis.Jedis;<br><br><span class="hljs-keyword">import</span> java.util.Random;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PhoneCode</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">phone</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;18840613021&quot;</span>;<br>        <span class="hljs-type">PhoneCode</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PhoneCode</span>();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">code</span> <span class="hljs-operator">=</span> p.getCode();<br><span class="hljs-comment">//        String code = &quot;399675&quot;;</span><br><span class="hljs-comment">//        p.VerCode(phone,code);</span><br>        p.setCodeToRedis(phone,code);<br><br>    &#125;<br>    <span class="hljs-comment">//1.生成随机6位数字验证</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getCode</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">code</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&quot;</span>;<br>        <span class="hljs-type">Random</span> <span class="hljs-variable">random</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i&lt;<span class="hljs-number">6</span>;i++)&#123;<br>            code +=random.nextInt(<span class="hljs-number">10</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> code;<br>    &#125;<br><br>    <span class="hljs-comment">//将发送验证码的数量放入到redis中，设置每个手机一天之内只能发送三次，放入redis中，设置验证码在2分钟内有效，</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setCodeToRedis</span><span class="hljs-params">(String phone, String code)</span>&#123;<br>        <span class="hljs-type">Jedis</span> <span class="hljs-variable">jedis</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Jedis</span>(<span class="hljs-string">&quot;192.168.86.129&quot;</span>,<span class="hljs-number">6379</span>);<br>        jedis.auth(<span class="hljs-string">&quot;Zlw199805&quot;</span>);<br>        <span class="hljs-comment">//验证码数量的key</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">codeCount</span> <span class="hljs-operator">=</span> phone + <span class="hljs-string">&quot;:count&quot;</span>;<br>        <span class="hljs-comment">//验证码两分钟有效的key</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">codeVer</span> <span class="hljs-operator">=</span> phone + <span class="hljs-string">&quot;:ver&quot;</span>;<br><br>        <span class="hljs-keyword">if</span> (jedis.get(codeCount)==<span class="hljs-literal">null</span>)&#123;<br>            jedis.setex(codeCount,<span class="hljs-number">24</span>*<span class="hljs-number">60</span>*<span class="hljs-number">60</span>,<span class="hljs-string">&quot;1&quot;</span>);<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Integer.parseInt(jedis.get(codeCount) )&lt;=<span class="hljs-number">2</span>)&#123;<br>            jedis.incr(codeCount);<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Integer.parseInt(jedis.get(codeCount) )&gt;<span class="hljs-number">2</span>)&#123;<br>            System.out.println(<span class="hljs-string">&quot;今日发送已经超过三日，明日再来吧~~&quot;</span>);<br>            <span class="hljs-keyword">return</span>;<span class="hljs-comment">//如果发送失败了，就不会将验证码存入到redis中了，因此结束return;</span><br>        &#125;<br><br>        jedis.setex(codeVer,<span class="hljs-number">120</span>,code);<br>        jedis.close();<br>    &#125;<br><br>    <span class="hljs-comment">//验证 验证码和输入的是否相等</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">VerCode</span><span class="hljs-params">(String phone,String code)</span>&#123;<br>        <span class="hljs-type">Jedis</span> <span class="hljs-variable">jedis</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Jedis</span>(<span class="hljs-string">&quot;192.168.86.129&quot;</span>,<span class="hljs-number">6379</span>);<br>        jedis.auth(<span class="hljs-string">&quot;Zlw199805&quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">codeVer</span> <span class="hljs-operator">=</span> phone + <span class="hljs-string">&quot;:ver&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">code1</span> <span class="hljs-operator">=</span> jedis.get(codeVer);<br>        <span class="hljs-keyword">if</span> (code1.equals(code))&#123;<br>            System.out.println(<span class="hljs-string">&quot;成功&quot;</span>);<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            System.out.println(<span class="hljs-string">&quot;失败&quot;</span>);<br>        &#125;<br>        jedis.close();<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
 
@@ -682,14 +682,14 @@
 
 <h1 id="Redis-事务"><a href="#Redis-事务" class="headerlink" title="Redis_事务"></a>Redis_事务</h1><p><strong>Redis 事务的主要作用就是串联多个命令防止别的命令插队</strong>  </p>
 <p>从输入 Multi 命令开始，输入的命令都会依次进入命令队列中，但不会执行，直到输入Exec 后，Redis 会将之前的命令队列中的命令依次执行。组队的过程中可以通过 discard 来放弃组队。  </p>
-<p><img src="/2022/06/07/redis/image-20220609132109343.png" srcset="/img/loading.gif" lazyload alt="image-20220609132109343"></p>
+<p><img src="/2022/06/07/redis/image-20220609132109343.png" alt="image-20220609132109343"></p>
 <h2 id="事务的错误处理"><a href="#事务的错误处理" class="headerlink" title="事务的错误处理"></a>事务的错误处理</h2><ul>
 <li>组队中某个命令出现了报告错误，执行时整个的所有队列都会被取消  </li>
 <li>如果执行阶段某个命令报出了错误，则只有报错的命令不会被执行，而其他的命令都会执行，不会回滚  。因此Redis不具有原子性。</li>
 </ul>
 <h2 id="悲观锁和乐观锁"><a href="#悲观锁和乐观锁" class="headerlink" title="悲观锁和乐观锁"></a>悲观锁和乐观锁</h2><p><strong>悲观锁</strong></p>
 <p>​		就是很悲观，每次去拿数据的时候都认为别人会修改<strong>，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会 block 直到它拿到锁</strong>。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。  </p>
-<p><img src="/2022/06/07/redis/image-20220609132539677.png" srcset="/img/loading.gif" lazyload alt="image-20220609132539677"></p>
+<p><img src="/2022/06/07/redis/image-20220609132539677.png" alt="image-20220609132539677"></p>
 <p><strong>乐观锁</strong></p>
 <p>就是很乐观，<strong>每次去拿数据的时候都认为别人不会修改，所以不会上锁</strong>，但是<strong>在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制。</strong>  乐观锁适用于多读的应用类型，这样可以提高吞吐量。<strong>Redis 就是利用这种 check-and-set 机制实现事务的。</strong>  </p>
 <h2 id="WATCH-key-key-…"><a href="#WATCH-key-key-…" class="headerlink" title="WATCH key [key …]"></a>WATCH key [key …]</h2><p>在执行 multi 之前，先执行 watch key1 [key2],可以监视一个(或多个) key ，<strong>如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断</strong>  </p>
@@ -743,9 +743,9 @@
 <p>RDB是持久化方式，按照一定的时间间隔将内存的数据以快照的形式保存到硬盘，恢复时将快照读取到内存，</p>
 </blockquote>
 <h2 id="RDB是什么？"><a href="#RDB是什么？" class="headerlink" title="RDB是什么？"></a>RDB是什么？</h2><p>在<strong>指定的时间间隔</strong>内将内存中的<strong>数据集快照写入磁盘</strong>， 也就是行话讲的 Snapshot 快照，它恢复时是将快照文件直接读到内存里  </p>
-<p><img src="/2022/06/07/redis/image-20220609193324763.png" srcset="/img/loading.gif" lazyload alt="image-20220609193324763"></p>
+<p><img src="/2022/06/07/redis/image-20220609193324763.png" alt="image-20220609193324763"></p>
 <h2 id="备份是如何进行的？"><a href="#备份是如何进行的？" class="headerlink" title="备份是如何进行的？"></a>备份是如何进行的？</h2><p>Redis 会单独创建（fork）一个子进程来进行持久化，会先将数据写入到 一个临时文件中，待持久化过程都结束了，再用这个临时文件替换上次持久化好的文件。 整个过程中，主进程是不进行任何 IO 操作的，  </p>
-<p><img src="/2022/06/07/redis/image-20220609160158010.png" srcset="/img/loading.gif" lazyload alt="image-20220609160158010"></p>
+<p><img src="/2022/06/07/redis/image-20220609160158010.png" alt="image-20220609160158010"></p>
 <p><strong>Fork 的作用是复制一个与当前进程一样的进程。</strong>新进程的所有数据（变量、环境变量、程序计数器等） 数值都和原进程一致，但是是一个全新的进程，并作为原进程的子进程  </p>
 <h2 id="RDB的优缺点"><a href="#RDB的优缺点" class="headerlink" title="RDB的优缺点"></a>RDB的优缺点</h2><p><strong>优点：</strong></p>
 <ul>
@@ -770,14 +770,14 @@
 </li>
 <li><p>启动 Redis, 备份数据会直接加载  </p>
 </li>
-<li><p><img src="/2022/06/07/redis/image-20220609163844921.png" srcset="/img/loading.gif" lazyload alt="image-20220609163844921"></p>
-<p><img src="/2022/06/07/redis/image-20220609163802517.png" srcset="/img/loading.gif" lazyload alt="image-20220609163802517"></p>
+<li><p><img src="/2022/06/07/redis/image-20220609163844921.png" alt="image-20220609163844921"></p>
+<p><img src="/2022/06/07/redis/image-20220609163802517.png" alt="image-20220609163802517"></p>
 </li>
 </ul>
-<p><img src="/2022/06/07/redis/image-20220609163732378.png" srcset="/img/loading.gif" lazyload alt="image-20220609163732378"></p>
+<p><img src="/2022/06/07/redis/image-20220609163732378.png" alt="image-20220609163732378"></p>
 <h1 id="Redis-持久化之-AOF"><a href="#Redis-持久化之-AOF" class="headerlink" title="Redis 持久化之 AOF"></a>Redis 持久化之 AOF</h1><p>AOF 持久化以日志的形式记录服务器所处理的每一个写、删除操作，但查询操作不会记录，以文本的方式记录，可以打开文件看到详细的操作。</p>
 <p>AOF采用文件追加方式，<strong>文件越来越大，为避免出现这种情况，新增了重写机制</strong>，当AOF文件的大小超过所设定的阈值，<strong>Redis就会启动AOF文件的内存压缩，只保留可以恢复数据的最小指令集。</strong></p>
-<p><img src="/2022/06/07/redis/image-20220609193655926.png" srcset="/img/loading.gif" lazyload alt="image-20220609193655926"></p>
+<p><img src="/2022/06/07/redis/image-20220609193655926.png" alt="image-20220609193655926"></p>
 <h2 id="AOF-持久化流程"><a href="#AOF-持久化流程" class="headerlink" title="AOF 持久化流程"></a>AOF 持久化流程</h2><p>（1）客户端的请求写命令会被 append 追加到 AOF 缓冲区内；<br>（2）AOF 缓冲区根据 AOF 持久化策略[always,everysec,no]将操作 sync 同步到磁盘的AOF 文件中；<br>（3）AOF 文件大小超过重写策略或手动重写时，会对 AOF 文件 rewrite 重写，压缩AOF 文件容量；  </p>
 <p>（4）Redis 服务重启时，会重新 load 加载 AOF 文件中的写操作达到数据恢复的目的；  </p>
 <h2 id="AOF-启动-x2F-修复-x2F-恢复"><a href="#AOF-启动-x2F-修复-x2F-恢复" class="headerlink" title="AOF 启动&#x2F;修复&#x2F;恢复"></a>AOF 启动&#x2F;修复&#x2F;恢复</h2><ul>
@@ -821,12 +821,12 @@
 <h2 id="能干嘛"><a href="#能干嘛" class="headerlink" title="能干嘛"></a>能干嘛</h2><ul>
 <li>读写分离，性能扩展  </li>
 <li>容灾快速恢复  （当一台从机挂掉之后，其他从机能快速提供服务  ）</li>
-<li><img src="/2022/06/07/redis/image-20220610102855173.png" srcset="/img/loading.gif" lazyload alt="image-20220610102855173"></li>
+<li><img src="/2022/06/07/redis/image-20220610102855173.png" alt="image-20220610102855173"></li>
 </ul>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p><img src="/2022/06/07/redis/image-20220610102915397.png" srcset="/img/loading.gif" lazyload alt="image-20220610102915397"></p>
-<p><img src="/2022/06/07/redis/image-20220610104030188.png" srcset="/img/loading.gif" lazyload alt="image-20220610104030188"></p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p><img src="/2022/06/07/redis/image-20220610102915397.png" alt="image-20220610102915397"></p>
+<p><img src="/2022/06/07/redis/image-20220610104030188.png" alt="image-20220610104030188"></p>
 <p>info replication<br><strong>打印主从复制的相关信息</strong></p>
-<p><img src="/2022/06/07/redis/image-20220610111351081.png" srcset="/img/loading.gif" lazyload alt="image-20220610111351081"></p>
+<p><img src="/2022/06/07/redis/image-20220610111351081.png" alt="image-20220610111351081"></p>
 <p><strong>配从(库)不配主(库)</strong>  </p>
 <p><code>slaveof &lt;ip&gt;&lt;port&gt;</code>  ：主服务器的ip和端口。</p>
 <p><strong>在主机上写，在从机上可以读取数据</strong>  </p>
@@ -841,7 +841,7 @@
 <p><strong>中途变更转向:会清除之前的数据，重新建立拷贝最新的</strong>  </p>
 <p><strong>风险是一旦某个 slave 宕机，后面的 slave 都没法备份</strong>  </p>
 <p><strong>主机挂了，从机还是从机，无法写数据了</strong>  </p>
-<p><img src="/2022/06/07/redis/image-20220610113123157.png" srcset="/img/loading.gif" lazyload alt="image-20220610113123157"></p>
+<p><img src="/2022/06/07/redis/image-20220610113123157.png" alt="image-20220610113123157"></p>
 <h2 id="反客为主"><a href="#反客为主" class="headerlink" title="反客为主"></a>反客为主</h2><p><strong>当一个 master 宕机后，后面的 slave 可以立刻升为 master，其后面的 slave 不用做任何修改。</strong></p>
 <p>  <strong>用 <code>slaveof no one</code> 将从机变为主机。</strong>  </p>
 <p><strong>但这个过程是手动设置的，但在真正的使用中，如果主机挂掉，工作人员需要时间去指定下一个上位的从机，但这会花费时间，有没有一种可以自动去执行的这个过程？</strong></p>
@@ -853,16 +853,16 @@
 <li>增量复制：Master 继续将新的所有收集到的修改命令依次传给 slave,完成同步</li>
 <li>但是只要是重新连接 master,一次完全同步（全量复制)将被自动执行</li>
 </ul>
-<p><img src="/2022/06/07/redis/image-20220610111839270.png" srcset="/img/loading.gif" lazyload alt="image-20220610111839270"></p>
+<p><img src="/2022/06/07/redis/image-20220610111839270.png" alt="image-20220610111839270"></p>
 <h2 id="哨兵模式-sentinel"><a href="#哨兵模式-sentinel" class="headerlink" title="哨兵模式(sentinel)"></a>哨兵模式(sentinel)</h2><p>是什么：</p>
 <p><strong>反客为主的自动版</strong>，能够后台监控主机是否故障，如果故障了<strong>根据投票数自动将从库转换为主库</strong>  </p>
-<p><img src="/2022/06/07/redis/image-20220610115550445.png" srcset="/img/loading.gif" lazyload alt="image-20220610115550445"></p>
+<p><img src="/2022/06/07/redis/image-20220610115550445.png" alt="image-20220610115550445"></p>
 <p><strong>步骤：</strong></p>
 <p>（1）调整为一主二仆模式， 6379 带着 6380、 6381  </p>
 <p>（2）自定义的&#x2F;myredis 目录下新建 sentinel.conf 文件， 名字绝不能错  </p>
 <p>（3）配置哨兵,填写内容  ：<code>sentinel monitor mymaster 127.0.0.1 6379 1</code>  （其中 mymaster 为监控对象起的服务器名称， 1 为至少有多少个哨兵同意迁移的数量。  ）</p>
 <p>（4）启动哨兵  ：执行 <code>redis-sentinel /myredis/sentinel.conf</code>  </p>
-<p><img src="/2022/06/07/redis/image-20220610115726460.png" srcset="/img/loading.gif" lazyload alt="image-20220610115726460"></p>
+<p><img src="/2022/06/07/redis/image-20220610115726460.png" alt="image-20220610115726460"></p>
 <p><strong>当主机挂掉， 从机选举中产生新的主机</strong>  </p>
 <p>应该选择哪个从机作为主机呢？</p>
 <p>（1）<strong>选择优先级靠前的。</strong>—redis.conf配置文件中，<code>replica-priority</code>  默认值为100，值越小优先级越高</p>
@@ -875,10 +875,10 @@
 <p>并发写操作， redis 如何分摊？   多个redis</p>
 <p><strong>之前通过代理主机来解决，但是 redis3.0 中提供了解决方案。就是无中心化集群配置。</strong>  </p>
 <p><strong>之前的代理主机：</strong></p>
-<p><img src="/2022/06/07/redis/image-20220610121734297.png" srcset="/img/loading.gif" lazyload alt="image-20220610121734297"></p>
+<p><img src="/2022/06/07/redis/image-20220610121734297.png" alt="image-20220610121734297"></p>
 <p><strong>现在的无中心化集群配置：</strong></p>
 <p><strong>任何一台服务器都可以作为集群的入口。</strong>可以把请求转交给任何一台服务器</p>
-<p><img src="/2022/06/07/redis/image-20220610121748075.png" srcset="/img/loading.gif" lazyload alt="image-20220610121748075"></p>
+<p><img src="/2022/06/07/redis/image-20220610121748075.png" alt="image-20220610121748075"></p>
 <h2 id="什么是集群"><a href="#什么是集群" class="headerlink" title="什么是集群"></a>什么是集群</h2><p><strong>Redis 集群实现了对 Redis 的水平扩容</strong>，即启动 N 个 redis 节点，将整个数据库分布存储在这 N 个节点中，每个节点存储总数据的 1&#x2F;N  </p>
 <p><strong>Redis 集群通过分区（partition）来提供一定程度的可用性（availability）</strong>： 即使集群中有一部分节点失效或者无法进行通讯， 集群也可以继续处理命令请求。  （提供了从机）</p>
 <h2 id="配置集群步骤："><a href="#配置集群步骤：" class="headerlink" title="配置集群步骤："></a><strong>配置集群步骤：</strong></h2><p>（1）将 rdb,aof 文件都删除掉  </p>
@@ -902,22 +902,22 @@
 
 <p><strong>此处不要用 127.0.0.1， 请用真实 IP 地址</strong><br><strong>–replicas 1 :采用最简单的方式配置集群，一台主机，一台从机，正好三组。</strong>  </p>
 <p>（8）采用集群的方式连接</p>
-<p><img src="/2022/06/07/redis/image-20220610124129675.png" srcset="/img/loading.gif" lazyload alt="image-20220610124129675"></p>
+<p><img src="/2022/06/07/redis/image-20220610124129675.png" alt="image-20220610124129675"></p>
 <p>（9）通过 <code>cluster nodes</code> 命令查看集群信息  </p>
 <p><strong>redis cluster 如何分配这六个节点?</strong>  </p>
 <p>（1）一个集群至少要有三个主节点  </p>
 <p>（2）选项 –cluster-replicas 1 表示我们希望为集群中的每个主节点创建一个从节点  </p>
 <p>（3）分配原则尽量保证每个主数据库运行在不同的 IP 地址，每个从库和主库不在一个 IP 地址上。  （因为当一台主机挂掉之后，从机可以变为主机，如果都在一台服务器上时，则从机也挂掉了）</p>
 <h2 id="什么是-slots"><a href="#什么是-slots" class="headerlink" title="什么是 slots"></a>什么是 slots</h2><p>一个 Redis 集群包含 16384 个插槽（hash slot）（为了集群平均分配）， 数据库中的每个键都属于这 16384个插槽的其中一个  </p>
-<p><img src="/2022/06/07/redis/image-20220610131018008.png" srcset="/img/loading.gif" lazyload alt="image-20220610131018008"></p>
+<p><img src="/2022/06/07/redis/image-20220610131018008.png" alt="image-20220610131018008"></p>
 <p><strong>集群使用公式 CRC16(key) % 16384 来计算键 key 属于哪个槽， 其中 CRC16(key) 语句用于计算键 key 的 CRC16 校验和 。</strong>  </p>
 <p><strong>集群中的每个节点负责处理一部分插槽</strong>  </p>
 <p><strong>在集群中录入值：</strong>自动分配到键所对应的插槽中，</p>
-<p><img src="/2022/06/07/redis/image-20220610130004189.png" srcset="/img/loading.gif" lazyload alt="image-20220610130004189"></p>
+<p><img src="/2022/06/07/redis/image-20220610130004189.png" alt="image-20220610130004189"></p>
 <p><strong>不能进行 <code>mget</code> 和 mset 操作，可以通过{}来定义组的概念，从而使 key 中{}内相同内容的键值对放到一个 slot 中去。</strong>  </p>
-<p><img src="/2022/06/07/redis/image-20220610130140398.png" srcset="/img/loading.gif" lazyload alt="image-20220610130140398"></p>
+<p><img src="/2022/06/07/redis/image-20220610130140398.png" alt="image-20220610130140398"></p>
 <p><strong>查询集群中的值  （计算插槽值）：</strong></p>
-<p><img src="/2022/06/07/redis/image-20220610130257347.png" srcset="/img/loading.gif" lazyload alt="image-20220610130257347"></p>
+<p><img src="/2022/06/07/redis/image-20220610130257347.png" alt="image-20220610130257347"></p>
 <p><code>CLUSTER GETKEYSINSLOT &lt;slot&gt;&lt;count&gt;</code> <strong>返回 count 个 slot 槽中的键。</strong>  </p>
 <h2 id="故障恢复"><a href="#故障恢复" class="headerlink" title="故障恢复"></a>故障恢复</h2><p><strong>如果主节点下线，则从节点自动上位为主节点，</strong></p>
 <p><strong>当主节点恢复回来后，变为从节点，</strong></p>
@@ -926,7 +926,7 @@
 <li>如果某一段插槽的主从都挂掉，而<strong>redis.conf中的</strong> <strong>cluster-require-full-coverage 为 yes</strong> ，那么 ，<strong>整个集群都挂掉</strong></li>
 <li>如果某一段插槽的主从都挂掉，而 <strong>redis.conf中的cluster-require-full-coverage 为 no</strong> ，那么，该插槽数据全都不能使用，也无法存储。<strong>但其他插槽还可以继续使用</strong></li>
 </ul>
-<h2 id="集群的-Jedis-开发"><a href="#集群的-Jedis-开发" class="headerlink" title="集群的 Jedis 开发"></a>集群的 Jedis 开发</h2><p><img src="/2022/06/07/redis/image-20220610132151742.png" srcset="/img/loading.gif" lazyload alt="image-20220610132151742"></p>
+<h2 id="集群的-Jedis-开发"><a href="#集群的-Jedis-开发" class="headerlink" title="集群的 Jedis 开发"></a>集群的 Jedis 开发</h2><p><img src="/2022/06/07/redis/image-20220610132151742.png" alt="image-20220610132151742"></p>
 <h2 id="Redis集群的好处和不足"><a href="#Redis集群的好处和不足" class="headerlink" title="Redis集群的好处和不足"></a>Redis集群的好处和不足</h2><p><strong>好处：</strong></p>
 <ul>
 <li>实现扩容  （用集群实现扩容  ）</li>
@@ -941,7 +941,7 @@
 </ul>
 <h1 id="Redis应用问题的解决"><a href="#Redis应用问题的解决" class="headerlink" title="Redis应用问题的解决"></a>Redis应用问题的解决</h1><h2 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h2><p><strong>问题描述</strong></p>
 <p>key 对应的数据在数据源并不存在，<strong>每次针对此 key 的请求从缓存获取不到，请求都会压到数据源，从而可能压垮数据源。</strong>比如用一个不存在的用户 id 获取用户信息，不论缓存还是数据库都没有，若黑客利用此漏洞进行攻击可能压垮数据库  </p>
-<p><img src="/2022/06/07/redis/image-20220610143457717.png" srcset="/img/loading.gif" lazyload alt="image-20220610143457717"></p>
+<p><img src="/2022/06/07/redis/image-20220610143457717.png" alt="image-20220610143457717"></p>
 <p><strong>解决方案</strong></p>
 <p>最终解决的方式就是，不安全的连接不能进入数据库，拦到外面</p>
 <p>（1）<strong>对空值缓存</strong>：如果一个查询返回的数据为空（不管是数据是否不存在），我们仍然把这个空结果（null）进行缓存，设置空结果的过期时间会很短，最长不超过五分钟  .</p>
@@ -949,7 +949,7 @@
 <p>（3）<strong>采用布隆过滤器</strong>  ：将所有可能存在的数据哈希到一个足够大的 bitmaps 中，一个一定不存在的数据会被 这个 bitmaps 拦截掉，从而避免了对底层存储系统的查询压力。  </p>
 <p>（4）<strong>进行实时监控</strong>：当发现 Redis 的命中率开始急速降低，需要排查访问对象和访问的数据，和运维人员配合，可以设置黑名单限制服务  </p>
 <h2 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h2><p>key 对应的数据存在，但在 redis 中过期，此时若有大量并发请求过来，这些请求发现缓存过期一般都会从后端 DB 加载数据并回设到缓存，这个时候大并发的请求可能会瞬间把后端 DB 压垮 。</p>
-<p><img src="/2022/06/07/redis/image-20220610144458611.png" srcset="/img/loading.gif" lazyload alt="image-20220610144458611"></p>
+<p><img src="/2022/06/07/redis/image-20220610144458611.png" alt="image-20220610144458611"></p>
 <p><strong>解决方案：</strong></p>
 <p>（1）<strong>预先设置热门数据</strong>：在 redis 高峰访问之前，把一些热门数据提前存入到redis 里面，加大这些热门数据 key 的时长<br>（2）<strong>实时调整</strong>：现场监控哪些数据热门，实时调整 key 的过期时长<br>（3）<strong>使用锁：</strong>（效率低）</p>
 <ul>
@@ -957,15 +957,15 @@
 <li>先使用缓存工具的某些带成功操作返回值的操作（比如 Redis 的 SETNX）去 set 一个 mutex key  </li>
 <li>当操作返回成功时，再进行 load db 的操作，并回设缓存,最后删除 mutexkey；  </li>
 <li>当操作返回失败，证明有线程在 load db，当前线程睡眠一段时间再重试整个 get 缓存的方法  </li>
-<li><img src="/2022/06/07/redis/image-20220610144742863.png" srcset="/img/loading.gif" lazyload alt="image-20220610144742863"></li>
+<li><img src="/2022/06/07/redis/image-20220610144742863.png" alt="image-20220610144742863"></li>
 </ul>
 <h2 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h2><p>key 对应的数据存在，但在 redis 中过期，此时若有大量并发请求过来，这些请求发现缓存过期一般都会从后端 DB 加载数据并回设到缓存，这个时候大并发的请求可能会瞬间把后端 DB 压垮。<br><strong>缓存雪崩与缓存击穿的区别在于这里针对很多 key 缓存，前者则是某一个 key</strong>  </p>
-<p><img src="/2022/06/07/redis/image-20220610145205724.png" srcset="/img/loading.gif" lazyload alt="image-20220610145205724"></p>
+<p><img src="/2022/06/07/redis/image-20220610145205724.png" alt="image-20220610145205724"></p>
 <p><strong>解决方案：“</strong></p>
 <p>（1） <strong>构建多级缓存架构：</strong>nginx 缓存 + redis 缓存 +其他缓存（ehcache 等）<br>（2） <strong>使用锁或队列</strong>：用加锁或者队列的方式保证来保证不会有大量的线程对数据库一次性进行读写，从而避免失效时大量的并发请求落到底层存储系统上。不适用高并发情况<br>（3） <strong>设置过期标志更新缓存</strong>：记录缓存数据是否过期（设置提前量），如果过期会触发通知另外的线程在后台去更新实际 key 的缓存。<br>（4） <strong>将缓存失效时间分散开</strong>：比如我们可以在原有的失效时间基础上增加一个随机值，比如 1-5 分钟随机，这样每一个缓存的过期时间的重复率就会降低，就很难引发集体失效的事件。  </p>
 <h2 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h2><p>原单体单机部署的系统被演化成分布式集群系统后，由于分布式系统多线程、多进程并且分布在不同机器上，这将使原单机部署情况下的并发控制锁策略失效，单纯的 Java API 并不能提供分布式锁的能力。为了解决这个问题就需要一种跨 JVM 的互斥机制来控制共享资源的访问，这就是分布式锁要解决的问题！  </p>
-<p><img src="/2022/06/07/redis/image-20220610150150521.png" srcset="/img/loading.gif" lazyload alt="image-20220610150150521"></p>
-<p><img src="/2022/06/07/redis/image-20220610150026377.png" srcset="/img/loading.gif" lazyload alt="image-20220610150026377"></p>
+<p><img src="/2022/06/07/redis/image-20220610150150521.png" alt="image-20220610150150521"></p>
+<p><img src="/2022/06/07/redis/image-20220610150026377.png" alt="image-20220610150026377"></p>
 <p><strong>编写代码：</strong></p>
 <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">@<span class="hljs-constructor">GetMapping(<span class="hljs-string">&quot;testLock&quot;</span>)</span><br>public void test<span class="hljs-constructor">Lock()</span>&#123;<br>	<span class="hljs-comment">//1 获取锁， setne</span><br>	Boolean lock = redisTemplate.ops<span class="hljs-constructor">ForValue()</span>.set<span class="hljs-constructor">IfAbsent(<span class="hljs-string">&quot;lock&quot;</span>, <span class="hljs-string">&quot;111&quot;</span>)</span>;<br>	<span class="hljs-comment">//2 获取锁成功、 查询 num 的值if(lock)&#123;</span><br>	Object value = redisTemplate.ops<span class="hljs-constructor">ForValue()</span>.get(<span class="hljs-string">&quot;num&quot;</span>);<br>	<span class="hljs-comment">//2.1 判断 num 为空 return</span><br>	<span class="hljs-keyword">if</span>(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">StringUtils</span>.</span></span>is<span class="hljs-constructor">Empty(<span class="hljs-params">value</span>)</span>)&#123;<br>		return;<br>	&#125; <br>	<span class="hljs-comment">//2.2 有值就转成成 int</span><br>	<span class="hljs-built_in">int</span> num = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Integer</span>.</span></span>parse<span class="hljs-constructor">Int(<span class="hljs-params">value</span>+<span class="hljs-string">&quot;&quot;</span>)</span>;<br>	<span class="hljs-comment">//2.3 把 redis 的 num 加 1</span><br>	redisTemplate.ops<span class="hljs-constructor">ForValue()</span>.set(<span class="hljs-string">&quot;num&quot;</span>, ++num);<br>	<span class="hljs-comment">//2.4 释放锁， del</span><br>	redisTemplate.delete(<span class="hljs-string">&quot;lock&quot;</span>);<br>	&#125;<span class="hljs-keyword">else</span>&#123;<br>		<span class="hljs-comment">//3 获取锁失败、 每隔 0.1 秒再获取</span><br>	<span class="hljs-keyword">try</span> &#123;<br>		<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Thread</span>.</span></span>sleep(<span class="hljs-number">100</span>);<br>		test<span class="hljs-constructor">Lock()</span>;<br>	&#125; catch (InterruptedException e) &#123;<br>		e.print<span class="hljs-constructor">StackTrace()</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -973,21 +973,21 @@
 <p>**优化之设置锁的过期时间  **</p>
 <p>两种方式：</p>
 <p>（1）首先想到通过 expire 设置过期时间（缺乏原子性： 如果在 setnx 和 expire 之<br>间出现异常， 锁也无法释放）<br>（2） 在 set 时指定过期时间（推荐）  </p>
-<p><img src="/2022/06/07/redis/image-20220610152715911.png" srcset="/img/loading.gif" lazyload alt="image-20220610152715911"></p>
+<p><img src="/2022/06/07/redis/image-20220610152715911.png" alt="image-20220610152715911"></p>
 <p><strong>问题2： 可能会释放其他服务器的锁。</strong>  </p>
 <p><strong>场景：</strong></p>
-<p><img src="/2022/06/07/redis/image-20220610152828761.png" srcset="/img/loading.gif" lazyload alt="image-20220610152828761"></p>
+<p><img src="/2022/06/07/redis/image-20220610152828761.png" alt="image-20220610152828761"></p>
 <p><strong>代码：</strong></p>
-<p><img src="/2022/06/07/redis/image-20220610152957380.png" srcset="/img/loading.gif" lazyload alt="image-20220610152957380"></p>
-<p><img src="/2022/06/07/redis/image-20220610153011261.png" srcset="/img/loading.gif" lazyload alt="image-20220610153011261"></p>
+<p><img src="/2022/06/07/redis/image-20220610152957380.png" alt="image-20220610152957380"></p>
+<p><img src="/2022/06/07/redis/image-20220610153011261.png" alt="image-20220610153011261"></p>
 <p><strong>但是使用了UUID之后不具有原子性：</strong></p>
-<p><img src="/2022/06/07/redis/image-20220610153713549.png" srcset="/img/loading.gif" lazyload alt="image-20220610153713549"></p>
+<p><img src="/2022/06/07/redis/image-20220610153713549.png" alt="image-20220610153713549"></p>
 <p><strong>使用LUA脚本保证删除的原子性</strong>  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;testLockLua&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testLockLua</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-comment">//1 声明一个 uuid ,将做为一个 value 放入我们的 key 所对应的值中</span><br>	<span class="hljs-type">String</span> <span class="hljs-variable">uuid</span> <span class="hljs-operator">=</span> UUID.randomUUID().toString();<br>	<span class="hljs-comment">//2 定义一个锁： lua 脚本可以使用同一把锁， 来实现删除！</span><br>	<span class="hljs-type">String</span> <span class="hljs-variable">skuId</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;25&quot;</span>; <span class="hljs-comment">// 访问 skuId 为 25 号的商品 100008348542</span><br>	<span class="hljs-type">String</span> <span class="hljs-variable">locKey</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;lock:&quot;</span> + skuId; <span class="hljs-comment">// 锁住的是每个商品的数据// 3 获取锁</span><br>	<span class="hljs-type">Boolean</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> redisTemplate.opsForValue().setIfAbsent(locKey, uuid, <span class="hljs-number">3</span>,<br>	TimeUnit.SECONDS);<br>	<span class="hljs-comment">// 第一种： lock 与过期时间中间不写任何的代码。</span><br>	<span class="hljs-comment">// redisTemplate.expire(&quot;lock&quot;,10, TimeUnit.SECONDS);//设置过期时间</span><br>	<span class="hljs-comment">// 如果 true</span><br>	<span class="hljs-keyword">if</span> (lock) &#123;<br>		<span class="hljs-comment">// 执行的业务逻辑开始</span><br>		<span class="hljs-comment">// 获取缓存中的 num 数据</span><br>		<span class="hljs-type">Object</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> redisTemplate.opsForValue().get(<span class="hljs-string">&quot;num&quot;</span>);<br>		<span class="hljs-comment">// 如果是空直接返回</span><br>		<span class="hljs-keyword">if</span> (StringUtils.isEmpty(value)) &#123;<br>			<span class="hljs-keyword">return</span>;<br>		&#125; <br>		<span class="hljs-comment">// 不是空 如果说在这出现了异常！ 那么 delete 就删除失败！ 也就是说锁永远存在！</span><br>		<span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> Integer.parseInt(value + <span class="hljs-string">&quot;&quot;</span>);<br>		<span class="hljs-comment">// 使 num 每次+1 放入缓存</span><br>		redisTemplate.opsForValue().set(<span class="hljs-string">&quot;num&quot;</span>, String.valueOf(++num));<br>		<span class="hljs-comment">/*使用 lua 脚本来锁*/</span><br>		<span class="hljs-comment">// 定义 lua 脚本</span><br>		<span class="hljs-type">String</span> <span class="hljs-variable">script</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;if redis.call(&#x27;get&#x27;, KEYS[1]) == ARGV[1] then return</span><br><span class="hljs-string">		redis.call(&#x27;del&#x27;, KEYS[1]) else return 0 end&quot;</span>;<br>		<span class="hljs-comment">// 使用 redis 执行 lua 执行</span><br>		DefaultRedisScript&lt;Long&gt; redisScript = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DefaultRedisScript</span>&lt;&gt;();<br>		redisScript.setScriptText(script);<br>		<span class="hljs-comment">// 设置一下返回值类型 为 Long</span><br>		<span class="hljs-comment">// 因为删除判断的时候， 返回的 0,给其封装为数据类型。 如果不封装那么默认返回 String 类型，</span><br>		<span class="hljs-comment">// 那么返回字符串与 0 会有发生错误。</span><br>		redisScript.setResultType(Long.class);<br>		<span class="hljs-comment">// 第一个要是 script 脚本 ， 第二个需要判断的 key， 第三个就是 key 所对应的值。</span><br>		redisTemplate.execute(redisScript, Arrays.asList(locKey), uuid);<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		<span class="hljs-comment">// 其他线程等待</span><br>		<span class="hljs-keyword">try</span> &#123;<br>		<span class="hljs-comment">// 睡眠</span><br>		Thread.sleep(<span class="hljs-number">1000</span>);<br>		<span class="hljs-comment">// 睡醒了之后， 调用方法。</span><br>		testLockLua();<br>		&#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>			e.printStackTrace();<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p><strong>LUA脚本详解</strong></p>
-<p><img src="/2022/06/07/redis/image-20220610154032749.png" srcset="/img/loading.gif" lazyload alt="image-20220610154032749"></p>
-<p><img src="/2022/06/07/redis/image-20220610154103532.png" srcset="/img/loading.gif" lazyload alt="image-20220610154103532"></p>
+<p><img src="/2022/06/07/redis/image-20220610154032749.png" alt="image-20220610154032749"></p>
+<p><img src="/2022/06/07/redis/image-20220610154103532.png" alt="image-20220610154103532"></p>
 
               
             </div>
@@ -1106,7 +1106,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -1315,7 +1315,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

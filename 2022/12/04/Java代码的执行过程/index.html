@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -288,7 +288,7 @@
             <div class="markdown-body">
               
               <h1 id="Java代码的执行过程"><a href="#Java代码的执行过程" class="headerlink" title="Java代码的执行过程"></a>Java代码的执行过程</h1><p><strong>首先Java程序从源文件创建到程序运行需要两个步骤：</strong></p>
-<p><img src="/2022/12/04/Java%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/1445502-20220515170637515-493454243.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/04/Java%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/1445502-20220515170637515-493454243.png" alt="img"></p>
 <p><strong>编译期</strong></p>
 <p>编译器把 <code>.java</code> 源代码文件编译成 <code>.class</code> 字节码文件</p>
 <p><strong>运行期</strong></p>
@@ -314,7 +314,7 @@
 <p>每个.class文件都很浪漫，因为每一个.class文件都是以8个十六进制的 0×CAFEBABE,翻译过来就是咖啡宝贝。浪漫吧？在验证阶段的第一步就是检查.class文件是否以咖啡宝贝来开头的。</p>
 </blockquote>
 <h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p><strong>首先为这个类分配内存空间，然后为类变量（被static修饰的变量）赋值一个默认的初始值。但是如果类变量同时被final修饰的话，就不是赋值初始值而是具体的值。</strong></p>
-<p><img src="/2022/12/04/Java%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/1445502-20220515212723549-313092955.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/04/Java%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/1445502-20220515212723549-313092955.png" alt="img"></p>
 <h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p><strong>jvm将常量池的符号引用替换为直接引用。</strong></p>
 <p>在<code>.class</code>文件中是以符号引用来存储的。在解析阶段就需要将其解析为直接引用。如果有了直接引用，那引用的目标必定已经在内存中存在。</p>
 <h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>而到了初始化阶段，才真正开始执行类中定义的java程序代码。主要有以下步骤：</p>
@@ -322,7 +322,7 @@
 <li>为类的静态变量赋予正确的初始值。</li>
 <li>执行类的静态代码块。</li>
 </ul>
-<p><img src="/2022/12/04/Java%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/1445502-20220515212822572-1487676086.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/04/Java%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/1445502-20220515212822572-1487676086.png" alt="img"></p>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3>
               
             </div>
@@ -432,7 +432,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -641,7 +641,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

@@ -82,7 +82,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -317,9 +317,9 @@
 <blockquote>
 <p>在项目中，底层的实现都是由很多个对象组成的，对象之间彼此合作实现项目的业务逻辑。但是，很多很多对象紧密结合在一起，一旦有一方出问题了，必然会对其他对象有所影响，所以才有了解藕的这种设计思想。</p>
 </blockquote>
-<p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144019680.png" srcset="/img/loading.gif" lazyload alt="image-20221121144019680"></p>
-<p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144046016.png" srcset="/img/loading.gif" lazyload alt="image-20221121144046016"></p>
-<h2 id="Spring中的八大模块"><a href="#Spring中的八大模块" class="headerlink" title="Spring中的八大模块"></a>Spring中的八大模块</h2><p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144057699.png" srcset="/img/loading.gif" lazyload alt="image-20221121144057699"></p>
+<p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144019680.png" alt="image-20221121144019680"></p>
+<p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144046016.png" alt="image-20221121144046016"></p>
+<h2 id="Spring中的八大模块"><a href="#Spring中的八大模块" class="headerlink" title="Spring中的八大模块"></a>Spring中的八大模块</h2><p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144057699.png" alt="image-20221121144057699"></p>
 <p>每个「绿框」，对应一个模块，总共8个模块；「黑色包」，表示要实现这个模块的 jar 包。</p>
 <p><strong>既然说容器是 IoC 最重要的部分，那么 Spring 如何设计容器的呢？</strong></p>
 <p>答：使用 <code>ApplicationContext</code>，它是 <code>BeanFactory</code> 的子类，更好的补充并实现了 <code>BeanFactory</code> 的。</p>
@@ -372,13 +372,13 @@
 </tr>
 </tbody></table>
 <p><strong>切点：</strong>切点分为<code>execution</code>方式和<code>annotation</code>方式。前者可以用路径表达式指定哪些类织入切面，后者可以指定被哪些注解修饰的代码织入切面。</p>
-<p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144148718.png" srcset="/img/loading.gif" lazyload alt="image-20221121144148718"></p>
+<p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144148718.png" alt="image-20221121144148718"></p>
 <h2 id="为什么用AOP"><a href="#为什么用AOP" class="headerlink" title="为什么用AOP"></a>为什么用AOP</h2><p>Java是一个面向对象(OOP)的编程语言，但它有个弊端就是<strong>当需要为多个不具有继承关系的对象引入一个公共行为时</strong>，例如<strong>日志记录、统一的异常处理、事务管理（在调用方法前开启事务，调用方法后关闭事务）、统计</strong>等功能，<strong>只能在每个对象里都引用公共行为</strong>，这样做不便于维护，而且有大量重复代码，AOP的出现弥补了OOP的这点不足。</p>
-<p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144210983.png" srcset="/img/loading.gif" lazyload alt="image-20221121144210983"></p>
+<p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144210983.png" alt="image-20221121144210983"></p>
 <p>有多少个业务操作，就要写多少重复的校验和日志记录代码，这显然是无法接受的。当然用面向对象的思想，<strong>可以把这些重复的代码抽离出来</strong>，写成公共方法，就是下面这样：</p>
-<p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144222459.png" srcset="/img/loading.gif" lazyload alt="image-20221121144222459"></p>
+<p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144222459.png" alt="image-20221121144222459"></p>
 <p>代码冗余和可维护性的问题得到了解决，<strong>但每个业务方法中依然要依次手动调用这些公共方法，也是略显繁琐</strong>。 有没有更好的方式呢？有的，那就是AOP，<strong>AOP将权限校验、日志记录等非业务代码完全提取出来，与业务代码分离，并寻找节点切入业务代码中</strong></p>
-<p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144238833.png" srcset="/img/loading.gif" lazyload alt="image-20221121144238833"></p>
+<p><img src="/2022/11/21/IOC%E5%92%8CAOP/image-20221121144238833.png" alt="image-20221121144238833"></p>
 
               
             </div>
@@ -481,7 +481,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -690,7 +690,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

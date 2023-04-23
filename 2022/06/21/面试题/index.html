@@ -101,7 +101,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -314,21 +314,21 @@
 <p>标准的ASCII使用一个字节存储一个字符，首位是0，总共可以表示128个字符，对美国人来说完全够用。</p>
 <p>但是对于中国人来说，还不够，则中国人也开发了一个自己的字符集，就是GBK</p>
 <h2 id="GBK"><a href="#GBK" class="headerlink" title="GBK"></a>GBK</h2><p>汉字占两个字节，英文占一个字节。</p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125202941749.png" srcset="/img/loading.gif" lazyload alt="image-20221125202941749"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125202941749.png" alt="image-20221125202941749"></p>
 <p><strong>GBK规定个汉字的第一个字节的第一位必须为1</strong></p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125203408796.png" srcset="/img/loading.gif" lazyload alt="image-20221125203408796"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125203408796.png" alt="image-20221125203408796"></p>
 <p>因为还有其他国家使用，所以如果其他国家也开发一个自己国家语言的字符集，就会出现好多字符集，当各个国家进行通信的时候就会出现乱码问题。因此国家开发组织就定义了一个标准编码：Unicode</p>
-<h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125203905637.png" srcset="/img/loading.gif" lazyload alt="image-20221125203905637"></p>
+<h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125203905637.png" alt="image-20221125203905637"></p>
 <p><strong>UTF-8</strong></p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125204141153.png" srcset="/img/loading.gif" lazyload alt="image-20221125204141153"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125204141153.png" alt="image-20221125204141153"></p>
 <p>编码的时候可以根据汉字占3个字节进行编码，。但是解吗的时候怎么知道是3个字节代表的汉字呢，则下面utf-8提出了编码方式：</p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125204341276.png" srcset="/img/loading.gif" lazyload alt="image-20221125204341276"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125204623833.png" srcset="/img/loading.gif" lazyload alt="image-20221125204623833"></p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125204642815.png" srcset="/img/loading.gif" lazyload alt="image-20221125204642815"></p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125204648335.png" srcset="/img/loading.gif" lazyload alt="image-20221125204648335"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125204341276.png" alt="image-20221125204341276"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125204623833.png" alt="image-20221125204623833"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125204642815.png" alt="image-20221125204642815"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125204648335.png" alt="image-20221125204648335"></p>
 <h2 id="Java代码对字符进行编码和解码"><a href="#Java代码对字符进行编码和解码" class="headerlink" title="Java代码对字符进行编码和解码"></a>Java代码对字符进行编码和解码</h2><p>String提供的方法：</p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125205109693.png" srcset="/img/loading.gif" lazyload alt="image-20221125205109693"></p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125205136562.png" srcset="/img/loading.gif" lazyload alt="image-20221125205136562"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125205109693.png" alt="image-20221125205109693"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221125205136562.png" alt="image-20221125205136562"></p>
 <h1 id="面向对象和面向过程"><a href="#面向对象和面向过程" class="headerlink" title="面向对象和面向过程"></a>面向对象和面向过程</h1><ul>
 <li>面向过程是把解决问题的过程拆成一个个方法，通过一个个方法的执行解决问题。</li>
 <li>面向对象会先抽象出对象，然后用对象执行方法的方式解决问题</li>
@@ -391,11 +391,11 @@
 <p>Java跨平台原理：<br>由源文件(.java)—&gt;字节码文件(.class)(二进制文件)—–&gt; 解释—-&gt;Unix,Win,Linux等机器。</p>
 <p><strong>简单的来说</strong>，<br>就是当你需要执行某个Java程序时，会牵扯到JVM。具体就是我们编写的Java源码，编译后会生成一种.class文件，称为字节码文件。而Java虚拟机就是负责将字节码文件翻译成特定平台下的机器码，然后运行。</p>
 <p><strong>如下图</strong></p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/7ae2aead01a946c183a01073915ee9bd.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/7ae2aead01a946c183a01073915ee9bd.png" alt="在这里插入图片描述"></p>
 <p>由此可知，JAVA的编译和执行与JVM有关，与平台无关。</p>
 <p>而JVM分为很多个系统的版本，如Windows，Linux，macOS等等，都有其对应的JVM。</p>
 <p><strong>因此，</strong><br>如果我们想要编译和执行编写好的Java程序，只需要在不同平台上安装其对应的JVM就行了。</p>
-<p><strong>如下图</strong><br><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/ce87cd35649245a1846f8340bee417c6.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><strong>如下图</strong><br><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/ce87cd35649245a1846f8340bee417c6.png" alt="在这里插入图片描述"></p>
 <h1 id="基本类型和包装类型的区别"><a href="#基本类型和包装类型的区别" class="headerlink" title="基本类型和包装类型的区别"></a>基本类型和包装类型的区别</h1><ul>
 <li>包装类不赋值就是null，而基本类型有默认值，不是null。</li>
 <li>包装类可用作泛型，而基本类不可以。</li>
@@ -409,7 +409,7 @@
 
 <p><code>Integer i1=40</code> 这一行代码会发生装箱，也就是说这行代码等价于 <code>Integer i1=Integer.valueOf(40)</code> 。因此，<code>i1</code> 直接使用的是缓存中的对象。而<code>Integer i2 = new Integer(40)</code> 会直接创建新的对象。</p>
 <p>记住：<strong>所有整型包装类对象之间值的比较，全部使用 equals 方法比较</strong>。</p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003103940342.png" srcset="/img/loading.gif" lazyload alt="image-20221003103940342"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003103940342.png" alt="image-20221003103940342"></p>
 <h1 id="自动装箱和拆箱"><a href="#自动装箱和拆箱" class="headerlink" title="自动装箱和拆箱"></a>自动装箱和拆箱</h1><p>装箱其实就是调用了 包装类的<code>valueOf()</code>方法，拆箱其实就是调用了 <code>xxxValue()</code>方法。</p>
 <p>因此，</p>
 <ul>
@@ -470,9 +470,9 @@
 </li>
 </ul>
 <p><strong>那什么是引用拷贝呢？</strong> 简单来说，引用拷贝就是两个不同的引用指向同一个对象。</p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221129200824038.png" srcset="/img/loading.gif" lazyload alt="image-20221129200824038"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221129200824038.png" alt="image-20221129200824038"></p>
 <p>obj2是对obj1的浅拷贝，obj3是对obj1的深拷贝</p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003135131615.png" srcset="/img/loading.gif" lazyload alt="image-20221003135131615"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003135131615.png" alt="image-20221003135131615"></p>
 <p>阅读：<a target="_blank" rel="noopener" href="https://blog.csdn.net/crystal_hhj/article/details/119740469">https://blog.csdn.net/crystal_hhj/article/details/119740469</a></p>
 <h1 id="x3D-x3D-和equals-的区别"><a href="#x3D-x3D-和equals-的区别" class="headerlink" title="&#x3D;&#x3D;和equals()的区别"></a>&#x3D;&#x3D;和equals()的区别</h1><p>&#x3D;&#x3D;：对于基本数据类型比较的是值，对于引用类型比较的是两个的地址</p>
 <p>equals()：如果没有重写，则于&#x3D;&#x3D;一样，如果重写了则比较的是内容。</p>
@@ -513,17 +513,17 @@
 <p>（1）字节流：主要用于处理图像、音频、视频、ppt等。它也可以处理文本文件</p>
 <p>（2）字符流：主要用于处理纯文本的文件。不可以处理音频等文件</p>
 <h1 id="Java-I-x2F-O模型详解"><a href="#Java-I-x2F-O模型详解" class="headerlink" title="Java I&#x2F;O模型详解"></a>Java I&#x2F;O模型详解</h1><p>根据冯.诺依曼结构，计算机结构分为 5 大部分：运算器、控制器、存储器、输入设备、输出设备。</p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003215836718.png" srcset="/img/loading.gif" lazyload alt="image-20221003215836718"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003215836718.png" alt="image-20221003215836718"></p>
 <p>用户进程想要执行 IO 操作的话，必须通过 <strong>系统调用</strong> 来间接访问内核空间</p>
 <p><strong>从应用程序的视角来看的话，我们的应用程序对操作系统的内核发起 IO 调用（系统调用），操作系统负责的内核执行具体的 IO 操作。也就是说，我们的应用程序实际上只是发起了 IO 操作的调用而已，具体 IO 的执行是由操作系统的内核来完成的。</strong></p>
 <h1 id="java中三种常见的IO模型"><a href="#java中三种常见的IO模型" class="headerlink" title="java中三种常见的IO模型"></a>java中三种常见的IO模型</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/crazymakercircle/p/10225159.html#autoid-h2-5-0-0">https://www.cnblogs.com/crazymakercircle/p/10225159.html#autoid-h2-5-0-0</a></p>
 <h2 id="BIO（同步阻塞模型）"><a href="#BIO（同步阻塞模型）" class="headerlink" title="BIO（同步阻塞模型）"></a>BIO（同步阻塞模型）</h2><p>同步阻塞 IO 模型中，应用程序发起 read 调用后，会一直阻塞，直到内核把数据拷贝到用户空间。</p>
 <p><strong>最简单的方法，告诉内核需要哪些数据，然后等待，直到有了数据之后，从内核区拷贝到用户区，也就是所谓的阻塞IO。</strong></p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003220126506.png" srcset="/img/loading.gif" lazyload alt="image-20221003220126506"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003220126506.png" alt="image-20221003220126506"></p>
 <p>在客户端连接数量不高的情况下，是没问题的。但是，当面对十万甚至百万级连接的时候，传统的 BIO 模型是无能为力的。因此，我们需要一种更高效的 I&#x2F;O 处理模型来应对更高的并发量。</p>
 <h2 id="NIO（同步非阻塞模型）"><a href="#NIO（同步非阻塞模型）" class="headerlink" title="NIO（同步非阻塞模型）"></a>NIO（同步非阻塞模型）</h2><p>对于高负载、高并发的（网络）应用，应使用 NIO 。</p>
 <p><strong>告诉内核需要哪些数据，不等待，过一段时间去检查下，是否有数据，有则拷贝，没有则继续等待检查，这就是非阻塞IO。</strong></p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003220214067.png" srcset="/img/loading.gif" lazyload alt="image-20221003220214067"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003220214067.png" alt="image-20221003220214067"></p>
 <p>同步非阻塞 IO 模型中，应用程序会一直发起 read 调用，等待数据从内核空间拷贝到用户空间的这段时间里，线程依然是阻塞的，直到在内核把数据拷贝到用户空间。</p>
 <p>但是，这种 IO 模型同样存在问题：<strong>应用程序不断进行 I&#x2F;O 系统调用轮询数据是否已经准备好的过程是十分消耗 CPU 资源的。</strong></p>
 <h2 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h2><blockquote>
@@ -531,7 +531,7 @@
 </blockquote>
 <p>这个时候，<strong>I&#x2F;O 多路复用模型</strong> 就上场了。</p>
 <p><strong>同时监视多个IO端口，只要有数据就处理。这就是IO多路复用。</strong></p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003220255525.png" srcset="/img/loading.gif" lazyload alt="image-20221003220255525"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003220255525.png" alt="image-20221003220255525"></p>
 <p><strong>IO 多路复用模型中，线程首先发起 select 调用，询问内核数据是否准备就绪，等内核把数据准备好了，用户线程再发起 read 调用。read 调用的过程（数据从内核空间 -&gt; 用户空间）还是阻塞的。</strong></p>
 <p>使用场景：</p>
 <blockquote>
@@ -548,7 +548,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-title function_">select</span><span class="hljs-params">(<span class="hljs-type">int</span> maxfdp, fd_set *readset, fd_set *writeset, fd_set *excepset, const struct timeval *timeout)</span>;<br></code></pre></td></tr></table></figure>
 
 <p>返回值：就绪描述符的数目，超时返回0，出错返回-1</p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20230416162132765.png" srcset="/img/loading.gif" lazyload alt="image-20230416162132765"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20230416162132765.png" alt="image-20230416162132765"></p>
 <p><strong>缺点：</strong></p>
 <ul>
 <li>对待测试的描述符个数有限制，最大1024</li>
@@ -561,7 +561,7 @@
 <p>poll本质上和select没有区别，它将用户传入的数组拷贝到内核空间，然后查询每个fd对应的设备状态，如果设备就绪则在设备等待队列中加入一项并继续遍历，如果遍历完所有fd后没有发现就绪设备，则挂起当前进程，直到设备就绪或者主动超时，被唤醒后它又要再次遍历fd。这个过程经历了多次无谓的遍历。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-title function_">poll</span><span class="hljs-params">(struct pollfd *fds, unsigned <span class="hljs-type">int</span> nfds, <span class="hljs-type">int</span> timeout)</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20230416163041672.png" srcset="/img/loading.gif" lazyload alt="image-20230416163041672"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20230416163041672.png" alt="image-20230416163041672"></p>
 <p>poll是对select的改进。</p>
 <p><strong>改进点</strong>：</p>
 <ul>
@@ -575,12 +575,12 @@
 </ul>
 <h3 id="（3）epoll"><a href="#（3）epoll" class="headerlink" title="（3）epoll"></a><strong>（3）epoll</strong></h3><p><strong>优点</strong>：不需要再遍历所有的socket号来获取每一个socket的状态，只需要管理活跃的连接。即监听在通过epoll_create()创建的文件中注册的socket号以及对应的事件。只有产生就绪事件，才会处理，所以操作都是有效的，为O(1).</p>
 <p>epoll_create  创建一个白板 存放fd_events<br>epoll_ctl 用于向内核注册新的描述符或者是改变某个文件描述符的状态。已注册的描述符在内核中会被维护在一棵红黑树上<br>epoll_wait 通过回调函数内核会将 I&#x2F;O 准备好的描述符加入到一个链表中管理，进程调用 epoll_wait() 便可以得到事件完成的描述符</p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20230416164133893.png" srcset="/img/loading.gif" lazyload alt="image-20230416164133893"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20230416164133893.png" alt="image-20230416164133893"></p>
 <p><strong>两种触发模式：</strong><br><strong>LT:水平触发</strong><br>            当 epoll_wait() 检测到描述符事件到达时，将此事件通知进程，进程可以不立即处理该事件，下次调用 epoll_wait() 会再次通知进程。是默认的一种模式，并且同时支持 Blocking 和 No-Blocking。</p>
 <p><strong>ET:边缘触发</strong><br>            和 LT 模式不同的是，通知之后进程必须立即处理事件。下次再调用 epoll_wait() 时不会再得到事件到达的通知。很大程度上减少了 epoll 事件被重复触发的次数，</p>
 <p>因此效率要比 LT 模式高。只支持 No-Blocking，以避免由于一个文件句柄的阻塞读&#x2F;阻塞写操作把处理多个文件描述符的任务饿死。</p>
 <h2 id="AIO（异步模型）"><a href="#AIO（异步模型）" class="headerlink" title="AIO（异步模型）"></a>AIO（异步模型）</h2><p>异步 IO 是基于事件和回调机制实现的，也就是应用操作之后会直接返回，不会堵塞在那里，当后台处理完成，操作系统会通知相应的线程进行后续的操作。</p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003220332681.png" srcset="/img/loading.gif" lazyload alt="image-20221003220332681"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221003220332681.png" alt="image-20221003220332681"></p>
 <p>目前来说 AIO 的应用还不是很广泛。</p>
 <h1 id="为什么Java中只有值传递"><a href="#为什么Java中只有值传递" class="headerlink" title="为什么Java中只有值传递"></a>为什么Java中只有值传递</h1><p><strong>先来介绍一下什么是值传递和引用传递：</strong></p>
 <ul>
@@ -677,7 +677,7 @@
 <li>CAS算法涉及到3个操作数：1、需要读写的内存值V；2、进行比较的值A；3、要写入的新值B。</li>
 <li>当且仅当V的值等于A的值，CAS通过原子方式用B来更新V的值（<strong>比较+更新</strong>是一个原子操作）。否则不会执行。</li>
 </ul>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20220716231720069.png" srcset="/img/loading.gif" lazyload alt="image-20220716231720069"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20220716231720069.png" alt="image-20220716231720069"></p>
 <p><strong>CAS存在的问题：</strong></p>
 <ul>
 <li><p><strong>ABA问题</strong>：一个线程把数据A变成了B，然后又重新变成了A，此时另一个线程读取该数据的时候，发现A没有变化，就误认为是原来的那个A，但是此时A的一些属性或状态已经发生过变化。</p>
@@ -699,7 +699,7 @@
 <pre><code class="hljs">因为唤醒和阻塞一个Java线程需要操作系统切换CPU的状态来完成。如果同步资源的锁定时间过短，为了这一小段的时间切换线程，线程挂起和恢复会让系统得不偿失。如果让两个或两个以上的线程同时并发执行，我们可以让后面那个请求锁的线程不放弃CPU执行时间，看看持有锁的线程是否很快就会释放锁。而为了让当前线程“稍等一下”，我们需让当前线程进行自旋，如果在自旋完成后前面锁定同步资源的线程已经释放了锁，那么当前线程就可以不必阻塞而是直接获取同步资源，从而避免切换线程的开销。这就是自旋锁。
 </code></pre>
 <p><strong>自旋锁执行流程：</strong><br>某个线程尝试获取同步资源锁失败，资源被占用—&gt;自旋锁—&gt;不放弃CPU时间片，通过自旋进行等待—&gt;再次尝试获取锁，获取成功—&gt;获取同步资源。<br><strong>非自旋锁的执行流程：</strong><br>某个线程尝试获取同步资源锁失败，资源被占用—&gt;非自旋锁—&gt;CPU切换状态,使当前线程进行休眠—&gt;CPU切换线程执行其他操作—&gt;占用同步资源的线程释放了的锁—&gt;恢复现场—&gt;再次尝试获取锁。</p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/other-bukfsdjavassmtjstd-be0964a8-856a-45c9-ab75-ce9505c2e237.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/other-bukfsdjavassmtjstd-be0964a8-856a-45c9-ab75-ce9505c2e237.png" alt="img"></p>
 <h1 id="Java对象头"><a href="#Java对象头" class="headerlink" title="Java对象头"></a>Java对象头</h1><p>在说sychronized优化锁之前了解一下Java对象头，</p>
 <p>对象在内存中的布局分为三块区域：对象头，实例数据和对齐填充。</p>
 <p>对象头中包含两部分：MarkWord 和 类型指针。如果是数组对象的话，对象头还有一部分是存储数组的长度。</p>
@@ -731,7 +731,7 @@
 </tr>
 </tbody></table>
 <p>****锁升级功能主要是依赖Mark Word中**同步锁标志位**和**是否偏向锁标志位**来实现的****。</p>
-<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221128161846036.png" srcset="/img/loading.gif" lazyload alt="image-20221128161846036"></p>
+<p><img src="/2022/06/21/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221128161846036.png" alt="image-20221128161846036"></p>
 <h2 id="Sychronized优化锁"><a href="#Sychronized优化锁" class="headerlink" title="Sychronized优化锁"></a>Sychronized优化锁</h2><p>级别从低到高依次是：</p>
 <ol>
 <li>无锁状态</li>
@@ -906,7 +906,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -1115,7 +1115,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

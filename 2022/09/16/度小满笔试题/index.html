@@ -77,7 +77,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -286,14 +286,14 @@
             
             <div class="markdown-body">
               
-              <h1 id="算法1"><a href="#算法1" class="headerlink" title="算法1"></a>算法1</h1><h1 id="算法2"><a href="#算法2" class="headerlink" title="算法2"></a>算法2</h1><p><img src="/2022/09/16/%E5%BA%A6%E5%B0%8F%E6%BB%A1%E7%AC%94%E8%AF%95%E9%A2%98/image-20220916164327108.png" srcset="/img/loading.gif" lazyload alt="image-20220916164327108"></p>
+              <h1 id="算法1"><a href="#算法1" class="headerlink" title="算法1"></a>算法1</h1><h1 id="算法2"><a href="#算法2" class="headerlink" title="算法2"></a>算法2</h1><p><img src="/2022/09/16/%E5%BA%A6%E5%B0%8F%E6%BB%A1%E7%AC%94%E8%AF%95%E9%A2%98/image-20220916164327108.png" alt="image-20220916164327108"></p>
 <p><strong>代码为：</strong></p>
 <p>差分方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main2</span> &#123;<br>    <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-variable">N</span> <span class="hljs-operator">=</span> <span class="hljs-number">100010</span>;<br>    <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> arr[] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[N];<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> scanner.nextInt();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">h</span> <span class="hljs-operator">=</span> scanner.nextInt();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> l,r;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>            l = scanner.nextInt();<br>            r = scanner.nextInt();<br>            arr[l]++;<br>            arr[r++]--;<br>            max = Math.max(max,r);<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;i&lt;=max;i++)&#123;<br>            arr[i] = arr[i]+arr[i-<span class="hljs-number">1</span>];<br>            <span class="hljs-keyword">if</span> (arr[i]&gt;=h) res++;<br>        &#125;<br>        System.out.println(res);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
-<h1 id="算法3"><a href="#算法3" class="headerlink" title="算法3"></a>算法3</h1><p><img src="/2022/09/16/%E5%BA%A6%E5%B0%8F%E6%BB%A1%E7%AC%94%E8%AF%95%E9%A2%98/image-20220916165235709.png" srcset="/img/loading.gif" lazyload alt="image-20220916165235709"></p>
+<h1 id="算法3"><a href="#算法3" class="headerlink" title="算法3"></a>算法3</h1><p><img src="/2022/09/16/%E5%BA%A6%E5%B0%8F%E6%BB%A1%E7%AC%94%E8%AF%95%E9%A2%98/image-20220916165235709.png" alt="image-20220916165235709"></p>
 
               
             </div>
@@ -410,7 +410,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -619,7 +619,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

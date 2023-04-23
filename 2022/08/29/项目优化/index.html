@@ -82,7 +82,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -291,12 +291,12 @@
             
             <div class="markdown-body">
               
-              <h1 id="缓存优化"><a href="#缓存优化" class="headerlink" title="缓存优化"></a>缓存优化</h1><p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829114113741.png" srcset="/img/loading.gif" lazyload alt="image-20220829114113741"></p>
+              <h1 id="缓存优化"><a href="#缓存优化" class="headerlink" title="缓存优化"></a>缓存优化</h1><p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829114113741.png" alt="image-20220829114113741"></p>
 <h2 id="纳入Git管理"><a href="#纳入Git管理" class="headerlink" title="纳入Git管理"></a>纳入Git管理</h2><p><strong>在码云中新建一个仓库为:</strong></p>
-<p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829114442275.png" srcset="/img/loading.gif" lazyload alt="image-20220829114442275"></p>
+<p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829114442275.png" alt="image-20220829114442275"></p>
 <p><strong>将项目上传到仓库中：</strong></p>
 <p>先创建一个本地的仓库：</p>
-<p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829115026209.png" srcset="/img/loading.gif" lazyload alt="image-20220829115026209"></p>
+<p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829115026209.png" alt="image-20220829115026209"></p>
 <p>add本地仓库并提交，再push远程仓库</p>
 <p>新建一个分支为V1.0，对于所有缓存的操作，都在这个v1.0的分支下操作。</p>
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p><strong>pom.xml文件中导入spring data redis的maven的坐标</strong></p>
@@ -310,7 +310,7 @@
 
 
 
-<h2 id="缓存短信验证码"><a href="#缓存短信验证码" class="headerlink" title="缓存短信验证码"></a>缓存短信验证码</h2><p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829121757768.png" srcset="/img/loading.gif" lazyload alt="image-20220829121757768"></p>
+<h2 id="缓存短信验证码"><a href="#缓存短信验证码" class="headerlink" title="缓存短信验证码"></a>缓存短信验证码</h2><p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829121757768.png" alt="image-20220829121757768"></p>
 <p>1：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//将生成的验证码保存到session中</span><br><span class="hljs-comment">//            httpSession.setAttribute(phone,code);</span><br><br>            <span class="hljs-comment">//将生成的验证码缓存到redis中</span><br>            redisTemplate.opsForValue().set(phone,code,<span class="hljs-number">5</span>, TimeUnit.MINUTES);<br></code></pre></td></tr></table></figure>
 
@@ -322,7 +322,7 @@
 
 
 
-<h2 id="缓存菜单数据"><a href="#缓存菜单数据" class="headerlink" title="缓存菜单数据"></a>缓存菜单数据</h2><p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829130815939.png" srcset="/img/loading.gif" lazyload alt="image-20220829130815939"></p>
+<h2 id="缓存菜单数据"><a href="#缓存菜单数据" class="headerlink" title="缓存菜单数据"></a>缓存菜单数据</h2><p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829130815939.png" alt="image-20220829130815939"></p>
 <p><strong>改造list方法：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"> List&lt;DishDto&gt; dishDtoList = <span class="hljs-literal">null</span>;<br> <span class="hljs-comment">//动态的构造key</span><br> <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;dish_&quot;</span>+dish.getCategoryId()+<span class="hljs-string">&quot;_&quot;</span>+dish.getStatus();<br> <span class="hljs-comment">//获取key</span><br> dishDtoList = (List&lt;DishDto&gt;) redisTemplate.opsForValue().get(key);<br> <span class="hljs-comment">//如果存在，则直接从redis中返回</span><br> <span class="hljs-keyword">if</span> (dishDtoList!=<span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> R.success(dishDtoList);<br> <br><span class="hljs-comment">//如果不存在，执行操作后：</span><br><span class="hljs-comment">//如果不存在，则从数据库中查找，并加入的redis中</span><br>        redisTemplate.opsForValue().set(key,dishDtoList,<span class="hljs-number">60</span>, TimeUnit.MINUTES);<br></code></pre></td></tr></table></figure>
 
@@ -330,8 +330,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-comment">//清理所有菜品缓存数据</span><br><span class="hljs-comment">//        Set keys = redisTemplate.keys(&quot;dish_*&quot;);</span><br><span class="hljs-comment">//        redisTemplate.delete(keys);</span><br>        <br>        <span class="hljs-comment">//精确清理：清理某个分类下面的菜品缓存数据</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;dish_&quot;</span> + dishDto.getCategoryId()+<span class="hljs-string">&quot;_1&quot;</span>;<br>        redisTemplate.delete(key);<br></code></pre></td></tr></table></figure>
 
 <p><strong>提交给本体的Git，并推送到远程的仓库</strong></p>
-<h2 id="Spring-Cache"><a href="#Spring-Cache" class="headerlink" title="Spring Cache"></a>Spring Cache</h2><p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829134419524.png" srcset="/img/loading.gif" lazyload alt="image-20220829134419524"></p>
-<p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829134535958.png" srcset="/img/loading.gif" lazyload alt="image-20220829134535958"></p>
+<h2 id="Spring-Cache"><a href="#Spring-Cache" class="headerlink" title="Spring Cache"></a>Spring Cache</h2><p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829134419524.png" alt="image-20220829134419524"></p>
+<p><img src="/2022/08/29/%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/image-20220829134535958.png" alt="image-20220829134535958"></p>
 <h2 id="缓存套餐数据"><a href="#缓存套餐数据" class="headerlink" title="缓存套餐数据"></a>缓存套餐数据</h2>
               
             </div>
@@ -441,7 +441,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -650,7 +650,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

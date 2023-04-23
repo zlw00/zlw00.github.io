@@ -86,7 +86,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -312,34 +312,34 @@
 <p>在编辑员工，通过id来进行员工信息修改的时候，查询数据库的时候发现，修改不成功。发现页面发送请求的id和数据库中要修改的id后三位不同，通过百度查询，发现js对long类型的数据进行处理时丢失了精度。需要使用对象转换器和Spring MVC的消息转换器。（将服务器给页面响应json数据的时候进行处理，将long类型转换为String字符串）</p>
 <p><strong>第三个：</strong></p>
 <p>新建菜品的时候，前端发过来的请求包含菜品的口味，但是菜品实体中不包含菜品口味的属性。使用dto进行解决。</p>
-<h2 id="3、你在项目中负责的什么模块"><a href="#3、你在项目中负责的什么模块" class="headerlink" title="3、你在项目中负责的什么模块"></a>3、你在项目中负责的什么模块</h2><p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/image-20220920223102550.png" srcset="/img/loading.gif" lazyload alt="image-20220920223102550"></p>
+<h2 id="3、你在项目中负责的什么模块"><a href="#3、你在项目中负责的什么模块" class="headerlink" title="3、你在项目中负责的什么模块"></a>3、你在项目中负责的什么模块</h2><p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/image-20220920223102550.png" alt="image-20220920223102550"></p>
 <h2 id="4、具体功能讲解"><a href="#4、具体功能讲解" class="headerlink" title="4、具体功能讲解"></a>4、具体功能讲解</h2><p>员工管理：新增员工，员工禁用，编辑员工信息，员工信息分页查询</p>
 <h2 id="5、数据库怎么设计的"><a href="#5、数据库怎么设计的" class="headerlink" title="5、数据库怎么设计的"></a>5、<a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%95%B0%E6%8D%AE">数据</a>库怎么设计的</h2><p>首先进行需求分析，通过需求分析来标识要管理的对象，分析对象要存储的信息，也就是有哪些字段，根据字段来确定是什么类型，以及各个对象之间的联系，创建概念模型，画出e-r图，再创建数据库表的同时也要遵循数据库的三大范式，（第一范式，就是保证数据库表中字段的原子性，就是字段是不可再分的数据单元。第二范式，要满足第一范式，每个表描述的是同一间事情，不能订单表还包含产品编号什么的。第三范式就是要满足第二范式，并且字段和主键是直接相关不能是间接相关）</p>
 <p><strong>第一范式：</strong></p>
 <p>不良做法如下，“学生”一列有多项信息都合在一起了，不再具有原子性，所以应该分开：</p>
-<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220121125532.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220121125532.png" alt="img"></p>
 <p>实际中，原子性还是比较容易理解的。</p>
 <p>修改后：</p>
-<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220121225775.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220121225775.png" alt="img"></p>
 <p><strong>第二范式：</strong></p>
 <p>不良做法：</p>
-<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220122011873.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220122011873.png" alt="img"></p>
 <p>这个表虽然满足了<strong>第一范式</strong>，但是也很明显的感受到它的冗余性，其中学生信息和课程信息是冗余的。</p>
 <p>修改后，分为学生信息表、课程信息表、学生学分表：</p>
 <p>学生信息表：只代表学生的个人信息，主键使用id以防止重名。</p>
-<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220122426319.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220122426319.png" alt="img"></p>
 <p>课程信息表：这里的主键可以不用id，使用课程名称也可以，不会有重名。</p>
-<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/2021022012244740.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/2021022012244740.png" alt="img"></p>
 <p>学生学分表：学生和课程，确定一个学分，这里学生id和课程id作为联合主键来对应一条成绩。</p>
-<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220122538388.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220122538388.png" alt="img"></p>
 <p><strong>第三范式：</strong></p>
-<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220122950155.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220122950155.png" alt="img"></p>
 <p>以上表既满足第一范式也满足第二范式，非主键字段也完全依赖于主键字段。</p>
 <p>但是，院系电话字段，其实是依赖院系字段的。也就是说，院系电话字段是非主键值，而依赖了另一个非主键值-院系。所以就不符合第三范式。</p>
 <p>改良：</p>
-<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220123225855.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220123233321.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/image-20220920223219442.png" srcset="/img/loading.gif" lazyload alt="image-20220920223219442"></p>
+<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220123225855.png" alt="img"></p>
+<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/20210220123233321.png" alt="img"></p>
+<p><img src="/2022/09/16/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/image-20220920223219442.png" alt="image-20220920223219442"></p>
 <h2 id="6、项目是怎么使用MVC思想"><a href="#6、项目是怎么使用MVC思想" class="headerlink" title="6、项目是怎么使用MVC思想"></a>6、项目是怎么使用MVC思想</h2><p>MVC就是将软件进行分层设计和实现，分为，视图层（V），控制层（C），模型层（M）。通过分层可以使程序具有更好的灵活性和扩展性，</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liuyufeng509/article/details/94588359">https://blog.csdn.net/liuyufeng509/article/details/94588359</a></p>
 <p>M：Model，模型层，指工程中的JavaBean，作用是处理数据</p>
@@ -522,7 +522,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -731,7 +731,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

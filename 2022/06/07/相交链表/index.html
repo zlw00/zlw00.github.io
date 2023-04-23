@@ -85,7 +85,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -296,7 +296,7 @@
               
               <h1 id="leetCode–160（相交链表）"><a href="#leetCode–160（相交链表）" class="headerlink" title="leetCode–160（相交链表）"></a>leetCode–160（相交链表）</h1><p>给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null 。</p>
 <p>图示两个链表在节点 c1 开始相交：</p>
-<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607193630170.png" srcset="/img/loading.gif" lazyload alt="image-20220607193630170"></p>
+<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607193630170.png" alt="image-20220607193630170"></p>
 <p>题目数据 保证 整个链式结构中不存在环。</p>
 <p>注意，函数返回结果后，链表必须 保持其原始结构 。</p>
 <p>自定义评测：</p>
@@ -309,15 +309,15 @@
 <li>skipB - 在 listB 中（从头节点开始）跳到交叉节点的节点数<br>评测系统将根据这些输入创建链式数据结构，并将两个头节点 headA 和 headB 传递给你的程序。如果程序能够正确返回相交节点，那么你的解决方案将被 视作正确答案 。</li>
 </ul>
 <p><strong>示例 1：</strong></p>
-<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607193708779.png" srcset="/img/loading.gif" lazyload alt="image-20220607193708779"></p>
+<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607193708779.png" alt="image-20220607193708779"></p>
 <figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dns">输入：intersectVal = <span class="hljs-number">8</span>, listA = [<span class="hljs-number">4,1,8,4</span>,<span class="hljs-number">5</span>], listB = [<span class="hljs-number">5,6,1,8</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>], skipA = <span class="hljs-number">2</span>, skipB = <span class="hljs-number">3</span><br>输出：Intersected at &#x27;<span class="hljs-number">8</span>&#x27;<br>解释：相交节点的值为 <span class="hljs-number">8</span> （注意，如果两个链表相交则不能为 <span class="hljs-number">0</span>）。从各自的表头开始算起，链表 <span class="hljs-keyword">A</span> 为 [<span class="hljs-number">4,1,8,4</span>,<span class="hljs-number">5</span>]，链表 B 为 [<span class="hljs-number">5,6,1,8</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]。在 <span class="hljs-keyword">A</span> 中，相交节点前有 <span class="hljs-number">2</span> 个节点；在 B 中，相交节点前有 <span class="hljs-number">3</span> 个节点。<br></code></pre></td></tr></table></figure>
 
 <p><strong>示例 2：</strong></p>
-<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607193725660.png" srcset="/img/loading.gif" lazyload alt="image-20220607193725660"></p>
+<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607193725660.png" alt="image-20220607193725660"></p>
 <figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs prolog">输入：intersectVal = <span class="hljs-number">2</span>, listA = [<span class="hljs-number">1</span>,<span class="hljs-number">9</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>], listB = [<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>], skipA = <span class="hljs-number">3</span>, skipB = <span class="hljs-number">1</span><br>输出：<span class="hljs-symbol">Intersected</span> at <span class="hljs-string">&#x27;2&#x27;</span><br>解释：相交节点的值为 <span class="hljs-number">2</span> （注意，如果两个链表相交则不能为 <span class="hljs-number">0</span>）。从各自的表头开始算起，链表 <span class="hljs-symbol">A</span> 为 [<span class="hljs-number">1</span>,<span class="hljs-number">9</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>]，链表 <span class="hljs-symbol">B</span> 为 [<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>]。在 <span class="hljs-symbol">A</span> 中，相交节点前有 <span class="hljs-number">3</span> 个节点；在 <span class="hljs-symbol">B</span> 中，相交节点前有 <span class="hljs-number">1</span> 个节点。<br></code></pre></td></tr></table></figure>
 
 <p><strong>示例 3：</strong></p>
-<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607193742275.png" srcset="/img/loading.gif" lazyload alt="image-20220607193742275"></p>
+<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607193742275.png" alt="image-20220607193742275"></p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">输入：<span class="hljs-built_in">int</span>ersectVal = <span class="hljs-number">0</span>, listA = [<span class="hljs-number">2</span>,<span class="hljs-number">6</span>,<span class="hljs-number">4</span>], listB = [<span class="hljs-number">1</span>,<span class="hljs-number">5</span>], skipA = <span class="hljs-number">3</span>, skipB = <span class="hljs-number">2</span><br>输出：<span class="hljs-literal">null</span><br>解释：从各自的表头开始算起，链表 A 为 [<span class="hljs-number">2</span>,<span class="hljs-number">6</span>,<span class="hljs-number">4</span>]，链表 B 为 [<span class="hljs-number">1</span>,<span class="hljs-number">5</span>]。由于这两个链表不相交，所以 <span class="hljs-built_in">int</span>ersectVal 必须为 <span class="hljs-number">0</span>，而 skipA 和 skipB 可以是任意值。这两个链表不相交，因此返回 <span class="hljs-literal">null</span> 。<br></code></pre></td></tr></table></figure>
 
 <h2 id="解法一：哈希表"><a href="#解法一：哈希表" class="headerlink" title="解法一：哈希表"></a>解法一：哈希表</h2><p><strong>遍历链表A，将链表A中的元素存储到list集合中，再遍历链表B，如果遇到相等的节点，说明A和B相交了，如果没有相等的则返回null。</strong></p>
@@ -339,10 +339,10 @@
 <p>如果两个链表相交：同时指向 node；</p>
 <p>如果两个链表不相交：a和b同时为null；</p>
 <p><strong>用图来表示：</strong></p>
-<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607195507599.png" srcset="/img/loading.gif" lazyload alt="image-20220607195507599"></p>
-<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607195557243.png" srcset="/img/loading.gif" lazyload alt="image-20220607195557243"></p>
-<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607195626818.png" srcset="/img/loading.gif" lazyload alt="image-20220607195626818"></p>
-<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607195722119.png" srcset="/img/loading.gif" lazyload alt="image-20220607195722119"></p>
+<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607195507599.png" alt="image-20220607195507599"></p>
+<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607195557243.png" alt="image-20220607195557243"></p>
+<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607195626818.png" alt="image-20220607195626818"></p>
+<p><img src="/2022/06/07/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/image-20220607195722119.png" alt="image-20220607195722119"></p>
 <p><strong>代码为：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * public class ListNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     ListNode next;</span><br><span class="hljs-comment"> *     ListNode(int x) &#123;</span><br><span class="hljs-comment"> *         val = x;</span><br><span class="hljs-comment"> *         next = null;</span><br><span class="hljs-comment"> *     &#125;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> &#123;<br>        <span class="hljs-keyword">if</span> (headA==<span class="hljs-literal">null</span> ||headB==<span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> headA;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> headB;<br>        <span class="hljs-keyword">while</span> (a!=b)&#123;<br>            a = a==<span class="hljs-literal">null</span>?headB:a.next;<br>            b = b==<span class="hljs-literal">null</span>?headA:b.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> a;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -464,7 +464,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -673,7 +673,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

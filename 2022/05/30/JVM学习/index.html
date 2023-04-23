@@ -127,7 +127,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -343,7 +343,7 @@
 <li>数组下标越界检查 </li>
 <li>多态（可扩展性，虚方法表）</li>
 </ul>
-<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p><strong>jvm jre jdk的区别</strong><br><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/ec558bf48ffd4140bff688629457c357.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p><strong>jvm jre jdk的区别</strong><br><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/ec558bf48ffd4140bff688629457c357.png" alt="在这里插入图片描述"></p>
 <ul>
 <li>jvm：屏蔽java代码与底层的差异 ，Java Virtual Machine</li>
 <li>jre：jvm+基础类（集合类，日期类，线程类，IO类。。）Java Runtime Environment</li>
@@ -354,8 +354,8 @@
 <li>理解底层的实现原理 </li>
 <li>中高级程序员的必备技能（是否能用jvm相关的知识解决实际的问题 ）</li>
 </ul>
-<h3 id="常见的-JVM"><a href="#常见的-JVM" class="headerlink" title="常见的 JVM"></a>常见的 JVM</h3><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/4630aac079d3457bb2d87de74e967daa.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
-<h3 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h3><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/c2f8f119700440b2a83ddc8ec5a1b259.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/cd4030cd2e3e49408bbc9d751bc087c7.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h3 id="常见的-JVM"><a href="#常见的-JVM" class="headerlink" title="常见的 JVM"></a>常见的 JVM</h3><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/4630aac079d3457bb2d87de74e967daa.png" alt="在这里插入图片描述"></p>
+<h3 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h3><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/c2f8f119700440b2a83ddc8ec5a1b259.png" alt="在这里插入图片描述"><br><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/cd4030cd2e3e49408bbc9d751bc087c7.png" alt="在这里插入图片描述"></p>
 <h1 id="内存结构"><a href="#内存结构" class="headerlink" title="内存结构"></a>内存结构</h1><h2 id="1、程序计数器"><a href="#1、程序计数器" class="headerlink" title="1、程序计数器"></a>1、程序计数器</h2><p><strong>作用</strong>：字节码解释器⼯作时通过改变这个计数器的值来选取下⼀条需要执⾏的字节码指令，分⽀、循环、跳转、异常处理、线程恢复等功能都需要依赖这个计数器来完成  。因为JVM中多线程采用时间片轮转的方式实现，所以当一个线程时间片用完之后，要交给其它线程使用，为了下一次分配到该线程时，能够继续执行，所以需要程序计数器。</p>
 <p><strong>是记住下一条jvm指令的执行地址</strong><br><strong>特点：</strong></p>
 <ul>
@@ -363,7 +363,7 @@
 <li>唯一一个内存结构中，不会存在内存溢出</li>
 </ul>
 <p><strong>Program Counter Register 程序计数器（寄存器）</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/74fd150755c14204b7964999b90b8350.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/74fd150755c14204b7964999b90b8350.png" alt="在这里插入图片描述"></p>
 <p><strong>在物理上 程序计数器是通过寄存器来实现的，因为寄存器是cpu组件里，读取速度最快的。因为程序计数器的读取指令是非常频繁的，</strong>。</p>
 <h2 id="2、虚拟机栈"><a href="#2、虚拟机栈" class="headerlink" title="2、虚拟机栈"></a>2、虚拟机栈</h2><h4 id="2-1-定义"><a href="#2-1-定义" class="headerlink" title="2.1 定义"></a>2.1 定义</h4><p><strong>描述的是 Java⽅法执⾏的内存模型，每次⽅法调⽤的数据都是通过栈传递的。</strong>  </p>
 <ul>
@@ -373,7 +373,7 @@
 <li>栈帧中都拥有：局部变量表、操作数栈、动态链接（指向常量池方法的引用）、⽅法出⼝信息  （方法返回地址和一些附加信息）</li>
 <li>每一个<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%A0%88%E5%B8%A7&spm=1001.2101.3001.7020">栈帧</a>内部都包含一个<strong>指向运行时常量池中该栈帧所属方法的引用</strong>。包含这个引用的目的就是为了支持当前方法的代码能够实现<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5&spm=1001.2101.3001.7020">动态链接</a>。</li>
 <li><em><strong>动态链接的作用就是为了将这些符号引用转换为调用方法的直接引用</strong></em>。</li>
-<li><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/3a7ed696a2a0420c90de84d577563033.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></li>
+<li><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/3a7ed696a2a0420c90de84d577563033.png" alt="在这里插入图片描述"></li>
 </ul>
 <p>Java ⽅法有两种返回⽅式：</p>
 <ol>
@@ -408,7 +408,7 @@
 <li>如果方法内局部变量没有逃离方法的作用访问，它是线程安全的 </li>
 <li>如果是局部变量引用了对象，并逃离方法的作用范围，需要考虑线程安全</li>
 </ul>
-<h4 id="2-2-栈内存溢出（java-lang-StackOverflowError）"><a href="#2-2-栈内存溢出（java-lang-StackOverflowError）" class="headerlink" title="2.2 栈内存溢出（java.lang.StackOverflowError）"></a>2.2 栈内存溢出（<code>java.lang.StackOverflowError</code>）</h4><p> （1）栈帧过多导致栈内存溢出（方法没有终止条件下）<br> <img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/54e0e9028156426eb86f46b108a0fc55.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h4 id="2-2-栈内存溢出（java-lang-StackOverflowError）"><a href="#2-2-栈内存溢出（java-lang-StackOverflowError）" class="headerlink" title="2.2 栈内存溢出（java.lang.StackOverflowError）"></a>2.2 栈内存溢出（<code>java.lang.StackOverflowError</code>）</h4><p> （1）栈帧过多导致栈内存溢出（方法没有终止条件下）<br> <img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/54e0e9028156426eb86f46b108a0fc55.png" alt="在这里插入图片描述"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 演示栈内存溢出 java.lang.StackOverflowError</span><br><span class="hljs-comment"> * -Xss256k</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Demo1_2</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> count;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            method1();<br>        &#125; <span class="hljs-keyword">catch</span> (Throwable e) &#123;<br>            e.printStackTrace();<br>            System.out.println(count);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">method1</span><span class="hljs-params">()</span> &#123;<br>        count++;<br>        method1();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>（2）栈帧过大导致栈内存溢出</p>
@@ -421,13 +421,13 @@
 <h4 id="4-3-JVM指针碰撞和空闲列表"><a href="#4-3-JVM指针碰撞和空闲列表" class="headerlink" title="4.3 JVM指针碰撞和空闲列表"></a>4.3 JVM指针碰撞和空闲列表</h4><p>当类加载检查通过后，接下来虚拟机将为新生对象分配内存，堆主要就是用于存放对象的实例，在堆上为对象分配内存空间，将对象放进去，常用的方法有指针碰撞（java堆中内存是规整的）和空闲列表（java堆中内存是不规整的）两种方法。</p>
 <p><strong>指针碰撞</strong></p>
 <p>​	适用于堆内存完整的情况，已分配的内存和空闲的内存分别在不同的一侧，指针指向分界点，当需要分配内存的时候，将指针向空闲区域的方向移动与对象大小相等的距离即可，用于串行回收器（Serial）和 并行收集器（ParNew）不会产生碎片的垃圾收集器。</p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/20210310004922185.png" srcset="/img/loading.gif" lazyload alt="image-20200512111153143"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/20210310004922185.png" alt="image-20200512111153143"></p>
 <p><strong>空闲列表</strong></p>
 <p>​	适用于堆内存不完整的情况，已分配的内存和空闲的内存相互交错，JVM通过一张内存列表记录可用的内存信息，当分配内存时，从列表中找到一个足够大的内存块分配给对象实例，并更新列表上的数据，最常用此方案的是CMS垃圾回收器。</p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/20210310004912404.png" srcset="/img/loading.gif" lazyload alt="image-20200512111650404"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/20210310004912404.png" alt="image-20200512111650404"></p>
 <h2 id="5、方法区"><a href="#5、方法区" class="headerlink" title="5、方法区"></a>5、方法区</h2><h4 id="5-1-定义"><a href="#5-1-定义" class="headerlink" title="5.1 定义"></a>5.1 定义</h4><p>⽅法区与 Java 堆⼀样，是各个线程共享的内存区域，它⽤于存储已被虚拟机加载的类信息、常<br>量、静态变量、即时编译器编译后的代码等数据。</p>
 <p><strong>1.8的时候，方法区被彻底移除，取而代之的是元空间，元空间使用的是直接内存。</strong></p>
-<h4 id="5-2-组成"><a href="#5-2-组成" class="headerlink" title="5.2 组成"></a>5.2 组成</h4><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/41d31e224bdd4d30ba0d1487ea4d9d20.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/94649e3f6c414f55b5ff1d2cd050efae.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>方法区也被称为永久代。<br>⽅法区和永久代的关系：</p>
+<h4 id="5-2-组成"><a href="#5-2-组成" class="headerlink" title="5.2 组成"></a>5.2 组成</h4><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/41d31e224bdd4d30ba0d1487ea4d9d20.png" alt="在这里插入图片描述"><br><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/94649e3f6c414f55b5ff1d2cd050efae.png" alt="在这里插入图片描述"><br>方法区也被称为永久代。<br>⽅法区和永久代的关系：</p>
 <blockquote>
 <p>⽅法区和永久代的关系很像Java 中接⼝和类的关系，类实现了接⼝，⽽永久代就是 HotSpot 虚拟机对虚拟机规范中⽅ 法区的⼀种实现⽅式。</p>
 </blockquote>
@@ -450,11 +450,11 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">javap -v .class<br></code></pre></td></tr></table></figure>
 
 <p>类基本信息：</p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603190959878.png" srcset="/img/loading.gif" lazyload alt="image-20220603190959878"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603190959878.png" alt="image-20220603190959878"></p>
 <p><strong>常量池：</strong>俗称静态常量池，又称常量池表(Constant Pool Table)，存在于*.class文件中，就是一张表，<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%99%9A%E6%8B%9F%E6%9C%BA&spm=1001.2101.3001.7020">虚拟机</a>指令根据这张表找到要执行的类名、类方法、参数类型、字面量等信息</p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191047403.png" srcset="/img/loading.gif" lazyload alt="image-20220603191047403"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191047403.png" alt="image-20220603191047403"></p>
 <p><strong>类方法定义：</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191109581.png" srcset="/img/loading.gif" lazyload alt="image-20220603191109581"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191109581.png" alt="image-20220603191109581"></p>
 <p><strong>（2）运行时常量池</strong></p>
 <p>​		<strong>当该类被加载</strong>，它的常量池信息就会放入运行时常量池，并把里面的符号地址变为真实地址  。（<strong>也就是将常量池中的内容放入到内存中运行称为运行时常量池。并把里面的#1，#2等等变为真实的地址</strong>）</p>
 <h4 id="5-4-StringTable–字符串池（运行时常量池中的一部分）"><a href="#5-4-StringTable–字符串池（运行时常量池中的一部分）" class="headerlink" title="5.4 StringTable–字符串池（运行时常量池中的一部分）"></a>5.4 StringTable–字符串池（运行时常量池中的一部分）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// StringTable [ &quot;a&quot;, &quot;b&quot; ,&quot;ab&quot; ]  hashtable 结构，不能扩容</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Demo1_22</span> &#123;<br>    <span class="hljs-comment">// 常量池中的信息，都会被加载到运行时常量池中， 当类被加载时 a b ab 都是常量池中的符号，还没有变为 java 字符串对象</span><br>    <span class="hljs-comment">// ldc #2 会把 a 符号变为 &quot;a&quot; 字符串对象</span><br>    <span class="hljs-comment">// ldc #3 会把 b 符号变为 &quot;b&quot; 字符串对象</span><br>    <span class="hljs-comment">// ldc #4 会把 ab 符号变为 &quot;ab&quot; 字符串对象</span><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">s1</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;a&quot;</span>; <span class="hljs-comment">// 懒惰的</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">s2</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;b&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">s3</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;ab&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">s4</span> <span class="hljs-operator">=</span> s1 + s2; <span class="hljs-comment">// new StringBuilder().append(&quot;a&quot;).append(&quot;b&quot;).toString()  new String(&quot;ab&quot;)</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">s5</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;a&quot;</span> + <span class="hljs-string">&quot;b&quot;</span>;  <span class="hljs-comment">// javac 在编译期间的优化，结果已经在编译期确定为ab</span><br><br>        System.out.println(s3 == s5);<br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -507,9 +507,9 @@
 <p>因此在执行<code>s == x</code>时为<code>false</code>，因为<code>s</code>中字符串对象还是堆中的。</p>
 </blockquote>
 <h4 id="5-5-StringTable存在的位置"><a href="#5-5-StringTable存在的位置" class="headerlink" title="5.5 StringTable存在的位置"></a>5.5 StringTable存在的位置</h4><p>在jdk1.6时，StringTable属于常量池中的一部分，存放于永久代中</p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191146879.png" srcset="/img/loading.gif" lazyload alt="image-20220603191146879"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191146879.png" alt="image-20220603191146879"></p>
 <p>在jdk1.7之后存放于 堆内存中</p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191157423.png" srcset="/img/loading.gif" lazyload alt="image-20220603191157423"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191157423.png" alt="image-20220603191157423"></p>
 <p><strong>为什么要更改：</strong></p>
 <blockquote>
 <p>因为在永久代中，垃圾回收很慢。导致StringTable回收效率很低。而StringTable中存放的都是字符串常量，需要及时清理，如果不清理需要占用大量的内存。所以考虑移动到堆内存中，垃圾回收效率高，减轻了字符串对内存的占用。</p>
@@ -519,7 +519,7 @@
 <h2 id="什么是方法区"><a href="#什么是方法区" class="headerlink" title="什么是方法区"></a>什么是方法区</h2><p>当虚拟机要使用一个类时，要读取并解析class文件获取相关的信息，再将信息存入到方法区域中，方法区会存储已经被虚拟机加载的类信息、字段信息、方法信息、常量、静态变量等。</p>
 <h2 id="方法区和永久代以及元空间有什么关系"><a href="#方法区和永久代以及元空间有什么关系" class="headerlink" title="方法区和永久代以及元空间有什么关系"></a>方法区和永久代以及元空间有什么关系</h2><p>永久代和元空间是方法区的两种实现方式，相当于java中的接口和类，类实现了接口&#x3D;&#x3D;&#x3D;永久代和元空间实现了方法区。</p>
 <p>并且，永久代是 JDK 1.8 之前的方法区实现，JDK 1.8 及以后方法区的实现便成为元空间。</p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/611a22dff05598703c47ba0b6c77771a.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/611a22dff05598703c47ba0b6c77771a.png" alt="img"></p>
 <h2 id="为什么要将永久代替换为元空间"><a href="#为什么要将永久代替换为元空间" class="headerlink" title="为什么要将永久代替换为元空间"></a>为什么要将永久代替换为元空间</h2><p>（1）<strong>因为永久代设置空间大小是很难确定的</strong>，在某些场景中，如果动态加载类过多，容易产生OOM，比如某个实际的web工程中，因为功能点比较多，在运行过程中，要不断的动态加载很多类，导致OOM，而元空间和永久代最大的区别在于：<strong>元空间并不在虚拟机中，而是使用本地的内存，因此，默认情况下，元空间的大小受本地内存的限制，所以出现OOM的情况变小，并且能加载更多的类</strong></p>
 <p>（2）永久代的对象是通过Full GC进行垃圾回收的，也就是和老年代一起进行垃圾回收的，<strong>替换元空间以后，简化了 FullGC</strong>。<br>（3）在 JDK8，<strong>合并 HotSpot 和 JRockit 的代码时, JRockit 从来没有一个叫永久代的东西</strong>, 合并之后就没有必要额外的设置这么一个永久代的地方了</p>
 <h2 id="运行时常量池和字符串常量池"><a href="#运行时常量池和字符串常量池" class="headerlink" title="运行时常量池和字符串常量池"></a>运行时常量池和字符串常量池</h2><blockquote>
@@ -534,7 +534,7 @@
 <p>运行时常量池中存放的是对象的引用，字符串常量池中存放的是对象，存放在堆中。</p>
 <p>在声明一个字符串字面量时，如果字符串常量池中能够找到该字符串字面量，则直接返回该引用。如果找不到的话，则在常量池中创建该字符串字面量的对象并返回其引用。</p>
 <h2 id="jdk7中为什么把字符串常量池移动到堆中"><a href="#jdk7中为什么把字符串常量池移动到堆中" class="headerlink" title="jdk7中为什么把字符串常量池移动到堆中"></a>jdk7中为什么把字符串常量池移动到堆中</h2><p>因为永久代的GC回收率太低，只有在整个堆收集的时候（Full GC）才会发生GC，而JAVA程序通常有大量创建的字符串等待回收，将字符串常量放入到堆中，可以更高效的回收字符串。</p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/5d7c7705b051b5a10e84dcfb14036c7f.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/5d7c7705b051b5a10e84dcfb14036c7f.png" alt="img"></p>
 <h2 id="6-直接内存"><a href="#6-直接内存" class="headerlink" title="6 直接内存"></a>6 直接内存</h2><p>不是<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%99%9A%E6%8B%9F%E6%9C%BA&spm=1001.2101.3001.7020">虚拟机</a>的内存，是系统内存。<code>Direct Memory</code></p>
 <p><strong>定义：</strong></p>
 <ul>
@@ -542,17 +542,17 @@
 <li>分配回收成本较高，但读写性能高</li>
 <li>不受 JVM 内存回收管理</li>
 </ul>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191211665.png" srcset="/img/loading.gif" lazyload alt="image-20220603191211665"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191211665.png" alt="image-20220603191211665"></p>
 <p>当<code>java</code>读取磁盘文件时，会从用户态切换到内核态，才能去操作系统<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%86%85%E5%AD%98&spm=1001.2101.3001.7020">内存</a>。读取时，系统内存先开辟一块缓存空间，磁盘文件分块读取。然后java虚拟机内存再开辟缓存空间<code>new Byte[]</code>来读取系统内存的文件。由于有从系统内存读取到java虚拟机的内存，所以效率较低。</p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191226097.png" srcset="/img/loading.gif" lazyload alt="image-20220603191226097"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191226097.png" alt="image-20220603191226097"></p>
 <p>读取磁盘文件时，会有一块直接内存，<code>Java</code>虚拟机和系统内存都能访问使用，所以效率更高。</p>
 <blockquote>
 <p> 它可以直接使⽤ Native 函数库直接分配堆外内存，然后通过⼀个存储在 Java 堆中的 <code>DirectByteBuffer</code> 对象作为这块内存的引⽤进⾏操作。这样就能在⼀些场景中显著提⾼性能，因为避免了在 Java 堆和 Native 堆之间来回复制数据  </p>
 </blockquote>
-<h3 id="7-总结"><a href="#7-总结" class="headerlink" title="7 总结"></a>7 总结</h3><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220604115140591.png" srcset="/img/loading.gif" lazyload alt="image-20220604115140591"></p>
+<h3 id="7-总结"><a href="#7-总结" class="headerlink" title="7 总结"></a>7 总结</h3><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220604115140591.png" alt="image-20220604115140591"></p>
 <h1 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h1><h2 id="1-如何判断对象可以回收"><a href="#1-如何判断对象可以回收" class="headerlink" title="1 如何判断对象可以回收"></a>1 如何判断对象可以回收</h2><h3 id="1-2-引用计数法"><a href="#1-2-引用计数法" class="headerlink" title="1.2 引用计数法"></a>1.2 引用计数法</h3><p>给对象添加一个引用计数器，每当有引用它的地方，就将计数器加 1 ，当引用失效后，引用计数器减1，当计数器为 0 时，说明对象不会被引用了，可以进行回收。</p>
 <p><strong>弊端：</strong> 就是当对象A和B互相引用的时候，对象A和对象B的计数器都为1</p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191323953.png" srcset="/img/loading.gif" lazyload alt="image-20220603191323953"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191323953.png" alt="image-20220603191323953"></p>
 <p>但这两个对象没有被其他对象引用，应该进行垃圾回收，但由于对象A和对象B的计数器都为1，回收失败。</p>
 <h3 id="1-2-可达性分析法"><a href="#1-2-可达性分析法" class="headerlink" title="1.2 可达性分析法"></a>1.2 可达性分析法</h3><ul>
 <li>Java 虚拟机中的垃圾回收器采用可达性分析来探索所有存活的对象</li>
@@ -574,7 +574,7 @@
 </ul>
 <p><strong>总结：</strong></p>
 <p><strong>可达性分析就是JVM枚举根节点，找到程序能正常运行所必须存活的对象，然后以这些对象为根，根据引用关系开始向下搜寻。存在直接或间接引用链的对象就存活，不存在引用链的对象就回收。</strong></p>
-<h3 id="1-3-四种引用"><a href="#1-3-四种引用" class="headerlink" title="1.3 四种引用"></a>1.3 四种引用</h3><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191333535.png" srcset="/img/loading.gif" lazyload alt="image-20220603191333535"></p>
+<h3 id="1-3-四种引用"><a href="#1-3-四种引用" class="headerlink" title="1.3 四种引用"></a>1.3 四种引用</h3><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191333535.png" alt="image-20220603191333535"></p>
 <p><strong>（1）强引用</strong></p>
 <p>​		以前我们使⽤的⼤部分引⽤实际上都是强引⽤，这是使⽤最普遍的引⽤。<strong>如果⼀个对象具有强引⽤，那就类似于必不可少的⽣活⽤品，垃圾回收器绝不会回收它。</strong>当内存空间不⾜， Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终⽌，也不会靠随意回收具有强引⽤的对象来解决内存不⾜问题。</p>
 <p>​		当强引用都断开时，才可以被回收。例如:<code>String a = new String(&quot;hello world&quot;);</code></p>
@@ -601,7 +601,7 @@
 <li>第二次 GC 时才能回收被引用对象</li>
 </ul>
 <h2 id="2-垃圾回收算法"><a href="#2-垃圾回收算法" class="headerlink" title="2 垃圾回收算法"></a>2 垃圾回收算法</h2><h4 id="2-1-标记清除"><a href="#2-1-标记清除" class="headerlink" title="2.1 标记清除"></a>2.1 标记清除</h4><p><strong>是最基础的收集算法，⾸先标记出所有不需要回收的对象，在标记完成后统⼀回收掉所有没有被标记的对象。</strong>  </p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191350783.png" srcset="/img/loading.gif" lazyload alt="image-20220603191350783"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191350783.png" alt="image-20220603191350783"></p>
 <p><strong>优点：</strong></p>
 <blockquote>
 <p>速度较快</p>
@@ -611,7 +611,7 @@
 <p>标记清除后会产⽣⼤量不连续的碎⽚ ，</p>
 </blockquote>
 <h4 id="2-2-标记整理"><a href="#2-2-标记整理" class="headerlink" title="2.2 标记整理"></a>2.2 标记整理</h4><p><strong>对标记后，垃圾回收的空间进行整理。</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191400545.png" srcset="/img/loading.gif" lazyload alt="image-20220603191400545"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191400545.png" alt="image-20220603191400545"></p>
 <p><strong>优点：</strong></p>
 <blockquote>
 <p>没有内存碎片的问题</p>
@@ -621,15 +621,15 @@
 <p>时间慢</p>
 </blockquote>
 <h4 id="2-3-复制算法"><a href="#2-3-复制算法" class="headerlink" title="2.3 复制算法"></a>2.3 复制算法</h4><p><strong>将内存区域划分成了大小相等的两个区域。To是空闲的，一个对象都没有</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191408841.png" srcset="/img/loading.gif" lazyload alt="image-20220603191408841"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191408841.png" alt="image-20220603191408841"></p>
 <p><strong>标记内存中要回收的对象：</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191415683.png" srcset="/img/loading.gif" lazyload alt="image-20220603191415683"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191415683.png" alt="image-20220603191415683"></p>
 <p><strong>将from中存活的对象复制到To中</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191422234.png" srcset="/img/loading.gif" lazyload alt="image-20220603191422234"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191422234.png" alt="image-20220603191422234"></p>
 <p><strong>清空From</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191429522.png" srcset="/img/loading.gif" lazyload alt="image-20220603191429522"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191429522.png" alt="image-20220603191429522"></p>
 <p><strong>交换From 和 To ，To总是空闲的一块</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191436488.png" srcset="/img/loading.gif" lazyload alt="image-20220603191436488"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191436488.png" alt="image-20220603191436488"></p>
 <p><strong>优点：</strong></p>
 <blockquote>
 <p>不会产生内存碎片</p>
@@ -639,7 +639,7 @@
 <p>占用双倍的内存空间</p>
 </blockquote>
 <h4 id="2-4-分代回收算法"><a href="#2-4-分代回收算法" class="headerlink" title="2.4 分代回收算法"></a>2.4 分代回收算法</h4><p>​		当前虚拟机的垃圾收集都采⽤分代收集算法，这种算法没有什么新的思想，只是根据对象存活周期的不同将内存分为⼏块。⼀般将 java 堆分为新⽣代和⽼年代，这样我们就可以根据各个年代的特点选择合适的垃圾收集算法。  </p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191445299.png" srcset="/img/loading.gif" lazyload alt="image-20220603191445299"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191445299.png" alt="image-20220603191445299"></p>
 <p><strong>步骤：</strong></p>
 <ul>
 <li><p>对象首先分配在伊甸园区域</p>
@@ -662,20 +662,20 @@
 <blockquote>
 <p>优点就是：简单而高效，没有线程之间交互的开销</p>
 </blockquote>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191456131.png" srcset="/img/loading.gif" lazyload alt="image-20220603191456131"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191456131.png" alt="image-20220603191456131"></p>
 <p><strong>Serial Old 收集器</strong><br>Serial 收集器的⽼年代版本，它同样是⼀个单线程收集器。它主要有两⼤⽤途：⼀种⽤途是在JDK1.5 以及以前的版本中与 Parallel Scavenge 收集器搭配使⽤，另⼀种⽤途是作为 CMS 收集器的后备⽅案。  </p>
 <h3 id="3-2-ParNew-收集器"><a href="#3-2-ParNew-收集器" class="headerlink" title="3.2 ParNew 收集器"></a>3.2 ParNew 收集器</h3><p><strong>ParNew 收集器其实就是 Serial 收集器的多线程版本</strong>，除了使⽤多线程进⾏垃圾收集外，其余⾏为（控制参数、收集算法、回收策略等等）和 Serial 收集器完全⼀样。  </p>
 <p>新⽣代采⽤复制算法，⽼年代采⽤标记-整理算法。  </p>
 <p><strong>它是许多运⾏在 Server 模式下的虚拟机的⾸要选择，除了 Serial 收集器外，只有它能与 CMS 收集器（真正意义上的并发收集器，后⾯会介绍到）配合⼯作。</strong></p>
 <h3 id="3-2-吞吐量优先"><a href="#3-2-吞吐量优先" class="headerlink" title="3.2 吞吐量优先"></a>3.2 吞吐量优先</h3><p>​		Parallel Scavenge 收集器关注点是吞吐量（⾼效率的利⽤ CPU）。  <strong>所谓吞吐量就是 CPU 中⽤于运⾏⽤户代码的时间与 CPU 总消耗时间的⽐值。  垃圾回收器并行工作。Parallel Scavenge 收集器提供了很多参数供用户找到最合适的停顿时间或最大吞吐量</strong></p>
 <p><strong>新⽣代采⽤复制算法，⽼年代采⽤标记-整理算法。</strong>  </p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191505250.png" srcset="/img/loading.gif" lazyload alt="image-20220603191505250"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191505250.png" alt="image-20220603191505250"></p>
 <p><strong>并发（Concurrent）    ：</strong>指⽤户线程与垃圾收集线程同时执⾏（但不⼀定是并⾏，可能会交替执⾏），⽤户程序在继续运⾏，⽽垃圾收集器运⾏在另⼀个 CPU 上  </p>
 <p><strong>并行（Parallel）  ：</strong>指多条垃圾收集线程并⾏⼯作，但此时⽤户线程仍然处于等待状态。  </p>
 <h3 id="3-3-CMS响应时间优先"><a href="#3-3-CMS响应时间优先" class="headerlink" title="3.3 CMS响应时间优先"></a>3.3 CMS响应时间优先</h3><p>CMS（Concurrent Mark Sweep）收集器是⼀种<strong>以获取最短回收停顿时间为⽬标的收集器</strong>。它⾮常符合在注重⽤户体验的应⽤上使⽤。  </p>
 <p>CMS（Concurrent Mark Sweep）收集器是 HotSpot 虚拟机第⼀款真正意义上的<strong>并发收集器</strong>，<strong>它第⼀次实现了让垃圾收集线程与⽤户线程（基本上）同时⼯作。</strong>  </p>
 <p>从名字中的Mark Sweep这两个词可以看出， CMS 收集器是⼀种 <strong>“标记-清除</strong>”算法实现的，它的运作过程相⽐于前⾯⼏种垃圾收集器来说更加复杂⼀些。整个过程分为四个步骤：  </p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191515127.png" srcset="/img/loading.gif" lazyload alt="image-20220603191515127"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191515127.png" alt="image-20220603191515127"></p>
 <ul>
 <li><p><strong>初始标记：</strong> 暂停所有的其他线程，并记录下直接与 root 相连的对象，速度很快 ；  </p>
 </li>
@@ -701,27 +701,27 @@
 <li><strong>G1 收集器在后台维护了⼀个优先列表，每次根据允许的收集时间，优先选择回收价值最⼤的Region(这也就是它的名字 Garbage-First 的由来)。这种使⽤ Region 划分内存空间以及有优先级的区域回收⽅式，保证了 G1 收集器在有限时间内可以尽可能⾼的收集效率（把内存化整为零）。</strong></li>
 </ul>
 <p><strong>（1）G1垃圾回收的整个阶段</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191526911.png" srcset="/img/loading.gif" lazyload alt="image-20220603191526911"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191526911.png" alt="image-20220603191526911"></p>
 <p><strong>（2）第一个阶段（ Young Collection  ）</strong></p>
 <ul>
 <li><strong>G1垃圾回收器将堆内存划分为多个大小相同的区域，每个区域都可以独立的作为新生代，幸存区或老年代</strong></li>
 </ul>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191536263.png" srcset="/img/loading.gif" lazyload alt="image-20220603191536263"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191536263.png" alt="image-20220603191536263"></p>
 <p>其中：白色表示空闲区，E表示新生代的区域  ，S表示幸存区，O表示老年代的区域</p>
 <ul>
 <li><strong>当内存逐渐占满，新生代将会进行一次垃圾回收，将幸存的对象以复制的算法放入幸存区</strong></li>
 </ul>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191543901.png" srcset="/img/loading.gif" lazyload alt="image-20220603191543901"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191543901.png" alt="image-20220603191543901"></p>
 <ul>
 <li><strong>当幸存区对象的存活超过一定的时间，则幸存区中的一部分对象会晋升到老年代 ，不够年龄的拷贝到另一个幸存空间中去，新生代的幸存对象也会被拷贝到幸存空间中去</strong></li>
 </ul>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191552734.png" srcset="/img/loading.gif" lazyload alt="image-20220603191552734"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191552734.png" alt="image-20220603191552734"></p>
 <p><strong>（2）第二阶段（Young Collection + CM  ）：新生代垃圾回收+并发标记</strong></p>
 <ul>
 <li><p>在 Young GC 时会进行 GC Root 的<strong>初始标记</strong></p>
 </li>
 <li><p>老年代占用堆空间比例达到阈值时，进行<strong>并发标记</strong>（不会 STW），由下面的 JVM 参数决定  </p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191601802.png" srcset="/img/loading.gif" lazyload alt="image-20220603191601802"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191601802.png" alt="image-20220603191601802"></p>
 </li>
 </ul>
 <p>同时并发标记过程中，会计算每个region存活对象的比例（G1垃圾回收的时候根据回收的价值高低来优先回收价值较高的region）</p>
@@ -732,26 +732,26 @@
 <li><strong>拷贝存活</strong>（Evacuation）会 STW</li>
 </ul>
 <p><strong>拷贝存活时：对老年代来说，首先对各个Regin的回收价值和成本进行排序，优先回收垃圾最多的区域，主要为了达到暂停时间短的目标</strong>  </p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191612170.png" srcset="/img/loading.gif" lazyload alt="image-20220603191612170"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191612170.png" alt="image-20220603191612170"></p>
 <p><strong>标记的一些概念：</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191617970.png" srcset="/img/loading.gif" lazyload alt="image-20220603191617970"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191617970.png" alt="image-20220603191617970"></p>
 <p>其中：黑色表示已经处理完成的，表示结束时会被存活下来的对象，灰色表示正在处理的，白色表示还没有处理的。</p>
 <p><strong>垃圾回收的时候通过颜色来判断是否存活还是回收</strong>，图中的灰色的有强引用引用着它，也会变成黑色。下一个白色也有引用应用引用着它，最终也会存活下来，而上面的白色没有引用，一直是白色，最后被垃圾回收掉。</p>
 <p><strong>例如：</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191624470.png" srcset="/img/loading.gif" lazyload alt="image-20220603191624470"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191624470.png" alt="image-20220603191624470"></p>
 <p>上图：</p>
 <ul>
 <li>情况一：当处理到B时，发现有强引用引用着它，所以它变成灰色，由于是并发标记，垃圾回收线程和用户线程同时执行，当用户取消了B引用C这条线，C则一直为白色。所以当并发标记结束后 ，C被当作垃圾被回收。</li>
 </ul>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191631341.png" srcset="/img/loading.gif" lazyload alt="image-20220603191631341"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191631341.png" alt="image-20220603191631341"></p>
 <ul>
 <li>情况二：下图：当C和B 标记处理完成之后，并发标记还没有结束之前，用户线程又改变了引用地址，A引用了C，C的引用又发生了改变。但由与C和B已经处理完成，C标记为白色，A是黑色已经处理完成，不会再进行处理。则C就会被漏掉，因为我们仍然认为C是白色的，应该被垃圾回收，但是不正确，因为A引用了C，这样就发生了错误。</li>
-<li><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191637135.png" srcset="/img/loading.gif" lazyload alt="image-20220603191637135"></li>
+<li><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191637135.png" alt="image-20220603191637135"></li>
 </ul>
 <p>根据以上的分析，为了防止并发标记阶段出现这种错误，所以要进行重新标记阶段。</p>
 <p><strong>JVM的解决方法：如果引用变化，则加入到队列中</strong></p>
 <p><strong>当引用发生改变时，JVM就会给它加入一个写屏障，就会将C加入到队列当中并把C变成灰色表示还没有处理完</strong>，接下来进行重新标记的过程，Stop The World，重新标记的过程会将队列中的元素取出来，在进行一次检查，发现灰色，并且有强引用，。则变为黑色，不会进行垃圾回收。</p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191644707.png" srcset="/img/loading.gif" lazyload alt="image-20220603191644707"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191644707.png" alt="image-20220603191644707"></p>
 <h3 id="3-5-FullGC概念"><a href="#3-5-FullGC概念" class="headerlink" title="3.5 FullGC概念"></a>3.5 FullGC概念</h3><ul>
 <li>SerialGC<br>新生代内存不足发生的垃圾收集 - minor gc<br>老年代内存不足发生的垃圾收集 - full gc</li>
 <li>ParallelGC<br>新生代内存不足发生的垃圾收集 - minor gc<br>老年代内存不足发生的垃圾收集 - full gc</li>
@@ -775,12 +775,12 @@
 <p>能建立可预测的停顿时间模型，能让使用者明确指定在一个长度为 M 毫秒的时间片段内，消耗在垃圾收集上的时间不得超过 N 毫秒。</p>
 <h3 id="3-7-GC调优-没看，应该面试没有"><a href="#3-7-GC调优-没看，应该面试没有" class="headerlink" title="3.7 GC调优  没看，应该面试没有"></a>3.7 GC调优  没看，应该面试没有</h3><h1 id="类加载"><a href="#类加载" class="headerlink" title="类加载"></a>类加载</h1><h2 id="1-类文件结构和字节码指令"><a href="#1-类文件结构和字节码指令" class="headerlink" title="1 类文件结构和字节码指令"></a>1 类文件结构和字节码指令</h2><p><strong>从字节码的方式来解释程序的运行</strong></p>
 <p><strong>这一部分先简单了解一下，面试好像不需要</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220622145501331.png" srcset="/img/loading.gif" lazyload alt="image-20220622145501331"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220622145501331.png" alt="image-20220622145501331"></p>
 <h3 id="对于i-i"><a href="#对于i-i" class="headerlink" title="对于i++,++i"></a>对于i++,++i</h3><p><strong>从字节码角度分析，下列代码运行的结果：</strong>  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Demo3_6_1</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>		<span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) &#123;<br>			x = x++;<br>			i++;<br>		&#125;<br>    System.out.println(x); <span class="hljs-comment">// 结果是 0</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p><strong>结果为：0</strong></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191704808.png" srcset="/img/loading.gif" lazyload alt="image-20220603191704808"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191704808.png" alt="image-20220603191704808"></p>
 <p><strong>因为x++操作：是先iload（将变量加载到操作数栈中）再进行iinc（在局部变量表中进行加1），</strong></p>
 <p><strong>++x操作是：先iinc（在局部变量表中加1）再进行iload（将加1后的变量加载到操作数栈中）。</strong></p>
 <p><strong>注意：iinc：是在局部变量表中加1的，而不是在操作数栈中加1</strong></p>
@@ -842,8 +842,8 @@
 <p><strong>实际被编译器转换为对迭代器的调用：</strong>  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Candy5_2</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Candy5_2</span><span class="hljs-params">()</span> &#123;<br>	&#125; <br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		List&lt;Integer&gt; list = Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>);<br>		<span class="hljs-type">Iterator</span> <span class="hljs-variable">iter</span> <span class="hljs-operator">=</span> list.iterator();<br>		<span class="hljs-keyword">while</span>(iter.hasNext()) &#123;<br>			<span class="hljs-type">Integer</span> <span class="hljs-variable">e</span> <span class="hljs-operator">=</span> (Integer)iter.next();<br>			System.out.println(e);<br>		&#125;<br>	&#125;<br>&#125;  <br></code></pre></td></tr></table></figure>
 
-<h2 id="3-类的加载过程"><a href="#3-类的加载过程" class="headerlink" title="3 类的加载过程**"></a>3 类的加载过程**</h2><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191722403.png" srcset="/img/loading.gif" lazyload alt="image-20220603191722403"></p>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191728110.png" srcset="/img/loading.gif" lazyload alt="image-20220603191728110"></p>
+<h2 id="3-类的加载过程"><a href="#3-类的加载过程" class="headerlink" title="3 类的加载过程**"></a>3 类的加载过程**</h2><p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191722403.png" alt="image-20220603191722403"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220603191728110.png" alt="image-20220603191728110"></p>
 <h3 id="3-1-加载"><a href="#3-1-加载" class="headerlink" title="3.1 加载"></a>3.1 加载</h3><p>指 JVM 读取 Class 文件，并且根据 Class 文件描述创建 java.lang.Class 对象的过程。  </p>
 <p>类的加载过程主要是将类的字节码文件读取到运行时区域的方法区（内部使用C++完成），在堆中创建java.lang.Class 对象， 并封装类在方法区的数据结构的过程  。</p>
 <h3 id="3-2-验证"><a href="#3-2-验证" class="headerlink" title="3.2 验证"></a>3.2 验证</h3><p>主要用于确保 Class 文件符合当前虚拟机的要求， 保障虚拟机自身的安全，只有通过验证的 Class 文件才能被 JVM 加载。  </p>
@@ -905,7 +905,7 @@
 <td>上级为 Application</td>
 </tr>
 </tbody></table>
-<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220604100611851.png" srcset="/img/loading.gif" lazyload alt="image-20220604100611851"></p>
+<p><img src="/2022/05/30/JVM%E5%AD%A6%E4%B9%A0/image-20220604100611851.png" alt="image-20220604100611851"></p>
 <h2 id="5-双亲委派模式"><a href="#5-双亲委派模式" class="headerlink" title="5 双亲委派模式"></a>5 双亲委派模式</h2><p><strong>什么是双亲委派模式？</strong></p>
 <p>当一个类加载器收到一个类加载请求时，首先不会尝试自己去加载，而是将这个类委派给上级加载器进行加载，只有上级加载器在自己的搜索范围查找不到该类时，子加载器才会去尝试自己去加载该类。</p>
 <p><strong>好处：</strong></p>
@@ -1048,7 +1048,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -1257,7 +1257,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 

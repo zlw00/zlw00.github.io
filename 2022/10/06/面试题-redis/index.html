@@ -101,7 +101,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -314,7 +314,7 @@
 <p>sds的底层是使用一个结构体实现的：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">struct sdshdr &#123;<br>	<span class="hljs-comment">// 记录 buf 数组中已使用字节的数量，它等于 SDS 所保存字符串的长度</span><br>	<span class="hljs-type">int</span> len;<br>	<span class="hljs-comment">// 记录 buf 数组中未使用字节的数量</span><br>	<span class="hljs-type">int</span> free;<br>	<span class="hljs-comment">// 字节数组，用于保存字符串</span><br>	<span class="hljs-type">char</span> buf[];<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323123918257.png" srcset="/img/loading.gif" lazyload alt="image-20230323123918257"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323123918257.png" alt="image-20230323123918257"></p>
 <ul>
 <li>free 属性的值为0， 表示这个SDS没有分配任何未使用空间</li>
 <li>len属性的值为5，表示这个SDS保存了一个五字节长的字符串。</li>
@@ -323,7 +323,7 @@
 <blockquote>
 <p>SDS 遵循C字符串以空字符串结尾的惯例，保存空字符的 1 字节空间不计算在 SDS 的 len 属性里面，并且为空字符分配额外的 1 字节空间</p>
 </blockquote>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323123958954.png" srcset="/img/loading.gif" lazyload alt="image-20230323123958954"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323123958954.png" alt="image-20230323123958954"></p>
 <p>这个SDS和之前展示的SDS一样,都保存了字符串值”Redis”。这个SDS和之前展示的SDS的区别在于，这个SDS为buf数组分配了五字节未使用空间，所以它的free属性的值为5(图中使用五个空格来表示五字节的未使用空间)</p>
 <p><strong>SDS与C字符串的区别：</strong></p>
 <p>（1）<strong>常数复杂度获取字符串长度</strong>：直接访问len就可以了。</p>
@@ -362,14 +362,14 @@
 </li>
 </ol>
 <p><strong>连锁更新现象：</strong></p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323133702901.png" srcset="/img/loading.gif" lazyload alt="image-20230323133702901"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323133702901.png" alt="image-20230323133702901"></p>
 <h3 id="quicklist"><a href="#quicklist" class="headerlink" title="quicklist"></a>quicklist</h3><p>由于ziplist不能保存过多的元素，否则查询性能大大降低，并且会发生连锁更新的情况。因此提出quicklist。</p>
 <p><strong>结合了原先 linkedlist 与 ziplist 各自的优势，本质还是一个链表，只不过链表的每个节点是一个 ziplist。</strong></p>
 <p>quicklist 是综合考虑了时间效率与空间效率引入的新型数据结构。<strong>结合了原先 linkedlist 与 ziplist 各自的优势，本质还是一个链表，只不过链表的每个节点是一个 ziplist。</strong></p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323135547951.png" srcset="/img/loading.gif" lazyload alt="image-20230323135547951"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323135547951.png" alt="image-20230323135547951"></p>
 <p>可毕竟还是使用了 ziplist，本质上无法避免连锁更新的问题，于是乎在 5.0 版本设计出另一个内存紧凑型数据结构 listpack，于 7.0 版本替换掉 ziplist。</p>
 <h3 id="listpack"><a href="#listpack" class="headerlink" title="listpack"></a>listpack</h3><p><strong>listpack 也是一种紧凑型数据结构，用一块连续的内存空间来保存数据，并且使用多种编码方式来表示不同长度的数据来节省内存空间。</strong></p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323135617155.png" srcset="/img/loading.gif" lazyload alt="image-20230323135617155"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323135617155.png" alt="image-20230323135617155"></p>
 <ul>
 <li>tot-bytes，也就是 total bytes，占用 4 字节，记录 listpack 占用的总字节数。</li>
 <li>num-elements，占用 2 字节，记录 listpack elements 元素个数。</li>
@@ -377,7 +377,7 @@
 <li>listpack-end-byte，结束标志，占用 1 字节，值固定为 255。</li>
 </ul>
 <p>element <strong>不再像 ziplist 的 entry 保存前一项的长度</strong>。</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323135630954.png" srcset="/img/loading.gif" lazyload alt="image-20230323135630954"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230323135630954.png" alt="image-20230323135630954"></p>
 <h2 id="整数集合"><a href="#整数集合" class="headerlink" title="整数集合"></a>整数集合</h2><p>整数集合是集合键的底层实现之一，当一个集合只包含整数值元素，并且这个集合元素数量不多时，Redis就会使用整数集合作为集合键的底层实现。</p>
 <p>整数集合是Redis用于保存整数值的集合抽象数据结构，它可以保存int16_t、int32_t、int64_t的整数值，且保证集合中不出现重复元素。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">typedef struct intset&#123;<br>    <span class="hljs-comment">//编码方式</span><br>    uint32_t encoding;<br>    <span class="hljs-comment">//集合包含的元素数量</span><br>    uint32_t length;<br>    <span class="hljs-comment">//保存元素的数组</span><br>    int8_t contents[];<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -386,18 +386,18 @@
 <ol>
 <li>升级首先要做的是，根据新元素的长度，扩大空间，目前有5个元素，加入一个后有6个，且int16_t的元素要升级为int32_t类型（需要6 * 32 &#x3D; 192位的空间），因此需要先动态分配内存空间如下：</li>
 </ol>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1754362-20210516161648249-356996541.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1754362-20210516161648249-356996541.png" alt="img"></p>
 <ol>
 <li>移动元素的位置，将14632往后移动到新的位置，末尾留下一个位置存放32位的65535</li>
 </ol>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1754362-20210516161655382-2073870704.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1754362-20210516161655382-2073870704.png" alt="img"></p>
 <ol>
 <li>同理移动233、18、-5、-6370，并最后将末尾的空间中存入65535</li>
 </ol>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1754362-20210516161703961-1686295837.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1754362-20210516161703961-1686295837.png" alt="img"></p>
 <h4 id="整数集合不支持降级"><a href="#整数集合不支持降级" class="headerlink" title="整数集合不支持降级"></a>整数集合不支持降级</h4><p>如果因为插入一个32位的整数使得原本16位的contents[]数组转变为32位，后面又删去了这个32位的整数，这个整数集合将不会降级成16位的contents[]数组</p>
 <h1 id="redis常用的基本类型"><a href="#redis常用的基本类型" class="headerlink" title="redis常用的基本类型"></a>redis常用的基本类型</h1><h2 id="key"><a href="#key" class="headerlink" title="key"></a>key</h2><p>（1）<code>keys *</code> ：查看当前库中所有的key</p>
-<p><a target="_blank" rel="noopener" href="https://zlw00.github.io/2022/06/07/redis/image-20220607134236942.png"><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20220607134236942.png" srcset="/img/loading.gif" lazyload alt="image-20220607134236942"></a></p>
+<p><a target="_blank" rel="noopener" href="https://zlw00.github.io/2022/06/07/redis/image-20220607134236942.png"><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20220607134236942.png" alt="image-20220607134236942"></a></p>
 <p>（2）<code>exists key</code> ：判断某个 key 是否存在</p>
 <p>（3）<code>type key</code>：查看你的 key 是什么类型</p>
 <p>（4）<code>del key</code> ：删除指定的 key 数据 &#x2F; unlink key 根据 value 选择非阻塞删除</p>
@@ -440,7 +440,7 @@
 <p><code>sadd &lt;key&gt;&lt;value1&gt;&lt;value2&gt; .....</code>将一个或多个 member 元素加入到集合 key 中，已经存在的 member 元素将被忽略<br><code>smembers &lt;key&gt;</code>取出该集合的所有值。<br><code>sismember &lt;key&gt;&lt;value&gt;</code>判断集合是否为含有该值，有 1，没有 0<br><code>scard&lt;key&gt;</code>返回该集合的元素个数。</p>
 <p><code>srem &lt;key&gt;&lt;value1&gt;&lt;value2&gt; ....</code> 删除集合中的某个元素。<br><code>spop &lt;key&gt;</code>随机从该集合中吐出一个值。<br><code>srandmember &lt;key&gt;&lt;n&gt;</code>随机从该集合中取出 n 个值。不会从集合中删除 。<br><code>smove &lt;source&gt;&lt;destination&gt;value</code> 把集合中一个值从一个集合移动到另一个集合<br><code>sinter &lt;key1&gt;&lt;key2&gt;</code>返回两个集合的交集元素。<br><code>sunion &lt;key1&gt;&lt;key2&gt;</code>返回两个集合的并集元素。<br><code>sdiff &lt;key1&gt;&lt;key2&gt;</code>返回两个集合的差集元素(key1 中的，不包含 key2 中的)</p>
 <h2 id="ZSet"><a href="#ZSet" class="headerlink" title="ZSet"></a>ZSet</h2><p><strong>zset 底层使用了两个数据结构</strong><br><strong>（1）hash</strong>，hash 的作用就是关联元素 value 和权重 score，保障元素 value 的唯一性，可以通过元素 value 找到相应的 score 值。<br><strong>（2）跳跃表，</strong>跳跃表的目的在于给元素 value 排序，根据 score 的范围获取元素列表。</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230322124156151.png" srcset="/img/loading.gif" lazyload alt="image-20230322124156151"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20230322124156151.png" alt="image-20230322124156151"></p>
 <p>Redis 有序集合 zset 与普通集合 set 非常相似，是一个<strong>没有重复元素</strong>的字符串集合。<br>不同之处是有序集合的每个成员都关联了一个<strong>评分（score）</strong>,这个评分（score）被用来按照从最低分到最高分的方式排序集合中的成员。<strong>集合的成员是唯一的，但是评分可以是重复了 。</strong></p>
 <p><strong>常用命令</strong></p>
 <p><code>zadd &lt;key&gt;&lt;score1&gt;&lt;value1&gt;&lt;score2&gt;&lt;value2&gt;…</code>将一个或多个 member 元素及其 score 值加入到有序集 key 当中。<br><code>zrange &lt;key&gt;&lt;start&gt;&lt;stop&gt;</code> [WITHSCORES]返回有序集 key 中，下标在之间的元素带 WITHSCORES，可以让分数一起和值返回到结果集。<br><code>zrangebyscore key minmax [withscores] [limit offset count]</code>返回有序集 key 中，所有 score 值介于 min 和 max 之间(包括等于 min 或 max )的成员。有序集成员按 score 值递增(从小到大)次序排列。<br><code>zrevrangebyscore key maxmin [withscores] [limit offset count]</code>同上，改为从大到小排列。</p>
@@ -450,19 +450,19 @@
 <p><code>hset &lt;key&gt;&lt;field&gt;&lt;value&gt;</code>：给集合中的 键赋值<br><code>hget &lt;key1&gt;&lt;field&gt;</code>：从集合取出 value<br><code>hmset &lt;key1&gt;&lt;field1&gt;&lt;value1&gt;&lt;field2&gt;&lt;value2&gt;...</code> ：批量设置 hash 的值<br><code>hexists&lt;key1&gt;&lt;field&gt;</code>：查看哈希表 key 中， 给定域 field 是否存在。<br><code>hkeys &lt;key&gt;</code>：列出该 hash 集合的所有 field<br><code>hvals &lt;key&gt;：</code>列出该 hash 集合的所有 value<br><code>hincrby &lt;key&gt;&lt;field&gt;&lt;increment&gt;：</code>为哈希表 key 中的域 field 的值加上增量 1 -1<br><code>hsetnx &lt;key&gt;&lt;field&gt;&lt;value&gt;：</code>将哈希表 key 中的域 field 的值设置为 value ， 当且仅当域field 不存在</p>
 <h1 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34412579/article/details/101731935">https://blog.csdn.net/qq_34412579/article/details/101731935</a></p>
 <h2 id="什么是跳表"><a href="#什么是跳表" class="headerlink" title="什么是跳表"></a><strong>什么是跳表</strong></h2><p>​	跳表是可以实现二分查找的有序单链表。</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221126193316929.png" srcset="/img/loading.gif" lazyload alt="image-20221126193316929"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221126193316929.png" alt="image-20221126193316929"></p>
 <h2 id="跳表查找的时间复杂度为O-logn"><a href="#跳表查找的时间复杂度为O-logn" class="headerlink" title="跳表查找的时间复杂度为O(logn)"></a><strong>跳表查找的时间复杂度为O(logn)</strong></h2><p>​	时间复杂度 &#x3D; 索引的高度 * 每层索引遍历元素的个数。</p>
 <p>​	<strong>先来求跳表的索引高度。</strong>如下图所示，假设每两个结点会抽出一个结点作为上一级索引的结点，原始的链表有n个元素，则一级索引有n&#x2F;2 个元素、二级索引有 n&#x2F;4 个元素、k级索引就有 n&#x2F;2k个元素。最高级索引一般有2个元素，即：最高级索引 h 满足 2 &#x3D; n&#x2F;2^h，即 h &#x3D; log2n - 1，最高级索引 h 为索引层的高度加上原始数据一层，跳表的总高度 h &#x3D; log2n。</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221126193402245.png" srcset="/img/loading.gif" lazyload alt="image-20221126193402245"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221126193402245.png" alt="image-20221126193402245"></p>
 <p>​	图中所示，现在到达第 k 级索引，我们发现要查找的元素 x 比 y 大比 z 小，所以，我们需要从 y 处下降到 k-1 级索引继续查找，k-1级索引中比 y 大比 z 小的只有一个 w，所以在 k-1 级索引中，我们遍历的元素最多就是 y、w、z，发现 x 比 w大比 z 小之后，再下降到 k-2 级索引。所以，k-2 级索引最多遍历的元素为 w、u、z。其实每级索引都是类似的道理，每级索引中都是两个结点抽出一个结点作为上一级索引的结点。 现在我们得出结论：当每级索引都是两个结点抽出一个结点作为上一级索引的结点时，每一层最多遍历3个结点。</p>
 <p>跳表的索引高度 <code>h = log2n</code>，<strong>且每层索引最多遍历 3 个元素</strong>。所以跳表中查找一个元素的时间复杂度为 <code>O(3*logn)</code>，省略常数即：**O(logn)**。</p>
 <h2 id="跳表的空间复杂度O-n"><a href="#跳表的空间复杂度O-n" class="headerlink" title="跳表的空间复杂度O(n)"></a>跳表的空间复杂度<strong>O(n)</strong></h2><p>跳表是典型的”空间换时间“的思想</p>
 <p>假如原始链表包含 n 个元素，则一级索引元素个数为 <code>n/2</code>、二级索引元素个数为 <code>n/4</code>、三级索引元素个数为 <code>n/8</code> 以此类推。所以，索引节点的总和是：n<code>/2+n/4+n/8 … 8+4+2 = n-2</code>，**空间复杂度是 O(n)**。</p>
 <h2 id="跳表的插入数据"><a href="#跳表的插入数据" class="headerlink" title="跳表的插入数据"></a>跳表的插入数据</h2><p> 通过<code>randomLevel()</code>方法返回当前元素要插入的层级</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221126193921939.png" srcset="/img/loading.gif" lazyload alt="image-20221126193921939"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221126193921939.png" alt="image-20221126193921939"></p>
 <p>整个插入过程的路径与查找元素路径类似， 每层索引中插入元素的时间复杂度 <code>O(1)</code>，所以整个插入的时间复杂度是 **O(logn)**。</p>
 <h2 id="跳表的删除数据"><a href="#跳表的删除数据" class="headerlink" title="跳表的删除数据"></a>跳表的删除数据</h2><p>​	跳表删除数据时，要把索引中对应节点也要删掉。如下图所示，如果要删除元素 9，需要把原始链表中的 9 和第一级索引的 9 都删除掉。</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221126193957439.png" srcset="/img/loading.gif" lazyload alt="image-20221126193957439"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221126193957439.png" alt="image-20221126193957439"></p>
 <p>​	删除元素的过程跟查找元素的过程类似，只不过在查找的路径上如果发现了要删除的元素 <code>x</code>，则执行删除操作。跳表中，每一层索引其实都是一个有序的单链表，单链表删除元素的时间复杂度为 <code>O(1)</code>，索引层数为 <code>logn</code> 表示最多需要删除 <code>logn</code> 个元素，所以删除元素的总时间包含 查找元素的时间 加 删除 logn个元素的时间 为 <code>O(logn)+O(logn) = 2 O(logn)</code>，忽略常数部分，**删除元素的时间复杂度为 O(logn)**。</p>
 <h1 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h1><p>缓存雪崩是<strong>指当缓存中有大量的key在同一时刻过期，或者Redis直接宕机了</strong>，导致大量的查询请求全部到达数据库，造成数据库查询压力骤增，甚至直接挂掉。</p>
 <p><strong>解决</strong>：只需要将每个key的过期时间打散即可，使它们的失效点尽可能均匀分布。</p>
@@ -471,7 +471,7 @@
 <p><strong>解决：</strong>布隆过滤器</p>
 <h1 id="AOF重写"><a href="#AOF重写" class="headerlink" title="AOF重写"></a>AOF重写</h1><p>当 AOF 变得太大时，Redis 能够在后台自动重写 AOF 产生一个新的 AOF 文件，这个新的 AOF 文件和原有的 AOF 文件所保存的数据库状态一样，但体积更小。</p>
 <p><strong>AOF重写的执行流程：</strong></p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221007091501846.png" srcset="/img/loading.gif" lazyload alt="image-20221007091501846"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221007091501846.png" alt="image-20221007091501846"></p>
 <ul>
 <li>触发重写，执行bgrewriteaof命令</li>
 <li>父进程fork子进程进行重写，fork子进程的同时，父进程阻塞，fork完毕父进程继续接受指令。</li>
@@ -519,7 +519,7 @@
 <p>3.采用IO多路复用机制</p>
 <h1 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/crazymakercircle/p/10225159.html#autoid-h2-5-0-0">https://www.cnblogs.com/crazymakercircle/p/10225159.html#autoid-h2-5-0-0</a></p>
 <p><strong>IO多路复用的基本原理就是，单个线程不断的轮询select&#x2F;epoll系统调用所负责的成百上千的scoket连接，当某个或者某些连接有数据到达的时候，就返回这些可读写的连接，因此好处就是通过一次select&#x2F;epoll的系统调用，就可以读写一个甚至成百上千的连接。</strong></p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/20190105163846560.jpg" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/20190105163846560.jpg" alt="在这里插入图片描述"></p>
 <p><strong>发起一个多路复用IO的的read读操作系统调用，流程是这个样子：</strong></p>
 <p>（1）不断的进行select&#x2F;epoll系统调度，查询可以读的连接，只要有连接数据到达，就返回该连接（当用户线程调用select时，整个线程被block）</p>
 <p>（2）建立连接后，发起read系统调用，将内核缓冲区的数据复制到用户缓冲区，然后返回结果。</p>
@@ -529,7 +529,7 @@
 <p><strong>缺点：</strong>读写过程是阻塞的。</p>
 <h1 id="redis中基本数据类型的zset底层是什么"><a href="#redis中基本数据类型的zset底层是什么" class="headerlink" title="redis中基本数据类型的zset底层是什么"></a>redis中基本数据类型的zset底层是什么</h1><p>（1）hash，hash 的作用就是关联元素 value 和权重 score，保障元素 value 的唯一性，可以通过元素 value 找到相应的 score 值。</p>
 <p>（2）跳跃表，跳跃表的目的在于给元素 value 排序，根据 score 的范围获取元素列表。</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221028180718550.png" srcset="/img/loading.gif" lazyload alt="image-20221028180718550"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221028180718550.png" alt="image-20221028180718550"></p>
 <h1 id="redis是多线程还是单线程，什么时候引入的多线程，为什么之前使用单线程"><a href="#redis是多线程还是单线程，什么时候引入的多线程，为什么之前使用单线程" class="headerlink" title="redis是多线程还是单线程，什么时候引入的多线程，为什么之前使用单线程"></a>redis是多线程还是单线程，什么时候引入的多线程，为什么之前使用单线程</h1><p><strong>单线程，可以设置为多线程，。</strong></p>
 <p><strong>在redis6.0之后引入的多线程，。</strong></p>
 <p><strong>为什么之前不使用多线程？</strong></p>
@@ -538,7 +538,7 @@
 <p><strong>如果需要开启多线程，则需要修改redis的配置文件：</strong></p>
 <p><code>io-threads-do-reads yes</code></p>
 <p><strong>redis的文件处理器通过IO多路复用来监听大量的客户端连接。</strong></p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221028183529128.png" srcset="/img/loading.gif" lazyload alt="image-20221028183529128"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/image-20221028183529128.png" alt="image-20221028183529128"></p>
 <h1 id="为什么redis6-0之后使用多线程"><a href="#为什么redis6-0之后使用多线程" class="headerlink" title="为什么redis6.0之后使用多线程"></a>为什么redis6.0之后使用多线程</h1><p>因为对redis有更高的要求。</p>
 <p>redis对于小数据包来说，对于80%的公司已经足够使用了。</p>
 <p>但随着越来越复杂的业务场景，有些公司达到上亿的交易量，因此需要更大的查询效率。</p>
@@ -611,16 +611,16 @@
 <p><strong>（1）先更新数据库，再删除缓存</strong></p>
 <p><strong>问题：</strong>更新数据库成功，线程出现问题，缓存删除失败，缓存中的是旧数据，数据不一致，有两种解决方式；<strong>失败重试</strong>和<strong>异步更新</strong></p>
 <p><strong>失败重试：</strong>把删除的key放入到消息队中，从消息队列中进行删除，（有个缺点，首先会对业务代码造成入侵，其次引入了消息队列，增加了系统的不确定性。）</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/20224285758787.png" srcset="/img/loading.gif" lazyload alt="MySQL和Redis的数据一致性问题_一致性问题_04"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/20224285758787.png" alt="MySQL和Redis的数据一致性问题_一致性问题_04"></p>
 <p><strong>异步更新：</strong>因为更新数据库时会往 <code>binlog </code>中写入日志，所以我们可以启动一个监听 binlog变化的服务（比如使用阿里的 canal开源组件），然后在客户端完成删除 key 的操作。如果删除失败的话，再发送到消息队列。</p>
 <p><strong>（2）先删除缓存，再更新数据库</strong></p>
 <p><strong>问题：</strong>如果先删除Redis缓存数据，然而还没有来得及写入MySQL，另一个线程就来读取。这个时候发现缓存为空，则去Mysql数据库中读取旧数据写入缓存，此时缓存中为脏数据。出现了数据不一致的问题。可以采用<strong>延时双删</strong>的策略解决。</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/20224285758788.png" srcset="/img/loading.gif" lazyload alt="MySQL和Redis的数据一致性问题_缓存_05"> </p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/20224285758788.png" alt="MySQL和Redis的数据一致性问题_缓存_05"> </p>
 <p><strong>延时双删</strong>：就是更新数据库之后，再删除一次缓存。</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/20224285758789.png" srcset="/img/loading.gif" lazyload alt="MySQL和Redis的数据一致性问题_缓存_06"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/20224285758789.png" alt="MySQL和Redis的数据一致性问题_缓存_06"></p>
 <h1 id="redis-的并发竞争问题是什么？如何解决这个问题？了解redis-事务的-CAS-方案吗？"><a href="#redis-的并发竞争问题是什么？如何解决这个问题？了解redis-事务的-CAS-方案吗？" class="headerlink" title="redis 的并发竞争问题是什么？如何解决这个问题？了解redis 事务的 CAS 方案吗？"></a>redis 的并发竞争问题是什么？如何解决这个问题？了解redis 事务的 CAS 方案吗？</h1><h2 id="乐观锁介绍："><a href="#乐观锁介绍：" class="headerlink" title="乐观锁介绍："></a>乐观锁介绍：</h2><p>watch指令在redis事物中提供了CAS的行为。为了检测被watch的keys在是否有多个clients同时改变引起冲突，这些keys将会被监控。如果至少有一个被监控的key在执行exec命令前被修改，整个事物将会回滚，不执行任何动作，从而保证原子性操作，并且执行exec会得到null的回复。</p>
 <h2 id="乐观锁工作机制："><a href="#乐观锁工作机制：" class="headerlink" title="乐观锁工作机制："></a>乐观锁工作机制：</h2><p>watch 命令会监视给定的每一个key，当exec时如果监视的任一个key自从调用watch后发生过变化，则整个事务会回滚，不执行任何动作。注意watch的key是对整个连接有效的，事务也一样。如果连接断开，监视和事务都会被自动清除。当然exec，discard，unwatch命令，及客户端连接关闭都会清除连接中的所有监视。还有，如果watch一个不稳定(有生命周期)的key并且此key自然过期，exec仍然会执行事务队列的指令。</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/20210421172417360.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/20210421172417360.png" alt="在这里插入图片描述"></p>
 <h2 id="redis的Watch机制是什么？"><a href="#redis的Watch机制是什么？" class="headerlink" title="redis的Watch机制是什么？"></a>redis的Watch机制是什么？</h2><blockquote>
 <p>Redis Watch 命令用于监视一个(或多个) key ，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断。注意使用multi 开始事务，exec 提交事务。</p>
 </blockquote>
@@ -636,7 +636,7 @@
 <li><p><strong>限流</strong></p>
 </li>
 </ol>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/e3d4e1cbd03b5326eb8b3f15a7fc73bc.png" srcset="/img/loading.gif" lazyload alt="redis-caching-avalanche-solution"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/e3d4e1cbd03b5326eb8b3f15a7fc73bc.png" alt="redis-caching-avalanche-solution"></p>
 <p>限流组件，可以设置每秒的请求，有多少能通过组件，剩余的未通过的请求，怎么办？<strong>走降级</strong>！可以返回一些默认的值，或者友情提示，或者空值</p>
 <p><strong>好处：</strong></p>
 <ul>
@@ -646,7 +646,7 @@
 </ul>
 <h1 id="缓存穿透-1"><a href="#缓存穿透-1" class="headerlink" title="缓存穿透"></a>缓存穿透</h1><p><strong>缓存穿透是指查询一个根本不存在的数据，缓存层和持久层都不会命中，请求都会压到数据库，从而压垮数据库。</strong></p>
 <p>举个栗子。数据库 id 是从 1 开始的，结果黑客发过来的请求 id 全部都是负数。这样的话，缓存中不会有，请求每次都“<strong>绕过缓存</strong>”，直接查询数据库。这种恶意攻击场景的缓存穿透就会直接把数据库给打死。</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/834fcb5588972d9be273189239bf0aba.png" srcset="/img/loading.gif" lazyload alt="redis-caching-penetration"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/834fcb5588972d9be273189239bf0aba.png" alt="redis-caching-penetration"></p>
 <p>解决方式很简单：</p>
 <p><strong>每次系统 A 从数据库中只要没查到，就写一个空值到缓存里去</strong>，比如 <code>set -999 UNKNOWN</code> 。然后设置一个过期时间，这样的话，下次有相同的 key 来访问的时候，在缓存失效之前，都可以直接从缓存中取数据。</p>
 <p>这种方式虽然是简单，在某些场景（如数据量大的博客）下不优雅，还可能会缓存过多的空值，更加优雅的方式就是：<strong>使用 bitmap 布隆过滤（将数据库中所有的查询条件，放入布隆过滤器中，当一个查询请求过来时，先经过布隆过滤器进行查，如果判断请求查询值存在，则继续查；如果判断请求查询不存在，直接丢弃。）</strong></p>
@@ -665,7 +665,7 @@
 <p><strong>原理</strong> </p>
 <p>　当一个元素被加入集合时，通过K个散列函数将这个元素映射成一个位数组中的K个点（使用多个哈希函数对<strong>元素key (bloom中不存value)</strong> 进行哈希，算出一个整数索引值，然后对位数组长度进行取模运算得到一个位置，每个无偏哈希函数都会得到一个不同的位置），把它们置为1。</p>
 <p>　检索时，我们只要看看这些点是不是都是1就（大约）知道集合中有没有它了：① 如果这些点有任何一个为0（如下图的e），则被检元素一定不在；如果都是1（如下图的d），并不能完全说明这个元素就一定存在其中，有可能这些位置为1是因为其他元素的存在，这就是布隆过滤器会出现误判的原因。</p>
-<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1031302-20201106204833000-564795432.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/10/06/%E9%9D%A2%E8%AF%95%E9%A2%98-redis/1031302-20201106204833000-564795432.png" alt="img"></p>
 <p><strong>使用布隆过滤器的场景：</strong></p>
 <p><strong>黑名单校验</strong></p>
 <p>　识别垃圾邮件，只要发送者在黑名单中的，就识别为垃圾邮件。假设黑名单的数量是数以亿计的，存放起来就是非常耗费存储空间的，布隆过滤器则是一个较好的解决方案。把所有黑名单都放在布隆过滤器中，再收到邮件时，判断邮件地址是否在布隆过滤器中即可。</p>
@@ -782,7 +782,7 @@
             </div>
 
             
-  <article id="comments" lazyload>
+  <article id="comments">
     
   <div id="valine"></div>
   <script type="text/javascript">
@@ -991,7 +991,9 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
   
 
 
