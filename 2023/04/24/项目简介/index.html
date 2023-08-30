@@ -1,0 +1,808 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#447EA5">
+  <meta name="author" content="zlw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="项目简介这里面参考https:&#x2F;&#x2F;blog.csdn.net&#x2F;unique_perfect&#x2F;article&#x2F;details&#x2F;111392634写的内容，非常详细！ 项目背景市面上有5种常见的电商模式 B2B、B2C、C2B、C2C、O2O，谷粒商城这里采用B2C的模式，营销商品给用户。 **（1）B2B(Business to Business)**，是指商家和商家建立的商业关系，如阿里巴巴 （2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目简介">
+<meta property="og:url" content="http://example.com/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:site_name" content="zlw">
+<meta property="og:description" content="项目简介这里面参考https:&#x2F;&#x2F;blog.csdn.net&#x2F;unique_perfect&#x2F;article&#x2F;details&#x2F;111392634写的内容，非常详细！ 项目背景市面上有5种常见的电商模式 B2B、B2C、C2B、C2C、O2O，谷粒商城这里采用B2C的模式，营销商品给用户。 **（1）B2B(Business to Business)**，是指商家和商家建立的商业关系，如阿里巴巴 （2">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424185338715.png">
+<meta property="og:image" content="http://example.com/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424190238382.png">
+<meta property="og:image" content="http://example.com/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424190536893.png">
+<meta property="og:image" content="http://example.com/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424190557364.png">
+<meta property="og:image" content="http://example.com/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424190613318.png">
+<meta property="og:image" content="http://example.com/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424190637009.png">
+<meta property="og:image" content="http://example.com/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424190714876.png">
+<meta property="article:published_time" content="2023-04-24T10:48:21.000Z">
+<meta property="article:modified_time" content="2023-04-24T11:07:55.315Z">
+<meta property="article:author" content="zlw">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424185338715.png">
+  
+  
+  
+  <title>项目简介 - zlw</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>欢迎来到zlw的blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/8.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="项目简介"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-24 18:48" pubdate>
+          2023年4月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">项目简介</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h1><p>这里面参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/unique_perfect/article/details/111392634%E5%86%99%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E9%9D%9E%E5%B8%B8%E8%AF%A6%E7%BB%86%EF%BC%81">https://blog.csdn.net/unique_perfect/article/details/111392634写的内容，非常详细！</a></p>
+<h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p>市面上有5种常见的电商模式 B2B、<strong>B2C</strong>、C2B、C2C、O2O，谷粒商城这里采用B2C的模式，营销商品给用户。</p>
+<p>**（1）B2B(Business to Business)**，是指商家和商家建立的商业关系，如阿里巴巴</p>
+<p><strong>（2）B2C(Business to Consumer)</strong> 就是我们经常看到的供应商直接把商品买给用户，即 “商对客” 模式，也就是我们说的商业零售，直接面向消费销售产品和服务，如苏宁易购，京东，天猫，小米商城</p>
+<p><strong>（3）C2B (Customer to Business)</strong>,即消费者对企业，先有消费者需求产生而后有企业生产，即先有消费者提出需求，后又生产企业按需求组织生产</p>
+<p><strong>（4）C2C (Customer to Consumer)</strong> 客户之间把自己的东西放到网上去卖 。如淘宝、咸鱼</p>
+<p><strong>（5）O2O 即 Online To Offline</strong>，也即将线下商务的机会与互联网结合在一起，让互联网成为线上交易前台，线上快速支付，线上优质服务，如：饿了么，美团，淘票票，京东到家</p>
+<h2 id="项目架构图"><a href="#项目架构图" class="headerlink" title="项目架构图"></a>项目架构图</h2><p><img src="/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424185338715.png" srcset="/img/loading.gif" lazyload alt="image-20230424185338715"></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs makefile">前后端分离的项目，分为外网和内网部署，外网部署是给客户端访问的，可以用PC端，手机app 等等。内网部署是后端集群。<br><br>前端发送请求会5通过nginx集群，交给API网关（SpringCloud gateway）（网关可以根据当前请求动态地路由到指定的服务，看当前请求是想调用商品服务还是购物车服务还是检索服务）从路由过来如果请求很多，可以负载均衡地调用商品服务器中一台（商品服务复制了多份），当商品服务器出现问题也<br>可以在网关层面对服务进行熔断或降级（使用阿里的sentinel组件），网关还有其他的功能如认证授权、限流（只放行部分到服务器）等。<br><br>到达服务器后进行处理（springboot为微服务），服务与服务可能会相互调用（使用feign组件），有些请求可能经过登录才能进行（基于OAuth2.0的认证中心。安全和权限使用springSecurity控制）<br><br>服务可能保存了一些数据或者需要使用缓存，我们使用redis集群（分片+哨兵集群）。持久化使用mysql，读写分离和分库分表。<br><br>服务和服务之间会使用消息队列（RabbitMQ），来完成异步解耦，分布式事务的一致性。有些服务可能需要全文检索，检索商品信息，使用ElaticSearch。<br><br>服务可能需要存取数据，使用阿里云的对象存储服务OSS。<br><br>项目上线后为了快速定位问题，使用ELK对日志进行处理，使用LogStash收集业务里的各种日志，把日志存储到ES中，用Kibana可视化页面从ES中检<br>索出相关信息，帮助我们快速定位问题所在。<br><br>在分布式系统中，由于我们每个服务都可能部署在很多台机器，服务和服务可能相互调用，就得知道彼此都在哪里，所以需要将所有服务都注册到注册<br>中心。服务从注册中心发现其他服务所在位置（使用阿里Nacos作为注册中心）。<br><br>每个服务的配置众多，为了实现改一处配置相同配置就同步更改，就需要配置中心，也使用阿里的Nacos，服务从配置中心中动态取配置。<br><br>服务追踪，追踪服务调用链哪里出现问题，使用springcloud提供的Sleuth、Zipkin、Metrics，把每个服务的信息交给开源的Prometheus进行聚合分析，再由Grafana进行可视化展示，提供Prometheus提供的AlterManager实时得到服务的警告信息，以短信/邮件的方式告知服务开发人员。<br><br>还提供了持续集成和持续部署。项目发布起来后，因为微服务众多，每一个都打包部署到服务器太麻烦，有了持续集成后开发人员可以将修改后的代码提交到<br>github，运维人员可以通过自动化工具Jenkins Pipeline将github中获取的代码打包成docker镜像，最终是由k8s集成docker服务，将服务以docker容器的方式运行。<br></code></pre></td></tr></table></figure>
+
+<h2 id="微服务划分图"><a href="#微服务划分图" class="headerlink" title="微服务划分图"></a>微服务划分图</h2><p><img src="/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424190238382.png" srcset="/img/loading.gif" lazyload alt="image-20230424190238382"></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs makefile">反映了需要创建的微服务以及相关技术。<br><br>前后分离开发。前端项目分为admin-vue（工作人员使用的后台管理系统）、<br>shop-vue（面向公众访问的web网站）、app（公众）、小程序（公众）<br><br>商品服务：商品的增删改查、商品的上下架、商品详情<br>支付服务<br>优惠服务<br>用户服务：用户的个人中心、收货地址<br>仓储服务：商品的库存<br>秒杀服务<br>订单服务：订单增删改查<br>检索服务：商品的检索ES<br>中央认证服务：登录、注册、单点登录、社交登录<br>购物车服务<br>后台管理系统：添加优惠信息等<br></code></pre></td></tr></table></figure>
+
+<h2 id="项目技术-amp-特色"><a href="#项目技术-amp-特色" class="headerlink" title="项目技术&amp;特色"></a>项目技术&amp;特色</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs makefile">前后分离开发，并开发基于vue的后台管理系统<br>SpringCloud全新的解决方案<br>应用监控、限流、网关、熔断降级等分布式方案，全方位涉及<br>透彻讲解分布式事务，分布式锁等分布式系统的难点<br>压力测试与性能优化<br>各种集群技术的区别以及使用<br>CI/CD 使用<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="项目前置要求"><a href="#项目前置要求" class="headerlink" title="项目前置要求"></a>项目前置要求</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs makefile">熟悉SpringBoot以及常见整合方案<br>了解SpringCloud<br>熟悉 git  maven<br>熟悉 linux redis docker 基本操作<br>了解 html，css，js，vue<br>熟练使用idea开发项目<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="分布式基础概念"><a href="#分布式基础概念" class="headerlink" title="分布式基础概念"></a>分布式基础概念</h1><h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs makefile">微服务架构风格，就像是把一个单独的应用程序开发成一套小服务，每个小<br>服务运行在自己的进程中，并使用轻量级机制通信，通常是 HTTP API 这些<br>服务围绕业务能力来构建，	并通过完全自动化部署机制来独立部署，这些服<br>务使用不同的编程语言书写，以及不同数据存储技术，并保持最低限度的集中式管理<br><br>简而言之，拒绝大型单体应用，基于业务边界进行服务微化拆分，每个服务独<br>立部署运行。<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="集群-amp-分布式-amp-节点"><a href="#集群-amp-分布式-amp-节点" class="headerlink" title="集群&amp;分布式&amp;节点"></a>集群&amp;分布式&amp;节点</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs makefile">集群是个物理状态，分布式是个工作方式<br><br>只要是一堆机器，也可以叫做集群，他们是不是一起协作干活，<br>这谁也不知道。<br><br>《分布式系统原理与范型》定义：<br><br>分布式系统是若干独立计算机的集合，这些计算机对于用户来说像单个系统<br>分布式系统 (distributed system) 是建立网络之上的软件系统<br><br>分布式是指根据不同的业务分布在不同的地方<br><br>集群指的是将几台服务器集中在一起，实现同一业务<br><br>例如：京东是一个分布式系统，众多业务运行在不同的机器上，所有业务构成<br>一个大型的分布式业务集群，每一个小的业务，比如用户系统，访问压力大的<br>时候一台服务器是不够的，我们就应该将用户系统部署到多个服务器，也就是<br>每一个业务系统也可以做集群化<br><br>分布式中的每一个节点，都可以做集群，而集群并不一定就是分布式的<br><br>节点：集群中的一个服务器<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="远程调用"><a href="#远程调用" class="headerlink" title="远程调用"></a>远程调用</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs makefile">在分布式系统中，各个服务可能处于不同主机，但是服务之间不可避免的需要<br>互相调用，我们称之为远程调用<br><br>SpringCloud中使用HTTP+JSON的方式来完成远程调用<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424190536893.png" srcset="/img/loading.gif" lazyload alt="image-20230424190536893"></p>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs makefile">分布式系统中，A 服务需要调用B服务，B服务在多台机器中都存在， <br>A调用任意一个服务器均可完成功能<br><br>为了使每一个服务器都不要太或者太闲，我们可以负载均衡调用每一个服务器，<br>提升网站的健壮性<br><br>常见的负载均衡算法：<br>轮询：为第一个请求选择健康池中的每一个后端服务器，然后按顺序往后依<br>次选择，直到最后一个，然后循环<br><br>最小连接：优先选择链接数最少，也就是压力最小的后端服务器，在会话较<br>长的情况下可以考虑采取这种方式<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424190557364.png" srcset="/img/loading.gif" lazyload alt="image-20230424190557364"></p>
+<h2 id="服务注册-x2F-发现-amp-注册中心"><a href="#服务注册-x2F-发现-amp-注册中心" class="headerlink" title="服务注册&#x2F;发现&amp;注册中心"></a>服务注册&#x2F;发现&amp;注册中心</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs makefile">A服务调用B服务，A服务不知道B服务当前在哪几台服务器上有，哪些正常<br>的，哪些服务已经下线，解决这个问题可以引入注册中心<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424190613318.png" srcset="/img/loading.gif" lazyload alt="image-20230424190613318"></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs makefile">如果某些服务下线，我们其他人可以实时的感知到其他服务的状态，<br>从而避免调用不可用的服务<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="配置中心"><a href="#配置中心" class="headerlink" title="配置中心"></a>配置中心</h2><p><img src="/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424190637009.png" srcset="/img/loading.gif" lazyload alt="image-20230424190637009"></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs makefile">每一个服务最终都有大量配置，并且每个服务都可能部署在多个服务<br>器上，我们经常需要变更配置，我们可以让每个服务在配置中心获取<br>自己的配置。<br><br>配置中心用来集中管理微服务的配置信息<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="服务熔断-amp-服务降级"><a href="#服务熔断-amp-服务降级" class="headerlink" title="服务熔断&amp;服务降级"></a>服务熔断&amp;服务降级</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs makefile">在微服务架构中，微服务之间通过网络来进行通信，存在相互依赖，<br>当其中一个服务不可用时，有可能会造成雪崩效应，要防止这种情<br>况，必须要有容错机制来保护服务<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/image-20230424190714876.png" srcset="/img/loading.gif" lazyload alt="image-20230424190714876"></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs makefile">rpc<br>情景：<br>订单服务 --&gt; 商品服务 --&gt; 库存服务<br><br>库存服务出现故障导致响应慢，导致商品服务需要等待，可能等到10s后库存服<br>务才能响应。库存服务的不可用导致商品服务阻塞，商品服务等的期间，订单服<br>务也处于阻塞。一个服务不可用导致整个服务链都阻塞。如果是高并发，第一个<br>请求调用后阻塞10s得不到结果，第二个请求直接阻塞10s。更多的请求进来导致<br>请求积压，全部阻塞，最终服务器的资源耗尽。导致雪崩<br><br>1、服务熔断<br>设置服务的超时，当被调用的服务经常失败到达某个阈值，我们可以开启断路保<br>护机制，后来的请求不再去调用这个服务，本地直接返回默认的数据<br><br>2、服务降级<br>在运维期间，当系统处于高峰期，系统资源紧张，我们可以让非核心业务降级<br>运行，降级：某些服务不处理，或者简单处理【抛异常，返回NULL，调用 <br>Mock数据，调用 FallBack 处理逻辑】<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="API-网关"><a href="#API-网关" class="headerlink" title="API 网关"></a>API 网关</h1><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs makefile">在微服务架构中，API Gateway 作为整体架构的重要组件，抽象服务中<br>需要的公共功能，同时它提供了客户端负载均衡，服务自动熔断，灰度发布，统<br>一认证，限流监控，日志统计等丰富功能，帮助我们解决很多API管理的难题<br><br></code></pre></td></tr></table></figure>
+
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/SpringCloud%E9%A1%B9%E7%9B%AE/" class="category-chain-item">SpringCloud项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/SpringCloud%E9%A1%B9%E7%9B%AE/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E/" class="category-chain-item">谷粒商城</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>项目简介</div>
+      <div>http://example.com/2023/04/24/项目简介/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月24日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/25/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" title="错误解决">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">错误解决</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/24/docker/" title="环境搭建">
+                        <span class="hidden-mobile">环境搭建</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments">
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","appKey":"MnpSoeG5QTTJ4GagUMOq5t7J","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://8pddcsrj.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div>张露文的博客 | 记录成长过程</div> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

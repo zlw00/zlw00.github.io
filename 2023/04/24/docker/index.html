@@ -1,0 +1,872 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#447EA5">
+  <meta name="author" content="zlw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="https:&#x2F;&#x2F;blog.csdn.net&#x2F;unique_perfect&#x2F;article&#x2F;details&#x2F;111392634 安装VScode12345678910111213141516vscodeAuto Close Tag  Auto Rename Tag Chinese ESlint HTML CSS SupportHTML SnippetsJavaScript (ES6) code sn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="环境搭建">
+<meta property="og:url" content="http://example.com/2023/04/24/docker/index.html">
+<meta property="og:site_name" content="zlw">
+<meta property="og:description" content="https:&#x2F;&#x2F;blog.csdn.net&#x2F;unique_perfect&#x2F;article&#x2F;details&#x2F;111392634 安装VScode12345678910111213141516vscodeAuto Close Tag  Auto Rename Tag Chinese ESlint HTML CSS SupportHTML SnippetsJavaScript (ES6) code sn">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230509120242599.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230424194200258.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230424194413703.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230424194529899.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230425103405834.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230425103437210.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230425103455642.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230425103522827.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230425104737608.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230425104356257.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230425105709658.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230425122128726.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230425142020516.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230425142401944.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230425151404495.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230517112252014.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230426152356162.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230426154156526.png">
+<meta property="og:image" content="http://example.com/2023/04/24/docker/image-20230426154721761.png">
+<meta property="article:published_time" content="2023-04-24T10:42:32.000Z">
+<meta property="article:modified_time" content="2023-05-17T04:10:41.580Z">
+<meta property="article:author" content="zlw">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/04/24/docker/image-20230509120242599.png">
+  
+  
+  
+  <title>环境搭建 - zlw</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>欢迎来到zlw的blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/8.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="环境搭建"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-24 18:42" pubdate>
+          2023年4月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">环境搭建</h1>
+            
+            <div class="markdown-body">
+              
+              <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/unique_perfect/article/details/111392634">https://blog.csdn.net/unique_perfect/article/details/111392634</a></p>
+<h1 id="安装VScode"><a href="#安装VScode" class="headerlink" title="安装VScode"></a>安装VScode</h1><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs makefile">vscode<br><br>Auto Close Tag  <br>Auto Rename Tag <br>Chinese <br>ESlint <br>HTML CSS Support<br>HTML Snippets<br>JavaScript (ES6) code snippets<br>Live Server<br>open in brower<br>Vetur<br><br>idea<br>lombok、mybatisx<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h1><p>参照菜鸟教程安装的docker：<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/centos-docker-install.html">https://www.runoob.com/docker/centos-docker-install.html</a></p>
+<p>实现打开虚拟机就自动打开docker的功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs linux">systemctl enable docker<br></code></pre></td></tr></table></figure>
+
+<h1 id="Docker安装mysql"><a href="#Docker安装mysql" class="headerlink" title="Docker安装mysql"></a>Docker安装mysql</h1><p><strong>（1）下载镜像文件</strong></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> pull mysql:<span class="hljs-number">8</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>（2）创建实例并启动</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs linux">docker run --name mysql -v /usr/local/mysql/data:/var/lib/mysql -v /usr/local/mysql:/etc/mysql/conf.d -v /usr/local/mysql/log:/var/log/mysql  -e MYSQL_ROOT_PASSWORD=Zlw199805  -p 3306:3306 -d mysql:8.0<br></code></pre></td></tr></table></figure>
+
+<p><strong>参数说明：</strong></p>
+<ul>
+<li>-p 3306：3306：将容器的3306端口映射到主机的3306端口</li>
+<li>-v：目录挂载</li>
+<li>-e：初始化root用户的密码</li>
+<li>-d：后台运行</li>
+<li>–name：指定容器名字</li>
+</ul>
+<p><strong>（3）通过容器的mysql命令行工具连接</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs linux">docker exec -it mysql mysql -uroot -proot<br></code></pre></td></tr></table></figure>
+
+<p>成功~</p>
+<p><strong>如果出现以下错误：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs linux">docker: Error response from daemon: Conflict. The container name &quot;/mysql&quot; is already in use by container &quot;5345202aa61f809652cde85621cd7dcbf812ba7c1e0b4659966a2cab22485395&quot;. You have to remove (or rename) that container to be able to reuse that name.<br>See &#x27;docker run --help&#x27;.<br></code></pre></td></tr></table></figure>
+
+<p><strong>则执行：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs linux">docker rm 5345202aa61f809652cde85621cd7dcbf812ba7c1e0b4659966a2cab22485395<br></code></pre></td></tr></table></figure>
+
+<p><strong>再运行这个</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs linux">docker run --name mysql -v /usr/local/mysql/data:/var/lib/mysql -v /usr/local/mysql:/etc/mysql/conf.d -v /usr/local/mysql/log:/var/log/mysql  -e MYSQL_ROOT_PASSWORD=Zlw199805  -p 3306:3306 -d mysql:8.0<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/04/24/docker/image-20230509120242599.png" srcset="/img/loading.gif" lazyload alt="image-20230509120242599"></p>
+<h1 id="Docker安装redis"><a href="#Docker安装redis" class="headerlink" title="Docker安装redis"></a>Docker安装redis</h1><h1 id="配置git"><a href="#配置git" class="headerlink" title="配置git"></a>配置git</h1><p>之前已经下载配置过，这里需要配置ssh免密登录</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">进入 git bash；使用：ssh-keygen -t rsa -C <span class="hljs-string">&quot;xxxxx@xxxxx.com&quot;</span>命令。 连续三次回车生成密钥。<br>使用cat ~/.ssh/id_rsa.pub 查看密钥内容<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/04/24/docker/image-20230424194200258.png" srcset="/img/loading.gif" lazyload alt="image-20230424194200258"></p>
+<p><strong>在git中添加公钥</strong></p>
+<p>登录码云，设置里面，找到shh公钥，</p>
+<p><img src="/2023/04/24/docker/image-20230424194413703.png" srcset="/img/loading.gif" lazyload alt="image-20230424194413703"></p>
+<p><strong>使用 ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#101;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#101;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a> 测试是否成功即可</strong></p>
+<p><img src="/2023/04/24/docker/image-20230424194529899.png" srcset="/img/loading.gif" lazyload alt="image-20230424194529899"></p>
+<h1 id="新键仓库"><a href="#新键仓库" class="headerlink" title="新键仓库"></a>新键仓库</h1><p><img src="/2023/04/24/docker/image-20230425103405834.png" srcset="/img/loading.gif" lazyload alt="image-20230425103405834"></p>
+<p><strong>创建好后，复制地址</strong></p>
+<p><img src="/2023/04/24/docker/image-20230425103437210.png" srcset="/img/loading.gif" lazyload alt="image-20230425103437210"></p>
+<p><strong>创建项目：</strong></p>
+<p><img src="/2023/04/24/docker/image-20230425103455642.png" srcset="/img/loading.gif" lazyload alt="image-20230425103455642"></p>
+<p><img src="/2023/04/24/docker/image-20230425103522827.png" srcset="/img/loading.gif" lazyload alt="image-20230425103522827"></p>
+<h1 id="创建项目微服务"><a href="#创建项目微服务" class="headerlink" title="创建项目微服务"></a>创建项目微服务</h1><p>商品服务、仓库服务、订单服务、优惠券服务、用户服务</p>
+<p>共同点：</p>
+<p>（1）web、openfeign</p>
+<p>（2）每个服务、包名com.zlw.gulimall.×××（product&#x2F;order&#x2F;ware&#x2F;coupon&#x2F;member）</p>
+<p>（3）模块名：gulimall-product。。。</p>
+<p><img src="/2023/04/24/docker/image-20230425104737608.png" srcset="/img/loading.gif" lazyload alt="image-20230425104737608"></p>
+<p><img src="/2023/04/24/docker/image-20230425104356257.png" srcset="/img/loading.gif" lazyload alt="image-20230425104356257"></p>
+<h1 id="创建父模块"><a href="#创建父模块" class="headerlink" title="创建父模块"></a>创建父模块</h1><p>创建父模块：在gulimall中创建pom.xml</p>
+<p><img src="/2023/04/24/docker/image-20230425105709658.png" srcset="/img/loading.gif" lazyload alt="image-20230425105709658"></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs makefile">在maven窗口刷新，并点击+号，找到刚才的pom.xml添加进来，发现多了个root。这样比如运行root的clean命令，其他项目也一起clean了。<br><br>修改总项目的.gitignore，把小项目里的垃圾文件在提交的时候忽略掉，也就是push到码云的时候，没有其他垃圾文件，只上传需要的就可以<br>target/<br>pom.xml.tag<br>pom.xml.releaseBackup<br>pom.xml.versionsBackup<br>pom.xml.next<br>release.properties<br>dependency-reduced-pom.xml<br>buildNumber.properties<br>.mvn/timing.properties<br>.mvn/wrapper/maven-wrapper.jar<br><br>**/mvnw<br>**/mvnw.cmd<br><br>**/.mvn<br>**/target<br><br>.idea<br><br><br>**/.gitignore<br><br>**/README.md<br><br></code></pre></td></tr></table></figure>
+
+<p>push和commit的时候出现一点小错，详情到错误解决中~</p>
+<p>目前整个项目布局是这样的：</p>
+<p><img src="/2023/04/24/docker/image-20230425122128726.png" srcset="/img/loading.gif" lazyload alt="image-20230425122128726"></p>
+<h1 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h1><p>打开虚拟机的mysql，新键navicat连接，用来连接虚拟机的mysql。</p>
+<p><img src="/2023/04/24/docker/image-20230425142020516.png" srcset="/img/loading.gif" lazyload alt="image-20230425142020516"></p>
+<p>创建数据库：</p>
+<p>gulimall_oms、gulimall_pms、gulimall_sms、gulimall_ums、gulimall_wms</p>
+<p><img src="/2023/04/24/docker/image-20230425142401944.png" srcset="/img/loading.gif" lazyload alt="image-20230425142401944"></p>
+<h1 id="人人开源"><a href="#人人开源" class="headerlink" title="人人开源"></a>人人开源</h1><h2 id="renren-fast"><a href="#renren-fast" class="headerlink" title="renren-fast"></a>renren-fast</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs makefile">在码云上搜索人人开源，我们使用renren-fast，renren-fast-vue项目。<br>git clone https://gitee.com/renrenio/renren-fast.git<br><br>git clone https://gitee.com/renrenio/renren-fast-vue.git<br><br>下载到了桌面，我们把renren-fast移动到我们的项目文件夹（删掉.git文件），而renren-fast-vue是用VSCode打开的（后面再弄）<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/04/24/docker/image-20230425151404495.png" srcset="/img/loading.gif" lazyload alt="image-20230425151404495"></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs makefile">在idea(root)项目里的pom.xml添加一个<br>&lt;modules&gt;<br>    &lt;module&gt;gulimall-coupon&lt;/module&gt;<br>    &lt;module&gt;gulimall-member&lt;/module&gt;<br>    &lt;module&gt;gulimall-order&lt;/module&gt;<br>    &lt;module&gt;gulimall-product&lt;/module&gt;<br>    &lt;module&gt;gulimall-ware&lt;/module&gt;<br><br>    &lt;module&gt;renren-fast&lt;/module&gt;<br>&lt;/modules&gt;<br><br>然后打开renren-fast/db/mysql.sql，复制全部，在sqlyog中创建库gulimall_admin，粘贴以下的内容执行。<br></code></pre></td></tr></table></figure>
+
+<p><strong>修改renrenfast中的配置文件如下。运行成功~</strong></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs awk">然后修改项目里renren-fast中的application.yml，修改application-dev.yml中的数库库的<br>            url: jdbc:mysql:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">106.100</span>:<span class="hljs-number">3306</span><span class="hljs-regexp">/gulimall_admin?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/</span>Shanghai<br>            username: root<br>            password: Zlw199805<br><br>然后执行java下的RenrenApplication<br>浏览器输入http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8080</span><span class="hljs-regexp">/renren-fast/</span> 得到&#123;“msg”:“invalid token”,“code”:<span class="hljs-number">401</span>&#125;就代表无误<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/04/24/docker/image-20230517112252014.png" srcset="/img/loading.gif" lazyload alt="image-20230517112252014"></p>
+<h2 id="renren-fast-vue"><a href="#renren-fast-vue" class="headerlink" title="renren-fast-vue"></a>renren-fast-vue</h2><h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/misscai/p/12809404.html">https://www.cnblogs.com/misscai/p/12809404.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/en">https://nodejs.org/en</a></p>
+<p>安装完成之后，开打cmd，检查安装的版本。</p>
+<p><img src="/2023/04/24/docker/image-20230426152356162.png" srcset="/img/loading.gif" lazyload alt="image-20230426152356162"></p>
+<p>接下来：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs linux">npm config set registry http://registry.npm.taobao.org/  # 设置node仓库。提高下载速度<br></code></pre></td></tr></table></figure>
+
+<p>之后返回到vscode的终端进行安装</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
+
+<p>安装完毕后，执行</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">npm <span class="hljs-built_in">run</span> dev<br></code></pre></td></tr></table></figure>
+
+<p>成功~</p>
+<p><img src="/2023/04/24/docker/image-20230426154156526.png" srcset="/img/loading.gif" lazyload alt="image-20230426154156526"></p>
+<p>进入：<a target="_blank" rel="noopener" href="http://localhost:8001/#/login%EF%BC%8C%E4%BF%AE%E6%94%B9%E9%AA%8C%E8%AF%81%E7%A0%81%E5%8F%91%E7%8E%B0%E7%BB%8F%E8%BF%87%E4%BA%86%E5%90%8E%E7%AB%AF%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%E8%BF%9E%E6%8E%A5%E4%BA%86%E8%B5%B7%E6%9D%A5%E3%80%82">http://localhost:8001/#/login，修改验证码发现经过了后端，也就是连接了起来。</a></p>
+<p>登录账号和密码（都为admin），进入成功。</p>
+<p><img src="/2023/04/24/docker/image-20230426154721761.png" srcset="/img/loading.gif" lazyload alt="image-20230426154721761"></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/SpringCloud%E9%A1%B9%E7%9B%AE/" class="category-chain-item">SpringCloud项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/SpringCloud%E9%A1%B9%E7%9B%AE/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E/" class="category-chain-item">谷粒商城</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>环境搭建</div>
+      <div>http://example.com/2023/04/24/docker/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月24日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/" title="项目简介">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">项目简介</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/24/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="docker">
+                        <span class="hidden-mobile">docker</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments">
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","appKey":"MnpSoeG5QTTJ4GagUMOq5t7J","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://8pddcsrj.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div>张露文的博客 | 记录成长过程</div> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
