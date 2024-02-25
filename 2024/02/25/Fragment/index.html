@@ -1,0 +1,881 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#447EA5">
+  <meta name="author" content="zlw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Fragment可以兼容大小尺寸，例如：手机和平板，让布局能适应手机和平板，而不用维护两个，浪费资源和人力。 Fragment是一种可以嵌入在Activity当中的UI片段，它能让程序更加合理和充分地利用大屏幕的空间，因而在平板上应用得非常广泛。 简单用法左侧： 1234567891011121314151617181920212223left_fragment.xml&lt;LinearLayo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fragment">
+<meta property="og:url" content="http://example.com/2024/02/25/Fragment/index.html">
+<meta property="og:site_name" content="zlw">
+<meta property="og:description" content="Fragment可以兼容大小尺寸，例如：手机和平板，让布局能适应手机和平板，而不用维护两个，浪费资源和人力。 Fragment是一种可以嵌入在Activity当中的UI片段，它能让程序更加合理和充分地利用大屏幕的空间，因而在平板上应用得非常广泛。 简单用法左侧： 1234567891011121314151617181920212223left_fragment.xml&lt;LinearLayo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/02/25/Fragment/asynccode">
+<meta property="article:published_time" content="2024-02-25T13:07:54.000Z">
+<meta property="article:modified_time" content="2024-02-25T13:10:07.320Z">
+<meta property="article:author" content="zlw">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Android基础知识">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/02/25/Fragment/asynccode">
+  
+  
+  
+  <title>Fragment - zlw</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>欢迎来到zlw的blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/8.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Fragment"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-25 21:07" pubdate>
+          2024年2月25日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          107 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Fragment</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h1><p>可以兼容大小尺寸，例如：手机和平板，让布局能适应手机和平板，而不用维护两个，浪费资源和人力。</p>
+<p>Fragment是一种可以嵌入在Activity当中的UI片段，它能让程序更加合理和充分地利用大屏幕的空间，因而在平板上应用得非常广泛。</p>
+<h2 id="简单用法"><a href="#简单用法" class="headerlink" title="简单用法"></a>简单用法</h2><p>左侧：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs XML">left_fragment.xml<br><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/button&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_gravity</span>=<span class="hljs-string">&quot;center_horizontal&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Button&quot;</span></span><br><span class="hljs-tag">        /&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span><br>class LeftFragment : Fragment() &#123;<br><br>    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,<br>            savedInstanceState: Bundle?): View? &#123;<br>        return inflater.inflate(R.layout.left_fragment, container, false)<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>右侧：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs XML">right_fragment.xml<br><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#00ff00&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_gravity</span>=<span class="hljs-string">&quot;center_horizontal&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;24sp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;This is right fragment&quot;</span></span><br><span class="hljs-tag">        /&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span><br>class RightFragment : Fragment() &#123;<br><br>    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,<br>            savedInstanceState: Bundle?): View? &#123;<br>        return inflater.inflate(R.layout.right_fragment, container, false)<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>activity_main.xml：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs XML"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;horizontal&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span> &gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/leftFrag&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;com.example.fragmenttest.LeftFragment&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;0dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">&quot;1&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rightFrag&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;com.example.fragmenttest.RightFragment&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;0dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">&quot;1&quot;</span> /&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="FragmentManager"><a href="#FragmentManager" class="headerlink" title="FragmentManager"></a><strong>FragmentManager</strong></h2><p>使用 <code>FragmentManager</code> 来管理 <code>Fragment</code> 的添加、移除和替换操作。以下是如何使用 <code>FragmentManager</code> 替换一个 <code>Fragment</code> 的基本步骤：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-keyword">val</span> fragmentManager = supportFragmentManager <span class="hljs-comment">// 或者使用 childFragmentManager，取决于所在的容器类型</span><br><span class="hljs-keyword">val</span> newFragment = NewFragment()<br><span class="hljs-keyword">val</span> transaction = fragmentManager.beginTransaction()<br>transaction.replace(R.id.fragmentContainer, newFragment) <span class="hljs-comment">// R.id.fragmentContainer 是你的容器视图的 ID</span><br>transaction.commit()<br></code></pre></td></tr></table></figure>
+
+<p>对于提交事务的方法，还有一个 <code>commitAllowingStateLoss()</code>,它允许在一些特定情况下提交事务，即使可能存在状态丢失的风险。通常情况下，使用 <code>commit()</code> 来提交事务是更安全的方式，因为它会确保在状态变化（如设备旋转）时不会丢失事务的状态。</p>
+<p>然而，有时候在异步操作或其他情况下，如果使用 <code>commit()</code> 来提交事务可能会导致 <code>IllegalStateException</code>，此时可以考虑使用 <code>commitAllowingStateLoss()</code> 来避免崩溃，但要注意潜在的状态丢失问题。</p>
+<h2 id="Activity动态添加Fragment"><a href="#Activity动态添加Fragment" class="headerlink" title="Activity动态添加Fragment"></a>Activity动态添加Fragment</h2><p>另一个右侧，点击按钮动态变化右侧的fragment</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs XML">another_right_fragment.xml<br><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#ffff00&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_gravity</span>=<span class="hljs-string">&quot;center_horizontal&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;24sp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;This is another right fragment&quot;</span></span><br><span class="hljs-tag">        /&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span><br>class AnotherRightFragment : Fragment() &#123;<br><br>    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,<br>            savedInstanceState: Bundle?): View? &#123;<br>        return inflater.inflate(R.layout.another_right_fragment, container, false)<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>修改activity_main.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs XML"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;horizontal&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span> &gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/leftFrag&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;com.example.fragmenttest.LeftFragment&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;0dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">&quot;1&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">FrameLayout</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rightLayout&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;0dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">&quot;1&quot;</span> &gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">FrameLayout</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>将右侧Fragment替换成了一个FrameLayout。这是Android中最简单的一种布局，所有的控件默认都会摆放在布局的左上角。由于这里仅需要在布局里放入一个Fragment，不需要任何定位，因此非常适合使用FrameLayout。</p>
+<p>MainActivity点击按钮动态添加另一个右侧fragment：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState)<br>        setContentView(R.layout.activity_main)<br>        button.setOnClickListener &#123;<br>            replaceFragment(AnotherRightFragment())<br>        &#125;<br>        replaceFragment(RightFragment())<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">replaceFragment</span><span class="hljs-params">(fragment: <span class="hljs-type">Fragment</span>)</span></span> &#123;<br>        <span class="hljs-keyword">val</span> fragmentManager = supportFragmentManager<br>        <span class="hljs-keyword">val</span> transaction = fragmentManager.beginTransaction()<br>        transaction.replace(R.id.rightLayout, fragment)<br>        transaction.commit()<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>动态添加Fragment主要分为5步：</strong></p>
+<p>(1) 创建待添加Fragment的实例。</p>
+<p>(2) 获取FragmentManager，在Activity中可以直接调用getSupportFragmentManager()方法获取。</p>
+<p>(3) 开启一个事务，通过调用beginTransaction()方法开启。</p>
+<p>(4) 向容器内添加或替换Fragment，一般使用replace()方法实现，需要传入容器的id和待添加的Fragment实例。</p>
+<p>(5) 提交事务，调用commit()方法来完成。</p>
+<h2 id="Fragment中实现返回栈"><a href="#Fragment中实现返回栈" class="headerlink" title="Fragment中实现返回栈"></a>Fragment中实现返回栈</h2><p>通过点击按钮添加了一个Fragment之后，这时按下Back键程序就会直接退出。如果我们想实现类似于返回栈的效果，按下Back键可以回到上一个Fragment，该如何实现呢？</p>
+<p>FragmentTransaction中提供了一个addToBackStack()方法，可以用于将一个事务添加到返回栈中。修改MainActivity中的代码，如下所示：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;<br><br>    ...<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">replaceFragment</span><span class="hljs-params">(fragment: <span class="hljs-type">Fragment</span>)</span></span> &#123;<br>        <span class="hljs-keyword">val</span> fragmentManager = supportFragmentManager<br>        <span class="hljs-keyword">val</span> transaction = fragmentManager.beginTransaction()<br>        transaction.replace(R.id.rightLayout, fragment)<br>        transaction.addToBackStack(<span class="hljs-literal">null</span>)<br>        transaction.commit()<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>现在重新运行程序，并点击按钮将AnotherRightFragment添加到Activity中，然后按下Back键，你会发现程序并没有退出，而是回到了RightFragment界面。继续按下Back键，RightFragment界面也会消失，再次按下Back键，程序才会退出。</p>
+<h2 id="Fragment和Activity交互"><a href="#Fragment和Activity交互" class="headerlink" title="Fragment和Activity交互"></a>Fragment和Activity交互</h2><p>如果想要在Activity中调用Fragment里的方法，或者在Fragment中调用Activity里的方法，应该如何实现呢？</p>
+<p>Activity中调用Fragment中的方法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-keyword">val</span> fragment = supportFragmentManager.findFragmentById(R.id.leftFrag) <span class="hljs-keyword">as</span> LeftFragment<br><br><span class="hljs-comment">//推荐</span><br><span class="hljs-keyword">val</span> fragment = leftFrag <span class="hljs-keyword">as</span> LeftFragment<br></code></pre></td></tr></table></figure>
+
+<p>Fragment中调用Activity中的方法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-keyword">if</span> (activity != <span class="hljs-literal">null</span>) &#123;<br>    <span class="hljs-keyword">val</span> mainActivity = activity <span class="hljs-keyword">as</span> MainActivity<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Activity和Fragment间数据传递"><a href="#Activity和Fragment间数据传递" class="headerlink" title="Activity和Fragment间数据传递"></a>Activity和Fragment间数据传递</h2><h3 id="Activity向Fragment传递数据"><a href="#Activity向Fragment传递数据" class="headerlink" title="Activity向Fragment传递数据"></a>Activity向Fragment传递数据</h3><p>使用Bundle</p>
+<ul>
+<li>Bundle用来存储数据</li>
+<li><code>setArguments()</code>方法将数据集绑定到Fragment中</li>
+</ul>
+<p>**<code>Activity</code>**<strong>：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AppCompatActivity</span> &#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState);<br><br>        setContentView(R.layout.activity_main);<br>        <span class="hljs-type">BlankFragment1</span> <span class="hljs-variable">fragment</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BlankFragment1</span>();<br><br>        <span class="hljs-comment">//创建资源绑定器bundle</span><br>        <span class="hljs-type">Bundle</span> <span class="hljs-variable">bundle</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Bundle</span>();<br>        <span class="hljs-comment">//添加数据到资源绑定器</span><br>        bundle.putString(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;张三&quot;</span>);<br>        <span class="hljs-comment">//将资源绑定器添加到fragment对象中</span><br>        fragment.setArguments(bundle);<br><br>        <span class="hljs-type">FragmentManager</span> <span class="hljs-variable">fragmentManager</span> <span class="hljs-operator">=</span> getSupportFragmentManager();<br>        <span class="hljs-type">FragmentTransaction</span> <span class="hljs-variable">fragmentTransaction</span> <span class="hljs-operator">=</span> fragmentManager.beginTransaction();<br>        fragmentTransaction.add(R.id.contain1,fragment);<br>        fragmentTransaction.commit();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>Fragment：</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BlankFragment1</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Fragment</span> &#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(<span class="hljs-meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState);<br>        <span class="hljs-comment">//getArguments获取该fragment对象中的bundle</span><br>        <span class="hljs-type">Bundle</span> <span class="hljs-variable">bundle</span> <span class="hljs-operator">=</span> getArguments();<br>        <span class="hljs-comment">//获取bundle中存放的数据</span><br>        Log.d(<span class="hljs-string">&quot;ioc&quot;</span>, bundle.getString(<span class="hljs-string">&quot;name&quot;</span>));<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> View <span class="hljs-title function_">onCreateView</span><span class="hljs-params">(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-keyword">return</span> inflater.inflate(R.layout.fragment_blank1, container, <span class="hljs-literal">false</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Fragment向Activity传递数据"><a href="#Fragment向Activity传递数据" class="headerlink" title="Fragment向Activity传递数据"></a>Fragment向Activity传递数据</h3><p>方法1：使用Java接口</p>
+<ul>
+<li>声明一个接口，使用接口实现Activity和Fragment之间的数据传输</li>
+<li>接口的声明在Fragment中</li>
+<li>接口的实现在Activity中</li>
+</ul>
+<p><strong>接口：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IFragmentCallback</span> &#123;<br>        <span class="hljs-comment">//Fragment调用该方法发送信息msg给Acticity，Activity中通过实现该方法来获得发来的信息msg</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendMsgToActivity</span><span class="hljs-params">(String msg)</span>;<br>    <span class="hljs-comment">//Activity实现该方法将信息作为返回值，Fragment调用该方法获取到的返回值即Activity传来的信息</span><br>    String <span class="hljs-title function_">getMsgFromActivity</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>Fragment</code></strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BlankFragment1</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Fragment</span> &#123;<br>    <span class="hljs-comment">//Fragment中要有IFragmentCallback接口属性，这里只有一个声明，具体实现在Activity中</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-title class_">IFragmentCallback</span> iFragmentCallback;<br>    <span class="hljs-comment">//接口对象的set方法，负责实例化接口</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">setiFragmentCallback</span>(<span class="hljs-params">IFragmentCallback iFragmentCallback</span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">iFragmentCallback</span> = iFragmentCallback;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">onCreate</span>(<span class="hljs-params"><span class="hljs-meta">@Nullable</span> Bundle savedInstanceState</span>) &#123;<br>        <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">onCreate</span>(savedInstanceState);<br>        <span class="hljs-comment">//调用iFragmentCallback的方法向Activity传参数，Activity实例化IFragmentCallback接口时会在sendMsgToActivity方法内对传参数进行操作</span><br>        iFragmentCallback.<span class="hljs-title function_">sendMsgToActivity</span>(<span class="hljs-string">&quot;你好，我来自Fragment&quot;</span>);<br>        <span class="hljs-comment">//Activity实例化IFragmentCallback接口时在getMsgFromActivity方法内返回一个参数，Fragment调用该方法就会取得该参数，并进行相应操作</span><br>        <span class="hljs-title class_">String</span> msg = iFragmentCallback.<span class="hljs-title function_">getMsgFromActivity</span>();<br>        <span class="hljs-title class_">Log</span>.<span class="hljs-title function_">d</span>(<span class="hljs-string">&quot;ioc&quot;</span>,msg);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title class_">View</span> <span class="hljs-title function_">onCreateView</span>(<span class="hljs-params">LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState</span>) &#123;<br>        <span class="hljs-keyword">return</span> inflater.<span class="hljs-title function_">inflate</span>(R.<span class="hljs-property">layout</span>.<span class="hljs-property">fragment_blank1</span>, container, <span class="hljs-literal">false</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>Activity</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AppCompatActivity</span> &#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState);<br><br>        setContentView(R.layout.activity_main);<br>        <span class="hljs-type">BlankFragment1</span> <span class="hljs-variable">fragment</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BlankFragment1</span>();<br><br>        <span class="hljs-comment">//Activity中通过匿名内部类的方式创建接口的实现类</span><br>        <span class="hljs-type">IFragmentCallback</span> <span class="hljs-variable">iFragmentCallback</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IFragmentCallback</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendMsgToActivity</span><span class="hljs-params">(String msg)</span> &#123;<br>                <span class="hljs-comment">//接收到Fragment发来的msg数据并输出</span><br>                Log.d(<span class="hljs-string">&quot;ioc&quot;</span>,msg);<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getMsgFromActivity</span><span class="hljs-params">()</span> &#123;<br>                <span class="hljs-comment">//向Fragment发送数据</span><br>                <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;我来自Activity&quot;</span>;<br>            &#125;<br>        &#125;;<br>        <span class="hljs-comment">/*fragment对象中有一个属性iFragmentCallback，通过给属性赋值给fragment对象的iFragmentCallback接口属性实例化,</span><br><span class="hljs-comment">        这样Activity和Fragment就有了共同的IFragmentCallback对象，通过这个对象取得了联系（观察者模式）*/</span><br>        fragment.setiFragmentCallback(iFragmentCallback);<br>                <span class="hljs-comment">//动态创建fragment，显示该fragment到contain1的标签内</span><br>        <span class="hljs-type">FragmentManager</span> <span class="hljs-variable">fragmentManager</span> <span class="hljs-operator">=</span> getSupportFragmentManager();<br>        <span class="hljs-type">FragmentTransaction</span> <span class="hljs-variable">fragmentTransaction</span> <span class="hljs-operator">=</span> fragmentManager.beginTransaction();<br>        fragmentTransaction.add(R.id.contain1,fragment);<br>        fragmentTransaction.commit();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Fragment之间互传数据"><a href="#Fragment之间互传数据" class="headerlink" title="Fragment之间互传数据"></a>Fragment之间互传数据</h3><p>Fragment之间无法直接互传数据，需要一个Activity作为中间桥梁辅助两个Fragment之间数据传递</p>
+<p>也就是Fragment向Activity传递数据，Activity又将数据传递给Fragment的组合。</p>
+<p>例如点击某个列表项，跳转到对应的界面，并显示信息列表项的信息。</p>
+<p><strong><code>Fragment 1</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs Java">iFragmentCallback iFragmentCallback;<span class="hljs-comment">//属性</span><br>listview1.setOnItemClickListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">AdapterView</span>.OnItemClickListener() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onItemClick</span><span class="hljs-params">(AdapterView&lt;?&gt; parent, View view, <span class="hljs-type">int</span> position, <span class="hljs-type">long</span> id)</span> &#123;<br>            <span class="hljs-comment">//获取到童虎点击的列表项内的TextView控件</span><br>        <span class="hljs-type">TextView</span> <span class="hljs-variable">view1</span> <span class="hljs-operator">=</span> view.findViewById(R.id.text1);<br>        <span class="hljs-comment">//获取到TextView控件内的值</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> view1.getText().toString();<br>        Log.e(<span class="hljs-string">&quot;mylog&quot;</span>,<span class="hljs-string">&quot;fragment1发送数据：&quot;</span>+name+<span class="hljs-string">&quot;给Activity&quot;</span>);<br>        <span class="hljs-comment">//通过调用sendMsgToActivity方法发送数据给Activity</span><br>        iFragmentCallback.sendMsgToActivity(name);<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>Activity</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-comment">//Activity中实例化接口</span><br><span class="hljs-type">iFragmentCallback</span> <span class="hljs-variable">iFragmentCallback</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">iFragmentCallback</span>() &#123;<br><span class="hljs-comment">//通过实现接口的sendMsgToActivity方法得到fragment1传来的值msg（因为fragment1中调用该方法并传入一个参数msg）</span><br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendMsgToActivity</span><span class="hljs-params">(String msg)</span> &#123;<br>       <span class="hljs-comment">//创建资源绑定器bundle，用于Activity向fragment发送数据</span><br>       <span class="hljs-type">Bundle</span> <span class="hljs-variable">bundle</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Bundle</span>();<br>       Log.e(<span class="hljs-string">&quot;mylog&quot;</span>,<span class="hljs-string">&quot;Activity得到fragment1传来的信息：&quot;</span>+msg);<br>       <span class="hljs-comment">//添加数据到资源绑定器</span><br>       bundle.putString(<span class="hljs-string">&quot;name&quot;</span>,msg);<br>       <span class="hljs-comment">//将资源绑定器添加到fragment对象中</span><br>       <span class="hljs-type">Fragment4</span> <span class="hljs-variable">fragment4</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Fragment4</span>();<br>       Log.e(<span class="hljs-string">&quot;mylog&quot;</span>,<span class="hljs-string">&quot;Activity使用buddle将信息发送给fragment4&quot;</span>);<br>       fragment4.setArguments(bundle);<br>       <span class="hljs-comment">//动态创建fragment4并跳转到fragment4</span><br>       <span class="hljs-type">FragmentManager</span> <span class="hljs-variable">fragmentManager</span> <span class="hljs-operator">=</span> getSupportFragmentManager();<br>       <span class="hljs-type">FragmentTransaction</span> <span class="hljs-variable">fragmentTransaction</span> <span class="hljs-operator">=</span> fragmentManager.beginTransaction();<br>       fragmentTransaction.replace(R.id.frame,fragment4);<br>       fragmentTransaction.commit();<br>   &#125;<br>&#125;;<br><span class="hljs-comment">//实例化的接口对象传给fragment1的属性上（观察者模式）</span><br>fragment1.iFragmentCallback = iFragmentCallback;<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>Fragment 2</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> View <span class="hljs-title function_">onCreateView</span><span class="hljs-params">(LayoutInflater inflater, ViewGroup container,</span><br><span class="hljs-params">                         Bundle savedInstanceState)</span> &#123;<br>    <span class="hljs-type">View</span> <span class="hljs-variable">view</span> <span class="hljs-operator">=</span>  inflater.inflate(R.layout.fragment_4, container, <span class="hljs-literal">false</span>);<br>    <span class="hljs-type">TextView</span> <span class="hljs-variable">dialog</span> <span class="hljs-operator">=</span> view.findViewById(R.id.thedialog);<br>    <span class="hljs-type">Bundle</span> <span class="hljs-variable">bundle</span> <span class="hljs-operator">=</span> getArguments();<br>    Log.e(<span class="hljs-string">&quot;mylog&quot;</span>,<span class="hljs-string">&quot;fragment4得到Activity发来的数据：&quot;</span>+bundle.getString(<span class="hljs-string">&quot;name&quot;</span>));<br>    dialog.setText(<span class="hljs-string">&quot;与&quot;</span>+bundle.getString(<span class="hljs-string">&quot;name&quot;</span>)+<span class="hljs-string">&quot;的会话窗口&quot;</span>);<br>    <span class="hljs-keyword">return</span> view;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Fragment生命周期"><a href="#Fragment生命周期" class="headerlink" title="Fragment生命周期"></a>Fragment生命周期</h2><ol>
+<li><code>onAttach()</code>：<ol>
+<li>当 <code>Fragment</code> 被附加到其 <code>Activity</code> 时调用。</li>
+<li>可以使用 <code>onAttach()</code> 方法获取对宿主 <code>Activity</code> 的引用。</li>
+</ol>
+</li>
+<li><code>onCreate()</code>：<ol>
+<li>在 <code>Fragment</code> 被创建时调用。</li>
+<li>可以进行初始化操作，但不能直接与用户界面交互。</li>
+</ol>
+</li>
+<li><code>onCreateView()</code>：<ol>
+<li>在 <code>Fragment</code> 创建视图时调用。</li>
+<li>应该在这里创建 <code>Fragment</code> 的用户界面，并返回该界面的根视图。</li>
+</ol>
+</li>
+<li><code>onActivityCreated()</code>：<ol>
+<li>在与 <code>Fragment</code> 关联的 <code>Activity</code> 的 <code>onCreate()</code> 完成后调用。</li>
+<li>可以在这里执行与 <code>Activity</code> 相关的操作。</li>
+</ol>
+</li>
+<li><code>onStart()</code>：<ol>
+<li>当 <code>Fragment</code> 可见时调用。</li>
+<li>可以在这里执行与 UI 交互相关的操作。</li>
+</ol>
+</li>
+<li><code>onResume()</code>：<ol>
+<li>当 <code>Fragment</code> 处于活动状态时调用。</li>
+<li>可以在这里开始耗时操作或者监听用户输入。</li>
+</ol>
+</li>
+<li><code>onPause()</code>：<ol>
+<li>当 <code>Fragment</code> 即将失去焦点或者被替换时调用。</li>
+<li>应该停止与用户界面交互的操作。</li>
+</ol>
+</li>
+<li><code>onStop()</code>：<ol>
+<li>当 <code>Fragment</code> 不再可见时调用。</li>
+<li>应该停止与 <code>Activity</code> 的交互。</li>
+</ol>
+</li>
+<li><code>onDestroyView()</code>：<ol>
+<li>在 <code>Fragment</code> 的视图被销毁时调用。</li>
+<li>在这里进行释放资源的操作。</li>
+</ol>
+</li>
+<li><code>onDestroy()</code>：<ol>
+<li>在 <code>Fragment</code> 被销毁时调用。</li>
+<li>在这里进行清理工作。</li>
+</ol>
+</li>
+<li><code>onDetach()</code>：<ol>
+<li>当 <code>Fragment</code> 与其宿主 <code>Activity</code> 分离时调用。</li>
+<li>可以在这里释放对宿主 <code>Activity</code> 的引用。</li>
+</ol>
+</li>
+</ol>
+<p><img src="/2024/02/25/Fragment/asynccode" srcset="/img/loading.gif" lazyload alt="img"></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Android/">#Android</a>
+      
+        <a href="/tags/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">#Android基础知识</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Fragment</div>
+      <div>http://example.com/2024/02/25/Fragment/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月25日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/02/25/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" title="数据存储">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数据存储</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/06/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Android四大组件">
+                        <span class="hidden-mobile">Android四大组件</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments">
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","appKey":"MnpSoeG5QTTJ4GagUMOq5t7J","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://8pddcsrj.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div>张露文的博客 | 记录成长过程</div> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

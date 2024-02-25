@@ -1,0 +1,799 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#447EA5">
+  <meta name="author" content="zlw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数据存储文件存储存储路径：&#x2F;data&#x2F;data&#x2F;com.example.filepersistencetest&#x2F;files&#x2F;目录 将数据存储到文件中 1234567891011fun save(inputText: String) &amp;#123;    try &amp;#123;        val output &#x3D; openFileOutput(&quot;data&quot;, Context.MO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据存储">
+<meta property="og:url" content="http://example.com/2024/02/25/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/index.html">
+<meta property="og:site_name" content="zlw">
+<meta property="og:description" content="数据存储文件存储存储路径：&#x2F;data&#x2F;data&#x2F;com.example.filepersistencetest&#x2F;files&#x2F;目录 将数据存储到文件中 1234567891011fun save(inputText: String) &amp;#123;    try &amp;#123;        val output &#x3D; openFileOutput(&quot;data&quot;, Context.MO">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/02/25/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/asynccode">
+<meta property="article:published_time" content="2024-02-25T13:10:29.000Z">
+<meta property="article:modified_time" content="2024-02-25T13:11:16.908Z">
+<meta property="article:author" content="zlw">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Android基础知识">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/02/25/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/asynccode">
+  
+  
+  
+  <title>数据存储 - zlw</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>欢迎来到zlw的blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/8.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数据存储"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-25 21:10" pubdate>
+          2024年2月25日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          107 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据存储</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><h2 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h2><p>存储路径：<code>/data/data/com.example.filepersistencetest/files/目录</code></p>
+<p><strong>将数据存储到文件中</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">save</span><span class="hljs-params">(inputText: <span class="hljs-type">String</span>)</span></span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">val</span> output = openFileOutput(<span class="hljs-string">&quot;data&quot;</span>, Context.MODE_PRIVATE)<br>        <span class="hljs-keyword">val</span> writer = BufferedWriter(OutputStreamWriter(output))<br>        writer.use &#123;<br>            it.write(inputText)<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (e: IOException) &#123;<br>        e.printStackTrace()<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>读取文件中的内容</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">load</span><span class="hljs-params">()</span></span>: String &#123;<br>    <span class="hljs-keyword">val</span> content = StringBuilder()<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">val</span> input = openFileInput(<span class="hljs-string">&quot;data&quot;</span>)<br>        <span class="hljs-keyword">val</span> reader = BufferedReader(InputStreamReader(input))<br>        reader.use &#123;<br>            reader.forEachLine &#123;<br>                content.append(it)<br>            &#125;<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (e: IOException) &#123;<br>        e.printStackTrace()<br>    &#125;<br>    <span class="hljs-keyword">return</span> content.toString()<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="SharedPreferences存储"><a href="#SharedPreferences存储" class="headerlink" title="SharedPreferences存储"></a>SharedPreferences存储</h2><p>存储路径：<code>/data/data/&lt;package name&gt;/shared_prefs/目录下，xml文件形式</code></p>
+<p><code>SharedPreferences</code> 是 Android 中用于存储简单键值对数据的轻量级存储机制。它提供了一种简单的方式，用于在应用程序中存储少量的基本数据类型的数据，例如布尔值、整数、浮点数、字符串等。<code>SharedPreferences</code> 的数据存储在应用的私有文件系统中，其他应用无法直接访问。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-comment">// 获取 SharedPreferences 对象，第一个参数是文件名，第二个参数是模式（通常使用 MODE_PRIVATE）</span><br><span class="hljs-type">SharedPreferences</span> <span class="hljs-variable">preferences</span> <span class="hljs-operator">=</span> getSharedPreferences(<span class="hljs-string">&quot;my_prefs&quot;</span>, Context.MODE_PRIVATE);<br><span class="hljs-comment">// 获取 SharedPreferences.Editor 对象用于写入数据</span><br>SharedPreferences.<span class="hljs-type">Editor</span> <span class="hljs-variable">editor</span> <span class="hljs-operator">=</span> preferences.edit();<br><br><span class="hljs-comment">// 写入数据</span><br>editor.putString(<span class="hljs-string">&quot;username&quot;</span>, <span class="hljs-string">&quot;JohnDoe&quot;</span>);<br>editor.putInt(<span class="hljs-string">&quot;score&quot;</span>, <span class="hljs-number">1000</span>);<br>editor.putBoolean(<span class="hljs-string">&quot;isPremium&quot;</span>, <span class="hljs-literal">true</span>);<br><br><br><span class="hljs-comment">// 提交更改</span><br>editor.apply();<br><br><span class="hljs-comment">// 读取数据</span><br><span class="hljs-type">SharedPreferences</span> <span class="hljs-variable">preferences</span> <span class="hljs-operator">=</span> getSharedPreferences(<span class="hljs-string">&quot;my_prefs&quot;</span>, Context.MODE_PRIVATE);<br><span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> preferences.getString(<span class="hljs-string">&quot;username&quot;</span>, <span class="hljs-string">&quot;&quot;</span>);<br><span class="hljs-type">int</span> <span class="hljs-variable">score</span> <span class="hljs-operator">=</span> preferences.getInt(<span class="hljs-string">&quot;score&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-type">boolean</span> <span class="hljs-variable">isPremium</span> <span class="hljs-operator">=</span> preferences.getBoolean(<span class="hljs-string">&quot;isPremium&quot;</span>, <span class="hljs-literal">false</span>);<br></code></pre></td></tr></table></figure>
+
+<p><strong>可以使用kotlin中的高阶函数来简化实现</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">fun <span class="hljs-title class_">SharedPreferences</span>.<span class="hljs-title function_">open</span>(<span class="hljs-params">block: SharedPreferences.Editor.() -&gt; Unit</span>) &#123;<br><span class="hljs-comment">//由于open函数内拥有SharedPreferences的上下文，因此这里可以直接调用edit()方法来获取SharedPreferences.Editor对象</span><br>    val editor = <span class="hljs-title function_">edit</span>()<br>    <span class="hljs-comment">//对函数类型参数进行调用</span><br>    editor.<span class="hljs-title function_">block</span>()<br>    <span class="hljs-comment">//提交数据</span><br>    editor.<span class="hljs-title function_">apply</span>()<br>&#125;<br><br><span class="hljs-title function_">getSharedPreferences</span>(<span class="hljs-string">&quot;data&quot;</span>, <span class="hljs-title class_">Context</span>.<span class="hljs-property">MODE_PRIVATE</span>).<span class="hljs-property">open</span> &#123;<br><span class="hljs-comment">//Lambda表达式拥有的是SharedPreferences.Editor的上下文环境</span><br><span class="hljs-comment">//因此这里可以直接调用相应的put方法来添加数据。</span><br><span class="hljs-comment">//最后我们也不再需要调用apply()方法来提交数据了，因为open函数会自动完成提交操作。</span><br>    <span class="hljs-title function_">putString</span>(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;Tom&quot;</span>)<br>    <span class="hljs-title function_">putInt</span>(<span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-number">28</span>)<br>    <span class="hljs-title function_">putBoolean</span>(<span class="hljs-string">&quot;married&quot;</span>, <span class="hljs-literal">false</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>其实Google提供的KTX扩展库中已经包含了上述SharedPreferences的简化用法，这个扩展库会在Android Studio创建项目的时候自动引入build.gradle的dependencies中</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SQL">getSharedPreferences(&quot;data&quot;, Context.MODE_PRIVATE).edit &#123;<br>    putString(&quot;name&quot;, &quot;Tom&quot;)<br>    putInt(&quot;age&quot;, <span class="hljs-number">28</span>)<br>    putBoolean(&quot;married&quot;, <span class="hljs-literal">false</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="SQLite数据库存储"><a href="#SQLite数据库存储" class="headerlink" title="SQLite数据库存储"></a>SQLite数据库存储</h2><p>前面我们所学的文件存储和SharedPreferences存储毕竟只适用于保存一些简单的数据和键值对，当需要存储大量复杂的关系型数据的时候，你就会发现以上两种存储方式很难应付得了。</p>
+<p>数据库文件会存放在<code>/data/data/&lt;package name&gt;/databases/目录下</code></p>
+<p>Android为了让我们能够更加方便地管理数据库，专门提供了一个<code>SQLiteOpenHelper</code>帮助类，是抽象类，我们想要使用，就要创建一个自己的帮助类去继承它。并重写两个方法<code>onCreate()</code>和<code>onUpgrade()</code>，实现创建和升级数据库的逻辑。</p>
+<p>有两个构造方法可供重写，一般使用参数少一点的那个构造方法即可</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin">SQLiteOpenHelper(context, name, <span class="hljs-literal">null</span>, DB_VERSION);<br>第一个参数是Context，这个没什么好说的，必须有它才能对数据库进行操作；<br>第二个参数是数据库名，创建数据库时使用的就是这里指定的名称；<br>第三个参数允许我们在查询数据的时候返回一个自定义的Cursor，一般传入<span class="hljs-literal">null</span>即可；<br>第四个参数表示当前数据库的版本号，可用于对数据库进行升级操作。<br></code></pre></td></tr></table></figure>
+
+<p><strong>使用：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyDatabaseHelper</span></span>(<span class="hljs-keyword">val</span> context: Context, name: String, version: <span class="hljs-built_in">Int</span>) :<br>        SQLiteOpenHelper(context, name, <span class="hljs-literal">null</span>, version) &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> createBook = <span class="hljs-string">&quot;create table Book (&quot;</span> +<br>            <span class="hljs-string">&quot; id integer primary key autoincrement,&quot;</span> +<br>            <span class="hljs-string">&quot;author text,&quot;</span> +<br>            <span class="hljs-string">&quot;price real,&quot;</span> +<br>            <span class="hljs-string">&quot;pages integer,&quot;</span> +<br>            <span class="hljs-string">&quot;name text)&quot;</span><br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(db: <span class="hljs-type">SQLiteDatabase</span>)</span></span> &#123;<br>        db.execSQL(createBook)<span class="hljs-comment">//执行这条建表语句</span><br>        Toast.makeText(context, <span class="hljs-string">&quot;Create succeeded&quot;</span>, Toast.LENGTH_SHORT).show()<br>    &#125;<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onUpgrade</span><span class="hljs-params">(db: <span class="hljs-type">SQLiteDatabase</span>, oldVersion: <span class="hljs-type">Int</span>, newVersion: <span class="hljs-type">Int</span>)</span></span> &#123;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>activity_main.xml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Bash">&lt;LinearLayout xmlns:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    android:orientation=<span class="hljs-string">&quot;vertical&quot;</span><br>    android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>    android:layout_height=<span class="hljs-string">&quot;match_parent&quot;</span><br>    &gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/createDatabase&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:text=<span class="hljs-string">&quot;Create Database&quot;</span><br>        /&gt;<br><br>&lt;/LinearLayout&gt;<br></code></pre></td></tr></table></figure>
+
+<p>MainActivity</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MainActivity</span> : <span class="hljs-title class_">AppCompatActivity</span>() &#123;<br><br>    <span class="hljs-keyword">override</span> fun <span class="hljs-title function_">onCreate</span>(<span class="hljs-params">savedInstanceState: Bundle?</span>) &#123;<br>        <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">onCreate</span>(savedInstanceState)<br>        <span class="hljs-title function_">setContentView</span>(R.<span class="hljs-property">layout</span>.<span class="hljs-property">activity_main</span>)<br>        val dbHelper = <span class="hljs-title class_">MyDatabaseHelper</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;BookStore.db&quot;</span>, <span class="hljs-number">1</span>)<span class="hljs-comment">//版本号指定为1</span><br>        createDatabase.<span class="hljs-property">setOnClickListener</span> &#123;<br>            dbHelper.<span class="hljs-property">writableDatabase</span><br>        &#125;<br>  &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样当第一次点击“Create Database”按钮时，就会检测到当前程序中并没有BookStore.db这个数据库，于是会创建该数据库并调用MyDatabaseHelper中的onCreate()方法，再次点击“Create Database”按钮时，会发现此时已经存在BookStore.db数据库了，因此不会再创建一次。</p>
+<p><strong>升级数据库方法：</strong></p>
+<p>当在上面的例子中再添加一个数据库表的时候，并不会被创建，原因在上面黄色背景文字。解决方法就是用到了升级数据库的那个方法<code>onUpgrade</code>，</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyDatabaseHelper</span>(val <span class="hljs-attr">context</span>: <span class="hljs-title class_">Context</span>, <span class="hljs-attr">name</span>: <span class="hljs-title class_">String</span>, <span class="hljs-attr">version</span>: <span class="hljs-title class_">Int</span>):<br>        <span class="hljs-title class_">SQLiteOpenHelper</span>(context, name, <span class="hljs-literal">null</span>, version) &#123;<br>    ...<br>    <span class="hljs-keyword">override</span> fun <span class="hljs-title function_">onUpgrade</span>(<span class="hljs-params">db: SQLiteDatabase, oldVersion: Int, newVersion: Int</span>) &#123;<br>    <span class="hljs-comment">//不建议</span><br>        db.<span class="hljs-title function_">execSQL</span>(<span class="hljs-string">&quot;drop table if exists Book&quot;</span>)<br>        db.<span class="hljs-title function_">execSQL</span>(<span class="hljs-string">&quot;drop table if exists Category&quot;</span>)<br>        <span class="hljs-title function_">onCreate</span>(db)<br>    &#125;<br><br>&#125;<br><span class="hljs-title function_">onCreate</span>()<span class="hljs-string">`中的版本号改为2：`</span>val dbHelper = <span class="hljs-title class_">MyDatabaseHelper</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;BookStore.db&quot;</span>, <span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+
+<p>表示我们对数据库进行升级了。</p>
+<p><strong>上面这种方法是非常粗暴的，不建议在开发中这么编写，</strong>因为：比如你编写的某个应用已经成功上线了，并且还拥有了不错的下载量。现在由于添加了新功能，数据库需要一起升级，结果用户更新了这个版本之后却发现以前程序中存储的本地数据全部丢失了！那么很遗憾，你的用户群体可能已经流失一大半了。</p>
+<p><strong>升级数据库的最佳写法：</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyDatabaseHelper</span>(val <span class="hljs-attr">context</span>: <span class="hljs-title class_">Context</span>, <span class="hljs-attr">name</span>: <span class="hljs-title class_">String</span>, <span class="hljs-attr">version</span>: <span class="hljs-title class_">Int</span>):<br>        <span class="hljs-title class_">SQLiteOpenHelper</span>(context, name, <span class="hljs-literal">null</span>, version) &#123;<br><br>    <span class="hljs-keyword">private</span> val createBook = <span class="hljs-string">&quot;create table Book (&quot;</span> +<br>            <span class="hljs-string">&quot; id integer primary key autoincrement,&quot;</span> +<br>            <span class="hljs-string">&quot;author text,&quot;</span> +<br>            <span class="hljs-string">&quot;price real,&quot;</span> +<br>            <span class="hljs-string">&quot;pages integer,&quot;</span> +<br>            <span class="hljs-string">&quot;name text)&quot;</span><br><br>    <span class="hljs-keyword">private</span> val createCategory = <span class="hljs-string">&quot;create table Category (&quot;</span> +<br>            <span class="hljs-string">&quot;id integer primary key autoincrement,&quot;</span> +<br>            <span class="hljs-string">&quot;category_name text,&quot;</span> +<br>            <span class="hljs-string">&quot;category_code integer)&quot;</span><br><br>    <span class="hljs-keyword">override</span> fun <span class="hljs-title function_">onCreate</span>(<span class="hljs-params">db: SQLiteDatabase</span>) &#123;<br>        db.<span class="hljs-title function_">execSQL</span>(createBook)<br>        db.<span class="hljs-title function_">execSQL</span>(createCategory)<br>    &#125;<br><br>    <span class="hljs-keyword">override</span> fun <span class="hljs-title function_">onUpgrade</span>(<span class="hljs-params">db: SQLiteDatabase, oldVersion: Int, newVersion: Int</span>) &#123;<br>        <span class="hljs-keyword">if</span> (oldVersion &lt;= <span class="hljs-number">1</span>) &#123;<br>            db.<span class="hljs-title function_">execSQL</span>(createCategory)<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样当用户直接安装第2版的程序时，就会进入onCreate()方法，将两张表一起创建。而当用户使用第2版的程序覆盖安装第1版的程序时，就会进入升级数据库的操作中，此时由于Book表已经存在了，因此只需要创建一张Category表即可。</p>
+<p>但是没过多久，新的需求又来了，这次要给Book表和Category表之间建立关联，需要在Book表中添加一个category_id字段。再次修改MyDatabaseHelper中的代码，如下所示：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyDatabaseHelper</span>(val <span class="hljs-attr">context</span>: <span class="hljs-title class_">Context</span>, <span class="hljs-attr">name</span>: <span class="hljs-title class_">String</span>, <span class="hljs-attr">version</span>: <span class="hljs-title class_">Int</span>):<br>        <span class="hljs-title class_">SQLiteOpenHelper</span>(context, name, <span class="hljs-literal">null</span>, version) &#123;<br><br>    <span class="hljs-keyword">private</span> val createBook = <span class="hljs-string">&quot;create table Book (&quot;</span> +<br>            <span class="hljs-string">&quot; id integer primary key autoincrement,&quot;</span> +<br>            <span class="hljs-string">&quot;author text,&quot;</span> +<br>            <span class="hljs-string">&quot;price real,&quot;</span> +<br>            <span class="hljs-string">&quot;pages integer,&quot;</span> +<br>            <span class="hljs-string">&quot;name text,&quot;</span> +<br>            <span class="hljs-string">&quot;category_id integer)&quot;</span><br><br>    <span class="hljs-keyword">private</span> val createCategory = <span class="hljs-string">&quot;create table Category (&quot;</span> +<br>            <span class="hljs-string">&quot;id integer primary key autoincrement,&quot;</span> +<br>            <span class="hljs-string">&quot;category_name text,&quot;</span> +<br>            <span class="hljs-string">&quot;category_code integer)&quot;</span><br><br>    <span class="hljs-keyword">override</span> fun <span class="hljs-title function_">onCreate</span>(<span class="hljs-params">db: SQLiteDatabase</span>) &#123;<br>        db.<span class="hljs-title function_">execSQL</span>(createBook)<br>        db.<span class="hljs-title function_">execSQL</span>(createCategory)<br>    &#125;<br><br>    <span class="hljs-keyword">override</span> fun <span class="hljs-title function_">onUpgrade</span>(<span class="hljs-params">db: SQLiteDatabase, oldVersion: Int, newVersion: Int</span>) &#123;<br>        <span class="hljs-keyword">if</span> (oldVersion &lt;= <span class="hljs-number">1</span>) &#123;<br>            db.<span class="hljs-title function_">execSQL</span>(createCategory)<br>        &#125;<br>        <span class="hljs-keyword">if</span> (oldVersion &lt;= <span class="hljs-number">2</span>) &#123;<br>            db.<span class="hljs-title function_">execSQL</span>(<span class="hljs-string">&quot;alter table Book add column category_id integer&quot;</span>)<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>每当升级一个数据库版本的时候，onUpgrade()方法里都一定要写一个相应的if判断语句。为什么要这么做呢？这是为了保证App在跨版本升级的时候，每一次的数据库修改都能被全部执行。比如用户当前是从第2版升级到第3版，那么只有第二条判断语句会执行，而如果用户是直接从第1版升级到第3版，那么两条判断语句都会执行。使用这种方式来维护数据库的升级，不管版本怎样更新，都可以保证数据库的表结构是最新的，而且表中的数据完全不会丢失。</p>
+<p><strong>添加数据、修改数据、删除数据、查询数据：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MainActivity</span> : AppCompatActivity() &#123;<br><br>    override fun <span class="hljs-title function_">onCreate</span><span class="hljs-params">(savedInstanceState: Bundle?)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState)<br>        setContentView(R.layout.activity_main)<br>        <span class="hljs-type">val</span> <span class="hljs-variable">dbHelper</span> <span class="hljs-operator">=</span> MyDatabaseHelper(<span class="hljs-built_in">this</span>, <span class="hljs-string">&quot;BookStore.db&quot;</span>, <span class="hljs-number">2</span>)<br>        ...<br>        <span class="hljs-comment">//添加数据</span><br>        addData.setOnClickListener &#123;<br>            <span class="hljs-type">val</span> <span class="hljs-variable">db</span> <span class="hljs-operator">=</span> dbHelper.writableDatabase<br>            <span class="hljs-type">val</span> <span class="hljs-variable">values1</span> <span class="hljs-operator">=</span> ContentValues().apply &#123;<br>                <span class="hljs-comment">// 开始组装第一条数据</span><br>                put(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;The Da Vinci Code&quot;</span>)<br>                put(<span class="hljs-string">&quot;author&quot;</span>, <span class="hljs-string">&quot;Dan Brown&quot;</span>)<br>                put(<span class="hljs-string">&quot;pages&quot;</span>, <span class="hljs-number">454</span>)<br>                put(<span class="hljs-string">&quot;price&quot;</span>, <span class="hljs-number">16.96</span>)<br>            &#125;<br>            db.insert(<span class="hljs-string">&quot;Book&quot;</span>, <span class="hljs-literal">null</span>, values1) <span class="hljs-comment">// 插入第一条数据</span><br>            <span class="hljs-type">val</span> <span class="hljs-variable">values2</span> <span class="hljs-operator">=</span> ContentValues().apply &#123;<br>                <span class="hljs-comment">// 开始组装第二条数据</span><br>                put(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;The Lost Symbol&quot;</span>)<br>                put(<span class="hljs-string">&quot;author&quot;</span>, <span class="hljs-string">&quot;Dan Brown&quot;</span>)<br>                put(<span class="hljs-string">&quot;pages&quot;</span>, <span class="hljs-number">510</span>)<br>                put(<span class="hljs-string">&quot;price&quot;</span>, <span class="hljs-number">19.95</span>)<br>            &#125;<br>            db.insert(<span class="hljs-string">&quot;Book&quot;</span>, <span class="hljs-literal">null</span>, values2) <span class="hljs-comment">// 插入第二条数据</span><br>        &#125;<br>        <br>        <span class="hljs-comment">//更新数据</span><br>        updateData.setOnClickListener &#123;<br>            <span class="hljs-type">val</span> <span class="hljs-variable">db</span> <span class="hljs-operator">=</span> dbHelper.writableDatabase<br>            <span class="hljs-type">val</span> <span class="hljs-variable">values</span> <span class="hljs-operator">=</span> ContentValues()<br>            values.put(<span class="hljs-string">&quot;price&quot;</span>, <span class="hljs-number">10.99</span>)<br>            db.update(<span class="hljs-string">&quot;Book&quot;</span>, values, <span class="hljs-string">&quot;name = ?&quot;</span>, arrayOf(<span class="hljs-string">&quot;The Da Vinci Code&quot;</span>))<br>        &#125;<br>        <br>        <span class="hljs-comment">//删除数据</span><br>        deleteData.setOnClickListener &#123;<br>            <span class="hljs-type">val</span> <span class="hljs-variable">db</span> <span class="hljs-operator">=</span> dbHelper.writableDatabase<br>            db.delete(<span class="hljs-string">&quot;Book&quot;</span>, <span class="hljs-string">&quot;pages &gt; ?&quot;</span>, arrayOf(<span class="hljs-string">&quot;500&quot;</span>))<br>        &#125;<br>        <br>        <span class="hljs-comment">//查询数据</span><br>        queryData.setOnClickListener &#123;<br>            <span class="hljs-type">val</span> <span class="hljs-variable">db</span> <span class="hljs-operator">=</span> dbHelper.writableDatabase<br>            <span class="hljs-comment">// 查询Book表中所有的数据</span><br>            <span class="hljs-type">val</span> <span class="hljs-variable">cursor</span> <span class="hljs-operator">=</span> db.query(<span class="hljs-string">&quot;Book&quot;</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>)<br>            <span class="hljs-keyword">if</span> (cursor.moveToFirst()) &#123;<br>                <span class="hljs-keyword">do</span> &#123;<br>                    <span class="hljs-comment">// 遍历Cursor对象，取出数据并打印</span><br>                    <span class="hljs-type">val</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> cursor.getString(cursor.getColumnIndex(<span class="hljs-string">&quot;name&quot;</span>))<br>                    <span class="hljs-type">val</span> <span class="hljs-variable">author</span> <span class="hljs-operator">=</span> cursor.getString(cursor.getColumnIndex(<span class="hljs-string">&quot;author&quot;</span>))<br>                    <span class="hljs-type">val</span> <span class="hljs-variable">pages</span> <span class="hljs-operator">=</span> cursor.getInt(cursor.getColumnIndex(<span class="hljs-string">&quot;pages&quot;</span>))<br>                    <span class="hljs-type">val</span> <span class="hljs-variable">price</span> <span class="hljs-operator">=</span> cursor.getDouble(cursor.getColumnIndex(<span class="hljs-string">&quot;price&quot;</span>))<br>                    Log.d(<span class="hljs-string">&quot;MainActivity&quot;</span>, <span class="hljs-string">&quot;book name is $name&quot;</span>)<br>                    Log.d(<span class="hljs-string">&quot;MainActivity&quot;</span>, <span class="hljs-string">&quot;book author is $author&quot;</span>)<br>                    Log.d(<span class="hljs-string">&quot;MainActivity&quot;</span>, <span class="hljs-string">&quot;book pages is $pages&quot;</span>)<br>                    Log.d(<span class="hljs-string">&quot;MainActivity&quot;</span>, <span class="hljs-string">&quot;book price is $price&quot;</span>)<br>                &#125; <span class="hljs-keyword">while</span> (cursor.moveToNext())<br>            &#125;<br>            cursor.close()<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>query</strong><strong>()方法参数的详细解释：</strong></p>
+<p><img src="/2024/02/25/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/asynccode" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>ContentValues用法也可以被简化</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-comment">//Any?是任何类型，vararg：可变参数列表，Pair：就是A to B 类型</span><br><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">cvOf</span><span class="hljs-params">(<span class="hljs-keyword">vararg</span> pairs: <span class="hljs-type">Pair</span>&lt;<span class="hljs-type">String</span>, Any?&gt;)</span></span>: ContentValues &#123;<br>    <span class="hljs-keyword">val</span> cv = ContentValues()<br>    <span class="hljs-keyword">for</span> (pair <span class="hljs-keyword">in</span> pairs) &#123;<br>        <span class="hljs-keyword">val</span> key = pair.first<br>        <span class="hljs-keyword">val</span> value = pair.second<br>        <span class="hljs-keyword">when</span> (value) &#123;<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Int</span> -&gt; cv.put(key, value)<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Long</span> -&gt; cv.put(key, value)<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Short</span> -&gt; cv.put(key, value)<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Float</span> -&gt; cv.put(key, value)<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Double</span> -&gt; cv.put(key, value)<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Boolean</span> -&gt; cv.put(key, value)<br>            <span class="hljs-keyword">is</span> String -&gt; cv.put(key, value)<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Byte</span> -&gt; cv.put(key, value)<br>            <span class="hljs-keyword">is</span> ByteArray -&gt; cv.put(key, value)<br>            <span class="hljs-literal">null</span> -&gt; cv.putNull(key)<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> cv<br>&#125;<br><br><span class="hljs-comment">//方法2</span><br><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">cvOf</span><span class="hljs-params">(<span class="hljs-keyword">vararg</span> pairs: <span class="hljs-type">Pair</span>&lt;<span class="hljs-type">String</span>, Any?&gt;)</span></span> = ContentValues().apply &#123;<br>    <span class="hljs-keyword">for</span> (pair <span class="hljs-keyword">in</span> pairs) &#123;<br>        <span class="hljs-keyword">val</span> key = pair.first<br>        <span class="hljs-keyword">val</span> value = pair.second<br>        <span class="hljs-keyword">when</span> (value) &#123;<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Int</span> -&gt; put(key, value)<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Long</span> -&gt; put(key, value)<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Short</span> -&gt; put(key, value)<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Float</span> -&gt; put(key, value)<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Double</span> -&gt; put(key, value)<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Boolean</span> -&gt; put(key, value)<br>            <span class="hljs-keyword">is</span> String -&gt; put(key, value)<br>            <span class="hljs-keyword">is</span> <span class="hljs-built_in">Byte</span> -&gt; put(key, value)<br>            <span class="hljs-keyword">is</span> ByteArray -&gt; put(key, value)<br>            <span class="hljs-literal">null</span> -&gt; putNull(key)<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//有了这个cvOf()方法之后，我们使用ContentValues时就会变得更加简单了，比如向数据库中插入一条数据就可以这样写：</span><br><span class="hljs-keyword">val</span> values = cvOf(<span class="hljs-string">&quot;name&quot;</span> to <span class="hljs-string">&quot;Game of Thrones&quot;</span>, <span class="hljs-string">&quot;author&quot;</span> to <span class="hljs-string">&quot;George Martin&quot;</span>,<br>    <span class="hljs-string">&quot;pages&quot;</span> to <span class="hljs-number">720</span>, <span class="hljs-string">&quot;price&quot;</span> to <span class="hljs-number">20.85</span>)<br>db.insert(<span class="hljs-string">&quot;Book&quot;</span>, <span class="hljs-literal">null</span>, values)<br></code></pre></td></tr></table></figure>
+
+<p>当然，虽然我们编写了一个非常好用的cvOf()方法，KTX库中也提供了一个具有同样功能的contentValuesOf()方法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL">val <span class="hljs-keyword">values</span> <span class="hljs-operator">=</span> contentValuesOf(&quot;name&quot; <span class="hljs-keyword">to</span> &quot;Game of Thrones&quot;, &quot;author&quot; <span class="hljs-keyword">to</span> &quot;George Martin&quot;,<br>    &quot;pages&quot; <span class="hljs-keyword">to</span> <span class="hljs-number">720</span>, &quot;price&quot; <span class="hljs-keyword">to</span> <span class="hljs-number">20.85</span>)<br>db.insert(&quot;Book&quot;, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">values</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="使用事务"><a href="#使用事务" class="headerlink" title="使用事务"></a>使用事务</h2><p>SQLite数据库是支持事务的，事务的特性可以保证让一系列的操作要么全部完成，要么一个都不会完成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MainActivity</span> : AppCompatActivity() &#123;<br><br>    override fun <span class="hljs-title function_">onCreate</span><span class="hljs-params">(savedInstanceState: Bundle?)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState)<br>        setContentView(R.layout.activity_main)<br>        <span class="hljs-type">val</span> <span class="hljs-variable">dbHelper</span> <span class="hljs-operator">=</span> MyDatabaseHelper(<span class="hljs-built_in">this</span>, <span class="hljs-string">&quot;BookStore.db&quot;</span>, <span class="hljs-number">2</span>)<br>        ...<br>        replaceData.setOnClickListener &#123;<br>            <span class="hljs-type">val</span> <span class="hljs-variable">db</span> <span class="hljs-operator">=</span> dbHelper.writableDatabase<br>            db.beginTransaction() <span class="hljs-comment">// 开启事务</span><br>            <span class="hljs-keyword">try</span> &#123;<br>                db.delete(<span class="hljs-string">&quot;Book&quot;</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>)<br>                <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) &#123;<br>                    <span class="hljs-comment">// 手动抛出一个异常，让事务失败</span><br>                    <span class="hljs-keyword">throw</span> NullPointerException()<br>                &#125;<br>                <span class="hljs-type">val</span> <span class="hljs-variable">values</span> <span class="hljs-operator">=</span> ContentValues().apply &#123;<br>                    put(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;Game of Thrones&quot;</span>)<br>                    put(<span class="hljs-string">&quot;author&quot;</span>, <span class="hljs-string">&quot;George Martin&quot;</span>)<br>                    put(<span class="hljs-string">&quot;pages&quot;</span>, <span class="hljs-number">720</span>)<br>                    put(<span class="hljs-string">&quot;price&quot;</span>, <span class="hljs-number">20.85</span>)<br>                &#125;<br>                db.insert(<span class="hljs-string">&quot;Book&quot;</span>, <span class="hljs-literal">null</span>, values)<br>                db.setTransactionSuccessful() <span class="hljs-comment">// 事务已经执行成功</span><br>            &#125; <span class="hljs-keyword">catch</span> (e: Exception) &#123;<br>                e.printStackTrace()<br>            &#125; <span class="hljs-keyword">finally</span> &#123;<br>                db.endTransaction() <span class="hljs-comment">// 结束事务</span><br>            &#125;<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们在删除旧数据的操作完成后手动抛出了一个NullPointerException，这样添加新数据的代码就执行不到了。不过由于事务的存在，中途出现异常会导致事务的失败，此时旧数据应该是删除不掉的。</p>
+<p>将手动抛出异常的那行代码删除并重新运行程序，此时点击一下“Replace Data”按钮，就会将Book表中的数据替换成新数据了，你可以再使用“Query Data”按钮来验证一次。</p>
+<h2 id="使用SQL操作数据库"><a href="#使用SQL操作数据库" class="headerlink" title="使用SQL操作数据库"></a>使用SQL操作数据库</h2><p>直接使用SQL来操作数据库</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-comment">//添加数据</span><br>db.execSQL(<span class="hljs-string">&quot;insert into Book (name, author, pages, price) values(?, ?, ?, ?)&quot;</span>,<br>    arrayOf(<span class="hljs-string">&quot;The Da Vinci Code&quot;</span>, <span class="hljs-string">&quot;Dan Brown&quot;</span>, <span class="hljs-string">&quot;454&quot;</span>, <span class="hljs-string">&quot;16.96&quot;</span>)<br>)<br>db.execSQL(<span class="hljs-string">&quot;insert into Book (name, author, pages, price) values(?, ?, ?, ?)&quot;</span>,<br>    arrayOf(<span class="hljs-string">&quot;The Lost Symbol&quot;</span>, <span class="hljs-string">&quot;Dan Brown&quot;</span>, <span class="hljs-string">&quot;510&quot;</span>, <span class="hljs-string">&quot;19.95&quot;</span>)<br>)<br><br><span class="hljs-comment">//更新数据</span><br>db.execSQL(<span class="hljs-string">&quot;update Book set price = ? where name = ?&quot;</span>, arrayOf(<span class="hljs-string">&quot;10.99&quot;</span>, <span class="hljs-string">&quot;The Da Vinci Code&quot;</span>))<br><br><span class="hljs-comment">//删除数据</span><br>db.execSQL(<span class="hljs-string">&quot;delete from Book where pages &gt; ?&quot;</span>, arrayOf(<span class="hljs-string">&quot;500&quot;</span>))<br><br><span class="hljs-comment">//查询数据</span><br><span class="hljs-keyword">val</span> cursor = db.rawQuery(<span class="hljs-string">&quot;select * from Book&quot;</span>, <span class="hljs-literal">null</span>)<br></code></pre></td></tr></table></figure>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Android/">#Android</a>
+      
+        <a href="/tags/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">#Android基础知识</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数据存储</div>
+      <div>http://example.com/2024/02/25/数据存储/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月25日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/02/25/Fragment/" title="Fragment">
+                        <span class="hidden-mobile">Fragment</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments">
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","appKey":"MnpSoeG5QTTJ4GagUMOq5t7J","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://8pddcsrj.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div>张露文的博客 | 记录成长过程</div> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

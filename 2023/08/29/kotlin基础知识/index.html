@@ -24,7 +24,7 @@
 <meta property="og:description" content="参考：https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;769cbb6eba38 1. Kotlin 语言简介编程语言大致可分为两类：编译型语言和解释型语言。  编译型：编译器将编写的源代码一次性地编译成计算机可识别的二进制文件，然后计算机直接执行，如 C、C++。 解释型：程序运行时，解释器会一行行读取编写的源代码，然后实时地将这些源代码解释成计算机可识别的二进制数据后再执行，如 Python">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-29T14:46:42.000Z">
-<meta property="article:modified_time" content="2024-01-07T14:50:20.771Z">
+<meta property="article:modified_time" content="2024-01-07T15:15:42.529Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -372,7 +372,7 @@
 
 <p>任何一个类只能有一个主构造函数，但可以有多个次构造函数。<strong>次构造函数</strong> 也可用于实例化一个类，<strong>它是有函数体的</strong>。</p>
 <blockquote>
-<p>&#x3D;&#x3D;Kotlin 规定，当一个类既有主构造函数也有次构造函数时，所有的次构造函数都必须调用主构造函数（包括间接调用）。&#x3D;&#x3D;</p>
+<p>Kotlin 规定，&#x3D;&#x3D;当一个类既有主构造函数也有次构造函数时，所有的次构造函数都必须调用主构造函数（包括间接调用）&#x3D;&#x3D;。</p>
 </blockquote>
 <p><strong>次构造函数</strong> 是通过 <code>constructor</code> 关键字来定义的，如定义 <code>Student</code> 类的次构造函数如下：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span></span>(<span class="hljs-keyword">val</span> sno: String, <span class="hljs-keyword">val</span> grade: <span class="hljs-built_in">Int</span>, name: String, age: <span class="hljs-built_in">Int</span>) : Person(name, age) &#123;<br>    <span class="hljs-keyword">init</span> &#123;<br>        println(<span class="hljs-string">&quot;sno is <span class="hljs-variable">$sno</span>&quot;</span>)<br>        println(<span class="hljs-string">&quot;grade is <span class="hljs-variable">$grade</span>&quot;</span>)<br>    &#125;<br>    <br>    <span class="hljs-keyword">constructor</span>(name: String, age: <span class="hljs-built_in">Int</span>) : <span class="hljs-keyword">this</span>(<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-number">0</span>, name, age)&#123; &#125;<br>    <br>    <span class="hljs-keyword">constructor</span>() : <span class="hljs-keyword">this</span>(<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-number">0</span>)&#123; &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -477,7 +477,7 @@
 <p><strong>all</strong> 函数用于判断集合中是否所有元素都满足指定条件。</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> list = listOf(<span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-string">&quot;orange&quot;</span>, <span class="hljs-string">&quot;pear&quot;</span>)<br><span class="hljs-keyword">val</span> anyResult = list.any &#123; it.length &lt;= <span class="hljs-number">5</span> &#125; <span class="hljs-comment">// 集合中是否存在5个字母以内的单词，返回 true</span><br><span class="hljs-keyword">val</span> allResult = list.all &#123; it.length &lt;= <span class="hljs-number">5</span> &#125; <span class="hljs-comment">// 集合中是否所有单词都在5个字母内，返回 false</span><br>println(<span class="hljs-string">&quot;anyResult is <span class="hljs-variable">$anyResult</span> , allResult is <span class="hljs-variable">$allResult</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
 
-<h2 id="5-3-Java-函数式-API-使用"><a href="#5-3-Java-函数式-API-使用" class="headerlink" title="5.3 Java 函数式 API 使用"></a>5.3 Java 函数式 API 使用</h2><p>在 Kotlin 代码中调用 Java 方法，若该方法接收一个 Java 单抽象方法接口(接口中只有一个待实现方法)参数，就可以使用函数式 API。</p>
+<h2 id="5-3-Java-函数式-API-使用"><a href="#5-3-Java-函数式-API-使用" class="headerlink" title="5.3 Java 函数式 API 使用"></a>5.3 Java 函数式 API 使用</h2><p>在 Kotlin 代码中调用 Java 方法，&#x3D;&#x3D;若该方法接收一个 Java 单抽象方法接口(接口中只有一个待实现方法)参数，就可以使用函数式 API。&#x3D;&#x3D;</p>
 <p>如 Java 原生 API 中的 <code>Runnable</code> 接口就是一个单抽象方法接口：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Runnable</span> </span>&#123;<br>    <span class="hljs-comment">// 这个接口中只有一个待实现的 run() 方法</span><br>    void run();<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -508,7 +508,7 @@
 <p>操作符 <code>?.</code> 的作用是当对象不为空时正常调用相应的方法，为空时则什么都不做。</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">doStudy</span><span class="hljs-params">(study: <span class="hljs-type">Study</span>?)</span></span> &#123;<br>    study?.readBooks()<br>    study?.doHomework()<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p><code>？：</code></p>
+<li><p><code>？:</code></p>
 <p>操作符 <code>?:</code> 的左右两边都接收一个表达式，若左边表达式的结果不为空则返回左边表达式的结果，否则返回右边表达式的结果</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> c = a ?: b<br></code></pre></td></tr></table></figure>
 </li>
