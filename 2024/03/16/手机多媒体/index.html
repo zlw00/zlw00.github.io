@@ -1,0 +1,851 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#447EA5">
+  <meta name="author" content="zlw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Android中一些常用的多媒体功能的使用技巧。 通知应用程序如果想要发出通知，也必须创建自己的通知渠道才行 创建  创建通知渠道  （1）首先需要一个NotificationManager对通知进行管理 （2）接下来要使用NotificationChannel类构建一个通知渠道，并调用NotificationManager的createNotificationChannel()完成创建。 123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手机多媒体">
+<meta property="og:url" content="http://example.com/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/index.html">
+<meta property="og:site_name" content="zlw">
+<meta property="og:description" content="Android中一些常用的多媒体功能的使用技巧。 通知应用程序如果想要发出通知，也必须创建自己的通知渠道才行 创建  创建通知渠道  （1）首先需要一个NotificationManager对通知进行管理 （2）接下来要使用NotificationChannel类构建一个通知渠道，并调用NotificationManager的createNotificationChannel()完成创建。 123">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/image-20240316234300650.png">
+<meta property="og:image" content="http://example.com/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/image-20240316234323372.png">
+<meta property="og:image" content="http://example.com/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/image-20240316234510616.png">
+<meta property="og:image" content="http://example.com/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/image-20240316234600119.png">
+<meta property="og:image" content="http://example.com/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/asynccode">
+<meta property="article:published_time" content="2024-03-16T15:36:57.000Z">
+<meta property="article:modified_time" content="2024-03-16T15:59:33.942Z">
+<meta property="article:author" content="zlw">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/image-20240316234300650.png">
+  
+  
+  
+  <title>手机多媒体 - zlw</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>欢迎来到zlw的blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/8.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="手机多媒体"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-16 23:36" pubdate>
+          2024年3月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          104 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">手机多媒体</h1>
+            
+            <div class="markdown-body">
+              
+              <p>Android中一些常用的多媒体功能的使用技巧。</p>
+<h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a><strong>通知</strong></h2><p>应用程序如果想要发出通知，也必须创建自己的通知渠道才行</p>
+<p><strong>创建</strong></p>
+<ul>
+<li>创建通知渠道</li>
+</ul>
+<p>（1）首先需要一个<code>NotificationManager</code>对通知进行管理</p>
+<p>（2）接下来要使用<code>NotificationChannel</code>类构建一个通知渠道，并调用<code>NotificationManager</code>的<code>createNotificationChannel()</code>完成创建。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-comment">//参数用于确定获取系统的哪个服务</span><br><span class="hljs-type">val</span> <span class="hljs-variable">manager</span> <span class="hljs-operator">=</span> getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager<br><br><span class="hljs-comment">//Build.VERSION.SDK_INT 是一个整数，代表当前设备运行的 Android 系统的 API 级别（也称为版本号）。</span><br><span class="hljs-comment">//Build.VERSION_CODES.O 是 Android Oreo 版本的 API 级别的一个常量值。在 Android SDK 中，每个 Android 版本都有对应的 API 级别常量，它们都位于 Build.VERSION_CODES 类中。</span><br><span class="hljs-keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) &#123;<br><span class="hljs-comment">//渠道ID：保证唯一就可以，渠道名称：给用户看的，渠道等级：IMPORTANCE_HIGH、IMPORTANCE_DEFAULT、IMPORTANCE_LOW、IMPORTANCE_MIN</span><br>    <span class="hljs-type">val</span> <span class="hljs-variable">channel</span> <span class="hljs-operator">=</span> NotificationChannel(channelId, channelName, importance)<br>    manager.createNotificationChannel(channel)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>创建通知</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-comment">//参数中的channelId与上面的渠道id相同</span><br><span class="hljs-keyword">val</span> notification = NotificationCompat.Builder(context, channelId)<br>      .setContentTitle(<span class="hljs-string">&quot;This is content title&quot;</span>)<br>      .setContentText(<span class="hljs-string">&quot;This is content text&quot;</span>)<br>      .setSmallIcon(R.drawable.small_icon)<span class="hljs-comment">//小图标</span><br>      .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.large_icon))<span class="hljs-comment">//下拉系统栏的大图标</span><br>      .build()<br>      <br>manager.notify(<span class="hljs-number">1</span>, notification)<span class="hljs-comment">//让通知显示出来，1：id，保证每个通知指定的id不同</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>举例</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState)<br>        setContentView(R.layout.activity_main)<br>        <span class="hljs-keyword">val</span> manager = getSystemService(Context.NOTIFICATION_SERVICE) <span class="hljs-keyword">as</span><br>                NotificationManager<br>        <span class="hljs-keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) &#123;<br>            <span class="hljs-keyword">val</span> channel = NotificationChannel(<span class="hljs-string">&quot;normal&quot;</span>, <span class="hljs-string">&quot;Normal&quot;</span>,NotificationManager.<br>                IMPORTANCE_DEFAULT)<br>            manager.createNotificationChannel(channel)<br>        &#125;<br>        sendNotice.setOnClickListener &#123;<br>            <span class="hljs-keyword">val</span> notification = NotificationCompat.Builder(<span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;normal&quot;</span>)<br>                .setContentTitle(<span class="hljs-string">&quot;This is content title&quot;</span>)<br>                .setContentText(<span class="hljs-string">&quot;This is content text&quot;</span>)<br>                .setSmallIcon(R.drawable.small_icon)<br>                .setLargeIcon(BitmapFactory.decodeResource(resources,<br>                    R.drawable.large_icon))<br>                .build()<br>            manager.notify(<span class="hljs-number">1</span>, notification)<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>手机的应用通知中可以看到：</p>
+<p><img src="/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/image-20240316234300650.png" srcset="/img/loading.gif" lazyload alt="image-20240316234300650"></p>
+<p>接下来，点击按钮，，可以看到状态栏有小图标，下拉可以看到通知详情</p>
+<p><img src="/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/image-20240316234323372.png" srcset="/img/loading.gif" lazyload alt="image-20240316234323372"></p>
+<p>但目前点击通知内容没有反映，因为我们还没有实现这部分的功能，下面进行实现，</p>
+<p>使用<code>Pendntenting</code></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;<br>        ...<br>        sendNotice.setOnClickListener &#123;<br>            <span class="hljs-keyword">val</span> intent = Intent(<span class="hljs-keyword">this</span>, NotificationActivity::<span class="hljs-keyword">class</span>.java)<br>            <span class="hljs-keyword">val</span> pi = PendingIntent.getActivity(<span class="hljs-keyword">this</span>, <span class="hljs-number">0</span>, intent, <span class="hljs-number">0</span>)<br>            <span class="hljs-keyword">val</span> notification = NotificationCompat.Builder(<span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;normal&quot;</span>)<br>                .setContentTitle(<span class="hljs-string">&quot;This is content title&quot;</span>)<br>                .setContentText(<span class="hljs-string">&quot;This is content text&quot;</span>)<br>                .setSmallIcon(R.drawable.small_icon)<br>                .setLargeIcon(BitmapFactory.decodeResource(resources,<br>                    R.drawable.large_icon))<br>                .setContentIntent(pi)<br>                .build()<br>            manager.notify(<span class="hljs-number">1</span>, notification)<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>但点击之后图标还没有消失，下面在代码中实现，点击通知后图标消失</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-comment">//方法一</span><br><span class="hljs-keyword">val</span> notification = NotificationCompat.Builder(<span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;normal&quot;</span>)<br>        ...<br>        .setAutoCancel(<span class="hljs-literal">true</span>)<br>        .build()<br>        <br><span class="hljs-comment">//方法二</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NotificationActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState)<br>        setContentView(R.layout.activity_notification)<br>        <span class="hljs-keyword">val</span> manager = getSystemService(Context.NOTIFICATION_SERVICE) <span class="hljs-keyword">as</span><br>            NotificationManager<br>        manager.cancel(<span class="hljs-number">1</span>)<span class="hljs-comment">//当时我们给这条通知设置的id就是1</span><br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>通知的进阶技巧</strong></p>
+<p>（1）<code>setStyle()</code>方法，这个方法允许我们构建出富文本的通知内容</p>
+<p>当通知的内容很多，通知内容是无法完整显示的，多余的部分会用省略号代替。但是如果你真的非常需要在通知当中显示一段长文字，Android也是支持的，通过setStyle()方法就可以做到</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-keyword">val</span> notification = NotificationCompat.Builder(<span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;normal&quot;</span>)<br>        ...<br>        .setStyle(NotificationCompat.BigTextStyle().bigText(<span class="hljs-string">&quot;Learn how to build</span><br><span class="hljs-string">        notifications, send and sync  data, and use voice actions. Get the official</span><br><span class="hljs-string">        Android IDE and developer tools to build apps for Android.&quot;</span>))<br>       .build()<br></code></pre></td></tr></table></figure>
+
+<p>使用了setStyle()方法替代setContentText()方法</p>
+<p>除了显示长文字之外，通知里还可以显示一张大图片</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-keyword">val</span> notification = NotificationCompat.Builder(<span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;normal&quot;</span>)<br>        ...<br>        .setStyle(NotificationCompat.BigPictureStyle().bigPicture(<br>            BitmapFactory.decodeResource(resources, R.drawable.big_image)))<br>        .build()<br></code></pre></td></tr></table></figure>
+
+<p>通过<code>BitmapFactory</code>的<code>decodeResource()</code>方法将图片解析成Bitmap对象</p>
+<p>（2）通知渠道的重要等级</p>
+<p>就是通知渠道的重要等级越高，发出的通知就越容易获得用户的注意。比如高重要等级的通知渠道发出的通知可以弹出横幅、发出声音，而低重要等级的通知渠道发出的通知不仅可能会在某些情况下被隐藏，而且可能会被改变显示的顺序，将其排在更重要的通知之后。</p>
+<p>由于通知渠道一旦创建就不能再通过代码修改了。既然无法修改之前创建的通知渠道，那么我们就只好再创建一个新的通知渠道来测试了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MainActivity</span> : AppCompatActivity() &#123;<br><br>    override fun <span class="hljs-title function_">onCreate</span><span class="hljs-params">(savedInstanceState: Bundle?)</span> &#123;<br>        ...<br>        <span class="hljs-keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) &#123;<br>            ...<br>            <span class="hljs-type">val</span> <span class="hljs-variable">channel2</span> <span class="hljs-operator">=</span> NotificationChannel(<span class="hljs-string">&quot;important&quot;</span>, <span class="hljs-string">&quot;Important&quot;</span>,<br>                NotificationManager.IMPORTANCE_HIGH)<br>            manager.createNotificationChannel(channel2)<br>        &#125;<br>        sendNotice.setOnClickListener &#123;<br>            <span class="hljs-type">val</span> <span class="hljs-variable">intent</span> <span class="hljs-operator">=</span> Intent(<span class="hljs-built_in">this</span>, NotificationActivity::class.java)<br>            <span class="hljs-type">val</span> <span class="hljs-variable">pi</span> <span class="hljs-operator">=</span> PendingIntent.getActivity(<span class="hljs-built_in">this</span>, <span class="hljs-number">0</span>, intent, <span class="hljs-number">0</span>)<br>            <span class="hljs-type">val</span> <span class="hljs-variable">notification</span> <span class="hljs-operator">=</span> NotificationCompat.Builder(<span class="hljs-built_in">this</span>, <span class="hljs-string">&quot;important&quot;</span>)<br>            ...<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/image-20240316234510616.png" srcset="/img/loading.gif" lazyload alt="image-20240316234510616"></p>
+<h2 id="调用摄像头和相册"><a href="#调用摄像头和相册" class="headerlink" title="调用摄像头和相册"></a>调用摄像头和相册</h2><p>我们平时在使用QQ或微信的时候经常要和别人分享图片，这些图片可以是用手机摄像头拍的，也可以是从相册中选取的。这样的功能实在是太常见了，几乎是应用程序必备的功能，那么本节我们就学习一下调用摄像头和相册方面的知识。</p>
+<p><strong>（1）调用摄像头</strong></p>
+<p>举例：点击按钮，启动照相机，拍照，将拍下来的图片展示到按钮的下面</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;<br><br>    <span class="hljs-keyword">val</span> takePhoto = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">lateinit</span> <span class="hljs-keyword">var</span> imageUri: Uri<br>    <span class="hljs-keyword">lateinit</span> <span class="hljs-keyword">var</span> outputImage: File<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState)<br>        setContentView(R.layout.activity_main)<br>        takePhotoBtn.setOnClickListener &#123;<br>            <span class="hljs-comment">// 创建File对象，用于存储拍照后的图片</span><br>            outputImage = File(externalCacheDir, <span class="hljs-string">&quot;output_image.jpg&quot;</span>)<br>            <span class="hljs-keyword">if</span> (outputImage.exists()) &#123;<br>                outputImage.delete()<br>            &#125;<br>            outputImage.createNewFile()<br>            <span class="hljs-comment">//判断设备的系统是否大于Android7.0</span><br>            imageUri = <span class="hljs-keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.N) &#123;<br>                FileProvider.getUriForFile(<span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;com.example.cameraalbumtest.</span><br><span class="hljs-string">                    fileprovider&quot;</span>, outputImage)<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                Uri.fromFile(outputImage) <span class="hljs-comment">//将file对象转为uri对象</span><br>            &#125;<br>            <span class="hljs-comment">// 启动相机程序</span><br>            <span class="hljs-keyword">val</span> intent = Intent(<span class="hljs-string">&quot;android.media.action.IMAGE_CAPTURE&quot;</span>)<br>            <span class="hljs-comment">//当使用相机拍摄照片或录制视频时，可以通过设置 MediaStore.EXTRA_OUTPUT 来指定保存文件的路径和名称。</span><br>            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)<br>            startActivityForResult(intent, takePhoto)<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onActivityResult</span><span class="hljs-params">(requestCode: <span class="hljs-type">Int</span>, resultCode: <span class="hljs-type">Int</span>, <span class="hljs-keyword">data</span>: <span class="hljs-type">Intent</span>?)</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onActivityResult(requestCode, resultCode, <span class="hljs-keyword">data</span>)<br>        <span class="hljs-keyword">when</span> (requestCode) &#123;<br>            takePhoto -&gt; &#123;<br>                <span class="hljs-keyword">if</span> (resultCode == Activity.RESULT_OK) &#123;<br>                    <span class="hljs-comment">// 用于读取由 imageUri 指定的文件的内容</span><br>                    <span class="hljs-comment">//BitmapFactory 是一个用于创建位图（Bitmap）对象的工厂类。decodeStream()会从给定的输入流中解码位图数据，并返回一个位图对象。</span><br>                    <span class="hljs-keyword">val</span> bitmap = BitmapFactory.decodeStream(contentResolver.<br>                        openInputStream(imageUri))<br>                    imageView.setImageBitmap(rotateIfRequired(bitmap))<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br><span class="hljs-comment">//手机认为打开摄像头进行拍摄时手机就应该是横屏的，因此回到竖屏的情况下就会发生90度的旋转。</span><br><span class="hljs-comment">//为此，这里我们又加上了判断图片方向的代码，如果发现图片需要进行旋转，</span><br><span class="hljs-comment">//那么就先将图片旋转相应的角度，然后再显示到界面上。</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">rotateIfRequired</span><span class="hljs-params">(bitmap: <span class="hljs-type">Bitmap</span>)</span></span>: Bitmap &#123;<br>        <span class="hljs-keyword">val</span> exif = ExifInterface(outputImage.path)<br>        <span class="hljs-keyword">val</span> orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,<br>            ExifInterface.ORIENTATION_NORMAL)<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">when</span> (orientation) &#123;<br>            ExifInterface.ORIENTATION_ROTATE_90 -&gt; rotateBitmap(bitmap, <span class="hljs-number">90</span>)<br>            ExifInterface.ORIENTATION_ROTATE_180 -&gt; rotateBitmap(bitmap, <span class="hljs-number">180</span>)<br>            ExifInterface.ORIENTATION_ROTATE_270 -&gt; rotateBitmap(bitmap, <span class="hljs-number">270</span>)<br>            <span class="hljs-keyword">else</span> -&gt; bitmap<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">rotateBitmap</span><span class="hljs-params">(bitmap: <span class="hljs-type">Bitmap</span>, degree: <span class="hljs-type">Int</span>)</span></span>: Bitmap &#123;<br>        <span class="hljs-keyword">val</span> matrix = Matrix()<br>        matrix.postRotate(degree.toFloat())<br>        <span class="hljs-keyword">val</span> rotatedBitmap = Bitmap.createBitmap(bitmap, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, bitmap.width, bitmap.height,<br>            matrix, <span class="hljs-literal">true</span>)<br>        bitmap.recycle() <span class="hljs-comment">// 将不再需要的Bitmap对象回收</span><br>        <span class="hljs-keyword">return</span> rotatedBitmap<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>具体来说，<code>FileProvider.getUriForFile()</code> 方法的参数包括：</p>
+<ol>
+<li><code>context</code>：当前上下文，通常是 Activity 或 Service 的实例。</li>
+<li><code>authority</code>：FileProvider 的授权信息，即在 AndroidManifest.xml 文件中注册的 FileProvider 的 authorities 属性的值。</li>
+<li><code>file</code>：要获取内容 URI 的文件对象。</li>
+</ol>
+<p>调用 <code>FileProvider.getUriForFile()</code> 方法后，它会返回一个内容 URI，这个 URI 可以被其他应用程序访问，用于获取你的应用程序中指定文件的内容。</p>
+<p><strong>不过现在还没结束，刚才提到了ContentProvider，那么我们自然要在AndroidManifest.xml中对它进行注册才行</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;manifest <span class="hljs-attr">xmlns</span>:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>        package=<span class="hljs-string">&quot;com.example.cameraalbumtest&quot;</span>&gt;<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">application</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">android:allowBackup</span>=<span class="hljs-string">&quot;true&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">android:icon</span>=<span class="hljs-string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">android:label</span>=<span class="hljs-string">&quot;@string/app_name&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">android:supportsRtl</span>=<span class="hljs-string">&quot;true&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">android:theme</span>=<span class="hljs-string">&quot;@style/AppTheme&quot;</span>&gt;</span></span><br><span class="language-xml">        ...</span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">provider</span></span></span><br><span class="hljs-tag"><span class="language-xml">            <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;androidx.core.content.FileProvider&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">            <span class="hljs-attr">android:authorities</span>=<span class="hljs-string">&quot;com.example.cameraalbumtest.fileprovider&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">            <span class="hljs-attr">android:exported</span>=<span class="hljs-string">&quot;false&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">            <span class="hljs-attr">android:grantUriPermissions</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">meta-data</span></span></span><br><span class="hljs-tag"><span class="language-xml">                <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.support.FILE_PROVIDER_PATHS&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">                <span class="hljs-attr">android:resource</span>=<span class="hljs-string">&quot;@xml/file_paths&quot;</span> /&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">provider</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">application</span>&gt;</span></span><br>&lt;/manifest&gt;<br></code></pre></td></tr></table></figure>
+
+<p>这里还在<code>&lt;provider&gt;</code>标签的内部使用<code>&lt;meta-data&gt;</code>指定Uri的共享路径，并引用了一个<code>@xml/file_paths</code>资源。</p>
+<p>右击res目录→New→Directory，创建一个xml目录，接着右击xml目录→New→File，创建一个<code>file_paths.xml</code>文件。然后修改<code>file_paths.xml</code>文件中的内容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span>?&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">paths</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">external-path</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;my_images&quot;</span> <span class="hljs-attr">path</span>=<span class="hljs-string">&quot;/&quot;</span> /&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">paths</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p><code>external-path</code>就是用来指定Uri共享路径的，name属性的值可以随便填，path属性的值表示共享的具体路径，这里使用一个单斜线表示将整个SD卡进行共享，当然你也可以仅共享存放<code>output_image.jpg</code>这张图片的路径。</p>
+<p><strong>（2）从相册中选择图片</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;<br>    ...<br>    <span class="hljs-keyword">val</span> fromAlbum = <span class="hljs-number">2</span><br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;<br>        ...<br>        fromAlbumBtn.setOnClickListener &#123;<br>            <span class="hljs-comment">// 打开系统的文件选择器</span><br>            <span class="hljs-keyword">val</span> intent = Intent(Intent.ACTION_OPEN_DOCUMENT)<br>            intent.addCategory(Intent.CATEGORY_OPENABLE)<br>            <span class="hljs-comment">// 指定只显示图片</span><br>            intent.type = <span class="hljs-string">&quot;image/ *&quot;</span><br>            startActivityForResult(intent, fromAlbum)<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onActivityResult</span><span class="hljs-params">(requestCode: <span class="hljs-type">Int</span>, resultCode: <span class="hljs-type">Int</span>, <span class="hljs-keyword">data</span>: <span class="hljs-type">Intent</span>?)</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onActivityResult(requestCode, resultCode, <span class="hljs-keyword">data</span>)<br>        <span class="hljs-keyword">when</span> (requestCode) &#123;<br>            ...<br>            fromAlbum -&gt; &#123;<br>                <span class="hljs-keyword">if</span> (resultCode == Activity.RESULT_OK &amp;&amp; <span class="hljs-keyword">data</span> != <span class="hljs-literal">null</span>) &#123;<br>                <span class="hljs-comment">//data.getData()：获取选中图片的uri</span><br>                    <span class="hljs-keyword">data</span>.<span class="hljs-keyword">data</span>?.let &#123; uri -&gt;<br>                        <span class="hljs-comment">// 将Uri转换成Bitmap对象</span><br>                        <span class="hljs-keyword">val</span> bitmap = getBitmapFromUri(uri)<br>                        <span class="hljs-comment">// 将选择的图片显示</span><br>                        imageView.setImageBitmap(bitmap)<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getBitmapFromUri</span><span class="hljs-params">(uri: <span class="hljs-type">Uri</span>)</span></span> = contentResolver<br>        .openFileDescriptor(uri, <span class="hljs-string">&quot;r&quot;</span>)?.use &#123;<br>        BitmapFactory.decodeFileDescriptor(it.fileDescriptor)<br>    &#125;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="播放多媒体文件"><a href="#播放多媒体文件" class="headerlink" title="播放多媒体文件"></a>播放多媒体文件</h2><p><strong>（1）播放音频</strong></p>
+<p>在Android中播放音频文件一般是使用MediaPlayer类实现的，它对多种格式的音频文件提供了非常全面的控制方法，从而使播放音乐的工作变得十分简单。</p>
+<p>首先来创建assets目录吧，它必须创建在app&#x2F;src&#x2F;main这个目录下面，也就是和java、res这两个目录是平级的。右击app&#x2F;src&#x2F;main→New→Directory，在弹出的对话框中输入“assets”，目录就创建完成了。将音频放入到此目录中</p>
+<p><img src="/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/image-20240316234600119.png" srcset="/img/loading.gif" lazyload alt="image-20240316234600119"></p>
+<p><strong>使用流程：</strong>首先需要创建一个MediaPlayer对象，然后调用setDataSource()方法设置音频文件的路径，再调用prepare()方法使MediaPlayer进入准备状态，接下来调用start()方法就可以开始播放音频，调用pause()方法就会暂停播放，调用reset()方法就会停止播放。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> mediaPlayer = MediaPlayer()<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState)<br>        setContentView(R.layout.activity_main)<br>        initMediaPlayer()<br>        play.setOnClickListener &#123;<br>            <span class="hljs-keyword">if</span> (!mediaPlayer.isPlaying) &#123;<br>                mediaPlayer.start() <span class="hljs-comment">// 开始播放</span><br>            &#125;<br>        &#125;<br>        pause.setOnClickListener &#123;<br>            <span class="hljs-keyword">if</span> (mediaPlayer.isPlaying) &#123;<br>                mediaPlayer.pause() <span class="hljs-comment">// 暂停播放</span><br>            &#125;<br>        &#125;<br>        stop.setOnClickListener &#123;<br>            <span class="hljs-keyword">if</span> (mediaPlayer.isPlaying) &#123;<br>                mediaPlayer.reset() <span class="hljs-comment">// 停止播放</span><br>                initMediaPlayer()<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">initMediaPlayer</span><span class="hljs-params">()</span></span> &#123;<br>        <span class="hljs-keyword">val</span> assetManager = assets<br>        <span class="hljs-keyword">val</span> fd = assetManager.openFd(<span class="hljs-string">&quot;music.mp3&quot;</span>)<br>        mediaPlayer.setDataSource(fd.fileDescriptor, fd.startOffset, fd.length)<br>        mediaPlayer.prepare()<br>    &#125;<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onDestroy</span><span class="hljs-params">()</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onDestroy()<br>        mediaPlayer.stop()<br>        mediaPlayer.release()<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在initMediaPlayer()方法中，首先通过getAssets()方法得到了一个AssetManager的实例，AssetManager可用于读取assets目录下的任何资源。</p>
+<p>调用reset()方法将MediaPlayer重置为刚刚创建的状态，然后重新调用一遍initMediaPlayer()方法</p>
+<p><strong>（2）播放视频</strong></p>
+<p>主要是使用VideoView类来实现的。这个类将视频的显示和控制集于一身，我们仅仅借助它就可以完成一个简易的视频播放器。</p>
+<p><img src="/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/asynccode" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>VideoView不支持直接播放assets目录下的视频资源，而是使用res目录下允许我们再创建一个raw目录，像诸如音频、视频之类的资源文件也可以放在这里，并且VideoView是可以直接播放这个目录下的视频资源的。将视频资源放入这个文件夹中。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState)<br>        setContentView(R.layout.activity_main)<br>        <span class="hljs-keyword">val</span> uri = Uri.parse(<span class="hljs-string">&quot;android.resource://<span class="hljs-variable">$packageName</span>/<span class="hljs-subst">$&#123;R.raw.video&#125;</span>&quot;</span>)<br>        videoView.setVideoURI(uri)<br>        play.setOnClickListener &#123;<br>            <span class="hljs-keyword">if</span> (!videoView.isPlaying) &#123;<br>                videoView.start() <span class="hljs-comment">// 开始播放</span><br>            &#125;<br>        &#125;<br>        pause.setOnClickListener &#123;<br>            <span class="hljs-keyword">if</span> (videoView.isPlaying) &#123;<br>                videoView.pause() <span class="hljs-comment">// 暂停播放</span><br>            &#125;<br>        &#125;<br>        replay.setOnClickListener &#123;<br>            <span class="hljs-keyword">if</span> (videoView.isPlaying) &#123;<br>                videoView.resume() <span class="hljs-comment">// 重新播放</span><br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onDestroy</span><span class="hljs-params">()</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onDestroy()<br>        videoView.<span class="hljs-keyword">suspend</span>()<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>首先在onCreate()方法中调用了Uri.parse()方法，将raw目录下的video.mp4文件解析成了一个Uri对象，这里使用的写法是Android要求的固定写法。然后调用VideoView的setVideoURI()方法将刚才解析出来的Uri对象传入，这样VideoView就初始化完成了</p>
+<blockquote>
+<p>注意：VideoView并不是一个万能的视频播放工具类，它在视频格式的支持以及播放效率方面都存在着较大的不足。所以，如果想要仅仅使用VideoView就编写出一个功能非常强大的视频播放器是不太现实的。</p>
+</blockquote>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Android/" class="category-chain-item">Android</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Android/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="category-chain-item">Android基础知识</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>手机多媒体</div>
+      <div>http://example.com/2024/03/16/手机多媒体/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/17/Application/" title="Application">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Application</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/16/UI/" title="UI">
+                        <span class="hidden-mobile">UI</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments">
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","appKey":"MnpSoeG5QTTJ4GagUMOq5t7J","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://8pddcsrj.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div>张露文的博客 | 记录成长过程</div> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

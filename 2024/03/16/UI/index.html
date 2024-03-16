@@ -1,0 +1,876 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#447EA5">
+  <meta name="author" content="zlw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="常用控件基本布局LinearLayoutLinearLayout又称作线性布局,这个布局会将它所包含的控件在线性方向上依次排列。 通过这个属性android:orientation&#x3D;&quot;versical&quot;&#x2F;android:orientation&#x3D;&quot;horizontal&quot;来执行布局是垂直方向排列还是水平方向排列。默认方向是水平方向 这个布局中有两个重要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UI">
+<meta property="og:url" content="http://example.com/2024/03/16/UI/index.html">
+<meta property="og:site_name" content="zlw">
+<meta property="og:description" content="常用控件基本布局LinearLayoutLinearLayout又称作线性布局,这个布局会将它所包含的控件在线性方向上依次排列。 通过这个属性android:orientation&#x3D;&quot;versical&quot;&#x2F;android:orientation&#x3D;&quot;horizontal&quot;来执行布局是垂直方向排列还是水平方向排列。默认方向是水平方向 这个布局中有两个重要">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/03/16/UI/image-20240316234645019.png">
+<meta property="og:image" content="http://example.com/2024/03/16/UI/image-20240316234658569.png">
+<meta property="og:image" content="http://example.com/2024/03/16/UI/image-20240316234709353.png">
+<meta property="og:image" content="http://example.com/2024/03/16/UI/image-20240316234720092.png">
+<meta property="og:image" content="http://example.com/2024/03/16/UI/image-20240316234729594.png">
+<meta property="og:image" content="http://example.com/2024/03/16/UI/image-20240316234738640.png">
+<meta property="og:image" content="http://example.com/2024/03/16/UI/image-20240316234748877.png">
+<meta property="og:image" content="http://example.com/2024/03/16/UI/image-20240316234813283.png">
+<meta property="og:image" content="http://example.com/2024/03/16/UI/image-20240316234821395.png">
+<meta property="og:image" content="http://example.com/2024/03/16/UI/asynccode">
+<meta property="article:published_time" content="2024-03-16T15:27:22.000Z">
+<meta property="article:modified_time" content="2024-03-16T15:48:30.525Z">
+<meta property="article:author" content="zlw">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="UI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/03/16/UI/image-20240316234645019.png">
+  
+  
+  
+  <title>UI - zlw</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","app_key":"MnpSoeG5QTTJ4GagUMOq5t7J","server_url":"https://leancloud.cn","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>欢迎来到zlw的blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/8.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="UI"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-16 23:27" pubdate>
+          2024年3月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          18k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          154 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">UI</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="常用控件"><a href="#常用控件" class="headerlink" title="常用控件"></a>常用控件</h2><h2 id="基本布局"><a href="#基本布局" class="headerlink" title="基本布局"></a>基本布局</h2><h3 id="LinearLayout"><a href="#LinearLayout" class="headerlink" title="LinearLayout"></a>LinearLayout</h3><p>LinearLayout又称作<strong>线性布局</strong>,这个布局会将它所包含的控件在线性方向上依次排列。</p>
+<p>通过这个属性<code>android:orientation=&quot;versical&quot;</code>&#x2F;<code>android:orientation=&quot;horizontal&quot;</code>来执行布局是垂直方向排列还是水平方向排列。默认方向是水平方向</p>
+<p><strong>这个布局中有两个重要的属性：</strong></p>
+<p><strong>（1）android:layout_gravity属性和android:gravity属性有什么区别？</strong></p>
+<ul>
+<li>android:gravity用于指定文字在控件中的对齐方式（top、bottom、start、end、center等，可以用“|”来同时指定多个值）</li>
+<li>android:layout_gravity用于指定控件在布局中的对齐方式</li>
+</ul>
+<blockquote>
+<p>但是需要注意，当LinearLayout的排列方向是horizontal时，只有垂直方向上的对齐方式才会生效。因为此时水平方向上的长度是不固定的，每添加一个控件，水平方向上的长度都会改变，因而无法指定该方向上的对齐方式。同样的道理，当LinearLayout的排列方向是vertical时，只有水平方向上的对齐方式才会生效。</p>
+</blockquote>
+<p><strong>（2）LinearLayout中的另一个重要属性—android:layout_weight</strong></p>
+<p>这个属性允许我们使用比例的方式来指定控件的大小，它在手机屏幕的适配性方面可以起到非常重要的作用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs Bash">&lt;LinearLayout xmlns:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    android:orientation=<span class="hljs-string">&quot;horizontal&quot;</span><br>    android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>    android:layout_height=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;<br><br>    &lt;EditText<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/input_message&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;0dp&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_weight=<span class="hljs-string">&quot;1&quot;</span><br>        android:hint=<span class="hljs-string">&quot;Type something&quot;</span><br>        /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/send&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;0dp&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_weight=<span class="hljs-string">&quot;1&quot;</span><br>        android:text=<span class="hljs-string">&quot;Send&quot;</span><br>        /&gt;<br><br>&lt;/LinearLayout&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/03/16/UI/image-20240316234645019.png" srcset="/img/loading.gif" lazyload alt="image-20240316234645019"></p>
+<p>同时指定为1平分屏幕宽度，</p>
+<blockquote>
+<p>其实原理很简单，将LinearLayout下所有控件的layout_weight值相加，得到一个总值，然后每个控件所占大小的比例就是用该控件的layout_weight值除以刚才算出的总值。上面就是1&#x2F;2和1&#x2F;2。因此平分。</p>
+</blockquote>
+<p><strong>还可以通过指定部分控件的layout_weight值来实现更好的效果</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs Bash">&lt;LinearLayout xmlns:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    android:orientation=<span class="hljs-string">&quot;horizontal&quot;</span><br>    android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>    android:layout_height=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;<br><br>    &lt;EditText<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/input_message&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;0dp&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_weight=<span class="hljs-string">&quot;1&quot;</span><br>        android:hint=<span class="hljs-string">&quot;Type something&quot;</span><br>        /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/send&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:text=<span class="hljs-string">&quot;Send&quot;</span><br>        /&gt;<br><br>&lt;/LinearLayout&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/03/16/UI/image-20240316234658569.png" srcset="/img/loading.gif" lazyload alt="image-20240316234658569"></p>
+<h3 id="RelativeLayout"><a href="#RelativeLayout" class="headerlink" title="RelativeLayout"></a>RelativeLayout</h3><p><strong>相对布局</strong>，RelativeLayout显得更加随意，它可以通过相对定位的方式让控件出现在布局的任何位置，因此RelativeLayout中的属性非常多，不过都是有规律可循的。</p>
+<p><strong>（1）控件相当于父布局定位</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs Bash">&lt;RelativeLayout xmlns:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>    android:layout_height=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/button1&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_alignParentLeft=<span class="hljs-string">&quot;true&quot;</span><br>        android:layout_alignParentTop=<span class="hljs-string">&quot;true&quot;</span><br>        android:text=<span class="hljs-string">&quot;Button 1&quot;</span> /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/button2&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_alignParentRight=<span class="hljs-string">&quot;true&quot;</span><br>        android:layout_alignParentTop=<span class="hljs-string">&quot;true&quot;</span><br>        android:text=<span class="hljs-string">&quot;Button 2&quot;</span> /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/button3&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_centerInParent=<span class="hljs-string">&quot;true&quot;</span><br>        android:text=<span class="hljs-string">&quot;Button 3&quot;</span> /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/button4&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_alignParentBottom=<span class="hljs-string">&quot;true&quot;</span><br>        android:layout_alignParentLeft=<span class="hljs-string">&quot;true&quot;</span><br>        android:text=<span class="hljs-string">&quot;Button 4&quot;</span> /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/button5&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_alignParentBottom=<span class="hljs-string">&quot;true&quot;</span><br>        android:layout_alignParentRight=<span class="hljs-string">&quot;true&quot;</span><br>        android:text=<span class="hljs-string">&quot;Button 5&quot;</span> /&gt;<br><br>&lt;/RelativeLayout&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/03/16/UI/image-20240316234709353.png" srcset="/img/loading.gif" lazyload alt="image-20240316234709353"></p>
+<p><strong>（2）控件相对于控件定位</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs Bash">&lt;RelativeLayout xmlns:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>    android:layout_height=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/button3&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_centerInParent=<span class="hljs-string">&quot;true&quot;</span><br>        android:text=<span class="hljs-string">&quot;Button 3&quot;</span> /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/button1&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_above=<span class="hljs-string">&quot;@id/button3&quot;</span><br>        android:layout_toLeftOf=<span class="hljs-string">&quot;@id/button3&quot;</span><br>        android:text=<span class="hljs-string">&quot;Button 1&quot;</span> /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/button2&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_above=<span class="hljs-string">&quot;@id/button3&quot;</span><br>        android:layout_toRightOf=<span class="hljs-string">&quot;@id/button3&quot;</span><br>        android:text=<span class="hljs-string">&quot;Button 2&quot;</span> /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/button4&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_below=<span class="hljs-string">&quot;@id/button3&quot;</span><br>        android:layout_toLeftOf=<span class="hljs-string">&quot;@id/button3&quot;</span><br>        android:text=<span class="hljs-string">&quot;Button 4&quot;</span> /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/button5&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_below=<span class="hljs-string">&quot;@id/button3&quot;</span><br>        android:layout_toRightOf=<span class="hljs-string">&quot;@id/button3&quot;</span><br>        android:text=<span class="hljs-string">&quot;Button 5&quot;</span> /&gt;<br><br>&lt;/RelativeLayout&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/03/16/UI/image-20240316234720092.png" srcset="/img/loading.gif" lazyload alt="image-20240316234720092"></p>
+<h3 id="FrameLayout"><a href="#FrameLayout" class="headerlink" title="FrameLayout"></a>FrameLayout</h3><p>这种布局没有丰富的定位方式，所有的控件都会默认摆放在布局的左上角</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Bash">&lt;FrameLayout xmlns:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>    android:layout_height=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;<br><br>    &lt;TextView<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/textView&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:text=<span class="hljs-string">&quot;This is TextView&quot;</span><br>        /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/button&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:text=<span class="hljs-string">&quot;Button&quot;</span><br>        /&gt;<br><br>&lt;/FrameLayout&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/03/16/UI/image-20240316234729594.png" srcset="/img/loading.gif" lazyload alt="image-20240316234729594"></p>
+<p>可以看到，文字和按钮都位于布局的左上角。由于Button是在TextView之后添加的，因此按钮压在了文字的上面。</p>
+<p>除了这种默认效果之外，我们还可以使用layout_gravity属性来指定控件在布局中的对齐方式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs Bash">&lt;FrameLayout xmlns:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>    android:layout_height=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;<br><br>    &lt;TextView<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/textView&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_gravity=<span class="hljs-string">&quot;left&quot;</span><br>        android:text=<span class="hljs-string">&quot;This is TextView&quot;</span><br>        /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/button&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_gravity=<span class="hljs-string">&quot;right&quot;</span><br>        android:text=<span class="hljs-string">&quot;Button&quot;</span><br>        /&gt;<br><br>&lt;/FrameLayout&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/03/16/UI/image-20240316234738640.png" srcset="/img/loading.gif" lazyload alt="image-20240316234738640"></p>
+<h2 id="引入布局"><a href="#引入布局" class="headerlink" title="引入布局"></a>引入布局</h2><p>拿标题栏举例，一般我们程序中可能有多个Activity需要这样的标题栏，如果在每个Activity的布局中都编写一遍同样的标题栏代码，明显就会导致代码的大量重复。这时我们就可以使用引入布局的方式来解决这个问题</p>
+<p>建立title.xml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs Bash">&lt;LinearLayout xmlns:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>    android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>    android:background=<span class="hljs-string">&quot;@drawable/title_bg&quot;</span>&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/titleBack&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_gravity=<span class="hljs-string">&quot;center&quot;</span><br>        android:layout_margin=<span class="hljs-string">&quot;5dp&quot;</span><br>        android:background=<span class="hljs-string">&quot;@drawable/back_bg&quot;</span><br>        android:text=<span class="hljs-string">&quot;Back&quot;</span><br>        android:textColor=<span class="hljs-string">&quot;#fff&quot;</span> /&gt;<br><br>    &lt;TextView<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/titleText&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;0dp&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_gravity=<span class="hljs-string">&quot;center&quot;</span><br>        android:layout_weight=<span class="hljs-string">&quot;1&quot;</span><br>        android:gravity=<span class="hljs-string">&quot;center&quot;</span><br>        android:text=<span class="hljs-string">&quot;Title Text&quot;</span><br>        android:textColor=<span class="hljs-string">&quot;#fff&quot;</span><br>        android:textSize=<span class="hljs-string">&quot;24sp&quot;</span> /&gt;<br><br>    &lt;Button<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/titleEdit&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_gravity=<span class="hljs-string">&quot;center&quot;</span><br>        android:layout_margin=<span class="hljs-string">&quot;5dp&quot;</span><br>        android:background=<span class="hljs-string">&quot;@drawable/edit_bg&quot;</span><br>        android:text=<span class="hljs-string">&quot;Edit&quot;</span><br>        android:textColor=<span class="hljs-string">&quot;#fff&quot;</span> /&gt;<br><br>&lt;/LinearLayout&gt;<br></code></pre></td></tr></table></figure>
+
+<p><code>android:layout_margin</code>这个属性，它可以指定控件在上下左右方向上的间距</p>
+<p>现在标题栏布局已经编写完成了，剩下的就是如何在程序中使用这个标题栏了</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">&lt;LinearLayout xmlns:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>    android:layout_height=<span class="hljs-string">&quot;match_parent&quot;</span> &gt;<br><br>    &lt;include layout=<span class="hljs-string">&quot;@layout/title&quot;</span> /&gt;<br><br>&lt;/LinearLayout&gt;<br></code></pre></td></tr></table></figure>
+
+<p>只需要一个include标签就把标题栏布局引入进来了。<code>@layout/title</code> 意味着引用了 <code>res/layout</code> 目录下名为 <code>title.xml</code> 的布局文件。</p>
+<p>最后别忘了在MainActivity中将系统自带的标题栏隐藏掉</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState)<br>        setContentView(R.layout.activity_main)<br>        <span class="hljs-comment">//调用getSupportActionBar()方法获取ActionBar的实例，再调用它的hide()方法将标题栏隐藏起来</span><br>        supportActionBar?.hide()<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/03/16/UI/image-20240316234748877.png" srcset="/img/loading.gif" lazyload alt="image-20240316234748877"></p>
+<h2 id="自定义控件"><a href="#自定义控件" class="headerlink" title="自定义控件"></a>自定义控件</h2><p>引入布局的技巧确实解决了重复编写布局代码的问题，但是如果布局中有一些控件要求能够响应事件，我们还是需要在每个Activity中为这些控件单独编写一次事件注册的代码，无疑会增加很多重复代码，这种情况最好是使用自定义控件的方式来解决。</p>
+<p>新建TitleLayout继承自LinearLayout，让它成为我们自定义的标题栏控件</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TitleLayout</span></span>(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) &#123;<br><br>    <span class="hljs-keyword">init</span> &#123;<br>   <span class="hljs-comment">//第一个参数是要加载的布局文件的id，这里我们传入R.layout.title</span><br>    <span class="hljs-comment">//第二个参数是给加载好的布局再添加一个父布局，这里我们想要指定为TitleLayout，于是直接传入this</span><br>        LayoutInflater.from(context).inflate(R.layout.title, <span class="hljs-keyword">this</span>)<br>        titleBack.setOnClickListener &#123;<br>        <span class="hljs-comment">//TitleLayout中接收的context参数实际上是一个Activity的实例</span><br>        <span class="hljs-comment">//先将它转换成Activity类型，然后再调用finish()方法销毁当前的Activity</span><br>        <span class="hljs-comment">//Kotlin中的类型强制转换使用的关键字是as</span><br>            <span class="hljs-keyword">val</span> activity = context <span class="hljs-keyword">as</span> Activity<br>            activity.finish()<br>        &#125;<br>        titleEdit.setOnClickListener &#123;<br>            Toast.makeText(context, <span class="hljs-string">&quot;You clicked Edit button&quot;</span>, Toast.LENGTH_SHORT).show()<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>需要在布局文件中添加这个自定义控件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;<span class="hljs-title class_">LinearLayout</span> <span class="hljs-attr">xmlns</span>:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    <span class="hljs-attr">android</span>:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>    <span class="hljs-attr">android</span>:layout_height=<span class="hljs-string">&quot;match_parent&quot;</span> &gt;<br><br><span class="hljs-comment">//需要指明控件的完整类名</span><br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">com.example.uicustomviews.TitleLayout</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span> /&gt;</span></span><br><br>&lt;/<span class="hljs-title class_">LinearLayout</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p>自定义控件就完成啦，这样的话，每当我们在一个布局中引入TitleLayout时，返回按钮和编辑按钮的点击事件就已经自动实现好了，这就省去了很多编写重复代码的工作。</p>
+<h2 id="强大的滚动控件：RecyclerView"><a href="#强大的滚动控件：RecyclerView" class="headerlink" title="强大的滚动控件：RecyclerView"></a>强大的滚动控件：RecyclerView</h2><p>定义一个实体类，新建Fruit类</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-comment">//name表示水果的名字，imageId表示水果对应图片的资源id。</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Fruit</span>(val <span class="hljs-attr">name</span>:<span class="hljs-title class_">String</span>, val <span class="hljs-attr">imageId</span>: <span class="hljs-title class_">Int</span>)<br></code></pre></td></tr></table></figure>
+
+<p>然后需要为RecyclerView的子项指定一个我们自定义的布局，在layout目录下新建fruit_item.xml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Bash">&lt;LinearLayout xmlns:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>    android:layout_height=<span class="hljs-string">&quot;60dp&quot;</span>&gt;<br><br>    &lt;ImageView<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/fruitImage&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;40dp&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;40dp&quot;</span><br>        android:layout_gravity=<span class="hljs-string">&quot;center_vertical&quot;</span><br>        android:layout_marginLeft=<span class="hljs-string">&quot;10dp&quot;</span>/&gt;<br><br>    &lt;TextView<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/fruitName&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_gravity=<span class="hljs-string">&quot;center_vertical&quot;</span><br>        android:layout_marginLeft=<span class="hljs-string">&quot;10dp&quot;</span> /&gt;<br><br>&lt;/LinearLayout&gt;<br></code></pre></td></tr></table></figure>
+
+<p>接下来需要为RecyclerView准备一个适配器，新建FruitAdapter类，让这个适配器继承自RecyclerView.Adapter，并将泛型指定为FruitAdapter.ViewHolder。其中，ViewHolder是我们在FruitAdapter中定义的一个内部类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">FruitAdapter</span>(val fruitList: List&lt;Fruit&gt;) :<br>        RecyclerView.Adapter&lt;FruitAdapter.ViewHolder&gt;() &#123;<br><br><span class="hljs-comment">//定义一个内部类，主构造函数传入一个view参数，这个参数RecyclerView子项的最外层布局</span><br>    inner <span class="hljs-keyword">class</span> <span class="hljs-title class_">ViewHolder</span>(view: View) : RecyclerView.ViewHolder(view) &#123;<br>    <span class="hljs-comment">//所以我们就可以通过findViewById()方法来获取布局中的ImageView和TextView</span><br>        val fruitImage: ImageView = view.findViewById(R.id.fruitImage)<br>        val fruitName: TextView = view.findViewById(R.id.fruitName)<br>    &#125;<br>    <br><span class="hljs-comment">//由于继承了RecyclerView.Adapter，因此要重新下面三个方法</span><br><span class="hljs-comment">//onCreateViewHolder是用于创建ViewHolder实例的</span><br><span class="hljs-comment">//第二个参数表示视图的类型，RecyclerView 支持多种不同类型的视图</span><br>    override fun <span class="hljs-title function_">onCreateViewHolder</span><span class="hljs-params">(parent: ViewGroup, viewType: Int)</span>: ViewHolder &#123;<br>        <span class="hljs-type">val</span> <span class="hljs-variable">view</span> <span class="hljs-operator">=</span> LayoutInflater.from(parent.context)<br>        .inflate(R.layout.fruit_item, parent, <span class="hljs-literal">false</span>)<br>        <span class="hljs-keyword">return</span> ViewHolder(view)<br>    &#125;<br>    <br><span class="hljs-comment">//onBindViewHolder()方法用于对RecyclerView子项的数据进行赋值，</span><br><span class="hljs-comment">//会在每个子项被滚动到屏幕内的时候执行，这里我们通过position参数得到当前项的Fruit实例，</span><br><span class="hljs-comment">//然后再将数据设置到ViewHolder的ImageView和TextView当中即可</span><br>    override fun <span class="hljs-title function_">onBindViewHolder</span><span class="hljs-params">(holder: ViewHolder, position: Int)</span> &#123;<br>        <span class="hljs-type">val</span> <span class="hljs-variable">fruit</span> <span class="hljs-operator">=</span> fruitList[position]<br>        holder.fruitImage.setImageResource(fruit.imageId)<br>        holder.fruitName.text = fruit.name<br>    &#125;<br><br><span class="hljs-comment">//用于告诉RecyclerView一共有多少子项</span><br>    override fun <span class="hljs-title function_">getItemCount</span><span class="hljs-params">()</span> = fruitList.size<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>适配器准备好了之后，我们就可以开始使用RecyclerView了</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> fruitList = ArrayList&lt;Fruit&gt;()<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState)<br>        setContentView(R.layout.activity_main)<br>        initFruits() <span class="hljs-comment">// 初始化水果数据</span><br>        <span class="hljs-keyword">val</span> layoutManager = LinearLayoutManager(<span class="hljs-keyword">this</span>)<br>        <span class="hljs-comment">//layoutManager用于指定RecyclerView的布局方式，这里是使用的线性布局</span><br>        recyclerView.layoutManager = layoutManager<br>        <span class="hljs-keyword">val</span> adapter = FruitAdapter(fruitList)<br>        <span class="hljs-comment">//完成适配器的设置，这样RecyclerView和数据之间的关联就建立完成了</span><br>        recyclerView.adapter = adapter<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">initFruits</span><span class="hljs-params">()</span></span> &#123;<br>        repeat(<span class="hljs-number">2</span>) &#123;<br>            fruitList.add(Fruit(<span class="hljs-string">&quot;Apple&quot;</span>, R.drawable.apple_pic))<br>            fruitList.add(Fruit(<span class="hljs-string">&quot;Banana&quot;</span>, R.drawable.banana_pic))<br>            fruitList.add(Fruit(<span class="hljs-string">&quot;Orange&quot;</span>, R.drawable.orange_pic))<br>            fruitList.add(Fruit(<span class="hljs-string">&quot;Watermelon&quot;</span>, R.drawable.watermelon_pic))<br>            fruitList.add(Fruit(<span class="hljs-string">&quot;Pear&quot;</span>, R.drawable.pear_pic))<br>            fruitList.add(Fruit(<span class="hljs-string">&quot;Grape&quot;</span>, R.drawable.grape_pic))<br>            fruitList.add(Fruit(<span class="hljs-string">&quot;Pineapple&quot;</span>, R.drawable.pineapple_pic))<br>            fruitList.add(Fruit(<span class="hljs-string">&quot;Strawberry&quot;</span>, R.drawable.strawberry_pic))<br>            fruitList.add(Fruit(<span class="hljs-string">&quot;Cherry&quot;</span>, R.drawable.cherry_pic))<br>            fruitList.add(Fruit(<span class="hljs-string">&quot;Mango&quot;</span>, R.drawable.mango_pic))<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/03/16/UI/image-20240316234813283.png" srcset="/img/loading.gif" lazyload alt="image-20240316234813283"></p>
+<p><strong>RecyclerView还支持横向滚动</strong>，这时就要把水果元素改成垂直排列才合理</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs Bash">&lt;LinearLayout xmlns:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    android:orientation=<span class="hljs-string">&quot;vertical&quot;</span><br>    android:layout_width=<span class="hljs-string">&quot;80dp&quot;</span><br>    android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span>&gt;<br><br>    &lt;ImageView<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/fruitImage&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;40dp&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;40dp&quot;</span><br>        android:layout_gravity=<span class="hljs-string">&quot;center_horizontal&quot;</span><br>        android:layout_marginTop=<span class="hljs-string">&quot;10dp&quot;</span> /&gt;<br><br>    &lt;TextView<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/fruitName&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_gravity=<span class="hljs-string">&quot;center_horizontal&quot;</span><br>        android:layout_marginTop=<span class="hljs-string">&quot;10dp&quot;</span> /&gt;<br><br>&lt;/LinearLayout&gt;<br></code></pre></td></tr></table></figure>
+
+<p>我们将ImageView和TextView都设置成了在布局中水平居中，并且使用layout_marginTop属性让文字和图片之间保持一定距离，接下来修改MainActivity中的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MainActivity</span> : AppCompatActivity() &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">val</span> <span class="hljs-variable">fruitList</span> <span class="hljs-operator">=</span> ArrayList&lt;Fruit&gt;()<br><br>    override fun <span class="hljs-title function_">onCreate</span><span class="hljs-params">(savedInstanceState: Bundle?)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState)<br>        setContentView(R.layout.activity_main)<br>        initFruits() <span class="hljs-comment">// 初始化水果数据</span><br>        <span class="hljs-type">val</span> <span class="hljs-variable">layoutManager</span> <span class="hljs-operator">=</span> LinearLayoutManager(<span class="hljs-built_in">this</span>)<br>        layoutManager.orientation = LinearLayoutManager.HORIZONTAL<br>        recyclerView.layoutManager = layoutManager<br>        <span class="hljs-type">val</span> <span class="hljs-variable">adapter</span> <span class="hljs-operator">=</span> FruitAdapter(fruitList)<br>        recyclerView.adapter = adapter<br>    &#125;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/03/16/UI/image-20240316234821395.png" srcset="/img/loading.gif" lazyload alt="image-20240316234821395"></p>
+<p>除了LinearLayoutManager之外，RecyclerView还给我们提供了GridLayoutManager和StaggeredGridLayoutManager这两种内置的布局排列方式。</p>
+<ul>
+<li>GridLayoutManager可以用于实现网格布局</li>
+<li>StaggeredGridLayoutManager可以用于实现瀑布流布局</li>
+</ul>
+<p><strong>下面进行演示瀑布流布局：</strong></p>
+<p>修改fruit_item.xml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs Bash">&lt;LinearLayout xmlns:android=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span><br>    android:orientation=<span class="hljs-string">&quot;vertical&quot;</span><br>    android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>    android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>    android:layout_margin=<span class="hljs-string">&quot;5dp&quot;</span>&gt;<br><br>    &lt;ImageView<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/fruitImage&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;40dp&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;40dp&quot;</span><br>        android:layout_gravity=<span class="hljs-string">&quot;center_horizontal&quot;</span><br>        android:layout_marginTop=<span class="hljs-string">&quot;10dp&quot;</span> /&gt;<br><br>    &lt;TextView<br>        android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/fruitName&quot;</span><br>        android:layout_width=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>        android:layout_gravity=<span class="hljs-string">&quot;left&quot;</span><br>        android:layout_marginTop=<span class="hljs-string">&quot;10dp&quot;</span> /&gt;<br><br>&lt;/LinearLayout&gt;<br></code></pre></td></tr></table></figure>
+
+<p>LinearLayout的宽度改为match_parent，因为瀑布流布局是根据布局的列数来自动适配的。</p>
+<p>接着修改MainActivity中的代码</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> fruitList = ArrayList&lt;Fruit&gt;()<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState)<br>        setContentView(R.layout.activity_main)<br>        initFruits() <span class="hljs-comment">// 初始化水果数据</span><br>        <span class="hljs-comment">//第一个参数用于指定布局的列数，传入3表示会把布局分为3列；</span><br>        <span class="hljs-comment">//第二个参数用于指定布局的排列方向，传入StaggeredGridLayoutManager.VERTICAL表示会让布局纵向排列</span><br>        <span class="hljs-keyword">val</span> layoutManager = StaggeredGridLayoutManager(<span class="hljs-number">3</span>,<br>        StaggeredGridLayoutManager.VERTICAL)<br>        recyclerView.layoutManager = layoutManager<br>        <span class="hljs-keyword">val</span> adapter = FruitAdapter(fruitList)<br>        recyclerView.adapter = adapter<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">initFruits</span><span class="hljs-params">()</span></span> &#123;<br>        repeat(<span class="hljs-number">2</span>) &#123;<br>            fruitList.add(Fruit(getRandomLengthString(<span class="hljs-string">&quot;Apple&quot;</span>),<br>                R.drawable.apple_pic))<br>            fruitList.add(Fruit(getRandomLengthString(<span class="hljs-string">&quot;Banana&quot;</span>),<br>                R.drawable.banana_pic))<br>            fruitList.add(Fruit(getRandomLengthString(<span class="hljs-string">&quot;Orange&quot;</span>),<br>                R.drawable.orange_pic))<br>            fruitList.add(Fruit(getRandomLengthString(<span class="hljs-string">&quot;Watermelon&quot;</span>),<br>                R.drawable.watermelon_pic))<br>            fruitList.add(Fruit(getRandomLengthString(<span class="hljs-string">&quot;Pear&quot;</span>),<br>                R.drawable.pear_pic))<br>            fruitList.add(Fruit(getRandomLengthString(<span class="hljs-string">&quot;Grape&quot;</span>),<br>                R.drawable.grape_pic))<br>            fruitList.add(Fruit(getRandomLengthString(<span class="hljs-string">&quot;Pineapple&quot;</span>),<br>                R.drawable.pineapple_pic))<br>            fruitList.add(Fruit(getRandomLengthString(<span class="hljs-string">&quot;Strawberry&quot;</span>),<br>                R.drawable.strawberry_pic))<br>            fruitList.add(Fruit(getRandomLengthString(<span class="hljs-string">&quot;Cherry&quot;</span>),<br>                R.drawable.cherry_pic))<br>            fruitList.add(Fruit(getRandomLengthString(<span class="hljs-string">&quot;Mango&quot;</span>),<br>                R.drawable.mango_pic))<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getRandomLengthString</span><span class="hljs-params">(str: <span class="hljs-type">String</span>)</span></span>: String &#123;<br>        <span class="hljs-keyword">val</span> n =  (<span class="hljs-number">1.</span><span class="hljs-number">.20</span>).random()<br>        <span class="hljs-keyword">val</span> builder = StringBuilder()<br>        repeat(n) &#123;<br>            builder.append(str)<br>        &#125;<br>        <span class="hljs-keyword">return</span> builder.toString()<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/03/16/UI/asynccode" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>RecyclerView的点击事件</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FruitAdapter</span></span>(<span class="hljs-keyword">val</span> fruitList: List&lt;Fruit&gt;) :<br>        RecyclerView.Adapter&lt;FruitAdapter.ViewHolder&gt;() &#123;<br>    ...<br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreateViewHolder</span><span class="hljs-params">(parent: <span class="hljs-type">ViewGroup</span>, viewType: <span class="hljs-type">Int</span>)</span></span>: ViewHolder &#123;<br>        <span class="hljs-keyword">val</span> view = LayoutInflater.from(parent.context)<br>        .inflate(R.layout.fruit_item, parent, <span class="hljs-literal">false</span>)<br>        <span class="hljs-keyword">val</span> viewHolder = ViewHolder(view)<br>        viewHolder.itemView.setOnClickListener &#123;<br>            <span class="hljs-keyword">val</span> position = viewHolder.adapterPosition<br>            <span class="hljs-keyword">val</span> fruit = fruitList[position]<br>            Toast.makeText(parent.context, <span class="hljs-string">&quot;you clicked view <span class="hljs-subst">$&#123;fruit.name&#125;</span>&quot;</span>,<br>                Toast.LENGTH_SHORT).show()<br>        &#125;<br>        viewHolder.fruitImage.setOnClickListener &#123;<br>            <span class="hljs-keyword">val</span> position = viewHolder.adapterPosition<br>            <span class="hljs-keyword">val</span> fruit = fruitList[position]<br>            Toast.makeText(parent.context, <span class="hljs-string">&quot;you clicked image <span class="hljs-subst">$&#123;fruit.name&#125;</span>&quot;</span>,<br>                Toast.LENGTH_SHORT).show()<br>        &#125;<br>        <span class="hljs-keyword">return</span> viewHolder<br>    &#125;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Android/" class="category-chain-item">Android</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Android/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="category-chain-item">Android基础知识</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Android/">#Android</a>
+      
+        <a href="/tags/UI/">#UI</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>UI</div>
+      <div>http://example.com/2024/03/16/UI/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/" title="手机多媒体">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">手机多媒体</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/02/25/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" title="数据存储">
+                        <span class="hidden-mobile">数据存储</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments">
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"enable":true,"appId":"8pDDCsRJCVNm1OXHuh0xASVj-gzGzoHsz","appKey":"MnpSoeG5QTTJ4GagUMOq5t7J","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://8pddcsrj.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> #<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> #<i class="iconfont icon-love"></i> #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div>张露文的博客 | 记录成长过程</div> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

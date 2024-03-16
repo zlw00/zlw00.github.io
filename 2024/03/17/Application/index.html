@@ -16,21 +16,21 @@
   <meta name="author" content="zlw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="标准函数 with、run 和 applyKotlin 的标准函数指的是 Standard.kt 文件中定义的函数，任何 Kotlin 代码都可以自由的调用所有的标准函数。  with 函数  with 函数接收两个参数：第一个参数可以是一个任意类型的对象，第二个参数是一个 Lambda 表达式。 with 函数会在 Lambda 表达式中提供第一个参数对象的上下文，并使用 Lambda 表达式中">
+    <meta name="description" content="Application该类负责应用程序级别的初始化和全局状态（保存了一些全局变量）的管理。所以当我们需要创建全局变量的时候，直接在application中去实现，只需要调用Context的getApplicationContext或者Activity的getApplication方法来获得一个application对象，再做出相应 的处理。  onCreate(): 签名：public void">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kotlin标准函数和静态方法">
-<meta property="og:url" content="http://example.com/2023/08/31/kotlin%E6%A0%87%E5%87%86%E5%87%BD%E6%95%B0%E5%92%8C%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="Application">
+<meta property="og:url" content="http://example.com/2024/03/17/Application/index.html">
 <meta property="og:site_name" content="zlw">
-<meta property="og:description" content="标准函数 with、run 和 applyKotlin 的标准函数指的是 Standard.kt 文件中定义的函数，任何 Kotlin 代码都可以自由的调用所有的标准函数。  with 函数  with 函数接收两个参数：第一个参数可以是一个任意类型的对象，第二个参数是一个 Lambda 表达式。 with 函数会在 Lambda 表达式中提供第一个参数对象的上下文，并使用 Lambda 表达式中">
+<meta property="og:description" content="Application该类负责应用程序级别的初始化和全局状态（保存了一些全局变量）的管理。所以当我们需要创建全局变量的时候，直接在application中去实现，只需要调用Context的getApplicationContext或者Activity的getApplication方法来获得一个application对象，再做出相应 的处理。  onCreate(): 签名：public void">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-30T16:15:14.000Z">
-<meta property="article:modified_time" content="2023-08-30T16:22:52.085Z">
+<meta property="article:published_time" content="2024-03-16T16:01:03.000Z">
+<meta property="article:modified_time" content="2024-03-16T16:02:31.733Z">
 <meta property="article:author" content="zlw">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>kotlin标准函数和静态方法 - zlw</title>
+  <title>Application - zlw</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,7 +193,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="kotlin标准函数和静态方法"></span>
+            <span id="subtitle" data-typed-text="Application"></span>
           
         </div>
 
@@ -204,8 +204,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-31 00:15" pubdate>
-          2023年8月31日 凌晨
+        <time datetime="2024-03-17 00:01" pubdate>
+          2024年3月17日 凌晨
         </time>
       </span>
     
@@ -216,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k 字
+          2.4k 字
         
       </span>
     
@@ -227,7 +227,7 @@
         
         
         
-          30 分钟
+          21 分钟
         
       </span>
     
@@ -273,72 +273,54 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">kotlin标准函数和静态方法</h1>
+            <h1 style="display: none">Application</h1>
             
             <div class="markdown-body">
               
-              <h1 id="标准函数-with、run-和-apply"><a href="#标准函数-with、run-和-apply" class="headerlink" title="标准函数 with、run 和 apply"></a>标准函数 with、run 和 apply</h1><p>Kotlin 的标准函数指的是 Standard.kt 文件中定义的函数，任何 Kotlin 代码都可以自由的调用所有的标准函数。</p>
-<ul>
-<li><strong><code>with</code> 函数</strong></li>
-</ul>
-<p><code>with</code> 函数接收两个参数：第一个参数可以是一个任意类型的对象，第二个参数是一个 Lambda 表达式。</p>
-<p><code>with</code> 函数会在 Lambda 表达式中提供第一个参数对象的上下文，并使用 Lambda 表达式中的最后一行代码作为返回值返回。示例代码如下：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dart">val result = <span class="hljs-keyword">with</span>(obj)&#123;<br>    <span class="hljs-comment">// 这里是obj的上下文</span><br>    <span class="hljs-string">&quot;value&quot;</span> <span class="hljs-comment">// with 函数的返回值</span><br>&#125;<br></code></pre></td></tr></table></figure>
+              <h1 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h1><p>该类负责<strong>应用程序级别的初始化</strong>和<strong>全局状态（保存了一些全局变量）</strong>的管理。所以当我们需要创建全局变量的时候，直接在application中去实现，只需要调用Context的getApplicationContext或者Activity的getApplication方法来获得一个application对象，再做出相应 的处理。</p>
+<ol>
+<li><strong>onCreate():</strong><ol>
+<li>签名：<code>public void onCreate()</code></li>
+<li>描述：当应用程序启动时，系统会创建 <code>Application</code> 类的实例并调用其 <code>onCreate()</code> 方法。在这个方法中，通常可以进行应用程序级别的初始化，比如初始化全局变量、配置日志、设置异常处理等。</li>
+</ol>
+</li>
+<li><strong>onTerminate():</strong><ol>
+<li>签名：<code>public void onTerminate()</code></li>
+<li>描述：当应用程序终止时（在最后一个 Activity 被销毁之后），系统会调用 <code>onTerminate()</code> 方法。在这个方法中，可以进行一些清理工作，释放资源，但需要注意，这个方法不是在所有情况下都会被调用（被内核终止时不被调用）。</li>
+</ol>
+</li>
+<li><strong>onLowMemory():</strong><ol>
+<li>签名：<code>public void onLowMemory()</code></li>
+<li>描述：当系统内存低时，会调用 <code>onLowMemory()</code> 方法。在这个方法中，可以释放一些不必要的资源，以帮助系统回收内存。</li>
+</ol>
+</li>
+<li><strong>onConfigurationChanged():</strong><ol>
+<li>签名：<code>public void onConfigurationChanged(Configuration newConfig)</code></li>
+<li>描述：当设备的配置（如屏幕方向、语言设置等）发生变化时，系统会调用 <code>onConfigurationChanged()</code> 方法。在这个方法中，可以处理相应的配置变化。</li>
+</ol>
+</li>
+<li><strong>registerActivityLifecycleCallbacks():</strong><ol>
+<li>签名：<code>public void registerActivityLifecycleCallbacks(Application.ActivityLifecycleCallbacks callback)</code></li>
+<li>描述：注册 <code>Activity</code> 的生命周期回调，可以用于监听所有 <code>Activity</code> 的生命周期事件。</li>
+</ol>
+</li>
+<li><strong>unregisterActivityLifecycleCallbacks():</strong><ol>
+<li>签名：<code>public void unregisterActivityLifecycleCallbacks(Application.ActivityLifecycleCallbacks callback)</code></li>
+<li>描述：取消注册 <code>Activity</code> 的生命周期回调。</li>
+</ol>
+</li>
+</ol>
+<h2 id="监听应用Activity的生命周期"><a href="#监听应用Activity的生命周期" class="headerlink" title="监听应用Activity的生命周期"></a>监听应用Activity的生命周期</h2><p>​    Android自 API 14开始引入了一个方法，即Application的 <code>registerActivityLifecycleCallbacks</code> 方法，用来监听所有Activity的生命周期回调。通过这个方法，我们可以轻松获取到当前运行的 Activity 的实例，还可以判断应用是在前台运行还是后台运行。</p>
+<p><strong>Application中具体的实现：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyApplication</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Application</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">activityCounter</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate();<br>        registerActivityLifecycleCallbacks(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ActivityLifecycleCallbacks</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onActivityCreated</span><span class="hljs-params">(Activity activity, Bundle savedInstanceState)</span> &#123;<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onActivityStarted</span><span class="hljs-params">(Activity activity)</span> &#123;<br>                activityCounter++;<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onActivityResumed</span><span class="hljs-params">(Activity activity)</span> &#123;<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onActivityPaused</span><span class="hljs-params">(Activity activity)</span> &#123;<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onActivityStopped</span><span class="hljs-params">(Activity activity)</span> &#123;<br>                activityCounter--;<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onActivitySaveInstanceState</span><span class="hljs-params">(Activity activity, Bundle outState)</span> &#123;<br><br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onActivityDestroyed</span><span class="hljs-params">(Activity activity)</span> &#123;<br><br>            &#125;<br>        &#125;);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">getAppFrontRunning</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> activityCounter&gt;<span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><code>with</code> 函数可以在连续调用同一个对象的多个方法时让代码变得更加精简。</p>
-<ul>
-<li><strong><code>run</code> 函数</strong></li>
-</ul>
-<p><code>run</code> 函数的用法和使用场景和 <code>with</code> 函数非常类似，只是语法有些不同。</p>
-<p><code>run</code> 函数不能直接调用，一定要调用某个对象的 <code>run</code> 函数才行。</p>
-<p><code>run</code> 函数只接收一个 Lambda 参数，并且会在 Lambda 表达式中提供调用对象的上下文，用最后一行代码作为返回值。示例代码如下：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> result = obj.run&#123;<br>    <span class="hljs-comment">// 这里是obj的上下文</span><br>    <span class="hljs-string">&quot;value&quot;</span> <span class="hljs-comment">// run 函数的返回值</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><strong><code>apply</code> 函数</strong></li>
-</ul>
-<p><code>apply</code> 函数和 <code>run</code> 函数也极其相似，都要在某个对象上调用，并且只接收一个 Lambda 参数，会在 Lambda 表达式中提供调用对象的上下文。</p>
-<p>不过， <code>apply</code> 函数无法指定返回值，而是会自动返回调用对象本身。示例代码如下：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> result = obj.apply&#123;<br>    <span class="hljs-comment">// 这里是obj的上下文</span><br>&#125;<br><span class="hljs-comment">// result == obj</span><br></code></pre></td></tr></table></figure>
-
-<hr>
-<p>举个例子，比如有一个水果列表，吃完所有水果并把结果打印出来，有如下代码：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go">val list = listOf(<span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-string">&quot;orange&quot;</span>, <span class="hljs-string">&quot;pear&quot;</span>)<br>val builder = StringBuilder()<br>builder.<span class="hljs-built_in">append</span>(<span class="hljs-string">&quot;开始吃水果：\n&quot;</span>)<br><span class="hljs-keyword">for</span> (fruit in list)&#123;<br>    builder.<span class="hljs-built_in">append</span>(fruit).<span class="hljs-built_in">append</span>(<span class="hljs-string">&quot;\n&quot;</span>)<br>&#125;<br>builder.<span class="hljs-built_in">append</span>(<span class="hljs-string">&quot;吃完全部水果!&quot;</span>)<br>val result = builder.toString()<br><span class="hljs-built_in">println</span>(result)<br></code></pre></td></tr></table></figure>
-
-<p>上面代码连续调用了很多次 <code>builder</code> 对象的方法，若用 <code>with</code> 、<code>run</code>、<code>apply</code> 函数可以更加精简：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs go">fun main() &#123;<br>    val list = listOf(<span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-string">&quot;orange&quot;</span>, <span class="hljs-string">&quot;pear&quot;</span>)<br><br>    <span class="hljs-comment">// with 函数第一个参数传入 StringBuilder 对象，</span><br>    <span class="hljs-comment">// 下面整个 Lambda 表达式的上下文都是这个 StringBuilder 对象</span><br>    val withResult = with(StringBuilder()) &#123;<br>        <span class="hljs-built_in">append</span>(<span class="hljs-string">&quot;开始吃水果：\n&quot;</span>)<br>        <span class="hljs-keyword">for</span> (fruit in list) &#123;<br>            <span class="hljs-built_in">append</span>(fruit).<span class="hljs-built_in">append</span>(<span class="hljs-string">&quot;\n&quot;</span>)<br>        &#125;<br>        <span class="hljs-built_in">append</span>(<span class="hljs-string">&quot;吃完全部水果!&quot;</span>)<br>        toString()<br>    &#125;<br><br>    <span class="hljs-comment">// run 函数</span><br>    val runResult = StringBuilder().run &#123;<br>        <span class="hljs-built_in">append</span>(<span class="hljs-string">&quot;开始吃水果：\n&quot;</span>)<br>        <span class="hljs-keyword">for</span> (fruit in list) &#123;<br>            <span class="hljs-built_in">append</span>(fruit).<span class="hljs-built_in">append</span>(<span class="hljs-string">&quot;\n&quot;</span>)<br>        &#125;<br>        <span class="hljs-built_in">append</span>(<span class="hljs-string">&quot;吃完全部水果!&quot;</span>)<br>        toString()<br>    &#125;<br><br>    <span class="hljs-comment">// apply 函数返回的是 StringBuilder 对象</span><br>    val applyResult = StringBuilder().apply &#123;<br>        <span class="hljs-built_in">append</span>(<span class="hljs-string">&quot;开始吃水果：\n&quot;</span>)<br>        <span class="hljs-keyword">for</span> (fruit in list) &#123;<br>            <span class="hljs-built_in">append</span>(fruit).<span class="hljs-built_in">append</span>(<span class="hljs-string">&quot;\n&quot;</span>)<br>        &#125;<br>        <span class="hljs-built_in">append</span>(<span class="hljs-string">&quot;吃完全部水果!&quot;</span>)<br>    &#125;<br><br>    <span class="hljs-built_in">println</span>(withResult)<br>    <span class="hljs-built_in">println</span>(runResult)<br>    <span class="hljs-built_in">println</span>(applyResult.toString())<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>小结：<code>with</code> 、<code>run</code>、<code>apply</code> 函数的用法和使用场景非常类似，大多数情况下可以相互转换，编程时选择合适的即可。</p>
-<h1 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h1><p>静态方法是那种不需要创建实例就能调用的方法（某些编程语言里也叫类方法），在 Java 中定义一个静态方法只需要在方法上声明一个 <code>static</code> 关键字即可：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Util</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">doAction</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">// do something</span><br>        ...<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>调用静态方法无需创建类的实例，直接用 <code>Util.doAction()</code> 即可，因而静态方法适合编写全局通用、无需创建实例的工具类。</p>
-<p>不过，Kotlin 却极度弱化了静态方法这个概念，它提供了比静态方法更好的语法特性：<strong>单例类</strong>。</p>
-<p><strong>像工具类这种功能，Kotlin 推荐用单例类来实现</strong>，如上述的代码用 Kotlin 实现：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">object</span> Util &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">doAction</span><span class="hljs-params">()</span></span> &#123;<br>        <span class="hljs-comment">// do something</span><br>        ...<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>使用单例类会将整个类中的所有方法变成类似静态方法的调用方式，若我们只想让类中的某一个方法变成静态方法的调用方式，则可以用 <code>companion object</code>，如下：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Util</span> </span>&#123;<br>    <span class="hljs-comment">// doAction1 方法一定要先创建 Util 类的实例才能调用</span><br>    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">doAction1</span><span class="hljs-params">()</span></span> &#123;<br>        <span class="hljs-comment">// do something</span><br>        ...<br>    &#125;<br>    <br>    <span class="hljs-keyword">companion</span> <span class="hljs-keyword">object</span> &#123;<br>        <span class="hljs-comment">// doAction2 方法直接使用 Util.doAction2() 即可</span><br>        <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">doAction2</span><span class="hljs-params">()</span></span> &#123;<br>            <span class="hljs-comment">// do something</span><br>            ...<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>上面 <code>doAction2()</code> 方法并不是静态方法，关键字 <code>companion object</code> 会在 Util 类的内部创建一个伴生类，而 <code>doAction2()</code> 方法就是定义在这个伴生类里的实例方法。</p>
-<p>当然，Kotlin 也提供了两种实现静态方法的方式：注解和顶层方法。</p>
-<ul>
-<li><strong>注解</strong></li>
-</ul>
-<p>在单例类或 <code>companion object</code> 中的方法加上 <code>@JvmStatic</code> 注解，Kotlin 编译器就会将这些方法编译成真正的静态方法，如下：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Util</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">doAction1</span><span class="hljs-params">()</span></span> &#123;<br>        println(<span class="hljs-string">&quot;do action1&quot;</span>)<br>    &#125;<br><br>    <span class="hljs-comment">// @JvmStatic 注解只能加在单例类或者 companion object 中的方法上</span><br>    <span class="hljs-keyword">companion</span> <span class="hljs-keyword">object</span> &#123;<br>        <span class="hljs-meta">@JvmStatic</span><br>        <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">doAction2</span><span class="hljs-params">()</span></span> &#123;<br>            println(<span class="hljs-string">&quot;do action2&quot;</span>)<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>顶层方法</strong></li>
-</ul>
-<p>顶层方法是指那些没有定义在任何类中的方法，如上面的 <code>main()</code> 方法。</p>
-<p>Kotlin 编译器会把所有的顶层方法编译成静态方法。</p>
-<p><strong>定义顶层方法，首先要创建一个 Kotlin 文件，创建类型选择 File，比如创建了个 <code>Helper.kt</code> 文件，在此文件中定义的任何方法都是顶层方法：</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">// 在 Helper.kt 中定义了个 doSomething 顶层方法</span><br><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">doSomething</span><span class="hljs-params">()</span></span> &#123;<br>    println(<span class="hljs-string">&quot;do something&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>所有的顶层方法在 Kotlin 代码中可以在任何位置被直接调用，不用管包名路径，也不用创建实例，如调用上面定义的顶层方法直接键入 <code>doSomething()</code> 即可。</p>
-<p>不过，在 Java 中没有顶层方法这个概念，所有的方法必须定义在类中。上面创建的 Kotlin 文件名是 <code>Helper.kt</code>，Kotlin 编译器会自动创建一个叫 <code>HelperKt</code> 的类，在 Java 中调用上面定义的顶层方法使用 <code>HelperKt.doSomething()</code> 即可。</p>
-<p><strong>小结：</strong>除了 <code>@JvmStatic</code> 注解不太常用，其他像单例类、<code>companion object</code>、顶层方法都是 Kotlin 中比较常用的技巧。</p>
+<p>两个 Activity 之间的跳转的生命周期：</p>
+<blockquote>
+<p>A.onPause() -&gt; B.onCreate() -&gt; B.onStart() -&gt; B.onResume() -&gt; A.onStop()</p>
+<p><strong>如果B是个透明的窗口,或者是对话框的样式, 就不会调用A的onStop()方法。</strong></p>
+<p><strong>如果B已经存在于Activity栈中，B就不会调用onCreate()方法。</strong></p>
+</blockquote>
+<p>因为我们可以通过 Activity 的生命周期的追踪回调，对 <code>activityCounter</code> 进行简单的加减处理，从而只需要判断 <code>activityCounter</code> 是否大于0即可知道当前应用是否处于前台运行。</p>
 
               
             </div>
@@ -356,8 +338,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Kotlin/" class="category-chain-item">Kotlin</a>
+  <a href="/categories/Android/" class="category-chain-item">Android</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Android/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="category-chain-item">Android基础知识</a>
+  
+  
+
   
 
       </span>
@@ -376,8 +365,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>kotlin标准函数和静态方法</div>
-      <div>http://example.com/2023/08/31/kotlin标准函数和静态方法/</div>
+      <div>Application</div>
+      <div>http://example.com/2024/03/17/Application/</div>
     </div>
     <div class="license-meta">
       
@@ -389,7 +378,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月31日</div>
+          <div>2024年3月17日</div>
         </div>
       
       
@@ -419,18 +408,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/06/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Android四大组件">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Android四大组件</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/29/kotlin%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="kotlin基础知识">
-                        <span class="hidden-mobile">kotlin基础知识</span>
+                      <a href="/2024/03/16/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/" title="手机多媒体">
+                        <span class="hidden-mobile">手机多媒体</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
